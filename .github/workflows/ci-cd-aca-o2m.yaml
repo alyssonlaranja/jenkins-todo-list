@@ -198,7 +198,7 @@ jobs:
       needs.quality-and-build.result == 'success' &&
       needs.quality-and-build.outputs.is_release == 'false'
     
-    environment: dev-aigrowth
+    environment: sandbox
     
     steps:
       - name: Checkout code
