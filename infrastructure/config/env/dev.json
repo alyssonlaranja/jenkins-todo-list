@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "name": "aca-fabric-sandbox-teste001",
+  "title": "FABRIC SANDBOX TESTE",
+  "description": "FABRIC SANDBOX TESTE",
+  "displayName": "FABRIC SANDBOX TESTE",
+  "version": "1.0.0",
+  "acrName": "acrfabric",
+  "keyVaultName": "kv-fabrica",
+  "vnetName": "vnet-fabric-shared",
+  "subnetName": "snet-fabric-shared",
+  "environmentName": "cae-fabrica-sandbox",
+
+  "environmentVariables": [
+
+  ]
+}
+

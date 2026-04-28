@@ -1,0 +1,48 @@
+{
+  "of": "の",
+  "name": "名前",
+  "edit": "編集",
+  "cancel": "キャンセル",
+  "delete": "削除",
+  "loading": "読み込み中...",
+  "error": "エラー",
+  "button": {
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "close": "閉じる",
+    "confirm": "確認",
+    "loading": "読み込み中..."
+  },
+  "status": {
+    "loading": "読み込み中...",
+    "success": "成功",
+    "error": "エラー",
+    "warning": "警告",
+    "info": "情報"
+  },
+  "apiKeyModal": {
+    "title": "個人APIキーが必要です",
+    "description": "MCPポータルを使用するには個人APIキーが必要です。このキーはMCPサーバーへのリクエストを認証します。",
+    "instructions": "ここでキーを作成するか、Cockpitポータルに移動してAPIキーを管理できます。",
+    "goToPortalButton": "Cockpitポータルへ移動",
+    "createButton": "ここでキーを作成",
+    "creatingButton": "作成中...",
+    "autoCreatedDescription": "MCPポータル用に自動作成",
+    "successMessage": "個人APIキーが正常に作成されました",
+    "errorMessage": "APIキーの作成に失敗しました",
+    "portalErrorMessage": "Cockpitポータルを開けません。設定を確認してください。"
+  },
+  "systemStatus": {
+    "mcpConnected": "MCP接続済み",
+    "mcpError": "MCPエラー",
+    "mcpDisconnected": "MCP未接続",
+    "initializing": "初期化中...",
+    "connectionStatusTooltip": "システムMCP接続ステータス",
+    "portalEnvironment": "ポータル環境",
+    "activeLicense": "アクティブライセンス",
+    "activeNamespace": "アクティブネームスペース",
+    "systemLabel": "システム"
+  }
+}

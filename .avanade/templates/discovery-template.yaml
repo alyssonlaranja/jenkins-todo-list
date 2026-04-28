@@ -1,0 +1,253 @@
+template:
+  id: discovery-template
+  name: Discovery Template
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/discovery.md
+    title: "{{project_name}} Discovery Document"
+
+workflow:
+  mode: interactive
+  elicitation: stakeholder-driven
+
+sections:
+  - id: executive-summary
+    title: Executive Summary
+    instruction: |
+      Provide a concise overview of the discovery findings, key recommendations, and next steps.
+      This should be consumable by executives and decision-makers.
+
+  - id: project-context
+    title: Project Context
+    instruction: |
+      Establish the foundation and background for this discovery effort.
+    sections:
+      - id: business-drivers
+        title: Business Drivers
+        instruction: What business needs or opportunities are driving this project?
+        elicit: true
+      - id: current-state
+        title: Current State
+        instruction: What is the existing situation or baseline we're working from?
+        elicit: true
+      - id: success-vision
+        title: Success Vision
+        instruction: What does success look like for this project?
+        elicit: true
+
+  - id: stakeholder-analysis
+    title: Stakeholder Analysis
+    instruction: |
+      Identify and analyze all stakeholders who will be impacted by or influence this project.
+    elicit: true
+    sections:
+      - id: stakeholder-map
+        title: Stakeholder Map
+        type: table
+        columns: [Name/Role, Influence Level, Impact Level, Engagement Strategy, Key Concerns]
+        instruction: Map all stakeholders with their influence, impact, and engagement needs
+      - id: user-personas
+        title: User Personas
+        instruction: Define primary user types and their characteristics
+        sections:
+          - id: persona
+            title: "{{persona_name}}"
+            repeatable: true
+            elicit: true
+            template: |
+              **Role:** {{role}}
+              **Goals:** {{goals}}
+              **Pain Points:** {{pain_points}}
+              **Technical Proficiency:** {{tech_level}}
+              **Usage Context:** {{usage_context}}
+
+  - id: requirements-discovery
+    title: Requirements Discovery
+    instruction: |
+      Gather and analyze functional and non-functional requirements through stakeholder engagement.
+    sections:
+      - id: functional-requirements
+        title: Functional Requirements
+        instruction: |
+          Discover what the system needs to do from a user perspective.
+        elicit: true
+        sections:
+          - id: user-journeys
+            title: Key User Journeys
+            instruction: Map critical user workflows and processes
+            sections:
+              - id: journey
+                title: "{{journey_name}}"
+                repeatable: true
+                elicit: true
+                template: |
+                  **Actor:** {{actor}}
+                  **Trigger:** {{trigger}}
+                  **Steps:** {{steps}}
+                  **Success Outcome:** {{success}}
+                  **Pain Points:** {{pain_points}}
+          - id: feature-requests
+            title: Feature Requests
+            type: table
+            columns: [Feature, Stakeholder, Priority, Rationale, Dependencies]
+            instruction: Catalog all requested features with context
+      - id: non-functional-requirements
+        title: Non-Functional Requirements
+        instruction: |
+          Discover quality attributes and constraints that the system must meet.
+        elicit: true
+        sections:
+          - id: performance
+            title: Performance Requirements
+            instruction: Response times, throughput, capacity needs
+          - id: security
+            title: Security Requirements
+            instruction: Compliance, data protection, access control needs
+          - id: usability
+            title: Usability Requirements
+            instruction: User experience, accessibility, training needs
+          - id: reliability
+            title: Reliability Requirements
+            instruction: Availability, fault tolerance, recovery needs
+          - id: scalability
+            title: Scalability Requirements
+            instruction: Growth projections, scaling triggers, capacity planning
+
+  - id: technical-discovery
+    title: Technical Discovery
+    instruction: |
+      Assess technical landscape, constraints, and opportunities.
+    sections:
+      - id: current-architecture
+        title: Current Architecture
+        instruction: |
+          Document existing technical infrastructure and systems.
+        elicit: true
+        sections:
+          - id: system-inventory
+            title: System Inventory
+            type: table
+            columns: [System, Purpose, Technology, Integration Points, Condition]
+            instruction: Catalog all current systems and their state
+          - id: data-landscape
+            title: Data Landscape
+            instruction: Current data sources, formats, quality, and flows
+          - id: infrastructure
+            title: Infrastructure
+            instruction: Hosting, networking, security, and operational setup
+      - id: technical-constraints
+        title: Technical Constraints
+        instruction: |
+          Identify limitations and requirements that will impact solution design.
+        elicit: true
+        sections:
+          - id: technology-standards
+            title: Technology Standards
+            instruction: Mandated or preferred technologies, frameworks, patterns
+          - id: integration-requirements
+            title: Integration Requirements
+            instruction: Required integrations with existing systems
+          - id: compliance-requirements
+            title: Compliance Requirements
+            instruction: Regulatory, security, or organizational compliance needs
+          - id: budget-constraints
+            title: Budget and Resource Constraints
+            instruction: Financial limitations, resource availability, timeline constraints
+
+  - id: opportunity-assessment
+    title: Opportunity Assessment
+    instruction: |
+      Analyze potential solutions and approaches based on discovery findings.
+    sections:
+      - id: solution-options
+        title: Solution Options
+        instruction: |
+          Present different approaches to addressing the identified needs.
+        elicit: true
+        sections:
+          - id: option
+            title: "Option {{option_number}}: {{option_name}}"
+            repeatable: true
+            elicit: true
+            template: |
+              **Approach:** {{approach}}
+              **Pros:** {{pros}}
+              **Cons:** {{cons}}
+              **Estimated Effort:** {{effort}}
+              **Risk Level:** {{risk}}
+              **Dependencies:** {{dependencies}}
+      - id: technology-recommendations
+        title: Technology Recommendations
+        instruction: |
+          Based on requirements and constraints, recommend technology approaches.
+        elicit: true
+        type: table
+        columns: [Category, Recommendation, Rationale, Alternatives]
+
+  - id: risk-analysis
+    title: Risk Analysis
+    instruction: |
+      Identify and analyze potential risks that could impact project success.
+    elicit: true
+    sections:
+      - id: risk-register
+        title: Risk Register
+        type: table
+        columns: [Risk, Probability, Impact, Mitigation Strategy, Owner]
+        instruction: Catalog identified risks with mitigation approaches
+      - id: assumptions
+        title: Key Assumptions
+        type: bullet-list
+        instruction: Document critical assumptions that could affect the project
+
+  - id: recommendations
+    title: Recommendations and Next Steps
+    instruction: |
+      Provide clear recommendations based on discovery findings.
+    sections:
+      - id: recommended-approach
+        title: Recommended Approach
+        instruction: |
+          Based on all discovery findings, what is the recommended path forward?
+        elicit: true
+      - id: mvp-scope
+        title: MVP Scope
+        instruction: |
+          What should be included in the minimum viable product?
+        elicit: true
+      - id: implementation-phases
+        title: Implementation Phases
+        instruction: |
+          How should the work be phased for maximum value and risk mitigation?
+        elicit: true
+        sections:
+          - id: phase
+            title: "Phase {{phase_number}}: {{phase_name}}"
+            repeatable: true
+            elicit: true
+            template: |
+              **Duration:** {{duration}}
+              **Goals:** {{goals}}
+              **Deliverables:** {{deliverables}}
+              **Success Criteria:** {{success_criteria}}
+      - id: immediate-next-steps
+        title: Immediate Next Steps
+        type: numbered-list
+        instruction: What are the specific actions to move forward from discovery to planning/execution?
+
+  - id: appendices
+    title: Appendices
+    sections:
+      - id: stakeholder-interviews
+        title: Stakeholder Interview Notes
+        instruction: Detailed notes from stakeholder conversations
+      - id: technical-deep-dives
+        title: Technical Deep Dive Notes
+        instruction: Detailed technical analysis and findings
+      - id: research-findings
+        title: Research Findings
+        instruction: Market research, competitive analysis, technology research
+      - id: artifacts
+        title: Supporting Artifacts
+        instruction: Links to related documents, prototypes, or analysis

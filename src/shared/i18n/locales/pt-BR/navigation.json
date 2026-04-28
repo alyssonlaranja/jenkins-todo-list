@@ -1,0 +1,42 @@
+{
+  "groups": {
+    "aiHub": "HUB DE IA",
+    "commandCenter": "CENTRO DE COMANDO",
+    "agentConsole": "CONSOLE DE AGENTES",
+    "administration": "ADMINISTRAÇÃO"
+  },
+  "aiHub": {
+    "aiLibrary": "Biblioteca de IA",
+    "agentPlayground": "Playground de Agentes",
+    "utilityAgents": "Agentes Utilitários",
+    "videoGeneration": "Geração de Vídeo",
+    "configuration": "Configuração"
+  },
+  "commandCenter": {
+    "agentControlPanel": "Painel de Controle de Agentes",
+    "managementAgents": "Agentes de Gerenciamento",
+    "schedule": "Agendamento",
+    "reports": "Relatórios",
+    "telemetry": "Telemetria"
+  },
+  "agentConsole": {
+    "aiRegistry": "Registro de IA",
+    "sandbox": "Sandbox",
+    "agentCreator": "Criador de Agentes",
+    "importAgents": "Importar Agentes",
+    "utilityAgents": "Agentes Utilitários",
+    "aiMarketplace": "Marketplace de IA"
+  },
+  "administration": {
+    "systemAdministrator": "Administrador do Sistema",
+    "users": "Usuários",
+    "namespaces": "Namespaces",
+    "licenses": "Licenças",
+    "artifacts": "Artefatos",
+    "artifactLibrary": "Biblioteca de Artefatos",
+    "utilityAgentsLibrary": "Biblioteca de Agentes Utilitários"
+  },
+  "search": {
+    "noResults": "Nenhum item encontrado para \"{{term}}\""
+  }
+}

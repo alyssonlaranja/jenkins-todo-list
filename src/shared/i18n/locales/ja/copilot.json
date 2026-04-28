@@ -1,0 +1,852 @@
+{
+  "actions": {
+    "spotlight": {
+      "executeUtilityAgent": {
+        "description": "🤖 Execute the Utility Agents Supervisor!\n\nThe supervisor has a team of specialized Standard Agents that can perform complex tasks beyond your knowledge.\n\nUse when the user asks for:\n- \"research\", \"investigate\", \"analyze in depth\"\n- \"market analysis\", \"competitor analysis\"\n- \"generate report\", \"create document\"\n- \"consult the agent\", \"use the agent\"\n\nSimply describe what you need in natural language.",
+        "params": {
+          "user_input": "Natural language description of what the agent should do"
+        }
+      },
+      "searchArtifacts": {
+        "description": "Search for artifacts in the current namespace.\nArtifacts are documents, templates, configs saved in MCP.\n\nUse when the user asks to:\n- Search, look for, find artifacts\n- View templates or patterns\n- List documents by term",
+        "params": {
+          "searchTerm": "Search term (case insensitive)"
+        }
+      },
+      "listArtifacts": {
+        "description": "List all available artifacts in the namespace.\nReturns the first 20 artifacts with their keys and types."
+      },
+      "readArtifact": {
+        "description": "Read the content of a specific artifact.\nUse after searching or listing to view details of an artifact.",
+        "params": {
+          "key": "The key of the artifact"
+        }
+      },
+      "createArtifact": {
+        "description": "Create a new artifact in MCP.\nArtifacts are documents, templates, configs that can be reused.\n\nUse when the user wants to save something in the namespace.",
+        "params": {
+          "key": "Unique key for the artifact (e.g., TEMPLATE_REPORT_V1)",
+          "value": "Content of the artifact",
+          "description": "Description of the artifact",
+          "type": "Type: document, template, config, general"
+        }
+      },
+      "captureFeedback": {
+        "description": "Capture user feedback intelligently. Analyzes the message to determine category and severity.\n\nAvailable categories: {{categories}}",
+        "params": {
+          "category": "Category based on content analysis",
+          "title": "Brief feedback title (max 100 chars)",
+          "description": "Detailed feedback description",
+          "severity": "Severity level: critical (system down), high (major impact), medium (moderate), low (minor)",
+          "tags": "Tags for categorization (e.g., \"migration\", \"api\")"
+        }
+      },
+      "quickBugReport": {
+        "description": "Quick action to report a bug or problem. Use when the user mentions error, problem, or something not working.",
+        "params": {
+          "issue": "What is the problem?",
+          "severity": "How severe is the problem?"
+        }
+      },
+      "suggestFeature": {
+        "description": "Action to suggest a new feature or improvement. Use when the user has an idea or suggestion.",
+        "params": {
+          "suggestion": "What is the suggestion or idea?",
+          "benefit": "What benefit would it bring?"
+        }
+      },
+      "shareSuccess": {
+        "description": "Action to share a success story or positive experience. Use when the user mentions something that worked well.",
+        "params": {
+          "success": "What was the success or positive experience?",
+          "impact": "What was the impact of this success?"
+        }
+      },
+      "askQuestion": {
+        "description": "Action to register a doubt or question that needs clarification. Use when the user has a question.",
+        "params": {
+          "question": "What is the doubt or question?",
+          "context": "Additional context for the question"
+        }
+      },
+      "shareInsight": {
+        "description": "Action to share an insight, discovery, or important observation. Use when the user has a learning.",
+        "params": {
+          "insight": "What is the insight or discovery?",
+          "implication": "What is the implication or consequence of this insight?"
+        }
+      },
+      "reportError": {
+        "description": "Action to report a runtime error or exception. Use when the user mentions a runtime error or exception.",
+        "params": {
+          "errorMessage": "Error or exception message",
+          "context": "What were you doing when the error occurred?",
+          "severity": "How severe is the error?"
+        }
+      },
+      "listSignals": {
+        "description": "List recent signals (insights, feedbacks, alerts).\nUse to see what was captured in Atlas.",
+        "params": {
+          "type": "Filter by type: insight, feedback, message, or all"
+        }
+      },
+      "listFeedbacks": {
+        "description": "List all feedbacks from the Feedback Hub with visual UI.\nCan filter by status, category, severity, or source.\n\nStatus: new, acknowledged, in_progress, resolved, wont_fix\nCategories: bug, feature, agent, tool, workflow, learning, success\nSeverities: critical, high, medium, low\nSources: upstream, downstream, migration, onboarding, general",
+        "params": {
+          "status": "Filter by status (or \"all\")",
+          "category": "Filter by category (or \"all\")",
+          "severity": "Filter by severity (or \"all\")",
+          "limit": "Maximum feedbacks (default: 20)"
+        }
+      },
+      "getFeedbackStatistics": {
+        "description": "Get detailed statistics about all feedbacks.\nReturns counts by status, category, severity, and source."
+      },
+      "navigateToPage": {
+        "description": "Navigate to a page or module of the system.\nUse when the user asks to go somewhere.\n\nAvailable modules:\n- dashboard: Home page\n- upstream: Discovery/Ideation module (BV Framework)\n- downstream: Delivery/Implementation module\n- migration: Artifact Migration Wizard\n- onboarding: Training and Onboarding\n- atlas: Signals and Insights Hub (Feedback Hub)\n- messages: Message Box\n- settings: System settings",
+        "params": {
+          "destination": "The destination: dashboard, upstream, downstream, migration, onboarding, atlas, messages, settings",
+          "subpath": "Optional subpath (e.g., /settings/connections)"
+        }
+      },
+      "createSignal": {
+        "description": "Create a new Signal in Atlas.\nSignals are knowledge units: insights, feedbacks, or alerts.\n\nUse when the user shares:\n- A discovery or pattern (insight)\n- A risk, alert, or note (message)\n\nTYPES:\n- insight: Discoveries, patterns, opportunities\n- message: Alerts, notes, risks\n\nCATEGORIES:\n- insight: discovery, pattern, opportunity, innovation, risk\n- message: alert, note, risk\n\nPRIORITIES: low, medium, high, critical",
+        "params": {
+          "type": "Signal type: insight or message",
+          "category": "Category: discovery, pattern, opportunity, risk, innovation, note, alert",
+          "title": "Short and descriptive title (max 100 chars)",
+          "content": "Detailed description of the signal",
+          "priority": "Priority: low, medium, high, critical"
+        }
+      },
+      "createTask": {
+        "description": "Create a new personal task for the user.\nTasks are private and visible only to the user.\n\nUse when the user:\n- Asks to create, add, note a task\n- Mentions something they need to do or remember\n- Wants to register a TODO or reminder\n\nALWAYS confirm creation showing title, priority, and status.",
+        "params": {
+          "title": "Task title (required)",
+          "description": "Optional description with more details",
+          "priority": "Priority: low, medium, high, critical. Default: medium",
+          "status": "Initial status: backlog, todo (default), in_progress, review, done",
+          "dueDate": "Due date in ISO format (e.g., 2024-12-31). Optional.",
+          "tags": "Comma-separated tags for categorization (e.g., \"urgent,project-x\")"
+        }
+      },
+      "listMyTasks": {
+        "description": "List the user's personal tasks.\nShows all tasks or filters by status.\n\nUse when the user asks to:\n- View, list, show tasks\n- See what they have to do\n- View backlog, pending, in progress, etc.",
+        "params": {
+          "status": "Filter by status: backlog, todo, in_progress, review, done, all (default)"
+        }
+      },
+      "completeTask": {
+        "description": "Mark a task as completed.\n\nUse when the user:\n- Says they finished, completed a task\n- Asks to mark as done",
+        "params": {
+          "taskTitle": "Title or part of the title of the task to search and complete"
+        }
+      },
+      "moveTask": {
+        "description": "Move a task to another status/column.\n\nUse when the user:\n- Asks to move task to another status\n- Starts working on a task (move to in_progress)\n- Puts in review, backlog, etc.",
+        "params": {
+          "taskTitle": "Title or part of the title of the task",
+          "newStatus": "New status: backlog, todo, in_progress, review, done"
+        }
+      },
+      "deleteTask": {
+        "description": "Delete a task permanently.\n\nUse when the user asks to:\n- Delete, remove a task\n- Clean up old tasks",
+        "params": {
+          "taskTitle": "Title or part of the title of the task to delete"
+        }
+      },
+      "summarizeDay": {
+        "description": "Generate a summary of the day with priority tasks and suggestions.\n\nUse when the user:\n- Asks \"what do I have to do today?\"\n- Requests day summary, planning, priorities\n- Asks where to start\n- Says \"good morning\" or starts the work day"
+      },
+      "getTaskInsights": {
+        "description": "Analyze tasks and provide proactive insights and suggestions.\n\nUse when the user:\n- Asks for analysis, insights, or suggestions about tasks\n- Asks what is blocked or stuck\n- Wants to know how to improve productivity"
+      },
+      "createContextualTask": {
+        "description": "Create a task automatically based on the current module context.\n\nUse when the user:\n- Is working in a module and wants to create related task\n- Asks to \"note this\" or \"remember this\" while working\n- Wants to create task from what they're doing",
+        "params": {
+          "title": "Task title",
+          "notes": "Notes or additional context"
+        }
+      },
+      "taskContext": {
+        "description": "Context of user's active tasks for proactive suggestions"
+      }
+    },
+    "navigation": {
+      "navigateToPage": {
+        "description": "アプリケーション内の特定のページまたはモジュールに移動します。ユーザーが移動を要求した際に使用します。",
+        "params": {
+          "path": "移動先パス（例：/dashboard, /upstream, /downstream, /migration, /onboarding, /atlas, /messages, /settings）"
+        }
+      }
+    },
+    "signal": {
+      "createSignal": {
+        "description": "現在のコンテキストに新しいシグナル（インサイト、フィードバック、メッセージ）を作成します。ユーザーが観察を記録したい時に使用します。",
+        "params": {
+          "type": "シグナルタイプ：insight（発見）、feedback（改善）、message（コミュニケーション）",
+          "category": "カテゴリ：discovery, pattern, opportunity, risk, bug, feature, improvement, innovation, note, alert",
+          "content": "シグナルの内容/説明",
+          "priority": "優先度：low, medium, high, critical"
+        }
+      },
+      "listSignals": {
+        "description": "現在のネームスペースのシグナル（インサイト、フィードバック、メッセージ）を一覧表示",
+        "params": {
+          "type": "タイプでフィルター：insight, feedback, message（オプション）",
+          "category": "カテゴリでフィルター（オプション）"
+        }
+      }
+    },
+    "task": {
+      "createTask": {
+        "description": "カンバンボードに新しい個人タスクを作成します。ユーザーがやるべきことを言及した際に使用します。",
+        "params": {
+          "title": "タスクタイトル - 何をすべきかの簡潔な説明",
+          "description": "受け入れ基準を含む詳細な説明",
+          "priority": "優先度：low, medium, high",
+          "dueDate": "ISO形式の期限日（YYYY-MM-DD）"
+        }
+      },
+      "listMyTasks": {
+        "description": "カンバンボードから個人タスクを一覧表示",
+        "params": {
+          "status": "ステータスでフィルター：backlog, todo, in_progress, review, done"
+        }
+      },
+      "completeTask": {
+        "description": "タスクを完了/終了としてマーク",
+        "params": {
+          "taskId": "完了するタスクのID"
+        }
+      },
+      "moveTask": {
+        "description": "タスクを別のステータス列に移動",
+        "params": {
+          "taskId": "移動するタスクのID",
+          "newStatus": "新しいステータス：backlog, todo, in_progress, review, done"
+        }
+      },
+      "deleteTask": {
+        "description": "タスクを完全に削除",
+        "params": {
+          "taskId": "削除するタスクのID"
+        }
+      }
+    },
+    "artifact": {
+      "searchArtifacts": {
+        "description": "キーワードまたはコンテンツでネームスペース内のアーティファクトを検索",
+        "params": {
+          "searchTerm": "アーティファクト名とコンテンツで検索する用語"
+        }
+      },
+      "listArtifacts": {
+        "description": "現在のネームスペースのすべてのアーティファクトを一覧表示",
+        "params": {
+          "cursor": "次のページのページネーションカーソル"
+        }
+      },
+      "readArtifact": {
+        "description": "特定のアーティファクトの完全なコンテンツを読む",
+        "params": {
+          "artifactId": "読むアーティファクトのID"
+        }
+      },
+      "createArtifactForEpic": {
+        "description": "現在のエピックに関連する新しいアーティファクトを作成",
+        "params": {
+          "name": "アーティファクト名",
+          "type": "タイプ：document, diagram, code, config, template",
+          "content": "アーティファクトのコンテンツ"
+        }
+      }
+    },
+    "agent": {
+      "executeUtilityAgent": {
+        "description": "特定のプロンプトでユーティリティエージェントを実行",
+        "params": {
+          "agentName": "実行するユーティリティエージェントの名前",
+          "prompt": "エージェントへのプロンプト/指示"
+        }
+      }
+    },
+    "feedback": {
+      "reportBug": {
+        "description": "システムで見つかったバグや問題を報告",
+        "params": {
+          "title": "バグタイトル - 簡潔な説明",
+          "description": "再現手順を含む詳細な説明",
+          "severity": "深刻度：low, medium, high, critical",
+          "module": "バグが見つかったモジュール"
+        }
+      },
+      "suggestFeature": {
+        "description": "新しい機能や能力を提案",
+        "params": {
+          "title": "機能タイトル",
+          "description": "機能の詳細な説明",
+          "businessValue": "期待されるビジネス価値",
+          "priority": "提案された優先度：low, medium, high"
+        }
+      },
+      "shareImprovement": {
+        "description": "既存機能の改善アイデアを共有",
+        "params": {
+          "title": "改善タイトル",
+          "description": "改善の説明",
+          "currentBehavior": "現在の動作",
+          "desiredBehavior": "望ましい動作"
+        }
+      },
+      "trackDecision": {
+        "description": "作業中に行われた重要な決定を追跡",
+        "params": {
+          "title": "決定タイトル",
+          "decision": "行われた決定",
+          "rationale": "なぜこの決定がされたか",
+          "alternatives": "検討された代替案"
+        }
+      },
+      "quickNote": {
+        "description": "簡単なメモや観察を作成",
+        "params": {
+          "content": "メモの内容",
+          "category": "カテゴリ：observation, reminder, idea, question"
+        }
+      },
+      "listFeedbacks": {
+        "description": "現在のコンテキストのフィードバックを一覧表示",
+        "params": {
+          "type": "タイプでフィルター：bug, feature, improvement, decision, note",
+          "status": "ステータスでフィルター：open, in_progress, resolved, closed"
+        }
+      }
+    },
+    "mcp": {
+      "searchArtifactsInNamespace": {
+        "description": "現在のネームスペースでMCP経由でアーティファクトを検索",
+        "params": {
+          "query": "検索クエリ",
+          "limit": "最大結果数"
+        }
+      },
+      "listAvailableArtifacts": {
+        "description": "MCP経由で利用可能なすべてのアーティファクトを一覧表示",
+        "params": {
+          "type": "アーティファクトタイプでフィルター"
+        }
+      },
+      "getArtifactDetails": {
+        "description": "特定のアーティファクトの詳細情報を取得",
+        "params": {
+          "artifactId": "アーティファクトのID"
+        }
+      },
+      "fetchArtifactsForStep": {
+        "description": "現在のウィザードステップに関連するアーティファクトを取得",
+        "params": {
+          "step": "ステップ番号",
+          "category": "アーティファクトカテゴリ"
+        }
+      }
+    },
+    "knowledge": {
+      "listKnowledgeDocuments": {
+        "description": "ナレッジベースのすべてのドキュメントを一覧表示",
+        "params": {
+          "category": "ドキュメントカテゴリでフィルター"
+        }
+      },
+      "searchKnowledgeBase": {
+        "description": "キーワードでナレッジベースを検索",
+        "params": {
+          "query": "検索クエリ"
+        }
+      },
+      "readKnowledgeDocument": {
+        "description": "ナレッジドキュメントの完全なコンテンツを読む",
+        "params": {
+          "documentId": "ドキュメントのID"
+        }
+      },
+      "semanticSearchKnowledgeBase": {
+        "description": "ナレッジベースでセマンティック検索を実行",
+        "params": {
+          "query": "自然言語クエリ",
+          "limit": "最大結果数"
+        }
+      },
+      "summarizeKnowledgeDocument": {
+        "description": "ナレッジドキュメントのAI生成要約を取得",
+        "params": {
+          "documentId": "要約するドキュメントのID"
+        }
+      }
+    },
+    "onboarding": {
+      "presentLesson": {
+        "description": "ユーザーにトレーニングレッスンを提示",
+        "params": {
+          "lessonId": "レッスンのID",
+          "format": "プレゼンテーション形式：text, interactive, video"
+        }
+      },
+      "askLearner": {
+        "description": "理解度を確認するために学習者に質問",
+        "params": {
+          "question": "質問する内容",
+          "expectedAnswer": "検証用の期待される回答"
+        }
+      },
+      "startStep": {
+        "description": "新しいトレーニングステップを開始",
+        "params": {
+          "stepId": "開始するステップのID"
+        }
+      },
+      "demonstrateConcept": {
+        "description": "例を使ってコンセプトを実演",
+        "params": {
+          "concept": "実演するコンセプト",
+          "examples": "表示する例"
+        }
+      },
+      "provideFeedback": {
+        "description": "学習者の回答にフィードバックを提供",
+        "params": {
+          "response": "学習者の回答",
+          "isCorrect": "回答が正しいかどうか",
+          "feedback": "フィードバックメッセージ"
+        }
+      },
+      "navigateToStep": {
+        "description": "特定のトレーニングステップに移動",
+        "params": {
+          "stepNumber": "移動するステップ番号"
+        }
+      },
+      "explainConcept": {
+        "description": "コンセプトを詳細に説明",
+        "params": {
+          "concept": "説明するコンセプト",
+          "depth": "説明の深さ：basic, intermediate, advanced"
+        }
+      },
+      "summarizeStep": {
+        "description": "ステップで学んだ内容を要約",
+        "params": {
+          "stepId": "要約するステップのID"
+        }
+      },
+      "askClarification": {
+        "description": "学習者に明確化を求める",
+        "params": {
+          "topic": "明確化が必要なトピック"
+        }
+      },
+      "getQuizHint": {
+        "description": "クイズの質問にヒントを提供",
+        "params": {
+          "questionId": "クイズ質問のID"
+        }
+      },
+      "explainWrongAnswer": {
+        "description": "なぜ回答が間違っているかを説明",
+        "params": {
+          "questionId": "質問のID",
+          "wrongAnswer": "与えられた間違った回答"
+        }
+      },
+      "encourageUser": {
+        "description": "学習者に励ましのメッセージを送る",
+        "params": {
+          "context": "励ましのコンテキスト"
+        }
+      },
+      "showProgress": {
+        "description": "学習者の進捗を表示",
+        "params": {
+          "format": "形式：summary, detailed, visual"
+        }
+      },
+      "suggestNextStep": {
+        "description": "学習者に次のステップを提案",
+        "params": {}
+      },
+      "celebrateCompletion": {
+        "description": "学習者がマイルストーンを完了した時に祝う",
+        "params": {
+          "milestone": "完了したマイルストーン"
+        }
+      }
+    }
+  },
+  "suggestions": {
+    "atlas": {
+      "global": "現在のコンテキストに基づいて：\n- ユーザー：${USER_NAME}\n- 現在のモジュール：${CURRENT_MODULE}\n- 現在のページ：${CURRENT_PAGE}\n- ネームスペース：${NAMESPACE}\n\nユーザーが実行したいかもしれない3つの便利なアクション提案を生成してください。\n考慮事項：\n- どのページにいるか\n- このモジュールの一般的なタスク\n- タスク、シグナル、ナビゲーションの作成\n- 利用可能なクイックアクション"
+    },
+    "kanban": {
+      "board": "カンバンボードの状態に基づいて：\n- ユーザー：${USER_NAME}\n- タスク合計：${TOTAL_TASKS}\n- ステータス別タスク：${TASK_COUNTS}\n- 期限切れタスク：${OVERDUE_COUNT}\n\n3つの便利なアクションを提案：\n- 注意が必要なタスク\n- ワークフローの改善\n- クイックバッチアクション"
+    },
+    "upstream": {
+      "step1": "BVフレームワーク ステップ1：アイデア出し\nエピック：${EPIC_NAME}\nステータス：${EPIC_STATUS}\n\nマクロイニシアチブの定義を支援する3つのアクションを提案：\n- 空の場合はエピック名を提案\n- 説明を支援\n- OKRアラインメントを提案\n- 初期ビジネス価値を定義",
+      "step2": "BVフレームワーク ステップ2：没入\nエピック：${EPIC_NAME}\n\n深堀りのための3つのアクションを提案：\n- CSDマトリックス（確実性、仮定、疑問）を構築\n- 機会ツリーを作成\n- ステークホルダーを特定\n- 初期リスクを文書化",
+      "step3": "BVフレームワーク ステップ3：検証\nエピック：${EPIC_NAME}\n仮説：${HYPOTHESES_COUNT}\n\n仮説検証のための3つのアクションを提案：\n- 検証方法を追加\n- 結果を文書化\n- データソースを提案\n- 裏付け証拠を追加",
+      "step4": "BVフレームワーク ステップ4：探索\nエピック：${EPIC_NAME}\n\n要件探索のための3つのアクションを提案：\n- マクロ要件を定義\n- アクターとペルソナをマッピング\n- ビジネスフロー図を作成\n- ユーザージャーニーを文書化",
+      "step5": "BVフレームワーク ステップ5：分析\nエピック：${EPIC_NAME}\n\n技術分析のための3つのアクションを提案：\n- アーキテクチャブループリントを作成\n- インパクト分析を実行\n- GAP分析を文書化\n- 依存関係を特定",
+      "step6": "BVフレームワーク ステップ6：優先順位付け\nエピック：${EPIC_NAME}\nビジネス価値：${BUSINESS_VALUE}\n\n優先順位付けのための3つのアクションを提案：\n- 最終ビジネス価値を計算\n- 工数配分を見積もる\n- リスクレベルを評価\n- KPIと成功指標を定義",
+      "step7": "BVフレームワーク ステップ7：リファインメント\nエピック：${EPIC_NAME}\n\n最終リファインメントのための3つのアクションを提案：\n- すべてのステージをレビュー\n- 最終ドキュメントを生成\n- デリバリーへのハンドオフを準備\n- 完全性を検証",
+      "knowledgeBase": "エピックのナレッジベース：${EPIC_NAME}\nドキュメント：${DOCUMENT_COUNT}\n\nナレッジ管理のための3つのアクションを提案：\n- サポートドキュメントをアップロード\n- 既存のナレッジを検索\n- 添付ドキュメントを要約\n- 関連アーティファクトをリンク",
+      "mcpTools": "MCP Tools統合\n接続済み：${IS_CONNECTED}\nネームスペース：${NAMESPACE}\n\nMCP toolsのための3つのアクションを提案：\n- アーティファクトを検索\n- 利用可能なツールを一覧表示\n- ユーティリティエージェントを実行\n- プラットフォームデータを取得"
+    },
+    "downstream": {
+      "step1": "Downstream ステップ1：フィーチャー定義\nフィーチャー：${FEATURE_NAME}\n\nフィーチャー定義のための3つのアクションを提案：\n- フィーチャースコープを定義\n- 受け入れ基準を一覧表示\n- 依存関係を特定\n- 初期見積もりを設定",
+      "step2": "Downstream ステップ2：技術設計\nフィーチャー：${FEATURE_NAME}\n\n技術設計のための3つのアクションを提案：\n- コンポーネント設計を作成\n- APIコントラクトを定義\n- データモデルを文書化\n- 統合ポイントを計画",
+      "step3": "Downstream ステップ3：実装計画\nフィーチャー：${FEATURE_NAME}\n\n計画のための3つのアクションを提案：\n- タスクに分割\n- 責任を割り当て\n- マイルストーンを設定\n- リスクを特定",
+      "step4": "Downstream ステップ4：開発\nフィーチャー：${FEATURE_NAME}\n進捗：${PROGRESS}%\n\n開発のための3つのアクションを提案：\n- タスクステータスを更新\n- 決定を文書化\n- ブロッカーを記録\n- 進捗を追跡",
+      "step5": "Downstream ステップ5：テスト\nフィーチャー：${FEATURE_NAME}\n\nテストのための3つのアクションを提案：\n- テストケースを定義\n- テスト結果を文書化\n- 見つかったバグを報告\n- 受け入れ基準を検証",
+      "step6": "Downstream ステップ6：デリバリー\nフィーチャー：${FEATURE_NAME}\n\nデリバリーのための3つのアクションを提案：\n- デプロイを準備\n- リリースノートを作成\n- 本番環境で検証\n- フィーチャーをクローズ"
+    },
+    "migration": {
+      "main": "マイグレーションウィザード\nソース：${SOURCE_ENV}\nターゲット：${TARGET_ENV}\n選択されたエージェント：${AGENT_COUNT}\n\nマイグレーションのための3つのアクションを提案：\n- マイグレーションするエージェントを選択\n- 互換性を検証\n- 変更をプレビュー\n- マイグレーションを実行"
+    },
+    "onboarding": {
+      "main": "トレーニング：${TRAINING_NAME}\nステップ：${CURRENT_STEP} / ${TOTAL_STEPS}\n進捗：${PROGRESS}%\n\nトレーニングのための3つのアクションを提案：\n- 次のレッスンに進む\n- 現在の教材をレビュー\n- クイズを受ける\n- 質問する",
+      "quiz": "クイズ：${QUIZ_NAME}\n質問：${CURRENT_QUESTION} / ${TOTAL_QUESTIONS}\nスコア：${CURRENT_SCORE}\n\nクイズのための3つのアクションを提案：\n- 現在の質問に回答\n- ヒントを取得\n- 次の質問にスキップ\n- 以前の回答をレビュー"
+    },
+    "feedback": {
+      "hub": "フィードバックハブ\n合計フィードバック：${TOTAL_COUNT}\n未解決の問題：${OPEN_COUNT}\nカテゴリ：${CATEGORIES}\n\nフィードバック管理のための3つのアクションを提案：\n- カテゴリでフィルター\n- 未解決の問題を解決\n- トレンドを分析\n- レポートをエクスポート"
+    }
+  },
+  "readables": {
+    "global": {
+      "currentUser": {
+        "description": "名前、メール、役割を含む現在のユーザー情報"
+      },
+      "sessionInfo": {
+        "description": "接続ステータスとアクティブなネームスペースを含む現在のセッション情報"
+      },
+      "connectionStatus": {
+        "description": "MCP接続ステータス（接続済み/切断）"
+      },
+      "namespaceContext": {
+        "description": "現在のネームスペースIDと名前"
+      },
+      "licenseContext": {
+        "description": "現在のライセンスIDと名前"
+      }
+    },
+    "myTasks": {
+      "kanbanState": {
+        "description": "ユーザーの現在のカンバンボード状態"
+      },
+      "focusedTask": {
+        "description": "現在フォーカスされているタスク（ある場合）"
+      },
+      "productivityInsights": {
+        "description": "ユーザーの生産性インサイト"
+      },
+      "upcomingDeadlines": {
+        "description": "今後の期限と期限切れタスク"
+      },
+      "availableActions": {
+        "description": "カンバンでユーザーが利用可能なアクション"
+      }
+    },
+    "downstream": {
+      "language": {
+        "description": "現在のユーザーインターフェース言語"
+      },
+      "theme": {
+        "description": "現在のユーザーインターフェーステーマ（ダークまたはライトモード）"
+      },
+      "user": {
+        "description": "ログインユーザー情報"
+      },
+      "organization": {
+        "description": "組織とプロジェクトのコンテキスト"
+      },
+      "feature": {
+        "description": "現在編集中のダウンストリームフィーチャー"
+      },
+      "currentStep": {
+        "description": "ダウンストリームウィザードの現在のステップ（1-6）"
+      },
+      "fieldCompletion": {
+        "description": "現在のステップのフィールド完了ステータス"
+      },
+      "framework": {
+        "description": "BVフレームワークダウンストリームコンテキスト"
+      }
+    },
+    "navigation": {
+      "currentModule": {
+        "description": "ユーザーがいる現在のモジュール（dashboard, upstream, downstreamなど）"
+      },
+      "currentPage": {
+        "description": "現在のページパス名"
+      }
+    },
+    "atlas": {
+      "session": {
+        "description": "現在のユーザーセッション情報"
+      },
+      "connection": {
+        "description": "フィードバックハブの現在のMCP接続"
+      },
+      "overview": {
+        "description": "フィードバックハブの概要と統計"
+      },
+      "viewState": {
+        "description": "フィードバックハブの現在のビュー状態"
+      },
+      "selectedFeedback": {
+        "description": "詳細表示または編集用に現在選択されているフィードバック"
+      },
+      "insights": {
+        "description": "フィードバックの分布とパターンに関するインサイト"
+      },
+      "capabilities": {
+        "description": "フィードバックハブで利用可能なAIアシスタント機能"
+      }
+    },
+    "kanban": {
+      "boardState": {
+        "description": "列ごとに整理されたすべてのタスクを含む現在のカンバンボード状態"
+      },
+      "taskCounts": {
+        "description": "各ステータス列のタスク数（backlog, todo, in_progress, review, done）"
+      },
+      "overdueTasks": {
+        "description": "期限を過ぎたタスクのリスト"
+      }
+    },
+    "upstream": {
+      "epic": {
+        "description": "名前、説明、ステータス、すべてのウィザードステップを含む現在のビジネスエピックデータ"
+      },
+      "currentStep": {
+        "description": "現在のBVフレームワークステップ（1-7）：アイデア出し、没入、検証、探索、分析、優先順位付け、リファインメント"
+      },
+      "stepData": {
+        "description": "フォーム値と完了ステータスを含む現在のウィザードステップのデータ"
+      },
+      "hypotheses": {
+        "description": "検証ステータス付きのエピック仮説リスト"
+      },
+      "selectedHypothesis": {
+        "description": "検証のために現在選択されている仮説"
+      },
+      "knowledgeBase": {
+        "description": "エピックに添付されたナレッジベースドキュメント"
+      },
+      "bvFrameworkInfo": {
+        "description": "現在のステップのBVフレームワークステージ情報とガイドライン"
+      }
+    },
+    "downstream": {
+      "feature": {
+        "description": "名前、説明、親エピックを含む現在のフィーチャーデータ"
+      },
+      "currentStep": {
+        "description": "現在のDownstreamステップ（1-6）：定義、設計、計画、開発、テスト、デリバリー"
+      },
+      "stepData": {
+        "description": "現在のdownstreamステップのデータ"
+      },
+      "requirements": {
+        "description": "フィーチャー要件と受け入れ基準"
+      }
+    },
+    "migration": {
+      "sourceEnv": {
+        "description": "マイグレーションのソース環境"
+      },
+      "targetEnv": {
+        "description": "マイグレーションのターゲット環境"
+      },
+      "currentStep": {
+        "description": "現在のマイグレーションウィザードステップ"
+      },
+      "selectedAgents": {
+        "description": "マイグレーション用に選択されたエージェントリスト"
+      },
+      "progress": {
+        "description": "マイグレーション進捗ステータス"
+      }
+    },
+    "onboarding": {
+      "training": {
+        "description": "現在のトレーニングコース情報"
+      },
+      "currentStep": {
+        "description": "現在のトレーニングステップ/レッスン"
+      },
+      "progress": {
+        "description": "トレーニングにおけるユーザーの進捗"
+      },
+      "quizState": {
+        "description": "質問と回答を含む現在のクイズ状態"
+      }
+    },
+    "feedback": {
+      "hubState": {
+        "description": "フィルターと現在のビューを含むフィードバックハブ状態"
+      },
+      "categories": {
+        "description": "利用可能なフィードバックカテゴリとその数"
+      },
+      "statistics": {
+        "description": "フィードバックの統計と分析"
+      }
+    }
+  },
+  "actionLabels": {
+    "spotlight": {
+      "navigateTo": "ナビゲート中...",
+      "createSignal": "シグナル作成中...",
+      "captureFeedback": "フィードバック取得中...",
+      "reportBug": "バグ報告中...",
+      "registerSuggestion": "提案登録中...",
+      "registerSuccess": "成功登録中...",
+      "registerAssessment": "評価登録中...",
+      "searchArtifacts": "アーティファクト検索中...",
+      "listArtifacts": "アーティファクト一覧表示中...",
+      "readArtifact": "アーティファクト読み取り中...",
+      "createArtifact": "アーティファクト作成中...",
+      "executeAgent": "エージェント実行中...",
+      "listSignals": "シグナル一覧表示中...",
+      "listFeedbacks": "フィードバック一覧表示中...",
+      "calculateStats": "統計計算中...",
+      "ui": {
+        "severity": {
+          "critical": "重大",
+          "high": "高",
+          "medium": "中",
+          "low": "低"
+        },
+        "status": {
+          "new": "新規",
+          "seen": "確認済み",
+          "inProgress": "進行中",
+          "resolved": "解決済み",
+          "wontFix": "対応なし"
+        },
+        "labels": {
+          "description": "説明",
+          "category": "カテゴリ",
+          "source": "ソース",
+          "general": "一般",
+          "createdBy": "作成者",
+          "date": "日付",
+          "tags": "タグ",
+          "viewInHub": "フィードバックハブで表示",
+          "searchingFeedbacks": "フィードバック検索中...",
+          "noFeedbackFound": "フィードバックが見つかりません",
+          "feedback": "フィードバック",
+          "feedbackRegistered": "フィードバックが正常に登録されました！",
+          "bugReported": "バグが報告されました！チームが分析します。",
+          "suggestionRegistered": "提案が登録されました！ご協力ありがとうございます。",
+          "successRegistered": "おめでとうございます！ケースが登録されました。",
+          "registering": "登録中..."
+        }
+      }
+    },
+    "upstream": {
+      "searchArtifactsByText": "アーティファクトを検索中",
+      "getArtifactByPattern": "パターンで検索中",
+      "searchArtifactsByTags": "タグで検索中",
+      "listArtifactTypes": "アーティファクトタイプを一覧表示中",
+      "readArtifactContent": "アーティファクトコンテンツを読み取り中",
+      "updateArtifact": "アーティファクトを更新中",
+      "editArtifactContent": "アーティファクトを編集中",
+      "validateArtifactType": "アーティファクトタイプを検証中",
+      "setArtifactVersionProduction": "本番バージョンを設定中",
+      "listKnowledgeDocuments": "ドキュメントを一覧表示中",
+      "searchKnowledgeBase": "ナレッジベースを検索中",
+      "readKnowledgeDocument": "ドキュメントを読み取り中",
+      "semanticSearchKnowledgeBase": "セマンティック検索 (RAG)",
+      "summarizeKnowledgeDocument": "ドキュメントを要約中",
+      "getAgentCard": "エージェント情報を取得中",
+      "executeUtilityAgent": "エージェントを実行中",
+      "step1_suggestMacroInitiativeName": "マクロイニシアチブ名を提案中",
+      "step1_suggestDescription": "説明を提案中",
+      "step1_suggestInitialBusinessValue": "初期ビジネス価値を計算中",
+      "step1_suggestLinkedOKRs": "関連OKRを提案中",
+      "step1_suggestProblemStatement": "問題定義を提案中",
+      "step1_suggestHypothesis": "仮説を提案中",
+      "step1_suggestStrategicAlignment": "戦略的整合性を提案中",
+      "step2_suggestCSDMatrixItem": "CSDマトリックス項目を提案中",
+      "step2_suggestOpportunityTreeItem": "機会ツリー項目を提案中",
+      "step2_suggestStakeholder": "ステークホルダーを提案中",
+      "step2_suggestInitialRisk": "初期リスクを特定中",
+      "step2_suggestMainProblems": "主要な問題を特定中",
+      "step3_suggestValidationMethod": "検証方法を提案中",
+      "step3_suggestQualitativeResults": "定性的結果を分析中",
+      "step3_suggestQuantitativeResults": "定量的結果を分析中",
+      "step3_suggestHypothesisConclusion": "仮説の結論を提案中",
+      "step4_suggestDependency": "依存関係を特定中",
+      "step4_suggestMitigationPlan": "軽減計画を提案中",
+      "step5_suggestKPI": "KPIを提案中",
+      "step5_suggestResponsibilityAgreement": "責任契約を提案中",
+      "step6_suggestFinalBusinessValue": "最終ビジネス価値を計算中",
+      "step6_suggestPrioritizationRationale": "優先順位付けの根拠を提案中",
+      "step6_suggestNextSteps": "次のステップを提案中",
+      "listMCPPrompts": "MCPプロンプトを一覧表示中",
+      "getMCPPrompt": "MCPプロンプトを取得中",
+      "executeMCPPrompt": "MCPプロンプトを実行中",
+      "listMCPResources": "MCPリソースを一覧表示中",
+      "getMCPResource": "MCPリソースを取得中"
+    },
+    "downstream": {
+      "stageNames": {
+        "1": "TODO",
+        "2": "リファインメント中",
+        "3": "ソリューション設計",
+        "4": "進行中",
+        "5": "レビュー中",
+        "6": "完了"
+      }
+    },
+    "migrationWizard": {
+      "stepNames": {
+        "1": "接続設定",
+        "2": "エージェント検出",
+        "3": "分析と検証",
+        "4": "実行",
+        "5": "確認"
+      }
+    },
+    "myTasks": {
+      "adding": "タスク追加中...",
+      "added": "タスクが追加されました！",
+      "errorAdding": "追加エラー",
+      "moving": "タスク移動中...",
+      "moved": "{{count}}個のタスクが移動されました！",
+      "errorMoving": "移動エラー",
+      "activatingFocus": "フォーカスモード起動中...",
+      "focusMode": "フォーカスモード起動！",
+      "errorFocus": "フォーカスエラー",
+      "searching": "\"{{title}}\"を検索中...",
+      "focusMessage": "{{userName}}さん、このタスクに100%集中してください！気を散らさないで。",
+      "changingPriority": "優先度変更中...",
+      "priorityChanged": "優先度が変更されました！",
+      "errorPriority": "変更エラー",
+      "analyzingKanban": "カンバン分析中...",
+      "error": "エラー",
+      "kanbanOverview": "{{userName}}のカンバン概要",
+      "boardSummary": "タスクボードのサマリー",
+      "total": "合計",
+      "inProgress": "進行中",
+      "critical": "重要",
+      "overdue": "期限超過",
+      "analyzingWorkflow": "ワークフロー分析中...",
+      "generatingSuggestions": "スマートな提案を生成中...",
+      "inboxZero": "インボックスゼロ！",
+      "noActiveTasks": "アクティブなタスクがありません！新しいものを計画するか、リラックスしてください。",
+      "workflowSuggestion": "ワークフロー提案",
+      "alternatives": "代替案"
+    }
+  }
+}

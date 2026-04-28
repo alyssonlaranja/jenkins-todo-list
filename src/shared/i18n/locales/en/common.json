@@ -1,0 +1,83 @@
+{
+  "of": "of",
+  "name": "Name",
+  "edit": "Edit",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "loading": "Loading...",
+  "error": "Error",
+  "button": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleting": "Deleting...",
+    "edit": "Edit",
+    "close": "Close",
+    "confirm": "Confirm",
+    "loading": "Loading..."
+  },
+  "status": {
+    "loading": "Loading...",
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Info"
+  },
+  "apiKeyModal": {
+    "title": "Personal API Key Required",
+    "description": "You need a Personal API Key to use MCP Portal. This key authenticates your requests to the MCP servers.",
+    "instructions": "You can either create a key here or go to Cockpit Portal to manage your API keys.",
+    "goToPortalButton": "Go to Cockpit Portal",
+    "createButton": "Create Key Here",
+    "creatingButton": "Creating...",
+    "autoCreatedDescription": "Auto-created for MCP Portal",
+    "successMessage": "Personal API Key created successfully",
+    "errorMessage": "Failed to create API key",
+    "portalErrorMessage": "Unable to open Cockpit Portal. Please check configuration."
+  },
+  "systemStatus": {
+    "mcpConnected": "MCP Connected",
+    "mcpError": "MCP Error",
+    "mcpDisconnected": "MCP Disconnected",
+    "initializing": "Initializing...",
+    "connectionStatusTooltip": "System MCP Connection Status",
+    "portalEnvironment": "Portal Environment",
+    "activeLicense": "Active License",
+    "activeNamespace": "Active Namespace",
+    "systemLabel": "System"
+  },
+  "serviceApiKey": {
+    "title": "Service API Key",
+    "description": "Manage service API keys for system integrations",
+    "form": {
+      "keyExpiration": "Key Expiration",
+      "keyExpirationDescription": "Control whether the service key should expire automatically",
+      "expirationDate": "Expiration Date",
+      "expirationDateDescription": "Choose when this service key should expire (1-365 days from today)",
+      "nonExpiringInfo": "This service key will not expire automatically. Consider the security implications of permanent access tokens in your environment."
+    },
+    "info": {
+      "name": "Service Key (fixed by system)",
+      "purpose": "For system integrations and automated services",
+      "accessLevel": "Service-level permissions within your license"
+    },
+    "security": {
+      "warningTitle": "Security Warning",
+      "warningMessage": "Non-expiring service keys pose security risks and should only be used for long-term system integrations where key rotation is not feasible. For better security, consider using expiring keys with automatic rotation.",
+      "confirmText": "Create non-expiring key",
+      "cancelText": "Use expiring key instead"
+    },
+    "toast": {
+      "createSuccess": "Service key has been created successfully",
+      "createError": "Error creating service API key"
+    }
+  },
+  "pagination": {
+    "firstPage": "First page",
+    "lastPage": "Last page",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page",
+    "of": "of"
+  }
+}

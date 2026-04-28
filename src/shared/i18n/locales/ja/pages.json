@@ -1,0 +1,211 @@
+{
+  "profile": {
+    "title": "プロフィール",
+    "apiKey": {
+      "title": "個人トークン",
+      "description": "APIアクセスキーを安全に管理します。必要に応じて作成、取り消し、再生成できます。"
+    },
+    "serviceApiKey": {
+      "title": "サービスAPIキー",
+      "description": "システム統合用のサービスレベルAPIキーを管理します。管理者のみ利用可能です。"
+    }
+  },
+  "administration": {
+    "artifacts": {
+      "title": "アーティファクト",
+      "description": "アーティファクトを管理します。利用可能なアーティファクトを作成、編集、設定できます。",
+      "breadcrumbParent": "管理",
+      "new": {
+        "title": "アーティファクト作成",
+        "description": "アーティファクトを管理します。利用可能なアーティファクトを作成できます。"
+      },
+      "edit": {
+        "title": "アーティファクト編集",
+        "description": "アーティファクトの設定と構成を変更します。"
+      }
+    },
+    "licenses": {
+      "title": "ライセンス",
+      "description": "ライセンスを管理します。利用可能なライセンスを作成、編集、設定できます。",
+      "breadcrumbParent": "管理"
+    },
+    "namespaces": {
+      "title": "名前空間",
+      "description": "名前空間を管理します。利用可能な名前空間を作成、編集、設定できます。",
+      "breadcrumbParent": "管理"
+    },
+    "projects": {
+      "title": "プロジェクト",
+      "description": "プロジェクトを管理します。",
+      "breadcrumbParent": "管理"
+    },
+    "users": {
+      "title": "Active Directoryユーザー",
+      "description": "Active Directoryユーザーを管理します。ユーザーを作成、編集し、名前空間に関連付けできます。",
+      "breadcrumbParent": "管理"
+    }
+  },
+  "agentConsole": {
+    "aiRegistry": {
+      "title": "AIレジストリ",
+      "description": "ワークスペース用の新しいエージェントを登録・設定します。",
+      "breadcrumbParent": "エージェントコンソール",
+      "importUtilityAgent": {
+        "title": "ユーティリティエージェントのインポート",
+        "description": "ユーティリティエージェントの設定ファイルをインポートします。サポート形式：JSON。"
+      }
+    },
+    "utilityAgentAiRegistry": {
+      "title": "ユーティリティエージェント - AIレジストリ",
+      "description": "ユーティリティエージェントを作成、管理、承認します。オンボーディング状態のエージェントは編集可能で、承認済みエージェントは読み取り専用です。",
+      "breadcrumbParent": "エージェントコンソール",
+      "breadcrumbCurrent": "AIレジストリ - ユーティリティエージェント",
+      "new": {
+        "title": "ユーティリティエージェント作成",
+        "description": "カスタム設定で新しいユーティリティエージェントを作成します。"
+      },
+      "edit": {
+        "title": "ユーティリティエージェント編集",
+        "description": "ユーティリティエージェントの設定と構成を変更します。"
+      }
+    },
+    "chatSandbox": {
+      "title": "サンドボックス",
+      "description": "安全な環境でAIエージェントをテスト・実験します。",
+      "breadcrumbParent": "エージェントコンソール"
+    },
+    "marketplace": {
+      "title": "AIマーケットプレイス",
+      "description": "AIソリューションと統合を発見・探索します。",
+      "breadcrumbParent": "エージェントコンソール",
+      "retail": {
+        "title": "小売業",
+        "description": "小売業向けに特別に設計されたAIソリューション。",
+        "breadcrumbParent": "AIマーケットプレイス"
+      }
+    }
+  },
+  "aiHub": {
+    "configuration": {
+      "title": "設定",
+      "description": "Cockpitインストールのシステム全体の設定と構成を管理します。",
+      "breadcrumbParent": "Cockpit",
+      "breadcrumbCurrent": "設定"
+    },
+    "utilityAgents": {
+      "title": "ユーティリティエージェント",
+      "description": "AIライブラリカタログから利用可能なユーティリティエージェントを閲覧・プレビューします。エージェントを作成または編集するには、AIレジストリをご利用ください。",
+      "breadcrumbParent": "AIライブラリ"
+    },
+    "videoGeneration": {
+      "title": "ビデオ生成モジュール",
+      "description": "すべてのモジュールを探索する",
+      "breadcrumbParent": "ダッシュボード",
+      "modules": {
+        "projects": {
+          "title": "プロジェクト",
+          "description": "作成したすべてのプロジェクトを確認する",
+          "breadcrumbParent": "ビデオ生成",
+          "new": {
+            "title": "プロジェクト作成",
+            "description": "新しいビデオ生成プロジェクトを作成します。"
+          },
+          "detail": {
+            "title": "プロジェクト詳細",
+            "description": "プロジェクトの詳細を表示・管理します。"
+          }
+        },
+        "products": {
+          "title": "プロダクト",
+          "description": "ビデオ生成プロダクトを管理する",
+          "breadcrumbParent": "ビデオ生成",
+          "detail": {
+            "title": "プロダクト詳細",
+            "description": "プロダクトの詳細を表示・管理します。"
+          }
+        },
+        "settings": {
+          "title": "設定",
+          "description": "ビデオ生成設定を管理する",
+          "breadcrumbParent": "ビデオ生成",
+          "detail": {
+            "title": "設定詳細",
+            "description": "設定の詳細を表示・管理します。"
+          }
+        },
+        "backgrounds": {
+          "title": "背景",
+          "description": "ビデオ生成背景を管理する",
+          "breadcrumbParent": "ビデオ生成",
+          "detail": {
+            "title": "背景詳細",
+            "description": "背景の詳細を表示・管理します。"
+          }
+        }
+      }
+    }
+  },
+  "commandCenter": {
+    "agents": {
+      "title": "管理エージェント",
+      "description": "管理エージェントを管理します。プラグインを使用してエージェントを作成、編集、設定できます。",
+      "breadcrumbParent": "コマンドセンター"
+    },
+    "reports": {
+      "title": "レポート",
+      "description": "スケジュールされたタスクとエージェントの実行レポートを表示します。",
+      "breadcrumbParent": "Cockpit",
+      "detail": {
+        "title": "レポート詳細",
+        "description": "詳細なレポート情報を表示します。"
+      }
+    },
+    "schedule": {
+      "title": "自動化タスク",
+      "description": "自動化タスクを管理します。タスクスケジュールを表示、編集、削除できます。",
+      "breadcrumbParent": "コマンドセンター"
+    },
+    "telemetry": {
+      "title": "テレメトリ",
+      "description": "エージェントのリアルタイムパフォーマンスメトリクスとシステムヘルスインジケータを監視します。",
+      "breadcrumbParent": "Cockpit"
+    }
+  },
+  "buttons": {
+    "newArtifact": "新規アーティファクト",
+    "newAgent": "新規エージェント",
+    "refresh": "更新",
+    "tryAgain": "再試行",
+    "accessDenied": {
+      "title": "アクセス拒否",
+      "message": "このページにアクセスする権限がありません。エラーだと思われる場合は、システム管理者にお問い合わせください。",
+      "buttonLabel": "戻る"
+    },
+    "featureNotAvailable": "機能は利用できません"
+  },
+  "search": {
+    "taskOrAgent": "タスクまたはエージェント名で検索",
+    "byName": "名前で検索"
+  },
+  "errors": {
+    "failedToLoadReports": "レポートの読み込みに失敗しました",
+    "failedToLoadReportDetails": "レポート詳細の読み込みに失敗しました"
+  },
+  "common": {
+    "noReportsFound": "レポートが見つかりません"
+  },
+  "telemetry": {
+    "underDevelopment": "テレメトリ機能は現在開発中で、将来のリリースで利用可能になります。"
+  },
+  "chat": {
+    "welcome": {
+      "title": "こんにちは！{agentName}エージェントプレイグラウンドへようこそ",
+      "titleDefault": "こんにちは！avanade.aiエージェントプレイグラウンドへようこそ",
+      "subtitle": "チャットしたいエージェントグループをドロップダウンから選択してください。",
+      "teamMembers": "{agentName}のチームメンバー",
+      "loadingTeamMembers": "チームメンバーを読み込み中...",
+      "noTeamMembers": "このユーティリティエージェントのチームメンバーが見つかりません。",
+      "error": "エラー: {message}"
+    }
+  }
+}

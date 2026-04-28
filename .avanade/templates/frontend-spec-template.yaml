@@ -1,0 +1,43 @@
+```yaml
+template:
+  id: frontend-spec-template-v2
+  name: Frontend Specification
+  version: 2.0
+  output:
+    format: markdown
+    filename: docs/frontend-spec.md
+    title: "{{project_name}} Frontend Specification"
+
+sections:
+  - id: ui-components
+    title: "UI Components"
+    content:
+      - component_library
+      - design_tokens
+      - interaction_patterns
+      - visual_hierarchy
+
+  - id: user-interactions
+    title: "User Interactions"
+    content:
+      - user_flows
+      - navigation_patterns
+      - form_interactions
+      - feedback_mechanisms
+
+  - id: responsive-design
+    title: "Responsive Design"
+    content:
+      - breakpoint_strategy
+      - mobile_first_approach
+      - adaptive_layouts
+      - touch_interactions
+
+fields:
+  project_name:
+    type: text
+    required: true
+  design_system:
+    type: text
+    required: true
+```

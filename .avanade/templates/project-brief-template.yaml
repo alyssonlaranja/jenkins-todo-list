@@ -1,0 +1,151 @@
+template:
+  id: project-brief-template
+  name: Project Brief Template
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/project-brief.md
+    title: "{{project_name}} Project Brief"
+
+workflow:
+  mode: interactive
+  elicitation: focused
+
+sections:
+  - id: project-overview
+    title: Project Overview
+    instruction: |
+      Establish the fundamental context and purpose of this project. This should be concise but comprehensive enough to orient all stakeholders.
+    sections:
+      - id: project-name
+        title: Project Name
+        instruction: Clear, descriptive name for the project
+      - id: project-purpose
+        title: Project Purpose
+        instruction: 2-3 sentences describing why this project exists and what it aims to achieve
+      - id: project-owner
+        title: Project Owner/Sponsor
+        instruction: Who is driving this project and accountable for its success
+
+  - id: problem-statement
+    title: Problem Statement
+    instruction: |
+      Clearly articulate the problem or opportunity this project addresses. Be specific about the current state and desired future state.
+    elicit: true
+    sections:
+      - id: current-pain-points
+        title: Current Pain Points
+        type: bullet-list
+        instruction: What specific problems or inefficiencies exist today?
+      - id: impact-of-problem
+        title: Impact of Problem
+        instruction: How do these problems affect users, business, or operations?
+      - id: why-now
+        title: Why Now
+        instruction: What makes this the right time to address this problem?
+
+  - id: target-users
+    title: Target Users
+    instruction: |
+      Define who will use this solution and their key characteristics.
+    elicit: true
+    sections:
+      - id: primary-users
+        title: Primary Users
+        instruction: Main users who will interact with the solution regularly
+      - id: secondary-users
+        title: Secondary Users
+        instruction: Users who will interact occasionally or in specific scenarios
+      - id: user-needs
+        title: Key User Needs
+        type: bullet-list
+        instruction: What do users need from this solution to be successful?
+
+  - id: success-metrics
+    title: Success Metrics
+    instruction: |
+      Define how success will be measured. Include both quantitative and qualitative indicators.
+    elicit: true
+    sections:
+      - id: primary-metrics
+        title: Primary Success Metrics
+        type: bullet-list
+        instruction: Key measurable outcomes that define project success
+      - id: secondary-metrics
+        title: Secondary Metrics
+        type: bullet-list
+        instruction: Additional indicators of success or progress
+      - id: success-timeline
+        title: Success Timeline
+        instruction: When should these metrics be achieved?
+
+  - id: mvp-scope
+    title: MVP Scope
+    instruction: |
+      Define the minimum viable product that will deliver initial value.
+    elicit: true
+    sections:
+      - id: must-have-features
+        title: Must-Have Features
+        type: bullet-list
+        instruction: Essential features for MVP launch
+      - id: should-have-features
+        title: Should-Have Features
+        type: bullet-list
+        instruction: Important features for post-MVP iterations
+      - id: could-have-features
+        title: Could-Have Features
+        type: bullet-list
+        instruction: Nice-to-have features for future consideration
+      - id: mvp-success-criteria
+        title: MVP Success Criteria
+        instruction: How will we know if the MVP is successful?
+
+  - id: constraints-assumptions
+    title: Constraints and Assumptions
+    instruction: |
+      Document known limitations and assumptions that will guide the project.
+    elicit: true
+    sections:
+      - id: budget-constraints
+        title: Budget Constraints
+        instruction: Financial limitations or budget ranges
+      - id: timeline-constraints
+        title: Timeline Constraints
+        instruction: Hard deadlines or time limitations
+      - id: technical-constraints
+        title: Technical Constraints
+        instruction: Technology limitations, compliance requirements, or system constraints
+      - id: resource-constraints
+        title: Resource Constraints
+        instruction: Team size, skill limitations, or availability constraints
+      - id: key-assumptions
+        title: Key Assumptions
+        type: bullet-list
+        instruction: Critical assumptions that could affect the project if they prove false
+
+  - id: stakeholders
+    title: Key Stakeholders
+    instruction: |
+      Identify primary stakeholders and their roles in the project.
+    elicit: true
+    type: table
+    columns: [Name/Role, Responsibility, Decision Authority, Communication Frequency]
+
+  - id: next-steps
+    title: Next Steps
+    instruction: |
+      Define the immediate actions to move from brief to detailed planning.
+    sections:
+      - id: immediate-actions
+        title: Immediate Actions
+        type: numbered-list
+        instruction: What needs to happen first to move this project forward?
+      - id: discovery-needs
+        title: Discovery Needs
+        type: bullet-list
+        instruction: What additional discovery or research is needed?
+      - id: decision-points
+        title: Key Decision Points
+        type: bullet-list
+        instruction: What decisions need to be made before proceeding?

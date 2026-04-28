@@ -1,0 +1,429 @@
+# Module Manifest: Upstream
+# Locale: pt-BR (default)
+# Version: 2.0.0 - Comprehensive documentation with BV Framework
+
+$schema: "cockpit://manifest/v1"
+
+module:
+  id: upstream
+  version: "2.0.0"
+  name: "Upstream"
+  description: "Plataforma de descoberta e validação de iniciativas de negócio usando o BV Framework (7 etapas)"
+  icon: "ArrowUpCircle"
+  group: operations
+
+access:
+  defaultRoles:
+    - globaladmin
+    - admin
+    - curator
+    - userplus
+    - user
+  requiresOnboarding: true
+  requiresCertification: false
+
+features:
+  # === Dashboard Principal ===
+  - id: mode-selector
+    name: "Seletor de Modos"
+    description: "Escolha entre modos: Gamificado, Executivo, RH, Meta"
+
+  - id: connection-selector
+    name: "Seletor de Conexão"
+    description: "Seleciona conexão MCP ativa para o wizard"
+
+  - id: stats-cards
+    name: "Cards de Estatísticas"
+    description: "Total de Epics, Features e User Stories"
+
+  - id: epic-list
+    name: "Lista de Epics"
+    description: "Tabela com todas as macroiniciativas criadas"
+
+  - id: epic-create-button
+    name: "Botão Criar Epic"
+    description: "Inicia wizard para nova macroiniciativa"
+
+  # === Wizard BV Framework ===
+  - id: wizard-dialog
+    name: "Wizard Modal"
+    description: "Modal fullscreen com wizard de 7 etapas"
+
+  - id: wizard-step-navigation
+    name: "Navegação de Etapas"
+    description: "Sidebar com etapas e progresso visual"
+
+  - id: wizard-header
+    name: "Cabeçalho do Wizard"
+    description: "Título, progresso e botão de fechar"
+
+  - id: wizard-copilot
+    name: "Copilot Sidebar"
+    description: "Assistente IA integrado via CopilotKit"
+
+  # === Etapa 1: Ideação ===
+  - id: stage-1-ideation
+    name: "Etapa 1: Ideação"
+    description: "Definição inicial da macroiniciativa"
+
+  - id: ideation-name
+    name: "Nome da Macroiniciativa"
+    description: "Campo de texto para nome do epic"
+
+  - id: ideation-okrs
+    name: "OKRs Vinculados"
+    description: "Seleção de OKRs estratégicos relacionados"
+
+  - id: ideation-problem-statement
+    name: "Declaração do Problema"
+    description: "Descrição do problema a ser resolvido"
+
+  - id: ideation-strategic-alignment
+    name: "Alinhamento Estratégico"
+    description: "Justificativa de alinhamento com estratégia"
+
+  - id: ideation-business-value
+    name: "Valor de Negócio Inicial"
+    description: "Slider 0-100 para estimativa de valor"
+
+  # === Etapa 2: Imersão (por Hipótese) ===
+  - id: stage-2-immersion
+    name: "Etapa 2: Imersão"
+    description: "Exploração profunda por hipótese"
+
+  - id: immersion-hypothesis-list
+    name: "Lista de Hipóteses"
+    description: "Gerenciamento de múltiplas hipóteses"
+
+  - id: immersion-csd-matrix
+    name: "Matriz CSD"
+    description: "Certezas, Suposições e Dúvidas"
+
+  - id: immersion-stakeholders
+    name: "Stakeholders"
+    description: "Mapeamento de partes interessadas"
+
+  - id: immersion-opportunity-tree
+    name: "Árvore de Oportunidades"
+    description: "Mapeamento de oportunidades relacionadas"
+
+  - id: immersion-data-sources
+    name: "Fontes de Dados"
+    description: "Sugestões de fontes para validação"
+
+  # === Etapa 3: Validação (por Hipótese) ===
+  - id: stage-3-validation
+    name: "Etapa 3: Validação"
+    description: "Validação de hipóteses com evidências"
+
+  - id: validation-method
+    name: "Método de Validação"
+    description: "Entrevistas, A/B Test, Protótipo, etc."
+
+  - id: validation-evidence
+    name: "Evidências Coletadas"
+    description: "Lista de evidências qualitativas/quantitativas"
+
+  - id: validation-evidence-level
+    name: "Nível de Evidência"
+    description: "Indicador: none, weak, medium, strong"
+
+  - id: validation-conclusion
+    name: "Conclusão da Validação"
+    description: "Validada, Rejeitada, Precisa mais dados, Pivot"
+
+  # === Etapa 4: Exploração (Epic-level) ===
+  - id: stage-4-exploration
+    name: "Etapa 4: Exploração"
+    description: "Design da solução consolidada"
+
+  - id: exploration-macro-requirements
+    name: "Macro Requisitos"
+    description: "Lista de requisitos de alto nível"
+
+  - id: exploration-actors
+    name: "Atores do Sistema"
+    description: "Mapeamento de atores internos/externos/sistema"
+
+  - id: exploration-business-flow
+    name: "Fluxo de Negócio"
+    description: "Diagrama Mermaid ou URL do fluxo"
+
+  - id: exploration-user-journey
+    name: "Jornada do Usuário"
+    description: "Mapa da jornada do usuário"
+
+  - id: exploration-usability-test
+    name: "Teste de Usabilidade"
+    description: "Resultados e issues críticos"
+
+  # === Etapa 5: Análise (Epic-level) ===
+  - id: stage-5-analysis
+    name: "Etapa 5: Análise"
+    description: "Análise técnica e de impacto"
+
+  - id: analysis-blueprint
+    name: "Blueprint de Arquitetura"
+    description: "Diagrama de arquitetura da solução"
+
+  - id: analysis-impact
+    name: "Análise de Impacto"
+    description: "Impacto em sistemas e processos"
+
+  - id: analysis-gap
+    name: "Análise de Gap"
+    description: "Gaps entre estado atual e desejado"
+
+  - id: analysis-dependencies
+    name: "Dependências"
+    description: "Lista de dependências técnicas/negócio"
+
+  - id: analysis-mitigation
+    name: "Planos de Mitigação"
+    description: "Estratégias para mitigar riscos"
+
+  # === Etapa 6: Priorização (Epic-level) ===
+  - id: stage-6-prioritization
+    name: "Etapa 6: Priorização"
+    description: "Priorização e preparação para QBR"
+
+  - id: prioritization-business-value
+    name: "Valor de Negócio Final"
+    description: "Slider 0-100 refinado"
+
+  - id: prioritization-effort
+    name: "Esforço Estimado"
+    description: "Slider 0-100 de esforço"
+
+  - id: prioritization-risk
+    name: "Nível de Risco"
+    description: "Low, Medium, High, Critical"
+
+  - id: prioritization-kpis
+    name: "KPIs Preliminares"
+    description: "Indicadores de sucesso"
+
+  - id: prioritization-qbr-memo
+    name: "Memo QBR"
+    description: "Resumo para apresentação QBR"
+
+  - id: prioritization-strategic-adherence
+    name: "Aderência Estratégica"
+    description: "Score de alinhamento estratégico"
+
+  # === Etapa 7: Transição (Epic-level) ===
+  - id: stage-7-transition
+    name: "Etapa 7: Transição"
+    description: "Transição para Downstream"
+
+  - id: transition-business-epics
+    name: "Business Epics"
+    description: "Lista de BEs gerados (1:N)"
+
+  - id: transition-features
+    name: "Features por BE"
+    description: "Features com priorização MoSCoW"
+
+  - id: transition-handoff-document
+    name: "Documento de Handoff"
+    description: "Markdown de transição"
+
+  - id: transition-jira-link
+    name: "Link Jira"
+    description: "URL do backlog no Jira"
+
+  - id: transition-responsibility-agreements
+    name: "Acordos de Responsabilidade"
+    description: "N1/N2 com roles e tribos"
+
+  # === Knowledge Base ===
+  - id: knowledge-base-panel
+    name: "Painel de Knowledge Base"
+    description: "Upload e gerenciamento de documentos"
+
+  - id: knowledge-slots
+    name: "Knowledge Slots"
+    description: "Slots tipados: market, financial, technical"
+
+  - id: knowledge-document-upload
+    name: "Upload de Documentos"
+    description: "Upload com extração de embeddings"
+
+  # === Copilot Actions ===
+  - id: copilot-suggest-hypotheses
+    name: "Sugerir Hipóteses"
+    description: "IA sugere hipóteses baseadas no contexto"
+
+  - id: copilot-validate-evidence
+    name: "Validar Evidências"
+    description: "IA analisa força das evidências"
+
+  - id: copilot-generate-features
+    name: "Gerar Features"
+    description: "IA sugere features para Business Epic"
+
+  - id: copilot-draft-handoff
+    name: "Rascunhar Handoff"
+    description: "IA gera documento de handoff"
+
+  # === Views Alternativos ===
+  - id: view-gamified
+    name: "Modo Gamificado"
+    description: "Interface com gamificação"
+
+  - id: view-executive
+    name: "Modo Executivo"
+    description: "Dashboard para executivos"
+
+  - id: view-hr
+    name: "Modo RH"
+    description: "Visão focada em pessoas"
+
+  - id: view-meta
+    name: "Modo Meta"
+    description: "Visão técnica e debug"
+
+  # === Artifacts ===
+  - id: artifact-epic-storage
+    name: "Armazenamento de Epics"
+    description: "UPSTREAM_EPIC_{id} com soft delete"
+
+  - id: artifact-feature-storage
+    name: "Armazenamento de Features"
+    description: "UPSTREAM_FEATURE_{epicId}_{featureId}"
+
+  - id: artifact-story-storage
+    name: "Armazenamento de Stories"
+    description: "UPSTREAM_STORY_{featureId}_{storyId}"
+
+  - id: artifact-versioning
+    name: "Versionamento de Artifacts"
+    description: "Auto-save com versões incrementais"
+
+mcp:
+  requiredServers:
+    - connection-mcp-server-legacy
+  optionalServers: []
+  requiredTools:
+    - create_artifact
+    - update_artifact
+    - get_artifact
+    - search_artifacts_by_pattern
+
+onboarding:
+  title: "Introdução ao Upstream"
+  description: "Aprenda a criar macroiniciativas usando o BV Framework"
+  estimatedTotalMinutes: 45
+  steps:
+    - id: step-intro
+      type: document
+      title: "O que é Upstream?"
+      description: "Entenda o conceito e propósito do módulo"
+      required: true
+      estimatedMinutes: 5
+      markdownFile: "./docs/01-introducao.md"
+
+    - id: step-bv-framework
+      type: document
+      title: "BV Framework 7 Etapas"
+      description: "Conheça as 7 etapas do framework"
+      required: true
+      estimatedMinutes: 10
+      markdownFile: "./docs/02-bv-framework.md"
+
+    - id: step-wizard
+      type: document
+      title: "Usando o Wizard"
+      description: "Aprenda a usar o wizard de criação"
+      required: true
+      estimatedMinutes: 10
+      markdownFile: "./docs/03-wizard.md"
+
+    - id: step-copilot
+      type: document
+      title: "Assistente IA"
+      description: "Como usar o Copilot integrado"
+      required: true
+      estimatedMinutes: 5
+      markdownFile: "./docs/04-copilot.md"
+
+    - id: step-quiz
+      type: quiz
+      title: "Avaliação"
+      description: "Teste seus conhecimentos"
+      required: true
+      estimatedMinutes: 10
+      passingScore: 70
+      questions:
+        - question: "Quantas etapas tem o BV Framework no Upstream?"
+          type: single-choice
+          options:
+            - "5 etapas"
+            - "6 etapas"
+            - "7 etapas"
+            - "8 etapas"
+          correctAnswers: [2]
+
+        - question: "Quais etapas são executadas POR HIPÓTESE?"
+          type: multiple-choice
+          options:
+            - "Etapa 1: Ideação"
+            - "Etapa 2: Imersão"
+            - "Etapa 3: Validação"
+            - "Etapa 4: Exploração"
+          correctAnswers: [1, 2]
+
+        - question: "O que é a Matriz CSD?"
+          type: single-choice
+          options:
+            - "Certezas, Suposições e Dúvidas"
+            - "Custo, Sustentabilidade e Demanda"
+            - "Cliente, Serviço e Delivery"
+            - "Cronograma, Scope e Deadline"
+          correctAnswers: [0]
+
+        - question: "Qual priorização é usada para Features?"
+          type: single-choice
+          options:
+            - "Alta, Média, Baixa"
+            - "P1, P2, P3"
+            - "MoSCoW (Must, Should, Could, Won't)"
+            - "Fibonacci (1, 2, 3, 5, 8)"
+          correctAnswers: [2]
+
+        - question: "O que é um Business Epic no Upstream?"
+          type: single-choice
+          options:
+            - "O mesmo que a Macroiniciativa"
+            - "Um epic gerado na Etapa 7 para transição ao Downstream"
+            - "Uma feature prioritária"
+            - "Um documento de requisitos"
+          correctAnswers: [1]
+
+        - question: "O Copilot pode sugerir hipóteses automaticamente"
+          type: true-false
+          correctAnswers: [0]
+
+        - question: "Evidências podem ser qualitativas ou quantitativas"
+          type: true-false
+          correctAnswers: [0]
+
+        - question: "Cada Macroiniciativa pode gerar múltiplos Business Epics"
+          type: true-false
+          correctAnswers: [0]
+
+    - id: step-acknowledge
+      type: acknowledgment
+      title: "Boas Práticas"
+      description: "Confirme que seguirá as boas práticas"
+      required: true
+      estimatedMinutes: 2
+      acknowledgmentMessage: |
+        Ao criar conteúdo no Upstream, comprometo-me a:
+        
+        1. Seguir as 7 etapas do BV Framework na ordem
+        2. Documentar hipóteses com evidências adequadas
+        3. Validar com stakeholders antes de transicionar
+        4. Manter versionamento adequado dos artifacts
+        5. Revisar o documento de handoff antes de finalizar
+      acknowledgmentLabel: "Concordo em seguir as boas práticas"

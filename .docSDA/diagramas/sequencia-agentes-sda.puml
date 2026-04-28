@@ -1,0 +1,287 @@
+@startuml sequencia-agentes-sda
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam sequenceArrowThickness 1.5
+skinparam roundcorner 8
+skinparam maxMessageSize 220
+skinparam sequenceGroupBorderThickness 1
+skinparam sequenceLifeLineBorderColor #666
+skinparam participantPadding 12
+skinparam boxPadding 10
+
+title **SDA - Sequência Completa dos Agentes**\n(Aquisição de Instruções → LangGraph → Output)
+
+' ═══════════════════════════════════════════════
+' PARTICIPANTES
+' ═══════════════════════════════════════════════
+
+actor "Usuário" as User #LightBlue
+participant "React UI\n(CopilotKit)" as UI #LightCyan
+participant "Next.js API\n/api/copilotkit-supervisor" as CopilotRoute #LightYellow
+participant "Supervisor BFF\n/api/supervisor-bff" as BFF #Gold
+participant "Cockpit MCP Server\n(mcp-agent.br.avanade.ai)" as MCP #LightGreen
+participant "Azure OpenAI\n(GPT-4o)" as LLM #Salmon
+participant "Sub-Agente\n(Team Member)" as SubAgent #Plum
+participant "MCP Tools\n(Externos)" as MCPTools #LightPink
+
+' ═══════════════════════════════════════════════
+' FASE 1: INICIALIZAÇÃO E AQUISIÇÃO DE INSTRUÇÕES
+' ═══════════════════════════════════════════════
+
+== 1. INICIALIZAÇÃO — Carregamento do Supervisor ==
+
+User -> UI : Seleciona supervisor\ne envia mensagem
+activate UI
+
+UI -> CopilotRoute : POST /api/copilotkit-supervisor\n{agent: "supervisor_agent",\nproperties: {utilityAgentId, mcpHeaders}}
+activate CopilotRoute
+
+note right of CopilotRoute
+  **CopilotRuntime** instancia
+  **LangGraphHttpAgent** apontando
+  para /api/supervisor-bff
+end note
+
+CopilotRoute -> BFF : POST /api/supervisor-bff\n(RunAgentInput — AG-UI Protocol)
+activate BFF
+
+note right of BFF
+  Extrai contexto MCP de
+  **forwardedProps**:
+  - mcpServerUrl
+  - mcpHeaders (apiKey, licenseId,
+    namespaceId, utilityAgentId)
+  - user_intent (se houver)
+end note
+
+' ═══════════════════════════════════════════════
+' FASE 2: CARREGAMENTO DO SUPERVISOR VIA MCP
+' ═══════════════════════════════════════════════
+
+== 2. AQUISIÇÃO DE INSTRUÇÕES — MCP JSON-RPC 2.0 ==
+
+BFF -> MCP : **callMCPTool**("inspect_agent")\n{utility_agent_id: supervisorId}
+activate MCP
+note right of MCP
+  **JSON-RPC 2.0** via HTTP POST
+  Headers: x-api-key, x-cockpit-license-id,
+  x-cockpit-namespace-id
+end note
+
+MCP --> BFF : Supervisor Data:\n- instruction (system prompt)\n- team[] (lista de agentes)\n- artifacts_catalog[]\n- mcp_connections[]
+deactivate MCP
+
+note right of BFF #LightYellow
+  **Frontmatter Parser** extrai config YAML:
+  ```
+  ---
+  temperature: 0.7
+  outputMode: full_history
+  handoffStrategy: delegate
+  ---
+  ```
+  **resolveArtifacts()** substitui
+  ${KEY} placeholders por valores
+  do artifacts_catalog
+end note
+
+' ═══════════════════════════════════════════════
+' FASE 3: CARREGAMENTO DO TIME
+' ═══════════════════════════════════════════════
+
+== 3. CARREGAMENTO DO TIME ==
+
+loop Para cada agente no team[]
+  BFF -> MCP : **callMCPTool**("inspect_agent")\n{utility_agent_id: agentId}
+  activate MCP
+  MCP --> BFF : Agent Data:\n- name, description\n- instruction (prompt do agente)\n- artifacts_catalog[]\n- routing_keywords[]
+  deactivate MCP
+end
+
+note right of BFF #LightYellow
+  Agentes típicos carregados:
+  ● **Discovery Analyst** — Project Brief
+  ● **Product Advisory** — PRD
+  ● **Backlog Engineer** — Épicos/Stories
+  ● **UX Advisor** — Design/Wireframes
+  ● **Tech Advisory** — Arquitetura
+end note
+
+BFF --> UI : SSE: STEP_STARTED("load_team")\nSSE: CUSTOM("team_loaded", {agents})
+note left of UI : UI exibe indicadores\nde progresso do time
+
+' ═══════════════════════════════════════════════
+' FASE 4: CARREGAMENTO DE FERRAMENTAS MCP
+' ═══════════════════════════════════════════════
+
+== 4. CARREGAMENTO DE MCP TOOLS ==
+
+BFF -> MCP : **callMCPTool**("list_tools")\n(para cada mcp_connection)
+activate MCP
+MCP --> BFF : Tools disponíveis:\n- create_artifact, update_artifact\n- search_artifacts, rag_search\n- custom tools por conexão
+deactivate MCP
+
+note right of BFF #LightYellow
+  **4 categorias de tools criadas:**
+  1. **Delegation Tools** — transfer_to_<agent>
+  2. **MCP Platform Tools** — create/update/search artifacts
+  3. **HITL Tools** — ask_user, confirm_action
+  4. **Frontend Tools** — CopilotKit actions (canvas)
+end note
+
+' ═══════════════════════════════════════════════
+' FASE 5: CONSTRUÇÃO DO PROMPT DO SUPERVISOR
+' ═══════════════════════════════════════════════
+
+== 5. META-PROMPTING — Construção do System Prompt ==
+
+note right of BFF #Gold
+  **BFFPromptBuilder** monta o prompt:
+  
+  1. **Identidade** — Nome e papel do supervisor
+  2. **Seção do Time** — Lista cada agente com:
+     - Nome, descrição, routing keywords
+     - Tipos de artefato que produz
+  3. **Regras de Delegação**:
+     - Analisa user_intent para pré-routing
+     - Mapeia intenções → agentes especialistas
+  4. **Regras HITL** (Human-in-the-Loop):
+     - Quando pedir confirmação ao usuário
+     - Limites de autonomia
+  5. **Canvas Protocol**:
+     - Instruções para escrita de documentos
+  6. **Histórico** — Mensagens anteriores da thread
+end note
+
+' ═══════════════════════════════════════════════
+' FASE 6: LOOP AGÊNTICO — LLM + TOOLS
+' ═══════════════════════════════════════════════
+
+== 6. LOOP AGÊNTICO — Supervisor Reasoning ==
+
+BFF -> LLM : **invoke()** com:\n- systemPrompt (meta-prompted)\n- messages[]\n- tools[] (delegation + MCP + HITL + frontend)
+activate LLM
+LLM --> BFF : AIMessage com tool_calls[]:\n[{name: "transfer_to_discovery_analyst",\nargs: {user_input: "..."}}]
+deactivate LLM
+
+BFF --> UI : SSE: TEXT_MESSAGE_START\nSSE: TEXT_MESSAGE_CONTENT (chunks)\nSSE: TOOL_CALL_START("transfer_to_...")
+
+note right of BFF #Gold
+  **Loop de até 10 iterações**
+  while (iteration < MAX_ITERATIONS):
+    response = LLM.invoke(messages + tools)
+    if no tool_calls → stream text, break
+    for toolCall in response.tool_calls:
+      execute tool
+    messages += [aiMsg, ...toolResults]
+    if HITL tool → pause, wait user
+end note
+
+' ═══════════════════════════════════════════════
+' FASE 7: DELEGAÇÃO AO SUB-AGENTE
+' ═══════════════════════════════════════════════
+
+== 7. DELEGAÇÃO — Execução do Sub-Agente ==
+
+BFF -> MCP : **callMCPTool**("execute_agent")\n{utility_agent_id: targetAgentId,\nuser_input: delegatedTask}
+activate MCP
+activate SubAgent
+
+BFF --> UI : SSE: CUSTOM("subagent_delegation_started",\n{agentName, agentId})
+
+note right of SubAgent #Plum
+  **Sub-agente executa internamente:**
+  1. Recebe instrução + contexto delegado
+  2. Pode chamar tools MCP próprias
+  3. Pode fazer múltiplas iterações
+  4. Gera resposta/artefato
+end note
+
+SubAgent -> MCPTools : Usa ferramentas de sua\nmcp_connection (se houver)
+activate MCPTools
+MCPTools --> SubAgent : Resultado da ferramenta
+deactivate MCPTools
+
+MCP --> BFF : Resultado do sub-agente:\n{response, artifacts_created[]}
+deactivate SubAgent
+deactivate MCP
+
+BFF --> UI : SSE: CUSTOM("subagent_delegation_completed",\n{agentName, result})\nSSE: TOOL_CALL_RESULT
+
+' ═══════════════════════════════════════════════
+' FASE 8: CONTINUAÇÃO DO LOOP (OPCIONAIS)
+' ═══════════════════════════════════════════════
+
+== 8. CONTINUAÇÃO — Supervisor Processa Resultado ==
+
+BFF -> LLM : **invoke()** com resultado\ndo sub-agente adicionado\nao histórico de mensagens
+activate LLM
+
+alt Supervisor decide delegar a outro agente
+  LLM --> BFF : tool_calls: [transfer_to_<outro_agente>]
+  BFF -> MCP : execute_agent (outro agente)
+  MCP --> BFF : Resultado
+else Supervisor usa ferramenta MCP diretamente
+  LLM --> BFF : tool_calls: [create_artifact / rag_search]
+  BFF -> MCP : callMCPTool (ferramenta)
+  MCP --> BFF : Resultado
+else Supervisor pede input do usuário (HITL)
+  LLM --> BFF : tool_calls: [ask_user]
+  BFF --> UI : SSE: CUSTOM("hitl_request",\n{question, options})
+  note left of UI #LightCyan
+    UI exibe modal/prompt
+    para o usuário responder
+  end note
+  User -> UI : Responde pergunta
+  UI -> BFF : Resume com resposta do usuário
+else Supervisor finaliza resposta
+  LLM --> BFF : Resposta final (sem tool_calls)
+end
+
+deactivate LLM
+
+' ═══════════════════════════════════════════════
+' FASE 9: OUTPUT — Streaming de volta ao usuário
+' ═══════════════════════════════════════════════
+
+== 9. OUTPUT — Resposta Final ==
+
+BFF --> UI : SSE: TEXT_MESSAGE_CONTENT (resposta final)\nSSE: TEXT_MESSAGE_END\nSSE: CUSTOM("run_metrics",\n{tokens, duration, iterations})\nSSE: RUN_FINISHED
+deactivate BFF
+
+CopilotRoute --> UI : Stream SSE fechado
+deactivate CopilotRoute
+
+note left of UI #LightCyan
+  **CopilotKit processa AG-UI events:**
+  - TEXT_MESSAGE → renderiza no chat
+  - TOOL_CALL → mostra indicadores
+  - CUSTOM (subagent_*) → progresso
+  - CUSTOM (run_metrics) → métricas
+  - Artefatos → Canvas/Preview
+end note
+
+UI --> User : Exibe resposta\ncom artefatos e métricas
+deactivate UI
+
+' ═══════════════════════════════════════════════
+' NOTAS ADICIONAIS
+' ═══════════════════════════════════════════════
+
+note over User, MCPTools #FFFACD
+  **Fluxos Alternativos:**
+  
+  ● **SDA2 (LangGraph Supervisor nativo):**
+    Frontend → /api/sda2-bff → get_agent_card (MCP) → createSupervisor (@langchain/langgraph-supervisor)
+    → ReactAgent por membro → transfer_to_<agent> → SSE AG-UI
+  
+  ● **Legacy SDA (Streaming direto):**
+    Frontend → /api/sda-agents → SDA_AGENTS[agentType] → Azure OpenAI streamText()
+    → SSE data chunks → useSDAChat hook
+  
+  ● **CopilotKit CoAgent (LangGraph StateGraph):**
+    Frontend → CopilotRuntime → StateGraph(load_supervisor → chat ⇄ tools → END)
+    → MemorySaver checkpointer → copilotkitEmitState
+end note
+
+@enduml

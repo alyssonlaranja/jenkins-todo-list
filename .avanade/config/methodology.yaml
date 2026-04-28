@@ -1,0 +1,41 @@
+# Avanade Method Configuration
+
+version: "4.29.0"
+methodology: "Avanade Method"
+
+# Agent Configuration
+agents:
+  enabled: true
+  count: 8
+  integration: "github-copilot"
+  
+# Template Configuration  
+templates:
+  location: ".avanade/templates/"
+  format: "yaml"
+  elicitation: "interactive"
+  
+# Workflow Configuration
+workflows:
+  discovery_phase: true
+  planning_phase: true  
+  development_phase: true
+  review_phase: true
+  
+# Output Configuration
+outputs:
+  documentation: "docs/"
+  stories: "stories/"
+  artifacts: ".avanade/artifacts/"
+  
+# Quality Gates
+quality_gates:
+  checklist_validation: true
+  cross_functional_reviews: true
+  peer_reviews: true
+  
+# Integration Settings
+integrations:
+  github_copilot: true
+  vscode: true
+  local_operation: true

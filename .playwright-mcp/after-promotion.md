@@ -1,0 +1,132 @@
+### Page state
+
+- Page URL: http://localhost:4200/sda/validation?id=sistema-de-gestao-de-pedidos-e-entregas
+- Page Title: Cockpit MCP Portal
+- Page Snapshot:
+
+```yaml
+- generic [ref=e1]:
+    - alert [ref=e2]
+    - generic [ref=e7] [cursor=pointer]:
+        - button "Open Next.js Dev Tools" [ref=e8]:
+            - img [ref=e9]
+        - generic [ref=e1531]:
+            - button "Open issues overlay" [ref=e1532]:
+                - generic [ref=e2523]:
+                    - generic [ref=e2524]: '3'
+                    - generic [ref=e2525]: '4'
+                - generic [ref=e1536]:
+                    - text: Issue
+                    - generic [ref=e1537]: s
+            - button "Collapse issues badge" [ref=e1538]:
+                - img [ref=e1539]
+    - generic [ref=e2526]:
+        - complementary [ref=e2527]:
+            - navigation [ref=e2528]:
+                - link [ref=e2530] [cursor=pointer]:
+                    - /url: /sda
+                    - img [ref=e2532]
+                - img [ref=e2537]
+                - link [ref=e2540] [cursor=pointer]:
+                    - /url: /sda/validation
+                    - img [ref=e2542]
+                - link [ref=e2546] [cursor=pointer]:
+                    - /url: /sda/handoff
+                    - img [ref=e2548]
+                - link [ref=e2555] [cursor=pointer]:
+                    - /url: /sda/artifacts
+                    - img [ref=e2557]
+                - link [ref=e2561] [cursor=pointer]:
+                    - /url: /sda/dashboard
+                    - img [ref=e2563]
+                - link [ref=e2566] [cursor=pointer]:
+                    - /url: /sda/integrations
+                    - img [ref=e2568]
+        - banner [ref=e2574]:
+            - generic [ref=e2575]:
+                - img [ref=e2577]
+                - generic [ref=e2581]:
+                    - generic [ref=e2582]:
+                        - heading "Avanade SDA" [level=1] [ref=e2583]
+                        - paragraph [ref=e2584]: Solution Design Agents
+                    - generic [ref=e2586]:
+                        - paragraph [ref=e2587]: Iniciativa
+                        - heading "Sistema de Gestão de Pedidos e Entregas" [level=2] [ref=e2588]
+            - generic [ref=e2589]:
+                - generic [ref=e2590]: Validação
+                - button "Notificações" [ref=e2592] [cursor=pointer]:
+                    - img [ref=e2593]
+                - generic [ref=e2596]:
+                    - generic [ref=e2598]: MT
+                    - button "Matheus Daniel de Toledo m.daniel.de.toledo@avanade.com" [ref=e2599] [cursor=pointer]:
+                        - generic [ref=e2601]: Matheus Daniel de Toledo
+                        - paragraph [ref=e2602]: m.daniel.de.toledo@avanade.com
+        - main [ref=e2603]:
+            - generic [ref=e2606]:
+                - generic "Criação e Contexto - Etapa concluída ✓" [ref=e2609]:
+                    - img [ref=e2611]
+                    - generic [ref=e2613]: Criação e Contexto
+                - generic "Co-Criação - Etapa concluída ✓" [ref=e2614]:
+                    - img [ref=e2616]
+                    - generic [ref=e2618]: Co-Criação
+                - generic "Validação - Etapa atual do fluxo" [ref=e2619]:
+                    - generic [ref=e2620] [cursor=pointer]: '3'
+                    - generic [ref=e2621]: Validação
+                - generic "Sincronização - Etapa ainda não acessível. Complete a etapa atual primeiro." [ref=e2622]:
+                    - generic [ref=e2623]: '4'
+                    - generic [ref=e2624]: Sincronização
+            - generic [ref=e2625]:
+                - generic [ref=e2626]:
+                    - generic [ref=e2627]:
+                        - generic [ref=e2628]:
+                            - img [ref=e2629]
+                            - generic [ref=e2632]: Artefatos para Validação
+                        - paragraph [ref=e2633]: 3 artefatos aguardando validação
+                    - button "Documentos 3" [ref=e2637] [cursor=pointer]:
+                        - img [ref=e2638]
+                        - img [ref=e2640]
+                        - generic [ref=e2643]: Documentos
+                        - generic [ref=e2644]: '3'
+                - generic [ref=e2647]:
+                    - generic [ref=e2648]:
+                        - generic [ref=e2649]: Artefato • Versão 1.0.0
+                        - heading "Briefing de Projeto" [level=2] [ref=e2652]
+                        - generic [ref=e2653]:
+                            - generic [ref=e2654]:
+                                - img [ref=e2655]
+                                - generic [ref=e2658]: Sistema
+                            - generic [ref=e2659]:
+                                - img [ref=e2660]
+                                - generic [ref=e2663]: 23 de dez. de 2025, 11:09
+                    - generic [ref=e2664]: 'Claro! Vamos estruturar o backlog para o sistema de gestão de pedidos e entregas. Vou dividir em módulos: Pedidos, Entregas e Estoque, e dentro de cada módulo, organizarei em épicos, features e PBIs. --- ## Módulo: Pedidos ### Épico: Gestão de Pedidos #### Feature: Criação de Pedidos - **PBI 1.1:** Permitir que o usuário crie novos pedidos. - **PBI 1.2:** Implementar validação de dados ao criar pedidos. - **PBI 1.3:** Integrar com sistema de pagamento. #### Feature: Atualização de Pedidos - **PBI 2.1:** Permitir edição de pedidos existentes. - **PBI 2.2:** Notificar clientes sobre alterações no pedido. #### Feature: Cancelamento de Pedidos - **PBI 3.1:** Implementar funcionalidade de cancelamento de pedidos. - **PBI 3.2:** Registrar motivo do cancelamento. ### Épico: Monitoramento de Pedidos #### Feature: Rastreamento de Status - **PBI 4.1:** Exibir status atual do pedido. - **PBI 4.2:** Atualizar status automaticamente com base nas ações do sistema. #### Feature: Histórico de Pedidos - **PBI 5.1:** Permitir visualização do histórico de pedidos. - **PBI 5.2:** Filtrar histórico por data e status. --- ## Módulo: Entregas ### Épico: Gestão de Entregas #### Feature: Planejamento de Entregas - **PBI 6.1:** Agendar entregas com base na disponibilidade. - **PBI 6.2:** Otimizar rotas de entrega. #### Feature: Execução de Entregas - **PBI 7.1:** Confirmar entrega ao cliente. - **PBI 7.2:** Registrar problemas durante a entrega. ### Épico: Monitoramento de Entregas #### Feature: Rastreamento de Entregas - **PBI 8.1:** Fornecer rastreamento em tempo real. - **PBI 8.2:** Notificar cliente sobre status da entrega. #### Feature: Feedback de Entregas - **PBI 9.1:** Coletar feedback do cliente após entrega. - **PBI 9.2:** Analisar feedback para melhorias. --- ## Módulo: Estoque ### Épico: Gestão de Estoque #### Feature: Controle de Inventário - **PBI 10.1:** Registrar entrada e saída de produtos. - **PBI 10.2:** Alertar sobre níveis baixos de estoque. #### Feature: Relatórios de Estoque - **PBI 11.1:** Gerar relatórios de inventário. - **PBI 11.2:** Exportar relatórios para diferentes formatos. ### Épico: Monitoramento de Estoque #### Feature: Auditoria de Estoque - **PBI 12.1:** Realizar auditorias periódicas de estoque. - **PBI 12.2:** Registrar discrepâncias encontradas. #### Feature: Previsão de Demanda - **PBI 13.1:** Analisar histórico de vendas para prever demanda. - **PBI 13.2:** Ajustar automaticamente níveis de estoque com base na previsão. --- ### Recomendações 1. **Priorizar PBIs:** Avaliar a prioridade com base nas necessidades do negócio e feedback dos stakeholders. 2. **Iteração e Feedback:** Implementar de forma iterativa, buscando feedback contínuo para ajustes. 3. **Integração:** Garantir que os módulos estejam integrados para uma visão holística do sistema. Se precisar de mais detalhes ou ajustes, estou à disposição!'
+                - generic [ref=e2665]:
+                    - generic [ref=e2667]:
+                        - button "Versões" [ref=e2668] [cursor=pointer]
+                        - button "Diff" [ref=e2669] [cursor=pointer]
+                    - generic [ref=e2672]:
+                        - generic [ref=e2673]:
+                            - img [ref=e2674]
+                            - generic [ref=e2677]:
+                                - generic [ref=e2678]:
+                                    - generic [ref=e2679]: 1.0.0
+                                    - generic [ref=e2680]: Em revisão
+                                - generic [ref=e2681]: Sistema
+                                - generic [ref=e2682]: 23 de dez. de 2025, 11:09
+                        - generic [ref=e2683]:
+                            - generic [ref=e2684]: 'Detalhes:'
+                            - list [ref=e2685]:
+                                - listitem [ref=e2686]:
+                                    - generic [ref=e2687]: •
+                                    - generic [ref=e2688]: 'Categoria: pack-demanda'
+                                - listitem [ref=e2689]:
+                                    - generic [ref=e2690]: •
+                                    - generic [ref=e2691]: 'Tipo: briefing'
+                    - generic [ref=e2694]:
+                        - button "Promover a versão oficial" [active] [ref=e2695] [cursor=pointer]
+                        - button "Ver versões do histórico" [ref=e2696] [cursor=pointer]:
+                            - img [ref=e2697]
+                            - text: Ver versões do histórico
+                        - button "Rejeitar proposta" [ref=e2701] [cursor=pointer]
+                        - button "Prosseguir para Sincronização" [disabled] [ref=e2702]
+    - region "Notifications alt+T"
+```

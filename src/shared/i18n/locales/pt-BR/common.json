@@ -1,0 +1,83 @@
+{
+  "of": "de",
+  "name": "Nome",
+  "edit": "Editar",
+  "cancel": "Cancelar",
+  "delete": "Excluir",
+  "loading": "Carregando...",
+  "error": "Erro",
+  "button": {
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "deleting": "Excluindo...",
+    "edit": "Editar",
+    "close": "Fechar",
+    "confirm": "Confirmar",
+    "loading": "Carregando..."
+  },
+  "status": {
+    "loading": "Carregando...",
+    "success": "Sucesso",
+    "error": "Erro",
+    "warning": "Aviso",
+    "info": "Informação"
+  },
+  "apiKeyModal": {
+    "title": "Chave de API Pessoal Necessária",
+    "description": "Você precisa de uma Chave de API Pessoal para usar o Portal MCP. Esta chave autentica suas requisições aos servidores MCP.",
+    "instructions": "Você pode criar uma chave aqui ou ir para o Cockpit Portal para gerenciar suas chaves de API.",
+    "goToPortalButton": "Ir para Cockpit Portal",
+    "createButton": "Criar Chave Aqui",
+    "creatingButton": "Criando...",
+    "autoCreatedDescription": "Criada automaticamente para o Portal MCP",
+    "successMessage": "Chave de API pessoal criada com sucesso",
+    "errorMessage": "Falha ao criar chave de API",
+    "portalErrorMessage": "Não foi possível abrir o Cockpit Portal. Verifique a configuração."
+  },
+  "systemStatus": {
+    "mcpConnected": "MCP Conectado",
+    "mcpError": "Erro MCP",
+    "mcpDisconnected": "MCP Desconectado",
+    "initializing": "Inicializando...",
+    "connectionStatusTooltip": "Status da Conexão MCP do Sistema",
+    "portalEnvironment": "Ambiente do Portal",
+    "activeLicense": "Licença Ativa",
+    "activeNamespace": "Namespace Ativo",
+    "systemLabel": "Sistema"
+  },
+  "serviceApiKey": {
+    "title": "Chave de API de Serviço",
+    "description": "Gerenciar chaves de API de serviço para integrações de sistema",
+    "form": {
+      "keyExpiration": "Expiração da Chave",
+      "keyExpirationDescription": "Controle se a chave de serviço deve expirar automaticamente",
+      "expirationDate": "Data de Expiração",
+      "expirationDateDescription": "Escolha quando esta chave de serviço deve expirar (1-365 dias a partir de hoje)",
+      "nonExpiringInfo": "Esta chave de serviço não expirará automaticamente. Considere as implicações de segurança de tokens de acesso permanentes em seu ambiente."
+    },
+    "info": {
+      "name": "Chave de Serviço (fixada pelo sistema)",
+      "purpose": "Para integrações de sistema e serviços automatizados",
+      "accessLevel": "Permissões no nível de serviço dentro da sua licença"
+    },
+    "security": {
+      "warningTitle": "Aviso de Segurança",
+      "warningMessage": "Chaves de serviço sem expiração apresentam riscos de segurança e devem ser usadas apenas para integrações de sistema de longo prazo onde a rotação de chaves não é viável. Para melhor segurança, considere usar chaves com expiração e rotação automática.",
+      "confirmText": "Criar chave sem expiração",
+      "cancelText": "Usar chave com expiração"
+    },
+    "toast": {
+      "createSuccess": "Chave de serviço criada com sucesso",
+      "createError": "Erro ao criar chave de API de serviço"
+    }
+  },
+  "pagination": {
+    "firstPage": "Primeira página",
+    "lastPage": "Última página",
+    "previous": "Anterior",
+    "next": "Próxima",
+    "page": "Página",
+    "of": "de"
+  }
+}

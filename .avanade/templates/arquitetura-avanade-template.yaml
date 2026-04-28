@@ -1,0 +1,279 @@
+template:
+  id: arquitetura-avanade-template
+  name: Documento de Arquitetura de Solução Avanade
+  version: 1.0
+  output:
+    format: markdown
+    filename: docs/arquitetura.md
+    title: "{{project_name}} Arquitetura de Solução Avanade"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: visao-arquitetural
+    title: Visão Arquitetural
+    instruction: |
+      Estabeleça a visão de alto nível da arquitetura da solução. Defina princípios arquiteturais,
+      padrões a serem seguidos e alinhamento com estratégia tecnológica da organização.
+      Priorize tecnologias Microsoft e Azure quando aplicável.
+    sections:
+      - id: principios-arquiteturais
+        title: Princípios Arquiteturais
+        type: bullet-list
+        instruction: Princípios fundamentais que guiarão decisões arquiteturais (ex: Cloud-first, API-first, Security by Design)
+      - id: visao-solucao
+        title: Visão da Solução
+        type: paragraphs
+        instruction: 2-3 parágrafos descrevendo a solução target e como atende aos requisitos de negócio
+      - id: alinhamento-estrategico
+        title: Alinhamento Estratégico
+        type: paragraphs
+        instruction: Como esta arquitetura se alinha com estratégia tecnológica e roadmap da organização
+
+  - id: arquitetura-negocio
+    title: Arquitetura de Negócio
+    instruction: |
+      Mapeamento da arquitetura de negócio que a solução técnica deve suportar.
+      Inclua processos de negócio, jornadas do usuário e regras de negócio principais.
+    sections:
+      - id: processos-negocio
+        title: Processos de Negócio
+        type: table
+        instruction: Processo, Descrição, Sistemas Envolvidos, Dados Processados, Regras de Negócio
+      - id: jornadas-usuario
+        title: Jornadas do Usuário
+        type: bullet-list
+        instruction: Principais jornadas que os usuários realizarão no sistema
+      - id: casos-uso-principais
+        title: Casos de Uso Principais
+        type: table
+        instruction: Caso de Uso, Ator, Descrição, Pré-condições, Pós-condições
+
+  - id: arquitetura-aplicacao
+    title: Arquitetura de Aplicação
+    instruction: |
+      Design da arquitetura de aplicação incluindo componentes, módulos, APIs e interfaces.
+      Defina padrões de desenvolvimento, estrutura de código e tecnologias a serem utilizadas.
+      Priorize stack Microsoft (.NET, TypeScript, React) e padrões enterprise.
+    sections:
+      - id: componentes-aplicacao
+        title: Componentes de Aplicação
+        type: table
+        instruction: Componente, Responsabilidade, Tecnologia, Interfaces, Dependências
+      - id: apis-interfaces
+        title: APIs e Interfaces
+        type: table
+        instruction: API/Interface, Protocolo, Autenticação, Versionamento, Consumidores
+      - id: padroes-desenvolvimento
+        title: Padrões de Desenvolvimento
+        type: bullet-list
+        instruction: Padrões arquiteturais, design patterns, convenções de código a serem seguidos
+      - id: stack-tecnologica
+        title: Stack Tecnológica
+        type: table
+        instruction: Camada, Tecnologia, Versão, Justificativa da Escolha
+
+  - id: arquitetura-dados
+    title: Arquitetura de Dados
+    instruction: |
+      Design da arquitetura de dados incluindo modelo de dados, estratégias de armazenamento,
+      integração de dados e governança. Considere Azure SQL, Cosmos DB e outros serviços Azure.
+    sections:
+      - id: modelo-dados
+        title: Modelo de Dados
+        type: paragraphs
+        instruction: Descrição do modelo de dados conceitual e principais entidades
+      - id: estrategia-armazenamento
+        title: Estratégia de Armazenamento
+        type: table
+        instruction: Tipo de Dado, Tecnologia de Armazenamento, Justificativa, Volume Estimado, Retenção
+      - id: integracao-dados
+        title: Integração de Dados
+        type: table
+        instruction: Sistema Fonte, Sistema Destino, Método de Integração, Frequência, Volume
+      - id: governanca-dados
+        title: Governança de Dados
+        type: bullet-list
+        instruction: Políticas de qualidade, privacidade, retenção e acesso aos dados
+
+  - id: arquitetura-infraestrutura
+    title: Arquitetura de Infraestrutura
+    instruction: |
+      Design da infraestrutura técnica incluindo ambientes, deployment, monitoramento e operações.
+      Priorize soluções Azure e PaaS quando possível. Defina estratégia de scaling e disponibilidade.
+    sections:
+      - id: ambientes
+        title: Ambientes
+        type: table
+        instruction: Ambiente, Propósito, Configuração, Recursos, Acesso
+      - id: deployment-devops
+        title: Deployment e DevOps
+        type: paragraphs
+        instruction: Estratégia de CI/CD, pipelines, controle de versão e gestão de releases
+      - id: monitoramento-observabilidade
+        title: Monitoramento e Observabilidade
+        type: bullet-list
+        instruction: Ferramentas e estratégias para monitoramento, logging, alertas e métricas
+      - id: scaling-disponibilidade
+        title: Scaling e Disponibilidade
+        type: table
+        instruction: Componente, Estratégia de Scaling, SLA Target, Estratégia de Backup/Recovery
+
+  - id: seguranca-compliance
+    title: Segurança e Compliance
+    instruction: |
+      Design de segurança da solução incluindo autenticação, autorização, proteção de dados
+      e compliance com regulamentações. Implemente Azure AD, security by design e LGPD.
+    sections:
+      - id: autenticacao-autorizacao
+        title: Autenticação e Autorização
+        type: paragraphs
+        instruction: Estratégia de identity management, Azure AD integration, RBAC
+      - id: protecao-dados
+        title: Proteção de Dados
+        type: bullet-list
+        instruction: Criptografia, masking, tokenização, proteção de dados sensíveis
+      - id: compliance-regulamentacoes
+        title: Compliance e Regulamentações
+        type: table
+        instruction: Regulamentação, Requisitos, Controles Implementados, Evidências
+      - id: seguranca-aplicacao
+        title: Segurança de Aplicação
+        type: bullet-list
+        instruction: OWASP Top 10, security testing, vulnerability management
+
+  - id: integracao-sistemas
+    title: Integração com Sistemas Existentes
+    instruction: |
+      Strategy para integração com sistemas legados e terceiros. Defina padrões de integração,
+      APIs, middleware e estratégias de migração de dados quando necessário.
+    sections:
+      - id: mapa-integracao
+        title: Mapa de Integração
+        type: table
+        instruction: Sistema, Tipo de Integração, Protocolo, Frequência, Dados Trocados, Criticidade
+      - id: middleware-apis
+        title: Middleware e APIs
+        type: paragraphs
+        instruction: Estratégia para middleware, gateways de API, transformation layers
+      - id: migracao-dados
+        title: Migração de Dados
+        type: table
+        instruction: Sistema Origem, Dados, Volume, Estratégia de Migração, Validação, Timeline
+      - id: estrategia-rollback
+        title: Estratégia de Rollback
+        type: bullet-list
+        instruction: Planos de contingência e rollback para integrações críticas
+
+  - id: performance-escalabilidade
+    title: Performance e Escalabilidade
+    instruction: |
+      Requisitos e estratégias para performance e escalabilidade da solução.
+      Defina SLAs, load testing, otimizações e estratégias de scaling.
+    sections:
+      - id: requisitos-performance
+        title: Requisitos de Performance
+        type: table
+        instruction: Métrica, Valor Target, Valor Mínimo Aceitável, Cenário de Teste
+      - id: estrategias-otimizacao
+        title: Estratégias de Otimização
+        type: bullet-list
+        instruction: Caching, CDN, database optimization, application optimization
+      - id: load-testing
+        title: Load Testing
+        type: paragraphs
+        instruction: Estratégia de testes de carga, ferramentas, cenários e critérios de aceitação
+      - id: scaling-strategy
+        title: Scaling Strategy
+        type: table
+        instruction: Componente, Horizontal/Vertical, Triggers, Métricas, Limites
+
+  - id: operacoes-manutencao
+    title: Operações e Manutenção
+    instruction: |
+      Estratégia operacional para a solução incluindo suporte, manutenção, backup,
+      disaster recovery e gestão de mudanças pós-implementação.
+    sections:
+      - id: modelo-suporte
+        title: Modelo de Suporte
+        type: table
+        instruction: Nível, Responsabilidade, SLA, Escalation, Horário de Atendimento
+      - id: backup-recovery
+        title: Backup e Disaster Recovery
+        type: table
+        instruction: Componente, Frequência Backup, Retenção, RTO, RPO, Processo de Recovery
+      - id: gestao-mudancas
+        title: Gestão de Mudanças
+        type: paragraphs
+        instruction: Processo para implementar mudanças pós go-live, change advisory board
+      - id: manutencao-evolutiva
+        title: Manutenção Evolutiva
+        type: bullet-list
+        instruction: Estratégia para evolução contínua, roadmap tecnológico, lifecycle management
+
+  - id: custos-roi
+    title: Custos e ROI
+    instruction: |
+      Estimativa de custos da solução incluindo desenvolvimento, infraestrutura, licenças
+      e operação. Análise de ROI e TCO (Total Cost of Ownership).
+    sections:
+      - id: custos-desenvolvimento
+        title: Custos de Desenvolvimento
+        type: table
+        instruction: Componente, Esforço (horas), Custo, Recursos Necessários
+      - id: custos-infraestrutura
+        title: Custos de Infraestrutura
+        type: table
+        instruction: Recurso Azure, Configuração, Custo Mensal, Custo Anual, Scaling Impact
+      - id: custos-licencas
+        title: Custos de Licenças
+        type: table
+        instruction: Software/Serviço, Tipo de Licença, Quantidade, Custo Unitário, Custo Total
+      - id: analise-roi
+        title: Análise de ROI
+        type: table
+        instruction: Ano, Investimento, Benefícios, ROI %, Payback Period
+
+  - id: riscos-arquiteturais
+    title: Riscos Arquiteturais
+    instruction: |
+      Identificação de riscos técnicos específicos da arquitetura proposta e estratégias
+      de mitigação. Inclua riscos de performance, segurança, integração e tecnológicos.
+    sections:
+      - id: riscos-tecnicos
+        title: Riscos Técnicos
+        type: table
+        instruction: Risco, Probabilidade, Impacto, Estratégia de Mitigação, Owner, Status
+      - id: pontos-falha
+        title: Pontos de Falha
+        type: table
+        instruction: Componente, Tipo de Falha, Impacto, Redundância, Monitoramento
+      - id: dependencias-criticas
+        title: Dependências Críticas
+        type: bullet-list
+        instruction: Dependências externas, terceiros, sistemas legados que podem impactar a arquitetura
+
+  - id: implementacao-roadmap
+    title: Roadmap de Implementação
+    instruction: |
+      Estratégia faseada para implementação da arquitetura. Defina MVPs, releases incrementais
+      e critérios de sucesso para cada fase.
+    sections:
+      - id: fases-implementacao
+        title: Fases de Implementação
+        type: table
+        instruction: Fase, Duração, Componentes, Funcionalidades, Critérios de Sucesso
+      - id: mvp-increments
+        title: MVP e Incrementos
+        type: bullet-list
+        instruction: Definição do MVP e incrementos subsequentes de funcionalidade
+      - id: milestone-architecture
+        title: Milestones Arquiteturais
+        type: table
+        instruction: Milestone, Data, Entregáveis Técnicos, Critérios de Aprovação
+      - id: estrategia-rollout
+        title: Estratégia de Rollout
+        type: paragraphs
+        instruction: Abordagem para deployment em produção (blue-green, canary, rolling updates)

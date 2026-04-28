@@ -1,0 +1,322 @@
+template:
+  id: architecture-document
+  name: Architecture Document
+  version: 3.0
+  output:
+    format: markdown
+    filename: docs/architecture.md
+    title: "{{project_name}} Architecture Document"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: executive-summary
+    title: Executive Summary
+    instruction: |
+      Begin with a succinct overview that captures the architectural essence and key decisions. This should provide enough context for stakeholders to understand the high-level approach without diving into technical details.
+      
+      Key Elements:
+      - System purpose and primary objectives
+      - High-level architecture pattern chosen (e.g., monolith, microservices, serverless)
+      - Key technologies and rationale for selection
+      - Major design decisions and their business impact
+      - Quality attributes prioritized (performance, scalability, security, etc.)
+
+  - id: system-overview
+    title: System Overview
+    instruction: |
+      Provide a comprehensive view of the system structure and behavior. Use this section to establish the foundational understanding before diving into detailed components.
+    sections:
+      - id: context-diagram
+        title: System Context Diagram
+        instruction: |
+          Create a high-level diagram showing:
+          - The system boundary
+          - External actors (users, systems, services)
+          - Major data flows and interactions
+          - Key interfaces and protocols
+          
+          Use simple text-based diagram or mermaid notation.
+      - id: architecture-overview
+        title: Architecture Overview
+        instruction: |
+          Describe the overall system structure:
+          - Architectural style (layered, clean architecture, hexagonal, etc.)
+          - Major subsystems and their responsibilities
+          - Communication patterns between components
+          - Data flow and processing approach
+
+  - id: technology-stack
+    title: Technology Stack
+    instruction: |
+      Document all technology choices with clear rationale. This should reflect and elaborate on the technical assumptions from the PRD.
+    elicit: true
+    sections:
+      - id: programming-languages
+        title: Programming Languages
+        type: table
+        columns: [Language, Use Case, Rationale]
+        instruction: List primary and secondary languages with their specific purposes
+      - id: frameworks-libraries
+        title: Frameworks and Libraries
+        type: table
+        columns: [Framework/Library, Purpose, Version, Rationale]
+        instruction: Include major frameworks, key libraries, and version constraints
+      - id: infrastructure
+        title: Infrastructure and Deployment
+        type: table
+        columns: [Component, Technology, Rationale]
+        instruction: Cover hosting, containerization, orchestration, CI/CD, monitoring
+      - id: data-storage
+        title: Data Storage
+        type: table
+        columns: [Data Type, Technology, Rationale]
+        instruction: Databases, caching, file storage, message queues
+
+  - id: architecture-decisions
+    title: Architecture Decision Records (ADRs)
+    instruction: |
+      Document significant architectural decisions using a structured format. Each ADR should capture the context, decision, and consequences for future reference.
+    sections:
+      - id: adr
+        title: "ADR-{{adr_number}}: {{decision_title}}"
+        repeatable: true
+        elicit: true
+        template: |
+          **Status:** {Proposed|Accepted|Deprecated|Superseded}
+          **Date:** {{date}}
+          **Deciders:** {{deciders}}
+          
+          ## Context and Problem Statement
+          {{context}}
+          
+          ## Decision Drivers
+          {{drivers}}
+          
+          ## Considered Options
+          {{options}}
+          
+          ## Decision Outcome
+          {{outcome}}
+          
+          ### Positive Consequences
+          {{positive_consequences}}
+          
+          ### Negative Consequences
+          {{negative_consequences}}
+          
+          ## Validation
+          {{validation_approach}}
+
+  - id: detailed-design
+    title: Detailed Design
+    instruction: |
+      Provide in-depth technical specifications for implementation. This section should give developers everything they need to begin coding.
+    sections:
+      - id: system-architecture
+        title: System Architecture
+        instruction: |
+          Create detailed architectural diagrams:
+          - Component diagrams showing major modules and their relationships
+          - Deployment diagrams showing runtime environment
+          - Sequence diagrams for key workflows
+          - Use mermaid diagrams or clear text-based representations
+      - id: component-specifications
+        title: Component Specifications
+        sections:
+          - id: component
+            title: "{{component_name}}"
+            repeatable: true
+            elicit: true
+            sections:
+              - id: responsibility
+                title: Responsibility
+                instruction: Clear statement of what this component does
+              - id: interfaces
+                title: Interfaces
+                instruction: API contracts, method signatures, event schemas
+              - id: dependencies
+                title: Dependencies
+                instruction: What other components or external services this depends on
+              - id: implementation-notes
+                title: Implementation Notes
+                instruction: Key algorithms, patterns, or technical considerations
+      - id: data-model
+        title: Data Model
+        instruction: |
+          Define the data structures and relationships:
+          - Entity relationship diagrams
+          - Schema definitions for databases
+          - API data contracts
+          - Event/message schemas
+        elicit: true
+      - id: api-design
+        title: API Design
+        instruction: |
+          Specify external interfaces:
+          - REST endpoint specifications
+          - GraphQL schemas
+          - Event specifications
+          - Authentication and authorization approach
+        elicit: true
+
+  - id: cross-cutting-concerns
+    title: Cross-Cutting Concerns
+    instruction: |
+      Address system-wide requirements that affect multiple components.
+    sections:
+      - id: security
+        title: Security
+        instruction: |
+          Document security approach:
+          - Authentication and authorization strategy
+          - Data protection measures
+          - Security protocols and standards
+          - Vulnerability mitigation approaches
+        elicit: true
+      - id: performance
+        title: Performance and Scalability
+        instruction: |
+          Define performance requirements and strategies:
+          - Performance targets and SLAs
+          - Caching strategies
+          - Scaling approaches (horizontal/vertical)
+          - Load balancing and distribution
+        elicit: true
+      - id: reliability
+        title: Reliability and Resilience
+        instruction: |
+          Plan for system reliability:
+          - Error handling strategies
+          - Retry and circuit breaker patterns
+          - Backup and disaster recovery
+          - Health monitoring and alerting
+        elicit: true
+      - id: observability
+        title: Observability
+        instruction: |
+          Define monitoring and debugging approach:
+          - Logging strategy and levels
+          - Metrics collection and dashboards
+          - Distributed tracing approach
+          - Alerting and notification rules
+        elicit: true
+
+  - id: deployment-strategy
+    title: Deployment Strategy
+    instruction: |
+      Detail how the system will be deployed and operated in production.
+    elicit: true
+    sections:
+      - id: environments
+        title: Environment Strategy
+        instruction: |
+          Define deployment environments:
+          - Development, staging, production setup
+          - Environment-specific configurations
+          - Data seeding and migration strategies
+          - Environment promotion process
+      - id: cicd-pipeline
+        title: CI/CD Pipeline
+        instruction: |
+          Describe the automated deployment process:
+          - Build and test automation
+          - Deployment automation steps
+          - Quality gates and approvals
+          - Rollback strategies
+      - id: infrastructure-as-code
+        title: Infrastructure as Code
+        instruction: |
+          Plan infrastructure management:
+          - Infrastructure definition approach (Terraform, CloudFormation, etc.)
+          - Configuration management
+          - Secret management
+          - Resource provisioning and scaling
+
+  - id: development-guidelines
+    title: Development Guidelines
+    instruction: |
+      Provide guidance for developers implementing this architecture.
+    sections:
+      - id: coding-standards
+        title: Coding Standards
+        instruction: |
+          Define code quality expectations:
+          - Style guides and formatting rules
+          - Naming conventions
+          - Code organization patterns
+          - Documentation requirements
+      - id: testing-strategy
+        title: Testing Strategy
+        instruction: |
+          Outline comprehensive testing approach:
+          - Unit testing guidelines and coverage targets
+          - Integration testing approach
+          - End-to-end testing strategy
+          - Performance and load testing
+          - Test data management
+      - id: development-workflow
+        title: Development Workflow
+        instruction: |
+          Define the development process:
+          - Git workflow and branching strategy
+          - Code review process
+          - Definition of done
+          - Release management
+
+  - id: migration-plan
+    title: Migration and Implementation Plan
+    condition: existing_system_migration
+    instruction: |
+      If this architecture involves migrating from an existing system, detail the migration approach.
+    elicit: true
+    sections:
+      - id: current-state
+        title: Current State Analysis
+        instruction: Document existing system architecture and limitations
+      - id: migration-strategy
+        title: Migration Strategy
+        instruction: Define phased approach, data migration, and rollback plans
+      - id: risk-mitigation
+        title: Risk Mitigation
+        instruction: Identify risks and mitigation strategies
+
+  - id: appendices
+    title: Appendices
+    sections:
+      - id: glossary
+        title: Glossary
+        instruction: Define technical terms and acronyms used in the document
+      - id: references
+        title: References
+        instruction: List external documentation, standards, and resources
+      - id: assumptions-constraints
+        title: Assumptions and Constraints
+        instruction: Document key assumptions and known constraints that influenced the architecture
+
+  - id: checklist-results
+    title: Architecture Review Checklist Results
+    instruction: |
+      Before completing this section, offer to output the full architecture document. Once confirmed, run the architecture checklist and populate results here.
+
+  - id: implementation-guidance
+    title: Implementation Guidance
+    instruction: |
+      Provide specific guidance for moving from architecture to implementation.
+    sections:
+      - id: development-phases
+        title: Development Phases
+        instruction: |
+          Break down implementation into logical phases:
+          - Phase priorities and dependencies
+          - Deliverables for each phase
+          - Success criteria and validation
+      - id: developer-prompts
+        title: Developer Agent Prompts
+        instruction: |
+          Create specific prompts for AI developers:
+          - Story-specific implementation guidance
+          - Code generation templates
+          - Integration patterns and examples

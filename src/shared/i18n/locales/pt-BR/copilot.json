@@ -1,0 +1,1115 @@
+{
+  "actions": {
+    "spotlight": {
+      "executeUtilityAgent": {
+        "description": "🤖 Execute the Utility Agents Supervisor!\n\nThe supervisor has a team of specialized Standard Agents that can perform complex tasks beyond your knowledge.\n\nUse when the user asks for:\n- \"research\", \"investigate\", \"analyze in depth\"\n- \"market analysis\", \"competitor analysis\"\n- \"generate report\", \"create document\"\n- \"consult the agent\", \"use the agent\"\n\nSimply describe what you need in natural language.",
+        "params": {
+          "user_input": "Natural language description of what the agent should do"
+        }
+      },
+      "searchArtifacts": {
+        "description": "Search for artifacts in the current namespace.\nArtifacts are documents, templates, configs saved in MCP.\n\nUse when the user asks to:\n- Search, look for, find artifacts\n- View templates or patterns\n- List documents by term",
+        "params": {
+          "searchTerm": "Search term (case insensitive)"
+        }
+      },
+      "listArtifacts": {
+        "description": "List all available artifacts in the namespace.\nReturns the first 20 artifacts with their keys and types."
+      },
+      "readArtifact": {
+        "description": "Read the content of a specific artifact.\nUse after searching or listing to view details of an artifact.",
+        "params": {
+          "key": "The key of the artifact"
+        }
+      },
+      "createArtifact": {
+        "description": "Create a new artifact in MCP.\nArtifacts are documents, templates, configs that can be reused.\n\nUse when the user wants to save something in the namespace.",
+        "params": {
+          "key": "Unique key for the artifact (e.g., TEMPLATE_REPORT_V1)",
+          "value": "Content of the artifact",
+          "description": "Description of the artifact",
+          "type": "Type: document, template, config, general"
+        }
+      },
+      "captureFeedback": {
+        "description": "Capture user feedback intelligently. Analyzes the message to determine category and severity.\n\nAvailable categories: {{categories}}",
+        "params": {
+          "category": "Category based on content analysis",
+          "title": "Brief feedback title (max 100 chars)",
+          "description": "Detailed feedback description",
+          "severity": "Severity level: critical (system down), high (major impact), medium (moderate), low (minor)",
+          "impact": "Impact scope: individual (one user), team (multiple users), department (department-wide), organization (company-wide)",
+          "tags": "Tags for categorization (e.g., \"migration\", \"api\")"
+        }
+      },
+      "rateAgentResponse": {
+        "description": "Ação para avaliar ou dar feedback sobre uma resposta do agente de IA. Use quando o usuário mencionar que o agente ajudou ou não ajudou, ou comentar sobre a qualidade da resposta.",
+        "params": {
+          "feedback": "Feedback sobre a resposta do agente",
+          "helpful": "A resposta foi útil?",
+          "agentName": "Nome do agente se conhecido"
+        }
+      },
+      "quickBugReport": {
+        "description": "Quick action to report a bug or problem. Use when the user mentions error, problem, or something not working.",
+        "params": {
+          "issue": "What is the problem?",
+          "severity": "How severe is the problem?"
+        }
+      },
+      "suggestFeature": {
+        "description": "Action to suggest a new feature or improvement. Use when the user has an idea or suggestion.",
+        "params": {
+          "suggestion": "What is the suggestion or idea?",
+          "benefit": "What benefit would it bring?"
+        }
+      },
+      "shareSuccess": {
+        "description": "Action to share a success story or positive experience. Use when the user mentions something that worked well.",
+        "params": {
+          "success": "What was the success or positive experience?",
+          "impact": "What was the impact of this success?"
+        }
+      },
+      "askQuestion": {
+        "description": "Action to register a doubt or question that needs clarification. Use when the user has a question.",
+        "params": {
+          "question": "What is the doubt or question?",
+          "context": "Additional context for the question"
+        }
+      },
+      "shareInsight": {
+        "description": "Action to share an insight, discovery, or important observation. Use when the user has a learning.",
+        "params": {
+          "insight": "What is the insight or discovery?",
+          "implication": "What is the implication or consequence of this insight?"
+        }
+      },
+      "reportError": {
+        "description": "Action to report a runtime error or exception. Use when the user mentions a runtime error or exception.",
+        "params": {
+          "errorMessage": "Error or exception message",
+          "context": "What were you doing when the error occurred?",
+          "severity": "How severe is the error?"
+        }
+      },
+      "listSignals": {
+        "description": "List recent signals (insights, feedbacks, alerts).\nUse to see what was captured in Atlas.",
+        "params": {
+          "type": "Filter by type: insight, feedback, message, or all"
+        }
+      },
+      "listFeedbacks": {
+        "description": "List all feedbacks from the Feedback Hub with visual UI.\nCan filter by status, category, severity, or source.\n\nStatus: new, acknowledged, in_progress, resolved, wont_fix\nCategories: bug, feature, agent, tool, workflow, learning, success\nSeverities: critical, high, medium, low\nSources: upstream, downstream, migration, onboarding, general",
+        "params": {
+          "status": "Filter by status (or \"all\")",
+          "category": "Filter by category (or \"all\")",
+          "severity": "Filter by severity (or \"all\")",
+          "limit": "Maximum feedbacks (default: 20)"
+        }
+      },
+      "getFeedbackStatistics": {
+        "description": "Get detailed statistics about all feedbacks.\nReturns counts by status, category, severity, and source."
+      },
+      "navigateToPage": {
+        "description": "Navigate to a page or module of the system.\nUse when the user asks to go somewhere.\n\nAvailable modules:\n- dashboard: Home page\n- upstream: Discovery/Ideation module (BV Framework)\n- downstream: Delivery/Implementation module\n- migration: Artifact Migration Wizard\n- onboarding: Training and Onboarding\n- atlas: Signals and Insights Hub (Feedback Hub)\n- messages: Message Box\n- settings: System settings",
+        "params": {
+          "destination": "The destination: dashboard, upstream, downstream, migration, onboarding, atlas, messages, settings",
+          "subpath": "Optional subpath (e.g., /settings/connections)"
+        }
+      },
+      "createSignal": {
+        "description": "Create a new Signal in Atlas.\nSignals are knowledge units: insights, feedbacks, or alerts.\n\nUse when the user shares:\n- A discovery or pattern (insight)\n- A risk, alert, or note (message)\n\nTYPES:\n- insight: Discoveries, patterns, opportunities\n- message: Alerts, notes, risks\n\nCATEGORIES:\n- insight: discovery, pattern, opportunity, innovation, risk\n- message: alert, note, risk\n\nPRIORITIES: low, medium, high, critical",
+        "params": {
+          "type": "Signal type: insight or message",
+          "category": "Category: discovery, pattern, opportunity, risk, innovation, note, alert",
+          "title": "Short and descriptive title (max 100 chars)",
+          "content": "Detailed description of the signal",
+          "priority": "Priority: low, medium, high, critical"
+        }
+      },
+      "createTask": {
+        "description": "Create a new personal task for the user.\nTasks are private and visible only to the user.\n\nUse when the user:\n- Asks to create, add, note a task\n- Mentions something they need to do or remember\n- Wants to register a TODO or reminder\n\nALWAYS confirm creation showing title, priority, and status.",
+        "params": {
+          "title": "Task title (required)",
+          "description": "Optional description with more details",
+          "priority": "Priority: low, medium, high, critical. Default: medium",
+          "status": "Initial status: backlog, todo (default), in_progress, review, done",
+          "dueDate": "Due date in ISO format (e.g., 2024-12-31). Optional.",
+          "tags": "Comma-separated tags for categorization (e.g., \"urgent,project-x\")"
+        }
+      },
+      "listMyTasks": {
+        "description": "List the user's personal tasks.\nShows all tasks or filters by status.\n\nUse when the user asks to:\n- View, list, show tasks\n- See what they have to do\n- View backlog, pending, in progress, etc.",
+        "params": {
+          "status": "Filter by status: backlog, todo, in_progress, review, done, all (default)"
+        }
+      },
+      "completeTask": {
+        "description": "Mark a task as completed.\n\nUse when the user:\n- Says they finished, completed a task\n- Asks to mark as done",
+        "params": {
+          "taskTitle": "Title or part of the title of the task to search and complete"
+        }
+      },
+      "moveTask": {
+        "description": "Move a task to another status/column.\n\nUse when the user:\n- Asks to move task to another status\n- Starts working on a task (move to in_progress)\n- Puts in review, backlog, etc.",
+        "params": {
+          "taskTitle": "Title or part of the title of the task",
+          "newStatus": "New status: backlog, todo, in_progress, review, done"
+        }
+      },
+      "deleteTask": {
+        "description": "Delete a task permanently.\n\nUse when the user asks to:\n- Delete, remove a task\n- Clean up old tasks",
+        "params": {
+          "taskTitle": "Title or part of the title of the task to delete"
+        }
+      },
+      "summarizeDay": {
+        "description": "Generate a summary of the day with priority tasks and suggestions.\n\nUse when the user:\n- Asks \"what do I have to do today?\"\n- Requests day summary, planning, priorities\n- Asks where to start\n- Says \"good morning\" or starts the work day"
+      },
+      "getTaskInsights": {
+        "description": "Analyze tasks and provide proactive insights and suggestions.\n\nUse when the user:\n- Asks for analysis, insights, or suggestions about tasks\n- Asks what is blocked or stuck\n- Wants to know how to improve productivity"
+      },
+      "createContextualTask": {
+        "description": "Create a task automatically based on the current module context.\n\nUse when the user:\n- Is working in a module and wants to create related task\n- Asks to \"note this\" or \"remember this\" while working\n- Wants to create task from what they're doing",
+        "params": {
+          "title": "Task title",
+          "notes": "Notes or additional context"
+        }
+      },
+      "taskContext": {
+        "description": "Context of user's active tasks for proactive suggestions"
+      }
+    },
+    "navigation": {
+      "navigateToPage": {
+        "description": "Navegar para uma página ou módulo específico da aplicação. Use quando o usuário pedir para ir a algum lugar.",
+        "params": {
+          "path": "O caminho de destino (ex: /dashboard, /upstream, /downstream, /migration, /onboarding, /atlas, /messages, /settings)"
+        }
+      }
+    },
+    "signal": {
+      "createSignal": {
+        "description": "Criar um novo signal (insight, feedback ou mensagem) para o contexto atual. Use quando o usuário quiser registrar uma observação.",
+        "params": {
+          "type": "Tipo de signal: insight (descoberta), feedback (melhoria) ou message (comunicação)",
+          "category": "Categoria: discovery, pattern, opportunity, risk, bug, feature, improvement, innovation, note, alert",
+          "content": "O conteúdo/descrição do signal",
+          "priority": "Nível de prioridade: low, medium, high ou critical"
+        }
+      },
+      "listSignals": {
+        "description": "Listar signals (insights, feedbacks, mensagens) do namespace atual",
+        "params": {
+          "type": "Filtrar por tipo: insight, feedback, message (opcional)",
+          "category": "Filtrar por categoria (opcional)"
+        }
+      }
+    },
+    "task": {
+      "createTask": {
+        "description": "Criar uma nova tarefa pessoal no seu quadro Kanban. Use quando o usuário mencionar algo que precisa fazer.",
+        "params": {
+          "title": "Título da tarefa - breve descrição do que precisa ser feito",
+          "description": "Descrição detalhada com critérios de aceite",
+          "priority": "Prioridade: low, medium, high",
+          "dueDate": "Data de entrega no formato ISO (YYYY-MM-DD)"
+        }
+      },
+      "listMyTasks": {
+        "description": "Listar suas tarefas pessoais do quadro Kanban",
+        "params": {
+          "status": "Filtrar por status: backlog, todo, in_progress, review, done"
+        }
+      },
+      "completeTask": {
+        "description": "Marcar uma tarefa como concluída/feita",
+        "params": {
+          "taskId": "ID da tarefa a ser concluída"
+        }
+      },
+      "moveTask": {
+        "description": "Mover uma tarefa para uma coluna de status diferente",
+        "params": {
+          "taskId": "ID da tarefa a ser movida",
+          "newStatus": "Novo status: backlog, todo, in_progress, review, done"
+        }
+      },
+      "deleteTask": {
+        "description": "Excluir uma tarefa permanentemente",
+        "params": {
+          "taskId": "ID da tarefa a ser excluída"
+        }
+      }
+    },
+    "artifact": {
+      "searchArtifacts": {
+        "description": "Buscar artefatos no namespace por palavra-chave ou conteúdo",
+        "params": {
+          "searchTerm": "Termo de busca para procurar em nomes e conteúdo de artefatos"
+        }
+      },
+      "listArtifacts": {
+        "description": "Listar todos os artefatos no namespace atual",
+        "params": {
+          "cursor": "Cursor de paginação para próxima página"
+        }
+      },
+      "readArtifact": {
+        "description": "Ler o conteúdo completo de um artefato específico",
+        "params": {
+          "artifactId": "ID do artefato a ser lido"
+        }
+      },
+      "createArtifactForEpic": {
+        "description": "Criar um novo artefato associado ao épico atual",
+        "params": {
+          "name": "Nome do artefato",
+          "type": "Tipo: document, diagram, code, config, template",
+          "content": "Conteúdo do artefato"
+        }
+      }
+    },
+    "agent": {
+      "executeUtilityAgent": {
+        "description": "Executar um agente utilitário com um prompt específico",
+        "params": {
+          "agentName": "Nome do agente utilitário a ser executado",
+          "prompt": "Prompt/instrução para o agente"
+        }
+      }
+    },
+    "feedback": {
+      "reportBug": {
+        "description": "Reportar um bug ou problema encontrado no sistema",
+        "params": {
+          "title": "Título do bug - breve descrição",
+          "description": "Descrição detalhada com passos para reproduzir",
+          "severity": "Severidade: low, medium, high, critical",
+          "module": "Módulo onde o bug foi encontrado"
+        }
+      },
+      "suggestFeature": {
+        "description": "Sugerir uma nova funcionalidade ou capacidade",
+        "params": {
+          "title": "Título da funcionalidade",
+          "description": "Descrição detalhada da funcionalidade",
+          "businessValue": "Valor de negócio esperado",
+          "priority": "Prioridade sugerida: low, medium, high"
+        }
+      },
+      "shareImprovement": {
+        "description": "Compartilhar uma ideia de melhoria para funcionalidade existente",
+        "params": {
+          "title": "Título da melhoria",
+          "description": "Descrição da melhoria",
+          "currentBehavior": "Como funciona atualmente",
+          "desiredBehavior": "Como deveria funcionar"
+        }
+      },
+      "trackDecision": {
+        "description": "Registrar uma decisão importante tomada durante o trabalho",
+        "params": {
+          "title": "Título da decisão",
+          "decision": "A decisão que foi tomada",
+          "rationale": "Por que essa decisão foi tomada",
+          "alternatives": "Alternativas que foram consideradas"
+        }
+      },
+      "quickNote": {
+        "description": "Criar uma nota rápida ou observação",
+        "params": {
+          "content": "Conteúdo da nota",
+          "category": "Categoria: observation, reminder, idea, question"
+        }
+      },
+      "listFeedbacks": {
+        "description": "Listar feedbacks para o contexto atual",
+        "params": {
+          "type": "Filtrar por tipo: bug, feature, improvement, decision, note",
+          "status": "Filtrar por status: open, in_progress, resolved, closed"
+        }
+      }
+    },
+    "mcp": {
+      "searchArtifactsInNamespace": {
+        "description": "Buscar artefatos via MCP no namespace atual",
+        "params": {
+          "query": "Consulta de busca",
+          "limit": "Número máximo de resultados"
+        }
+      },
+      "listAvailableArtifacts": {
+        "description": "Listar todos os artefatos disponíveis via MCP",
+        "params": {
+          "type": "Filtrar por tipo de artefato"
+        }
+      },
+      "getArtifactDetails": {
+        "description": "Obter informações detalhadas sobre um artefato específico",
+        "params": {
+          "artifactId": "ID do artefato"
+        }
+      },
+      "fetchArtifactsForStep": {
+        "description": "Buscar artefatos relevantes para o passo atual do wizard",
+        "params": {
+          "step": "Número do passo",
+          "category": "Categoria do artefato"
+        }
+      }
+    },
+    "knowledge": {
+      "listKnowledgeDocuments": {
+        "description": "Listar todos os documentos na base de conhecimento",
+        "params": {
+          "category": "Filtrar por categoria de documento"
+        }
+      },
+      "searchKnowledgeBase": {
+        "description": "Buscar na base de conhecimento por palavra-chave",
+        "params": {
+          "query": "Consulta de busca"
+        }
+      },
+      "readKnowledgeDocument": {
+        "description": "Ler o conteúdo completo de um documento de conhecimento",
+        "params": {
+          "documentId": "ID do documento"
+        }
+      },
+      "semanticSearchKnowledgeBase": {
+        "description": "Realizar busca semântica na base de conhecimento",
+        "params": {
+          "query": "Consulta em linguagem natural",
+          "limit": "Número máximo de resultados"
+        }
+      },
+      "summarizeKnowledgeDocument": {
+        "description": "Obter um resumo gerado por IA de um documento de conhecimento",
+        "params": {
+          "documentId": "ID do documento a resumir"
+        }
+      }
+    },
+    "onboarding": {
+      "presentLesson": {
+        "description": "Apresentar uma lição de treinamento ao usuário",
+        "params": {
+          "lessonId": "ID da lição",
+          "format": "Formato de apresentação: text, interactive, video"
+        }
+      },
+      "askLearner": {
+        "description": "Fazer uma pergunta ao aprendiz para verificar entendimento",
+        "params": {
+          "question": "Pergunta a fazer",
+          "expectedAnswer": "Resposta esperada para validação"
+        }
+      },
+      "startStep": {
+        "description": "Iniciar um novo passo de treinamento",
+        "params": {
+          "stepId": "ID do passo a iniciar"
+        }
+      },
+      "demonstrateConcept": {
+        "description": "Demonstrar um conceito com exemplos",
+        "params": {
+          "concept": "Conceito a demonstrar",
+          "examples": "Exemplos a mostrar"
+        }
+      },
+      "provideFeedback": {
+        "description": "Fornecer feedback sobre a resposta do aprendiz",
+        "params": {
+          "response": "Resposta do aprendiz",
+          "isCorrect": "Se a resposta está correta",
+          "feedback": "Mensagem de feedback"
+        }
+      },
+      "navigateToStep": {
+        "description": "Navegar para um passo específico do treinamento",
+        "params": {
+          "stepNumber": "Número do passo para navegar"
+        }
+      },
+      "explainConcept": {
+        "description": "Explicar um conceito em detalhes",
+        "params": {
+          "concept": "Conceito a explicar",
+          "depth": "Profundidade da explicação: basic, intermediate, advanced"
+        }
+      },
+      "summarizeStep": {
+        "description": "Resumir o que foi aprendido em um passo",
+        "params": {
+          "stepId": "ID do passo a resumir"
+        }
+      },
+      "askClarification": {
+        "description": "Pedir esclarecimento ao aprendiz",
+        "params": {
+          "topic": "Tópico que precisa de esclarecimento"
+        }
+      },
+      "getQuizHint": {
+        "description": "Fornecer uma dica para uma pergunta do quiz",
+        "params": {
+          "questionId": "ID da pergunta do quiz"
+        }
+      },
+      "explainWrongAnswer": {
+        "description": "Explicar por que uma resposta está errada",
+        "params": {
+          "questionId": "ID da pergunta",
+          "wrongAnswer": "A resposta errada dada"
+        }
+      },
+      "encourageUser": {
+        "description": "Enviar uma mensagem de incentivo ao aprendiz",
+        "params": {
+          "context": "Contexto para o incentivo"
+        }
+      },
+      "showProgress": {
+        "description": "Mostrar o progresso do aprendiz",
+        "params": {
+          "format": "Formato: summary, detailed, visual"
+        }
+      },
+      "suggestNextStep": {
+        "description": "Sugerir o próximo passo para o aprendiz",
+        "params": {}
+      },
+      "celebrateCompletion": {
+        "description": "Celebrar quando o aprendiz completa um marco",
+        "params": {
+          "milestone": "Marco que foi completado"
+        }
+      }
+    },
+    "atlas": {
+      "kanban_getBoardOverview": {
+        "description": "Obter uma visão geral do quadro Kanban com contagem de itens por coluna. Mostra o estado atual de todos os feedbacks em: Inbox (novos itens), Acknowledged (em revisão), In Progress (sendo trabalhados), Resolved (concluídos), Won't Fix (recusados). Use para entender a carga de trabalho atual e identificar gargalos."
+      },
+      "kanban_moveFeedback": {
+        "description": "Mover um feedback para uma coluna diferente do Kanban (alterar seu status). Transições válidas: new → acknowledged (iniciar revisão), acknowledged → in_progress (iniciar trabalho), in_progress → resolved (completar o trabalho), Qualquer status → wont_fix (recusar/fechar). Exemplos: 'Mover feedback fb-123 para em progresso', 'Marcar o primeiro bug crítico como reconhecido', 'Resolver o feedback sobre problemas de login'",
+        "params": {
+          "feedbackId": "ID do feedback a ser movido",
+          "toStatus": "Status/coluna de destino",
+          "reason": "Motivo opcional para a transição"
+        }
+      },
+      "kanban_getColumnItems": {
+        "description": "Obter todos os feedbacks em uma coluna específica do Kanban. Use para: Ver o que está na inbox, Verificar o que está em progresso, Revisar itens resolvidos. Exemplos: 'O que há na inbox?', 'Mostre-me itens em progresso', 'Liste todos os feedbacks resolvidos'",
+        "params": {
+          "column": "De qual coluna obter os itens",
+          "limit": "Máximo de itens a retornar (padrão: 10)",
+          "sortBy": "Como ordenar os itens"
+        }
+      },
+      "kanban_bulkTransition": {
+        "description": "Mover múltiplos feedbacks de uma vez. Útil para: Mover todos os itens da inbox para reconhecido, Resolver múltiplos itens de uma vez, Recusar feedbacks em lote. Exemplos: 'Mover todos os bugs críticos para em progresso', 'Reconhecer todos os novos feedbacks do upstream', 'Resolver todos os itens de baixa prioridade'",
+        "params": {
+          "fromColumn": "Coluna de origem",
+          "toColumn": "Coluna de destino",
+          "filter": "Filtro opcional: { severity?: string, category?: string, source?: string }",
+          "maxItems": "Máximo de itens a mover (limite de segurança, padrão: 5)"
+        }
+      },
+      "kanban_suggestNextAction": {
+        "description": "Obter sugestão de IA para a próxima ação no quadro Kanban. Analisa o estado atual e recomenda em que focar. Exemplos: 'No que devo trabalhar a seguir?', 'Sugerir próxima ação', 'O que é mais urgente?'"
+      },
+      "add_feedback_comment": {
+        "description": "Adicionar um comentário a um feedback como o assistente de IA. Use para: Compartilhar descobertas de análise com a equipe, Fazer recomendações para resolução, Fazer perguntas ou solicitar esclarecimentos, Documentar observações importantes, Explicar mudanças de status. O comentário será visível na linha do tempo de atividade do feedback.",
+        "params": {
+          "feedbackId": "ID do feedback para comentar",
+          "content": "O conteúdo do comentário (suporta markdown)",
+          "commentType": "Tipo de comentário: analysis (descobertas), recommendation (sugestões), status_change (explicando transições), question (solicitando info), general (outro)"
+        }
+      },
+      "comment_and_move_feedback": {
+        "description": "Adicionar um comentário explicando por que um feedback deve ser movido, depois movê-lo para uma nova coluna. Isso combina documentação com ação - sempre use isso em vez de apenas mover quando há contexto para compartilhar. Melhor para: Explicar por que você está fechando algo como won't fix, Documentar resolução ao marcar como resolvido, Anotar bloqueadores ao mover de volta para reconhecido, Registrar decisões de triagem",
+        "params": {
+          "feedbackId": "ID do feedback",
+          "toStatus": "Status/coluna de destino",
+          "reason": "Explicação para a transição (será adicionada como comentário)"
+        }
+      },
+      "read_feedback_comments": {
+        "description": "Ler os comentários de um feedback para entender seu histórico e contexto. Use antes de: Fazer recomendações (para ver o que já foi sugerido), Responder perguntas (para ver se já foram respondidas), Adicionar análise (para evitar repetir descobertas)",
+        "params": {
+          "feedbackId": "ID do feedback para ler comentários"
+        }
+      },
+      "read_feedback_history": {
+        "description": "Ler o histórico de transições de status de um feedback. Use para: Entender quanto tempo os itens ficaram em cada status, Identificar itens obsoletos ou bloqueados, Ver quem fez mudanças e por quê",
+        "params": {
+          "feedbackId": "ID do feedback"
+        }
+      },
+      "check_related_feedbacks": {
+        "description": "Verificar feedbacks relacionados a este. Mostra duplicatas, bloqueadores e problemas relacionados. Use antes de sugerir mudanças para entender dependências.",
+        "params": {
+          "feedbackId": "ID do feedback"
+        }
+      },
+      "analyzePatterns": {
+        "description": "Analisar padrões de feedback para identificar problemas recorrentes, temas comuns e áreas que precisam de atenção. Isso ajuda administradores a entender o que está funcionando e o que precisa melhorar em todos os módulos.",
+        "params": {
+          "timeframe": "Período de tempo para analisar (last_24h, last_week, last_month, all_time)",
+          "focusArea": "Em qual categoria focar (bugs, questions, suggestions, all)"
+        }
+      },
+      "generateReport": {
+        "description": "Gerar um relatório resumido abrangente do status dos feedbacks. Pode ser usado para atualizações de stakeholders ou reuniões de equipe.",
+        "params": {
+          "format": "Formato/extensão do relatório (brief, detailed, executive)"
+        }
+      },
+      "findSimilar": {
+        "description": "Encontrar feedbacks que são similares ou potencialmente duplicados de um determinado feedback. Isso ajuda a consolidar problemas relacionados e evitar trabalho duplicado.",
+        "params": {
+          "feedbackId": "ID do feedback para encontrar itens similares"
+        }
+      },
+      "suggestPriorities": {
+        "description": "Analisar feedbacks pendentes e sugerir uma ordem de prioridade para abordá-los. Leva em conta severidade, idade e categoria.",
+        "params": {
+          "limit": "Número máximo de itens a priorizar (padrão: 10)"
+        }
+      },
+      "resolveFeedback": {
+        "description": "Marcar um feedback como resolvido com uma nota de resolução.",
+        "params": {
+          "feedbackId": "ID do feedback a resolver",
+          "resolution": "Descrição da resolução"
+        }
+      },
+      "updateStatus": {
+        "description": "Atualizar o status de um item de feedback.",
+        "params": {
+          "feedbackId": "ID do feedback",
+          "status": "Novo status (new, in_progress, resolved, wont_fix)"
+        }
+      },
+      "suggestResolution": {
+        "description": "Sugerir uma abordagem de resolução para um item de feedback baseado em problemas passados similares.",
+        "params": {
+          "feedbackId": "ID do feedback"
+        }
+      },
+      "listFeedbacks": {
+        "description": "Listar feedbacks com filtros opcionais para status e categoria.",
+        "params": {
+          "status": "Filtrar por status (new, in_progress, resolved, wont_fix, all)",
+          "category": "Filtrar por categoria",
+          "limit": "Número máximo de resultados"
+        }
+      },
+      "getFeedbackDetails": {
+        "description": "Obter informações detalhadas sobre um feedback específico incluindo todos os metadados e histórico.",
+        "params": {
+          "feedbackId": "ID do feedback"
+        }
+      },
+      "listComments": {
+        "description": "Listar todos os comentários de um item de feedback.",
+        "params": {
+          "feedbackId": "ID do feedback"
+        }
+      },
+      "captureFeedback": {
+        "description": "Capturar e salvar um novo feedback da conversa. Use quando o usuário reportar um problema ou sugestão.",
+        "params": {
+          "title": "Título do feedback",
+          "description": "Descrição detalhada",
+          "category": "Categoria do feedback (bug, suggestion, question, praise)",
+          "severity": "Nível de severidade (low, medium, high, critical)"
+        }
+      },
+      "getKanbanBoard": {
+        "description": "Obter o estado atual do quadro kanban com todas as colunas e feedbacks organizados por status.",
+        "params": {}
+      },
+      "moveFeedbackColumn": {
+        "description": "Mover um feedback para uma coluna/status diferente do kanban.",
+        "params": {
+          "feedbackId": "ID do feedback",
+          "targetColumn": "Coluna/status de destino (new, in_progress, resolved, wont_fix)"
+        }
+      },
+      "deepAnalysis": {
+        "description": "Disparar análise profunda de IA de feedbacks usando agentes LangGraph para detecção avançada de padrões.",
+        "params": {
+          "analysisType": "Tipo de análise a realizar (patterns, sentiment, priorities, full)"
+        }
+      },
+      "deepPatterns": {
+        "description": "Usar DeepAgent para identificar padrões complexos em todos os feedbacks com capacidades avançadas de IA.",
+        "params": {
+          "timeRange": "Intervalo de tempo para análise"
+        }
+      },
+      "deep_analyze": {
+        "description": "Executar uma análise profunda em dados de feedback usando agentes de IA.\nIsto usa detecção avançada de padrões e subagentes para:\n- Detectar padrões em múltiplos feedbacks\n- Identificar causas raiz\n- Sugerir prioridades de resolução\n- Gerar relatórios abrangentes\n\nExemplos:\n- \"Analisar todos os relatórios de bug desta semana\"\n- \"Encontrar padrões em reclamações de usuários\"\n- \"Quais são os problemas mais críticos?\"\n- \"Gerar um relatório sobre tendências de feedback\"",
+        "params": {
+          "query": "A consulta ou pergunta de análise a investigar",
+          "includeReport": "Se deve gerar um relatório formatado"
+        }
+      },
+      "analyze_feedback": {
+        "description": "Analisar um item de feedback específico usando o agente LangGraph.\nIsto executa um pipeline de análise estruturada:\n1. Detecção de categoria e severidade\n2. Verificação de duplicatas\n3. Cálculo de prioridade\n4. Sugestões de resolução\n\nA análise será salva como um comentário no feedback para referência futura.\nUse para análise detalhada de feedbacks individuais.",
+        "params": {
+          "feedbackId": "O ID do feedback a analisar (necessário para salvar análise como comentário)",
+          "title": "Título ou resumo do feedback",
+          "description": "Descrição detalhada do feedback",
+          "feedbackType": "Tipo de feedback (bug, feature, improvement, question)"
+        }
+      }
+    }
+  },
+  "suggestions": {
+    "atlas": {
+      "global": "Com base no contexto atual:\n- Usuário: ${USER_NAME}\n- Módulo atual: ${CURRENT_MODULE}\n- Página atual: ${CURRENT_PAGE}\n- Namespace: ${NAMESPACE}\n\nGere 3 sugestões de ações úteis que o usuário pode querer realizar.\nConsidere:\n- Em qual página estão\n- Tarefas comuns para este módulo\n- Criar tarefas, signals ou navegar\n- Ações rápidas disponíveis"
+    },
+    "kanban": {
+      "board": "Com base no estado do quadro Kanban:\n- Usuário: ${USER_NAME}\n- Total de tarefas: ${TOTAL_TASKS}\n- Tarefas por status: ${TASK_COUNTS}\n- Tarefas atrasadas: ${OVERDUE_COUNT}\n\nSugira 3 ações úteis:\n- Tarefas que precisam de atenção\n- Melhorias no fluxo de trabalho\n- Ações em lote rápidas"
+    },
+    "upstream": {
+      "step1": "BV Framework Etapa 1: Ideação\nÉpico: ${EPIC_NAME}\nStatus: ${EPIC_STATUS}\n\nSugira 3 ações para ajudar a definir a Macro Iniciativa:\n- Sugerir nome do épico se vazio\n- Ajudar com a descrição\n- Sugerir alinhamento de OKR\n- Definir valor de negócio inicial",
+      "step2": "BV Framework Etapa 2: Imersão\nÉpico: ${EPIC_NAME}\n\nSugira 3 ações para aprofundamento:\n- Construir Matriz CSD (Certezas, Suposições, Dúvidas)\n- Criar Árvore de Oportunidades\n- Identificar Stakeholders\n- Documentar Riscos Iniciais",
+      "step3": "BV Framework Etapa 3: Validação\nÉpico: ${EPIC_NAME}\nHipóteses: ${HYPOTHESES_COUNT}\n\nSugira 3 ações para validação de hipóteses:\n- Adicionar método de validação\n- Documentar resultados\n- Sugerir fontes de dados\n- Adicionar evidências de suporte",
+      "step4": "BV Framework Etapa 4: Exploração\nÉpico: ${EPIC_NAME}\n\nSugira 3 ações para exploração de requisitos:\n- Definir macro requisitos\n- Mapear atores e personas\n- Criar diagramas de fluxo de negócio\n- Documentar jornadas de usuário",
+      "step5": "BV Framework Etapa 5: Análise\nÉpico: ${EPIC_NAME}\n\nSugira 3 ações para análise técnica:\n- Criar blueprint de arquitetura\n- Realizar análise de impacto\n- Documentar análise de GAP\n- Identificar dependências",
+      "step6": "BV Framework Etapa 6: Priorização\nÉpico: ${EPIC_NAME}\nValor de Negócio: ${BUSINESS_VALUE}\n\nSugira 3 ações para priorização:\n- Calcular valor de negócio final\n- Estimar distribuição de esforço\n- Avaliar nível de risco\n- Definir KPIs e métricas de sucesso",
+      "step7": "BV Framework Etapa 7: Refinamento\nÉpico: ${EPIC_NAME}\n\nSugira 3 ações para refinamento final:\n- Revisar todas as etapas\n- Gerar documentação final\n- Preparar handoff para delivery\n- Validar completude",
+      "knowledgeBase": "Base de Conhecimento do Épico: ${EPIC_NAME}\nDocumentos: ${DOCUMENT_COUNT}\n\nSugira 3 ações para gestão de conhecimento:\n- Fazer upload de documentos de suporte\n- Buscar conhecimento existente\n- Resumir documentos anexados\n- Vincular artefatos relevantes",
+      "mcpTools": "Integração MCP Tools\nConectado: ${IS_CONNECTED}\nNamespace: ${NAMESPACE}\n\nSugira 3 ações para MCP tools:\n- Buscar artefatos\n- Listar ferramentas disponíveis\n- Executar agente utilitário\n- Buscar dados da plataforma"
+    },
+    "downstream": {
+      "step1": "Downstream Etapa 1: Definição de Feature\nFeature: ${FEATURE_NAME}\n\nSugira 3 ações para definição de feature:\n- Definir escopo da feature\n- Listar critérios de aceite\n- Identificar dependências\n- Definir estimativas iniciais",
+      "step2": "Downstream Etapa 2: Design Técnico\nFeature: ${FEATURE_NAME}\n\nSugira 3 ações para design técnico:\n- Criar design de componentes\n- Definir contratos de API\n- Documentar modelos de dados\n- Planejar pontos de integração",
+      "step3": "Downstream Etapa 3: Planejamento de Implementação\nFeature: ${FEATURE_NAME}\n\nSugira 3 ações para planejamento:\n- Dividir em tarefas\n- Atribuir responsabilidades\n- Definir marcos\n- Identificar riscos",
+      "step4": "Downstream Etapa 4: Desenvolvimento\nFeature: ${FEATURE_NAME}\nProgresso: ${PROGRESS}%\n\nSugira 3 ações para desenvolvimento:\n- Atualizar status da tarefa\n- Documentar decisões\n- Registrar bloqueios\n- Acompanhar progresso",
+      "step5": "Downstream Etapa 5: Testes\nFeature: ${FEATURE_NAME}\n\nSugira 3 ações para testes:\n- Definir casos de teste\n- Documentar resultados de teste\n- Reportar bugs encontrados\n- Validar critérios de aceite",
+      "step6": "Downstream Etapa 6: Entrega\nFeature: ${FEATURE_NAME}\n\nSugira 3 ações para entrega:\n- Preparar deploy\n- Criar notas de release\n- Validar em produção\n- Fechar feature"
+    },
+    "migration": {
+      "main": "Wizard de Migração\nOrigem: ${SOURCE_ENV}\nDestino: ${TARGET_ENV}\nAgentes Selecionados: ${AGENT_COUNT}\n\nSugira 3 ações para migração:\n- Selecionar agentes para migrar\n- Validar compatibilidade\n- Visualizar alterações\n- Executar migração"
+    },
+    "onboarding": {
+      "main": "Treinamento: ${TRAINING_NAME}\nPasso: ${CURRENT_STEP} de ${TOTAL_STEPS}\nProgresso: ${PROGRESS}%\n\nSugira 3 ações para o treinamento:\n- Continuar para próxima lição\n- Revisar material atual\n- Fazer um quiz\n- Fazer uma pergunta",
+      "quiz": "Quiz: ${QUIZ_NAME}\nQuestão: ${CURRENT_QUESTION} de ${TOTAL_QUESTIONS}\nPontuação: ${CURRENT_SCORE}\n\nSugira 3 ações para o quiz:\n- Responder questão atual\n- Obter uma dica\n- Pular para próxima questão\n- Revisar respostas anteriores"
+    },
+    "feedback": {
+      "hub": "Hub de Feedback\nTotal de Feedbacks: ${TOTAL_COUNT}\nPendentes: ${OPEN_COUNT}\nCategorias: ${CATEGORIES}\n\nSugira 3 ações para gestão de feedback:\n- Filtrar por categoria\n- Resolver pendentes\n- Analisar tendências\n- Exportar relatório"
+    }
+  },
+  "readables": {
+    "global": {
+      "currentUser": {
+        "description": "Informações do usuário atual incluindo nome, email e função"
+      },
+      "sessionInfo": {
+        "description": "Informações da sessão atual incluindo status de conexão e namespace ativo"
+      },
+      "connectionStatus": {
+        "description": "Status da conexão MCP (conectado/desconectado)"
+      },
+      "namespaceContext": {
+        "description": "ID e nome do namespace atual"
+      },
+      "licenseContext": {
+        "description": "ID e nome da licença atual"
+      }
+    },
+    "myTasks": {
+      "kanbanState": {
+        "description": "Estado atual do quadro Kanban do usuário"
+      },
+      "focusedTask": {
+        "description": "Tarefa atualmente em foco (se houver)"
+      },
+      "productivityInsights": {
+        "description": "Insights de produtividade do usuário"
+      },
+      "upcomingDeadlines": {
+        "description": "Próximos prazos e tarefas atrasadas"
+      },
+      "availableActions": {
+        "description": "Ações disponíveis para o usuário no Kanban"
+      }
+    },
+    "downstream": {
+      "language": {
+        "description": "Idioma atual da interface do usuário"
+      },
+      "theme": {
+        "description": "Tema atual da interface do usuário (modo escuro ou claro)"
+      },
+      "user": {
+        "description": "Informações do usuário logado"
+      },
+      "organization": {
+        "description": "Contexto de organização e projeto"
+      },
+      "feature": {
+        "description": "Feature downstream atual sendo editada"
+      },
+      "currentStep": {
+        "description": "Etapa atual no wizard downstream (1-6)"
+      },
+      "fieldCompletion": {
+        "description": "Status de conclusão dos campos da etapa atual"
+      },
+      "framework": {
+        "description": "Contexto do BV Framework Downstream"
+      }
+    },
+    "navigation": {
+      "currentModule": {
+        "description": "Módulo atual onde o usuário está (dashboard, upstream, downstream, etc.)"
+      },
+      "currentPage": {
+        "description": "Caminho da página atual"
+      }
+    },
+    "atlas": {
+      "session": {
+        "description": "Informações da sessão do usuário atual"
+      },
+      "connection": {
+        "description": "Conexão MCP atual para o Hub de Feedback"
+      },
+      "overview": {
+        "description": "Visão geral e estatísticas do Hub de Feedback"
+      },
+      "viewState": {
+        "description": "Estado de visualização atual do Hub de Feedback"
+      },
+      "selectedFeedback": {
+        "description": "Feedback atualmente selecionado para visualização detalhada ou edição"
+      },
+      "insights": {
+        "description": "Insights sobre distribuição e padrões de feedback"
+      },
+      "capabilities": {
+        "description": "Capacidades disponíveis do assistente de IA no Hub de Feedback"
+      },
+      "kanbanBoardState": {
+        "description": "Estado atual do quadro Kanban com feedbacks agrupados por status"
+      }
+    },
+    "kanban": {
+      "boardState": {
+        "description": "Estado atual do quadro Kanban incluindo todas as tarefas organizadas por coluna"
+      },
+      "taskCounts": {
+        "description": "Número de tarefas em cada coluna de status (backlog, todo, in_progress, review, done)"
+      },
+      "overdueTasks": {
+        "description": "Lista de tarefas que passaram da data de entrega"
+      }
+    },
+    "upstream": {
+      "epic": {
+        "description": "Dados do Épico de Negócio atual incluindo nome, descrição, status e todos os passos do wizard"
+      },
+      "currentStep": {
+        "description": "Passo atual do BV Framework (1-7): Ideação, Imersão, Validação, Exploração, Análise, Priorização, Refinamento"
+      },
+      "stepData": {
+        "description": "Dados do passo atual do wizard incluindo valores do formulário e status de conclusão"
+      },
+      "hypotheses": {
+        "description": "Lista de hipóteses do épico com status de validação"
+      },
+      "selectedHypothesis": {
+        "description": "Hipótese atualmente selecionada para validação"
+      },
+      "knowledgeBase": {
+        "description": "Documentos da base de conhecimento anexados ao épico"
+      },
+      "bvFrameworkInfo": {
+        "description": "Informações e diretrizes do BV Framework para o passo atual"
+      }
+    },
+    "downstream": {
+      "feature": {
+        "description": "Dados da Feature atual incluindo nome, descrição e épico pai"
+      },
+      "currentStep": {
+        "description": "Passo atual do Downstream (1-6): Definição, Design, Planejamento, Desenvolvimento, Testes, Entrega"
+      },
+      "stepData": {
+        "description": "Dados do passo atual do downstream"
+      },
+      "requirements": {
+        "description": "Requisitos da feature e critérios de aceite"
+      }
+    },
+    "migration": {
+      "sourceEnv": {
+        "description": "Ambiente de origem para migração"
+      },
+      "targetEnv": {
+        "description": "Ambiente de destino para migração"
+      },
+      "currentStep": {
+        "description": "Passo atual do wizard de migração"
+      },
+      "selectedAgents": {
+        "description": "Lista de agentes selecionados para migração"
+      },
+      "progress": {
+        "description": "Status de progresso da migração"
+      }
+    },
+    "onboarding": {
+      "training": {
+        "description": "Informações do curso de treinamento atual"
+      },
+      "currentStep": {
+        "description": "Passo/lição atual do treinamento"
+      },
+      "progress": {
+        "description": "Progresso do usuário no treinamento"
+      },
+      "quizState": {
+        "description": "Estado atual do quiz incluindo questões e respostas"
+      }
+    },
+    "feedback": {
+      "hubState": {
+        "description": "Estado do Hub de Feedback incluindo filtros e visualização atual"
+      },
+      "categories": {
+        "description": "Categorias de feedback disponíveis e suas contagens"
+      },
+      "statistics": {
+        "description": "Estatísticas e análises de feedback"
+      }
+    }
+  },
+  "actionLabels": {
+    "spotlight": {
+      "navigateTo": "Navegando...",
+      "createSignal": "Criando Signal...",
+      "captureFeedback": "Capturando Feedback...",
+      "reportBug": "Reportando Bug...",
+      "registerSuggestion": "Registrando Sugestão...",
+      "registerSuccess": "Registrando Sucesso...",
+      "registerAssessment": "Registrando Avaliação...",
+      "searchArtifacts": "Buscando artefatos...",
+      "listArtifacts": "Listando artefatos...",
+      "readArtifact": "Lendo artefato...",
+      "createArtifact": "Criando artefato...",
+      "executeAgent": "Executando Agente...",
+      "listSignals": "Listando signals...",
+      "listFeedbacks": "Listando feedbacks...",
+      "calculateStats": "Calculando estatísticas...",
+      "ui": {
+        "severity": {
+          "critical": "Crítico",
+          "high": "Alto",
+          "medium": "Médio",
+          "low": "Baixo"
+        },
+        "status": {
+          "new": "Novo",
+          "seen": "Visto",
+          "inProgress": "Em Progresso",
+          "resolved": "Resolvido",
+          "wontFix": "Não Corrigir"
+        },
+        "labels": {
+          "description": "Descrição",
+          "category": "Categoria",
+          "source": "Fonte",
+          "general": "Geral",
+          "createdBy": "Criado por",
+          "date": "Data",
+          "tags": "Tags",
+          "viewInHub": "Ver no Feedback Hub",
+          "searchingFeedbacks": "Buscando feedbacks...",
+          "noFeedbackFound": "Nenhum feedback encontrado",
+          "feedback": "feedback",
+          "feedbackRegistered": "Feedback registrado com sucesso!",
+          "bugReported": "Bug reportado! Nossa equipe irá analisar.",
+          "suggestionRegistered": "Sugestão registrada! Obrigado pela contribuição.",
+          "successRegistered": "Parabéns pela conquista! Caso registrado.",
+          "registering": "Registrando..."
+        }
+      }
+    },
+    "mcp": {
+      "searchingArtifacts": "Buscando artefatos",
+      "searchTerm": "Termo: \"{{term}}\"",
+      "noArtifactsFound": "Nenhum artefato encontrado para \"{{term}}\"",
+      "artifactsFound": "{{count}} artefato(s) encontrado(s) para \"{{term}}\"",
+      "listingArtifacts": "Listando artefatos disponíveis",
+      "noArtifactsInNamespace": "Nenhum artefato encontrado no namespace",
+      "artifactsInNamespace": "{{count}} artefato(s) encontrado(s)",
+      "gettingArtifactDetails": "Obtendo detalhes do artefato",
+      "artifactNotFound": "Artefato \"{{id}}\" não encontrado.",
+      "artifact": "Artefato: {{key}}",
+      "detailsLoaded": "Detalhes carregados",
+      "newArtifact": "Novo Artefato",
+      "createArtifactReason": "Criar artefato para documentar informações",
+      "contentPreview": "Preview do Conteúdo",
+      "noContent": "Sem conteúdo",
+      "executingUtilityAgent": "Executando Utility Agent",
+      "requestNotSpecified": "Solicitação não especificada",
+      "executeAgentReason": "Executar agente para análise especializada",
+      "request": "Solicitação",
+      "fetchingStepDocuments": "Buscando documentos para o step",
+      "fetchingHypothesisContext": "Buscando contexto da hipótese",
+      "hypothesis": "Hipótese: {{id}}...",
+      "fetchingValidatedHypotheses": "Buscando hipóteses validadas",
+      "mcpNotAvailable": "Integração MCP não está disponível.",
+      "cannotSearchArtifacts": "Não é possível buscar artefatos.",
+      "cannotFetchArtifacts": "Não é possível buscar artefatos.",
+      "searchTermRequired": "Termo de busca é obrigatório. Por favor, forneça um termo para buscar.",
+      "noMacroInitiativeId": "ID da Macro Iniciativa não encontrado.",
+      "hypothesisNotFound": "Hipótese com ID \"{{id}}\" não encontrada."
+    },
+    "knowledgeBase": {
+      "listingDocuments": "Listando documentos da base de conhecimento",
+      "filter": "Filtro: {{filter}}",
+      "searchingDocuments": "Pesquisando na base de conhecimento",
+      "query": "Consulta: \"{{query}}\"",
+      "readingDocument": "Lendo documento",
+      "document": "Documento: {{filename}}",
+      "semanticSearch": "Busca semântica na base de conhecimento",
+      "summarizingDocument": "Resumindo documento",
+      "noDocumentsFound": "Nenhum documento encontrado na base de conhecimento.",
+      "documentsFound": "{{count}} documento(s) encontrado(s).",
+      "documentNotFound": "Documento não encontrado.",
+      "noContent": "Nenhum conteúdo disponível."
+    },
+    "feedback": {
+      "listingFeedbacks": "Listando feedbacks",
+      "trackingCustomization": "Rastreando customização"
+    },
+    "context": {
+      "stageNames": {
+        "1": "Ideação",
+        "2": "Imersão e Exploração",
+        "3": "Validação de Hipóteses",
+        "4": "Exploração",
+        "5": "Análise e Design",
+        "6": "Priorização e Pré QBR",
+        "7": "Transição para Downstream"
+      },
+      "slotTypeLabels": {
+        "general": "Documentos Gerais",
+        "market_insights": "Insights de Mercado e Pesquisa",
+        "stakeholder_mapping": "Mapeamento de Stakeholders",
+        "qualitative_data": "Dados Qualitativos (Entrevistas, Feedback)",
+        "quantitative_data": "Dados Quantitativos (Pesquisas, Métricas)",
+        "preliminary_results": "Resultados Preliminares e Análise",
+        "technical_data": "Documentação Técnica",
+        "usability_test": "Resultados de Teste de Usabilidade",
+        "actor_mapping": "Mapeamento de Atores e Sistemas"
+      }
+    },
+    "upstream": {
+      "searchArtifactsByText": "Buscando artefatos",
+      "getArtifactByPattern": "Buscando por padrão",
+      "searchArtifactsByTags": "Buscando por tags",
+      "listArtifactTypes": "Listando tipos de artefatos",
+      "readArtifactContent": "Lendo conteúdo do artefato",
+      "updateArtifact": "Atualizando artefato",
+      "editArtifactContent": "Editando artefato",
+      "validateArtifactType": "Validando tipo de artefato",
+      "setArtifactVersionProduction": "Definindo versão de produção",
+      "listKnowledgeDocuments": "Listando documentos",
+      "searchKnowledgeBase": "Pesquisando base de conhecimento",
+      "readKnowledgeDocument": "Lendo documento",
+      "semanticSearchKnowledgeBase": "Busca semântica (RAG)",
+      "summarizeKnowledgeDocument": "Resumindo documento",
+      "getAgentCard": "Obtendo informações do agente",
+      "executeUtilityAgent": "Executando agente",
+      "step1_suggestMacroInitiativeName": "Sugerindo nome da macroiniciativa",
+      "step1_suggestDescription": "Sugerindo descrição",
+      "step1_suggestInitialBusinessValue": "Calculando valor de negócio inicial",
+      "step1_suggestLinkedOKRs": "Sugerindo OKRs relacionados",
+      "step1_suggestProblemStatement": "Sugerindo declaração do problema",
+      "step1_suggestHypothesis": "Sugerindo hipótese",
+      "step1_suggestStrategicAlignment": "Sugerindo alinhamento estratégico",
+      "step2_suggestCSDMatrixItem": "Sugerindo item da matriz CSD",
+      "step2_suggestOpportunityTreeItem": "Sugerindo item da árvore de oportunidades",
+      "step2_suggestStakeholder": "Sugerindo stakeholder",
+      "step2_suggestInitialRisk": "Identificando risco inicial",
+      "step2_suggestMainProblems": "Identificando problemas principais",
+      "step3_suggestValidationMethod": "Sugerindo método de validação",
+      "step3_suggestQualitativeResults": "Analisando resultados qualitativos",
+      "step3_suggestQuantitativeResults": "Analisando resultados quantitativos",
+      "step3_suggestHypothesisConclusion": "Sugerindo conclusão da hipótese",
+      "step4_suggestDependency": "Identificando dependência",
+      "step4_suggestMitigationPlan": "Sugerindo plano de mitigação",
+      "step5_suggestKPI": "Sugerindo KPI",
+      "step5_suggestResponsibilityAgreement": "Sugerindo acordo de responsabilidade",
+      "step6_suggestFinalBusinessValue": "Calculando valor de negócio final",
+      "step6_suggestPrioritizationRationale": "Sugerindo racional de priorização",
+      "step6_suggestNextSteps": "Sugerindo próximos passos",
+      "listMCPPrompts": "Listando prompts MCP",
+      "getMCPPrompt": "Obtendo prompt MCP",
+      "executeMCPPrompt": "Executando prompt MCP",
+      "listMCPResources": "Listando recursos MCP",
+      "getMCPResource": "Obtendo recurso MCP"
+    },
+    "downstream": {
+      "stageNames": {
+        "1": "A FAZER",
+        "2": "EM REFINAMENTO",
+        "3": "DESIGN DE SOLUÇÃO",
+        "4": "EM PROGRESSO",
+        "5": "EM REVISÃO",
+        "6": "CONCLUÍDO"
+      }
+    },
+    "migrationWizard": {
+      "stepNames": {
+        "1": "Configuração de Conexão",
+        "2": "Descoberta de Agents",
+        "3": "Análise e Validação",
+        "4": "Execução",
+        "5": "Verificação"
+      }
+    },
+    "myTasks": {
+      "adding": "Adicionando tarefa...",
+      "added": "Tarefa adicionada!",
+      "errorAdding": "Erro ao adicionar",
+      "moving": "Movendo tarefas...",
+      "moved": "{{count}} tarefa(s) movida(s)!",
+      "errorMoving": "Erro ao mover",
+      "activatingFocus": "Ativando modo foco...",
+      "focusMode": "Modo Foco Ativado!",
+      "errorFocus": "Erro ao focar",
+      "searching": "Buscando \"{{title}}\"...",
+      "focusMessage": "{{userName}}, foque 100% nessa tarefa! Evite distrações.",
+      "changingPriority": "Alterando prioridade...",
+      "priorityChanged": "Prioridade alterada!",
+      "errorPriority": "Erro ao alterar",
+      "analyzingKanban": "Analisando Kanban...",
+      "error": "Erro",
+      "kanbanOverview": "Visão Geral do Kanban de {{userName}}",
+      "boardSummary": "Resumo do seu quadro de tarefas",
+      "total": "Total",
+      "inProgress": "Em Progresso",
+      "critical": "Críticas",
+      "overdue": "Atrasadas",
+      "analyzingWorkflow": "Analisando workflow...",
+      "generatingSuggestions": "Gerando sugestões inteligentes...",
+      "inboxZero": "Inbox Zero!",
+      "noActiveTasks": "Você não tem tarefas ativas! Aproveite para planejar novas ou relaxar.",
+      "workflowSuggestion": "Sugestão de Workflow",
+      "alternatives": "Alternativas"
+    }
+  }
+}

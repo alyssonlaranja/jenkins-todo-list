@@ -1,0 +1,67 @@
+services:
+  cockpit-mcp-portal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - BUILD_ID=${BUILD_ID:-build-$(date +%s)}
+    container_name: cockpit-mcp-portal
+    restart: unless-stopped
+    ports:
+      - '${PORT:-4200}:4200'
+    environment:
+      - NODE_ENV=${NODE_ENV:-production}
+      - BUILD_ID=${BUILD_ID:-build-$(date +%s)}
+      # Settings for streaming/suspense
+      - NODE_OPTIONS=--max-http-header-size=81920 --max-old-space-size=4096
+    volumes:
+      # Persistent volume for cache
+      - nextjs-cache:/app/.next/cache
+    profiles:
+      - ${NODE_ENV:-production}
+      - local
+      - docker
+      - development
+      - qa
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+      # High availability configuration
+      replicas: ${REPLICAS:-1}
+      update_config:
+        parallelism: 1
+        delay: 10s
+        order: start-first
+        failure_action: rollback
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+        window: 120s
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:4200/api/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    # Optimized network settings
+    networks:
+      - app-network
+    # DNS adjustments to avoid resolution issues
+    dns_opt:
+      - timeout:2
+      - attempts:5
+
+# Persistent volumes to maintain cache between restarts
+volumes:
+  nextjs-cache:
+    driver: local
+
+# Dedicated network configuration
+networks:
+  app-network:
+    driver: bridge

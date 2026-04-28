@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "Production Environment Configuration",
+  "environment": "prd",
+  "name": "aca-avasda-mcp-portal-prd01",
+  "keyVaultName": "kv-cockpit-br-prd01",
+  "logAnalyticsName": "log-cockpit-br-prd01",
+  "vnetName": "vnet-cockpit-br-prd01",
+  "subnetName": "snet-aca-cockpit-br-prd",
+  "environmentName": "aca-env-cockpit-br-prd",
+  "environmentVariables": [
+    {
+      "name": "NODE_ENV",
+      "value": "production"
+    },
+    {
+      "name": "NEXTAUTH_URL",
+      "value": "https://solutiondesign.br.avanade.ai/api/auth"
+    },
+    {
+      "name": "NEXT_PUBLIC_API_URL",
+      "value": "https://aca-portal-api-br-prd01.redbush-e61b6744.brazilsouth.azurecontainerapps.io"
+    },
+    {
+      "name": "NEXT_PUBLIC_CHAT_API_URL",
+      "value": "https://aca-api-agents-br-prd01.redbush-e61b6744.brazilsouth.azurecontainerapps.io"
+    },
+    {
+      "name": "NEXT_PUBLIC_WEBSOCKET_SERVER",
+      "value": "https://aca-websocket-server-prd01.redbush-e61b6744.brazilsouth.azurecontainerapps.io"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_SERVER_URL",
+      "value": "https://aca-mcp-server-prd01.redbush-e61b6744.brazilsouth.azurecontainerapps.io/mcp"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_SERVER_SUITE_URL",
+      "value": "https://aca-mcp-suite-prd01.redbush-e61b6744.brazilsouth.azurecontainerapps.io/mcp"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_SERVER_METRICS_URL",
+      "value": "https://aca-mcp-suite-prd01.redbush-e61b6744.brazilsouth.azurecontainerapps.io/mcp"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_SERVER_TELEMETRY_URL",
+      "value": "https://mcp-metrics.cockpit.avanade.ai/mcp"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_SERVER_LEGACY_URL",
+      "value": "https://mcp.br.avanade.ai/mcp"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_SERVER_UTILITY_AGENT_URL",
+      "value": "https://mcp-utility-agents.br.avanade.ai/mcp"
+    },
+    {
+      "name": "BUILD_ID",
+      "value": ""
+    },
+    {
+      "name": "NODE_OPTIONS",
+      "value": ""
+    },
+    {
+      "name": "NEXT_TELEMETRY_DISABLED",
+      "value": "1"
+    },
+    {
+      "name": "AZURE_OPENAI_EMBEDDING_ENDPOINT",
+      "value": "https://oai-cockpit-br-prd01.openai.azure.com/"
+    },
+    {
+      "name": "AZURE_OPENAI_DEPLOYMENT_NAME",
+      "value": "gpt-5.1"
+    },
+    {
+      "name": "AZURE_OPENAI_API_VERSION",
+      "value": "2025-01-01-preview"
+    },
+    {
+      "name": "AZURE_RESOURCE_NAME",
+      "value": "oai-cockpit-br-prd01"
+    },
+    {
+      "name": "AZURE_OPENAI_EMBEDDING_API_VERSION",
+      "value": "2023-05-15"
+    },
+    {
+      "name": "DISABLE_AUTH",
+      "value": "true"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_API_KEY",
+      "value": "cFf4IwGhwy38llzPNxpnv1EUrrs92GWN5mM6xBbNAPMy4Dr6DrjhOA00EnmVTQho"
+    },
+
+    {
+      "name": "NEXT_PUBLIC_MCP_LICENSE_ID",
+      "value": "14234418-f40d-41e5-8915-47f8b2007fbc"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_NAMESPACE_ID",
+      "value": "f1a9bb1c-5d4b-41bf-b23d-c21d66ef2ca9"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_UTILITY_AGENT_ID",
+      "value": "75819ebb-eaa7-4010-a5f8-d6e3353329e7"
+    }
+  ],
+  "scaling": {
+    "minReplicas": 1,
+    "maxReplicas": 5
+  },
+  "workloadProfile": "Consumption"
+}

@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "Staging Environment Configuration",
+  "environment": "stg",
+  "name": "aca-sda-portal-stg01",
+  "resourceGroup": "rg-sda-stg",
+  "keyVaultName": "kv-aap-aiofc-brs-dev02",
+  "keyVaultResourceGroup": "rg-aap-aiofc-brs-dev",
+  "logAnalyticsName": "log-sda-stg01",
+  "vnetName": "vnet-sda-stg01",
+  "subnetName": "snet-aca-sda-stg",
+  "environmentName": "cae-sda-stg01",
+  "environmentVariables": [
+    {
+      "name": "NODE_ENV",
+      "value": "staging"
+    },
+    {
+      "name": "NEXTAUTH_URL",
+      "value": "https://solutiondesign-stg.br.avanade.ai/api/auth"
+    },
+    {
+      "name": "NEXT_PUBLIC_API_URL",
+      "value": "https://api-dev.br.avanade.ai"
+    },
+    {
+      "name": "NEXT_PUBLIC_CHAT_API_URL",
+      "value": "https://api-agents-dev.br.avanade.ai"
+    },
+    {
+      "name": "NEXT_PUBLIC_WEBSOCKET_SERVER",
+      "value": "https://websocket-dev.br.avanade.ai"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_SERVER_URL",
+      "value": "https://mcp-dev.br.avanade.ai/mcp"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_SERVER_SUITE_URL",
+      "value": "https://mcp-suite-dev.br.avanade.ai/mcp"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_SERVER_METRICS_URL",
+      "value": "https://mcp-suite-dev.br.avanade.ai/mcp"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_SERVER_TELEMETRY_URL",
+      "value": "https://mcp-metrics-dev.br.avanade.ai/mcp"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_SERVER_LEGACY_URL",
+      "value": "https://mcp-dev.br.avanade.ai/mcp"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_SERVER_UTILITY_AGENT_URL",
+      "value": "https://mcp-utility-agents-dev.br.avanade.ai/mcp"
+    },
+    {
+      "name": "BUILD_ID",
+      "value": ""
+    },
+    {
+      "name": "NODE_OPTIONS",
+      "value": ""
+    },
+    {
+      "name": "NEXT_TELEMETRY_DISABLED",
+      "value": "1"
+    },
+    {
+      "name": "AZURE_OPENAI_EMBEDDING_ENDPOINT",
+      "value": "https://oai-aap-aiofc-eus2-dev01.openai.azure.com/"
+    },
+    {
+      "name": "AZURE_OPENAI_DEPLOYMENT_NAME",
+      "value": "gpt-5.1"
+    },
+    {
+      "name": "AZURE_OPENAI_API_VERSION",
+      "value": "2025-01-01-preview"
+    },
+    {
+      "name": "AZURE_RESOURCE_NAME",
+      "value": "oai-aap-aiofc-eus2-dev01"
+    },
+    {
+      "name": "AZURE_OPENAI_EMBEDDING_API_VERSION",
+      "value": "2023-05-15"
+    },
+    {
+      "name": "DISABLE_AUTH",
+      "value": "true"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_API_KEY",
+      "value": "(Mms7T&>Tddi)D3_Rj)N;GTLzvLgRxaTct=#zb*_6!Aqpc3iI&F7Y85n}_7zO.8k"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_LICENSE_ID",
+      "value": "14234418-f40d-41e5-8915-47f8b2007fbc"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_UTILITY_AGENT_ID",
+      "value": "53add40d-8f2c-4ca4-89cf-b4551c572e12"
+    },
+    {
+      "name": "NEXT_PUBLIC_MCP_NAMESPACE_ID",
+      "value": "57722dc3-9e7d-41e2-940b-6ae81ce29b8a"
+    }
+  ],
+  "scaling": {
+    "minReplicas": 1,
+    "maxReplicas": 3
+  },
+  "workloadProfile": "Consumption"
+}

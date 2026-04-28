@@ -1,0 +1,43 @@
+```yaml
+template:
+  id: frontend-architecture-template-v2
+  name: Frontend Architecture Document
+  version: 2.0
+  output:
+    format: markdown
+    filename: docs/frontend-architecture.md
+    title: "{{project_name}} Frontend Architecture"
+
+sections:
+  - id: technical-stack
+    title: "Technical Stack"
+    content:
+      - framework_selection
+      - ui_library
+      - state_management
+      - build_tools
+
+  - id: component-architecture
+    title: "Component Architecture"
+    content:
+      - component_hierarchy
+      - reusable_components
+      - styling_approach
+      - design_system
+
+  - id: user-experience
+    title: "User Experience"
+    content:
+      - user_flows
+      - responsive_design
+      - accessibility
+      - performance
+
+fields:
+  project_name:
+    type: text
+    required: true
+  framework:
+    type: select
+    options: ["React", "Vue", "Angular", "Other"]
+```

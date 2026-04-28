@@ -1,0 +1,321 @@
+template:
+  id: brownfield-architecture-template-v2
+  name: Brownfield Enhancement Architecture
+  version: 2.0
+  output:
+    format: markdown
+    filename: docs/architecture.md
+    title: "{{project_name}} Brownfield Enhancement Architecture"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: introduction
+    title: Introduction
+    instruction: |
+      IMPORTANT - SCOPE AND ASSESSMENT REQUIRED:
+      
+      This architecture document is for SIGNIFICANT enhancements to existing projects that require comprehensive architectural planning. Before proceeding:
+      
+      1. **Verify Complexity**: Confirm this enhancement requires architectural planning. For simple additions, recommend: "For simpler changes that don't require architectural planning, consider using the brownfield-create-epic or brownfield-create-story task with the Product Owner instead."
+      
+      2. **REQUIRED INPUTS**:
+         - Completed brownfield-prd.md
+         - Existing project technical documentation (from docs folder or user-provided)
+         - Access to existing project structure (IDE or uploaded files)
+      
+      3. **DEEP ANALYSIS MANDATE**: You MUST conduct thorough analysis of the existing codebase, architecture patterns, and technical constraints before making ANY architectural recommendations. Every suggestion must be based on actual project analysis, not assumptions.
+      
+      4. **CONTINUOUS VALIDATION**: Throughout this process, explicitly validate your understanding with the user. For every architectural decision, confirm: "Based on my analysis of your existing system, I recommend [decision] because [evidence from actual project]. Does this align with your system's reality?"
+      
+      If any required inputs are missing, request them before proceeding.
+    elicit: true
+    sections:
+      - id: intro-content
+        content: |
+          This document outlines the architectural approach for enhancing {{project_name}} with {{enhancement_description}}. Its primary goal is to serve as the guiding architectural blueprint for AI-driven development of new features while ensuring seamless integration with the existing system.
+          
+          **Relationship to Existing Architecture:**
+          This document supplements existing project architecture by defining how new components will integrate with current systems. Where conflicts arise between new and existing patterns, this document provides guidance on maintaining consistency while implementing enhancements.
+      - id: existing-project-analysis
+        title: Existing Project Analysis
+        instruction: |
+          Analyze the existing project structure and architecture:
+          
+          1. Review existing documentation in docs folder
+          2. Examine current technology stack and versions
+          3. Identify existing architectural patterns and conventions
+          4. Note current deployment and infrastructure setup
+          5. Document any constraints or limitations
+          
+          CRITICAL: After your analysis, explicitly validate your findings: "Based on my analysis of your project, I've identified the following about your existing system: [key findings]. Please confirm these observations are accurate before I proceed with architectural recommendations."
+        elicit: true
+        sections:
+          - id: current-state
+            title: Current Project State
+            template: |
+              - **Primary Purpose:** {{existing_project_purpose}}
+              - **Current Tech Stack:** {{existing_tech_summary}}
+              - **Architecture Style:** {{existing_architecture_style}}
+              - **Deployment Method:** {{existing_deployment_approach}}
+          - id: available-docs
+            title: Available Documentation
+            type: bullet-list
+            template: "- {{existing_docs_summary}}"
+          - id: constraints
+            title: Identified Constraints
+            type: bullet-list
+            template: "- {{constraint}}"
+      - id: changelog
+        title: Change Log
+        type: table
+        columns: [Change, Date, Version, Description, Author]
+        instruction: Track document versions and changes
+
+  - id: enhancement-scope
+    title: Enhancement Scope and Integration Strategy
+    instruction: |
+      Define how the enhancement will integrate with the existing system:
+      
+      1. Review the brownfield PRD enhancement scope
+      2. Identify integration points with existing code
+      3. Define boundaries between new and existing functionality
+      4. Establish compatibility requirements
+      
+      VALIDATION CHECKPOINT: Before presenting the integration strategy, confirm: "Based on my analysis, the integration approach I'm proposing takes into account [specific existing system characteristics]. These integration points and boundaries respect your current architecture patterns. Is this assessment accurate?"
+    elicit: true
+    sections:
+      - id: enhancement-overview
+        title: Enhancement Overview
+        template: |
+          **Enhancement Type:** {{enhancement_type}}
+          **Scope:** {{enhancement_scope}}
+          **Integration Impact:** {{integration_impact_level}}
+      - id: integration-approach
+        title: Integration Approach
+        template: |
+          **Code Integration Strategy:** {{code_integration_approach}}
+          **Database Integration:** {{database_integration_approach}}
+          **API Integration:** {{api_integration_approach}}
+          **UI Integration:** {{ui_integration_approach}}
+      - id: compatibility-requirements
+        title: Compatibility Requirements
+        template: |
+          - **Existing API Compatibility:** {{api_compatibility}}
+          - **Database Schema Compatibility:** {{db_compatibility}}
+          - **UI/UX Consistency:** {{ui_compatibility}}
+          - **Performance Impact:** {{performance_constraints}}
+
+  - id: tech-stack-alignment
+    title: Tech Stack Alignment
+    instruction: |
+      Ensure new components align with existing technology choices:
+      
+      1. Use existing technology stack as the foundation
+      2. Only introduce new technologies if absolutely necessary
+      3. Justify any new additions with clear rationale
+      4. Ensure version compatibility with existing dependencies
+    elicit: true
+    sections:
+      - id: existing-stack
+        title: Existing Technology Stack
+        type: table
+        columns: [Category, Current Technology, Version, Usage in Enhancement, Notes]
+        instruction: Document the current stack that must be maintained or integrated with
+      - id: new-tech-additions
+        title: New Technology Additions
+        condition: Enhancement requires new technologies
+        type: table
+        columns: [Technology, Version, Purpose, Rationale, Integration Method]
+        instruction: Only include if new technologies are required for the enhancement
+
+  - id: data-models
+    title: Data Models and Schema Changes
+    instruction: |
+      Define new data models and how they integrate with existing schema:
+      
+      1. Identify new entities required for the enhancement
+      2. Define relationships with existing data models
+      3. Plan database schema changes (additions, modifications)
+      4. Ensure backward compatibility
+    elicit: true
+    sections:
+      - id: new-models
+        title: New Data Models
+        repeatable: true
+        sections:
+          - id: model
+            title: "{{model_name}}"
+            template: |
+              **Purpose:** {{model_purpose}}
+              **Integration:** {{integration_with_existing}}
+              
+              **Key Attributes:**
+              - {{attribute_1}}: {{type_1}} - {{description_1}}
+              - {{attribute_2}}: {{type_2}} - {{description_2}}
+              
+              **Relationships:**
+              - **With Existing:** {{existing_relationships}}
+              - **With New:** {{new_relationships}}
+      - id: schema-integration
+        title: Schema Integration Strategy
+        template: |
+          **Database Changes Required:**
+          - **New Tables:** {{new_tables_list}}
+          - **Modified Tables:** {{modified_tables_list}}
+          - **New Indexes:** {{new_indexes_list}}
+          - **Migration Strategy:** {{migration_approach}}
+          
+          **Backward Compatibility:**
+          - {{compatibility_measure_1}}
+          - {{compatibility_measure_2}}
+
+  - id: component-architecture
+    title: Component Architecture
+    instruction: |
+      Define new components and their integration with existing architecture:
+      
+      1. Identify new components required for the enhancement
+      2. Define interfaces with existing components
+      3. Establish clear boundaries and responsibilities
+      4. Plan integration points and data flow
+      
+      MANDATORY VALIDATION: Before presenting component architecture, confirm: "The new components I'm proposing follow the existing architectural patterns I identified in your codebase: [specific patterns]. The integration interfaces respect your current component structure and communication patterns. Does this match your project's reality?"
+    elicit: true
+    sections:
+      - id: new-components
+        title: New Components
+        repeatable: true
+        sections:
+          - id: component
+            title: "{{component_name}}"
+            template: |
+              **Responsibility:** {{component_description}}
+              **Integration Points:** {{integration_points}}
+              
+              **Key Interfaces:**
+              - {{interface_1}}
+              - {{interface_2}}
+              
+              **Dependencies:**
+              - **Existing Components:** {{existing_dependencies}}
+              - **New Components:** {{new_dependencies}}
+              
+              **Technology Stack:** {{component_tech_details}}
+      - id: interaction-diagram
+        title: Component Interaction Diagram
+        type: mermaid
+        mermaid_type: graph
+        instruction: Create Mermaid diagram showing how new components interact with existing ones
+
+  - id: api-design
+    title: API Design and Integration
+    condition: Enhancement requires API changes
+    instruction: |
+      Define new API endpoints and integration with existing APIs:
+      
+      1. Plan new API endpoints required for the enhancement
+      2. Ensure consistency with existing API patterns
+      3. Define authentication and authorization integration
+      4. Plan versioning strategy if needed
+    elicit: true
+    sections:
+      - id: api-strategy
+        title: API Integration Strategy
+        template: |
+          **API Integration Strategy:** {{api_integration_strategy}}
+          **Authentication:** {{auth_integration}}
+          **Versioning:** {{versioning_approach}}
+      - id: new-endpoints
+        title: New API Endpoints
+        repeatable: true
+        sections:
+          - id: endpoint
+            title: "{{endpoint_name}}"
+            template: |
+              - **Method:** {{http_method}}
+              - **Endpoint:** {{endpoint_path}}
+              - **Purpose:** {{endpoint_purpose}}
+              - **Integration:** {{integration_with_existing}}
+            sections:
+              - id: request
+                title: Request
+                type: code
+                language: json
+                template: "{{request_schema}}"
+              - id: response
+                title: Response
+                type: code
+                language: json
+                template: "{{response_schema}}"
+
+  - id: testing-strategy
+    title: Testing Strategy
+    instruction: |
+      Define testing approach for the enhancement:
+      
+      1. Integrate with existing test suite
+      2. Ensure existing functionality remains intact
+      3. Plan for testing new features
+      4. Define integration testing approach
+    elicit: true
+    sections:
+      - id: existing-test-integration
+        title: Integration with Existing Tests
+        template: |
+          **Existing Test Framework:** {{existing_test_framework}}
+          **Test Organization:** {{existing_test_organization}}
+          **Coverage Requirements:** {{existing_coverage_requirements}}
+      - id: new-testing
+        title: New Testing Requirements
+        sections:
+          - id: unit-tests
+            title: Unit Tests for New Components
+            template: |
+              - **Framework:** {{test_framework}}
+              - **Location:** {{test_location}}
+              - **Coverage Target:** {{coverage_target}}
+              - **Integration with Existing:** {{test_integration}}
+          - id: integration-tests
+            title: Integration Tests
+            template: |
+              - **Scope:** {{integration_test_scope}}
+              - **Existing System Verification:** {{existing_system_verification}}
+              - **New Feature Testing:** {{new_feature_testing}}
+          - id: regression-tests
+            title: Regression Testing
+            template: |
+              - **Existing Feature Verification:** {{regression_test_approach}}
+              - **Automated Regression Suite:** {{automated_regression}}
+              - **Manual Testing Requirements:** {{manual_testing_requirements}}
+
+  - id: next-steps
+    title: Next Steps
+    instruction: |
+      After completing the brownfield architecture:
+      
+      1. Review integration points with existing system
+      2. Begin story implementation with Dev agent
+      3. Set up deployment pipeline integration
+      4. Plan rollback and monitoring procedures
+    sections:
+      - id: story-manager-handoff
+        title: Story Manager Handoff
+        instruction: |
+          Create a brief prompt for Story Manager to work with this brownfield enhancement. Include:
+          - Reference to this architecture document
+          - Key integration requirements validated with user
+          - Existing system constraints based on actual project analysis
+          - First story to implement with clear integration checkpoints
+          - Emphasis on maintaining existing system integrity throughout implementation
+      - id: developer-handoff
+        title: Developer Handoff
+        instruction: |
+          Create a brief prompt for developers starting implementation. Include:
+          - Reference to this architecture and existing coding standards analyzed from actual project
+          - Integration requirements with existing codebase validated with user
+          - Key technical decisions based on real project constraints
+          - Existing system compatibility requirements with specific verification steps
+          - Clear sequencing of implementation to minimize risk to existing functionality

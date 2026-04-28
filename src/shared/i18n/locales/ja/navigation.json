@@ -1,0 +1,41 @@
+{
+  "groups": {
+    "aiHub": "AIハブ",
+    "commandCenter": "コマンドセンター",
+    "agentConsole": "エージェントコンソール",
+    "administration": "管理"
+  },
+  "aiHub": {
+    "aiLibrary": "AIライブラリ",
+    "agentPlayground": "エージェントプレイグラウンド",
+    "utilityAgents": "ユーティリティエージェント",
+    "videoGeneration": "ビデオ生成",
+    "configuration": "設定"
+  },
+  "commandCenter": {
+    "agentControlPanel": "エージェントコントロールパネル",
+    "managementAgents": "管理エージェント",
+    "schedule": "スケジュール",
+    "reports": "レポート",
+    "telemetry": "テレメトリ"
+  },
+  "agentConsole": {
+    "aiRegistry": "AIレジストリ",
+    "sandbox": "サンドボックス",
+    "agentCreator": "エージェントクリエーター",
+    "importAgents": "エージェントのインポート",
+    "utilityAgents": "ユーティリティエージェント",
+    "aiMarketplace": "AIマーケットプレイス"
+  },
+  "administration": {
+    "systemAdministrator": "システム管理者",
+    "users": "ユーザー",
+    "namespaces": "名前空間",
+    "licenses": "ライセンス",
+    "artifacts": "アーティファクト",
+    "artifactLibrary": "アーティファクトライブラリ"
+  },
+  "search": {
+    "noResults": "「{{term}}」に一致する項目は見つかりませんでした"
+  }
+}

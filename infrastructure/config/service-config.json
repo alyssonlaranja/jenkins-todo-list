@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "name": "aca-aigrowth-ccaas-frontend",
+  "title": "CCaaS Frontend",
+  "description": "AI GROWTH SHARED",
+  "displayName": "AI GROWTH SHARED",
+  "version": "1.0.0",
+  "acrName": "craigrowth",
+  "keyVaultName": "kv-aigrowth",
+  "vnetName": "vnet-aigrowth-shared",
+  "subnetName": "snet-aigrowth-dev",
+  "environmentName": "cae-aigrowth-dev",
+  "container": {
+    "port": 4200,
+    "protocol": "http"
+  },
+  "ingress": {
+    "external": true,
+    "allowInsecure": false,
+    "transport": "auto"
+  },
+  "networking": {
+    "internal": false,
+    "allowedOrigins": []
+  },
+  "resources": {
+    "cpu": "0.5",
+    "memory": "1.0Gi"
+  },
+  "scaling": {
+    "minReplicas": 1,
+    "maxReplicas": 3,
+    "rules": [
+      {
+        "name": "http-scaling",
+        "type": "http",
+        "metadata": {
+          "concurrentRequests": "100"
+        }
+      },
+      {
+        "name": "cpu-scaling",
+        "type": "cpu",
+        "metadata": {
+          "type": "Utilization",
+          "value": "80"
+        }
+      }
+    ]
+  },
+  "workloadProfile": "Consumption",
+  "healthProbe": {
+    "path": "/health",
+    "liveness": {
+      "initialDelaySeconds": 45,
+      "periodSeconds": 30,
+      "timeoutSeconds": 10,
+      "failureThreshold": 3
+    },
+    "readiness": {
+      "initialDelaySeconds": 20,
+      "periodSeconds": 15,
+      "timeoutSeconds": 5,
+      "failureThreshold": 3
+    }
+  },
+ 
+  "environmentVariables": [
+    
+  ],
+  "secrets": [
+  ]
+}
+

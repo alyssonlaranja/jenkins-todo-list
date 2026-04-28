@@ -1,0 +1,65 @@
+# Docker Compose para emular ambiente de produção
+# Uso: docker-compose -f docker-compose.production.yml up --build
+
+services:
+  cockpit-mcp-portal-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # NÃO passar NEXT_PUBLIC_* no build (simula produção real)
+    container_name: cockpit-mcp-portal-prod
+    restart: unless-stopped
+    ports:
+      - '4200:4200'
+    environment:
+      # Variáveis de runtime (injetadas APÓS o build)
+      - NODE_ENV=production
+      - NEXTAUTH_URL=http://localhost:4200/api/auth
+      - AUTH_SECRET=${AUTH_SECRET}
+      - AZURE_AD_CLIENT_ID=${AZURE_AD_CLIENT_ID}
+      - AZURE_AD_CLIENT_SECRET=${AZURE_AD_CLIENT_SECRET}
+      - AZURE_AD_TENANT_ID=${AZURE_AD_TENANT_ID}
+      # NEXT_PUBLIC_* - disponíveis apenas via /api/config em runtime
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+      - NEXT_PUBLIC_CHAT_API_URL=${NEXT_PUBLIC_CHAT_API_URL}
+      - NEXT_PUBLIC_WEBSOCKET_SERVER=${NEXT_PUBLIC_WEBSOCKET_SERVER}
+      - NEXT_PUBLIC_MCP_SERVER_URL=${NEXT_PUBLIC_MCP_SERVER_URL}
+      - NEXT_PUBLIC_MCP_SERVER_SUITE_URL=${NEXT_PUBLIC_MCP_SERVER_SUITE_URL}
+      - NEXT_PUBLIC_MCP_SERVER_METRICS_URL=${NEXT_PUBLIC_MCP_SERVER_METRICS_URL}
+      - NEXT_PUBLIC_MCP_SERVER_TELEMETRY_URL=${NEXT_PUBLIC_MCP_SERVER_TELEMETRY_URL}
+      - NEXT_PUBLIC_MCP_SERVER_LEGACY_URL=${NEXT_PUBLIC_MCP_SERVER_LEGACY_URL}
+      - NEXT_PUBLIC_MCP_SERVER_UTILITY_AGENT_URL=${NEXT_PUBLIC_MCP_SERVER_UTILITY_AGENT_URL}
+      # Azure OpenAI
+      - AZURE_OPENAI_API_KEY=${AZURE_OPENAI_API_KEY}
+      - AZURE_API_KEY=${AZURE_API_KEY}
+      - AZURE_OPENAI_EMBEDDING_API_KEY=${AZURE_OPENAI_EMBEDDING_API_KEY}
+      - AZURE_OPENAI_EMBEDDING_ENDPOINT=${AZURE_OPENAI_EMBEDDING_ENDPOINT}
+      - AZURE_OPENAI_DEPLOYMENT_NAME=${AZURE_OPENAI_DEPLOYMENT_NAME}
+      - AZURE_OPENAI_API_VERSION=${AZURE_OPENAI_API_VERSION}
+      - AZURE_RESOURCE_NAME=${AZURE_RESOURCE_NAME}
+      - AZURE_OPENAI_EMBEDDING_API_VERSION=${AZURE_OPENAI_EMBEDDING_API_VERSION}
+      # MCP
+      - MCP_SERVER_API_KEY=${MCP_SERVER_API_KEY}
+      # Flags
+      - DISABLE_AUTH=${DISABLE_AUTH:-true}
+      - NEXT_TELEMETRY_DISABLED=1
+      # Node options
+      - NODE_OPTIONS=--max-http-header-size=81920 --max-old-space-size=4096
+    volumes:
+      - nextjs-cache-prod:/app/.next/cache
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:4200/api/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - app-network-prod
+
+volumes:
+  nextjs-cache-prod:
+    driver: local
+
+networks:
+  app-network-prod:
+    driver: bridge

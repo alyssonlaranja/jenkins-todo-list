@@ -1,0 +1,81 @@
+```yaml
+template:
+  id: market-research-template-v2
+  name: Market Research Report
+  version: 2.0
+  output:
+    format: markdown
+    filename: docs/market-research.md
+    title: "Market Research Report: {{project_product_name}}"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: executive-summary
+    title: "Executive Summary"
+    required: true
+    content:
+      - key_findings
+      - market_opportunity
+      - strategic_recommendations
+      - next_steps
+
+  - id: market-analysis
+    title: "Market Analysis"
+    required: true
+    content:
+      - market_size_analysis
+      - growth_projections
+      - market_trends
+      - customer_segments
+
+  - id: competitive-landscape
+    title: "Competitive Landscape"
+    required: true
+    content:
+      - competitor_analysis
+      - market_positioning
+      - pricing_strategies
+      - competitive_advantages
+
+  - id: customer-insights
+    title: "Customer Insights"
+    required: true
+    content:
+      - target_personas
+      - customer_needs
+      - pain_points
+      - buying_behavior
+
+  - id: opportunity-assessment
+    title: "Opportunity Assessment"
+    required: true
+    content:
+      - market_gaps
+      - business_opportunities
+      - risk_analysis
+      - go_to_market_strategy
+
+fields:
+  project_product_name:
+    type: text
+    required: true
+    description: "Name of the product/service being researched"
+  
+  target_market:
+    type: textarea
+    required: true
+    description: "Primary target market and segments"
+  
+  research_scope:
+    type: textarea
+    required: true
+    description: "Scope and objectives of market research"
+  
+  timeline:
+    type: text
+    required: true
+    description: "Research timeline and key milestones"
+```

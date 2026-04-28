@@ -1,0 +1,76 @@
+```yaml
+template:
+  id: brownfield-prd-template-v2
+  name: Brownfield Enhancement PRD
+  version: 2.0
+  output:
+    format: markdown
+    filename: docs/prd.md
+    title: "{{project_name}} Brownfield Enhancement PRD"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: intro-analysis
+    title: "Introduction & Analysis"
+    required: true
+    content:
+      - project_overview
+      - existing_system_analysis
+      - enhancement_scope
+      - business_justification
+
+  - id: requirements
+    title: "Requirements"
+    required: true
+    content:
+      - functional_requirements
+      - non_functional_requirements
+      - integration_requirements
+      - compliance_requirements
+
+  - id: user-experience
+    title: "User Experience"
+    required: true
+    content:
+      - user_stories
+      - user_journeys
+      - acceptance_criteria
+      - success_metrics
+
+  - id: technical-considerations
+    title: "Technical Considerations"
+    required: true
+    content:
+      - architecture_impact
+      - technology_constraints
+      - integration_points
+      - migration_strategy
+
+  - id: implementation
+    title: "Implementation Plan"
+    required: true
+    content:
+      - development_approach
+      - testing_strategy
+      - deployment_plan
+      - rollback_strategy
+
+fields:
+  project_name:
+    type: text
+    required: true
+    description: "Name of the brownfield project/enhancement"
+  
+  enhancement_scope:
+    type: textarea
+    required: true
+    description: "Detailed scope of the enhancement"
+  
+  business_justification:
+    type: textarea
+    required: true
+    description: "Business case and justification for enhancement"
+```

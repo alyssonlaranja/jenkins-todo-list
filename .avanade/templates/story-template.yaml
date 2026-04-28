@@ -1,0 +1,98 @@
+template:
+  id: story-template-v2
+  name: User Story Template
+  version: 2.0
+  output:
+    format: markdown
+    filename: "stories/{{epic_number}}-{{story_number}}-{{story_slug}}.md"
+    title: "Story {{epic_number}}.{{story_number}}: {{story_title}}"
+
+workflow:
+  mode: agent-controlled
+  elicitation: structured
+
+sections:
+  - id: story-header
+    title: Story Information
+    sections:
+      - id: story-statement
+        title: Story Statement
+        template: |
+          As a {{user_type}},
+          I want {{action}},
+          so that {{benefit}}.
+      - id: story-metadata
+        title: Metadata
+        template: |
+          - **Epic:** {{epic_number}} - {{epic_title}}
+          - **Story Points:** {{story_points}}
+          - **Priority:** {{priority}}
+          - **Dependencies:** {{dependencies}}
+
+  - id: acceptance-criteria
+    title: Acceptance Criteria
+    type: numbered-list
+    template: "AC{{ac_number}}: {{criteria}}"
+    instruction: |
+      List all acceptance criteria from the PRD. These define what "done" means for this story.
+
+  - id: technical-context
+    title: Technical Context
+    instruction: |
+      Provide relevant technical context from the Architecture Document that applies to this story.
+    sections:
+      - id: relevant-components
+        title: Relevant Components
+        instruction: List architecture components this story will touch
+      - id: technical-constraints
+        title: Technical Constraints
+        instruction: Any specific technical requirements or constraints
+      - id: integration-points
+        title: Integration Points
+        instruction: External systems or services this story interacts with
+
+  - id: implementation-guidance
+    title: Implementation Guidance
+    instruction: |
+      Provide specific guidance for implementing this story based on the architecture.
+    sections:
+      - id: approach
+        title: Recommended Approach
+        instruction: High-level implementation strategy
+      - id: key-files
+        title: Key Files to Modify/Create
+        type: bullet-list
+        instruction: List specific files that need to be created or modified
+      - id: testing-approach
+        title: Testing Approach
+        instruction: How to test this story's functionality
+
+  - id: developer-checklist
+    title: Developer Checklist
+    type: checklist
+    items:
+      - "Story requirements understood"
+      - "Technical approach reviewed"
+      - "Tests written (unit/integration as appropriate)"
+      - "Code implemented and tested locally"
+      - "Acceptance criteria verified"
+      - "Code reviewed and approved"
+      - "Documentation updated"
+
+agent_controls:
+  story_ready_check: |
+    Before starting implementation:
+    1. Verify all acceptance criteria are clear
+    2. Confirm technical approach aligns with architecture
+    3. Ensure all dependencies are met
+    4. Validate story is properly sized for single session
+
+  implementation_flow: |
+    Recommended implementation sequence:
+    1. Review story context and acceptance criteria
+    2. Plan technical approach
+    3. Write tests first (TDD approach)
+    4. Implement minimum viable solution
+    5. Refactor and optimize
+    6. Verify all acceptance criteria
+    7. Update documentation

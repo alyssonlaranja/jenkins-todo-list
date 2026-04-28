@@ -1,0 +1,75 @@
+```yaml
+template:
+  id: competitor-analysis-template-v2
+  name: Competitive Analysis Report
+  version: 2.0
+  output:
+    format: markdown
+    filename: docs/competitor-analysis.md
+    title: "Competitive Analysis Report: {{project_product_name}}"
+
+workflow:
+  mode: interactive
+  elicitation: advanced-elicitation
+
+sections:
+  - id: executive-summary
+    title: "Executive Summary"
+    required: true
+    content:
+      - key_findings
+      - competitive_landscape
+      - strategic_recommendations
+
+  - id: market-overview
+    title: "Market Overview"
+    required: true
+    content:
+      - market_size
+      - growth_trends
+      - key_players
+      - market_segments
+
+  - id: competitor-profiles
+    title: "Competitor Profiles"
+    required: true
+    content:
+      - direct_competitors
+      - indirect_competitors
+      - feature_comparison
+      - pricing_analysis
+
+  - id: competitive-positioning
+    title: "Competitive Positioning"
+    required: true
+    content:
+      - value_proposition
+      - differentiators
+      - competitive_advantages
+      - market_positioning
+
+  - id: strategic-analysis
+    title: "Strategic Analysis"
+    required: true
+    content:
+      - swot_analysis
+      - gap_analysis
+      - opportunities
+      - threats
+
+fields:
+  project_product_name:
+    type: text
+    required: true
+    description: "Name of the product being analyzed"
+  
+  target_market:
+    type: textarea
+    required: true
+    description: "Target market and customer segments"
+  
+  analysis_scope:
+    type: textarea
+    required: true
+    description: "Scope and focus of competitive analysis"
+```

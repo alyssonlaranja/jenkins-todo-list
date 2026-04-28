@@ -1,0 +1,550 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Light Mode */
+  :root {
+    --background: 0 0% 97%;
+    --foreground: 0 0% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 15%;
+    --primary: 24 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 93%;
+    --secondary-foreground: 0 0% 25%;
+    --muted: 0 0% 93%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 24 80% 92%;
+    --accent-foreground: 24 100% 35%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 85%;
+    --input: 0 0% 92%;
+    --ring: 24 100% 50%;
+    --radius: 0.75rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 40%;
+    --sidebar-primary: 24 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 93%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-border: 0 0% 88%;
+    --sidebar-ring: 24 100% 50%;
+    --avanade-orange: 24 100% 50%;
+  }
+
+  /* Dark Mode - SDA Remasterizado Design */
+  .dark {
+    --background: 0 0% 20%;
+    --foreground: 0 0% 93%;
+    --card: 0 0% 24%;
+    --card-foreground: 0 0% 93%;
+    --popover: 0 0% 24%;
+    --popover-foreground: 0 0% 93%;
+    --primary: 24 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 28%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 0 0% 28%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 24 80% 25%;
+    --accent-foreground: 24 100% 70%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 30%;
+    --input: 0 0% 26%;
+    --ring: 24 100% 50%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 0 0% 18%;
+    --sidebar-foreground: 0 0% 70%;
+    --sidebar-primary: 24 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 24%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 26%;
+    --sidebar-ring: 24 100% 50%;
+    --avanade-orange: 24 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    font-family:
+      'Segoe UI',
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+  }
+
+  :not(pre) > code[class*='language-'],
+  pre[class*='language-'] {
+    background-color: transparent !important;
+  }
+
+  code,
+  pre,
+  kbd {
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-gradient-card {
+    background-image: var(--gradient-card);
+  }
+
+  .bg-gradient-hero {
+    background-image: var(--gradient-hero);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .glass {
+    @apply border border-border/50 bg-card/80 backdrop-blur-xl;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 5px hsl(24 100% 50% / 0.2);
+    }
+    50% {
+      box-shadow: 0 0 20px hsl(24 100% 50% / 0.4);
+    }
+  }
+}
+
+/* CopilotKit Theming - Official CSS Custom Properties */
+:root {
+  /* Light mode - default CopilotKit colors with orange primary */
+  --copilot-kit-primary-color: #ff6600;
+  --copilot-kit-contrast-color: #ffffff;
+  --copilot-kit-background-color: #f7f7f7;
+  --copilot-kit-input-background-color: #ffffff;
+  --copilot-kit-secondary-color: #ededed;
+  --copilot-kit-secondary-contrast-color: #262626;
+  --copilot-kit-separator-color: #d9d9d9;
+  --copilot-kit-muted-color: #737373;
+  --copilot-kit-scrollbar-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark {
+  /* Dark mode - matching SDA Remasterizado design (gray 20%/24%) */
+  --copilot-kit-primary-color: #ff6600;
+  --copilot-kit-contrast-color: #ffffff;
+  --copilot-kit-background-color: #333333;
+  --copilot-kit-input-background-color: #3d3d3d;
+  --copilot-kit-secondary-color: #474747;
+  --copilot-kit-secondary-contrast-color: #ededed;
+  --copilot-kit-separator-color: #4d4d4d;
+  --copilot-kit-muted-color: #999999;
+  --copilot-kit-scrollbar-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Avanade Theme - Orange Brand Colors */
+.avanade {
+  --background: 0 0% 99%;
+  --foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --primary: 16 100% 43.1%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --ring: 16 100% 43.1%;
+  --radius: 0.5rem;
+  --sidebar-background: 0 0% 98%;
+  --sidebar-foreground: 240 5.3% 26.1%;
+  --sidebar-primary: 240 5.9% 10%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 240 4.8% 95.9%;
+  --sidebar-accent-foreground: 240 5.9% 10%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 217.2 91.2% 59.8%;
+  --avanade-orange: 21 100% 50%;
+
+  /* CopilotKit colors for Avanade theme */
+  --copilot-kit-primary-color: #f54900;
+  --copilot-kit-contrast-color: #ffffff;
+  --copilot-kit-background-color: #ffffff;
+  --copilot-kit-input-background-color: #f9fafb;
+  --copilot-kit-secondary-color: #f3f4f6;
+  --copilot-kit-secondary-contrast-color: #1f2937;
+  --copilot-kit-separator-color: #e5e7eb;
+  --copilot-kit-muted-color: #9ca3af;
+  --copilot-kit-scrollbar-color: rgba(0, 0, 0, 0.2);
+}
+
+/* BV Theme - Banco BV Brand Colors (Official Blue #0b5fff) */
+.bv {
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 217 100% 52%; /* #0b5fff - Cor oficial do menu BV */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 220 9% 46%;
+  --accent: 187 73% 59%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --ring: 217 100% 52%; /* #0b5fff - Cor oficial do menu BV */
+  --radius: 0.5rem;
+  --sidebar-background: 0 0% 98%;
+  --sidebar-foreground: 222 47% 11%;
+  --sidebar-primary: 217 100% 52%; /* #0b5fff - Cor oficial do menu BV */
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 220 14% 96%;
+  --sidebar-accent-foreground: 222 47% 11%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 217 100% 52%; /* #0b5fff - Cor oficial do menu BV */
+  --bv-header: 230 67% 97%;
+
+  /* CopilotKit colors for BV theme - Official BV Blue (#0b5fff normal, #004ad7 hover) */
+  --copilot-kit-primary-color: #0b5fff;
+  --copilot-kit-contrast-color: #ffffff;
+  --copilot-kit-background-color: #ffffff;
+  --copilot-kit-input-background-color: #f5f7ff;
+  --copilot-kit-secondary-color: #e8ecff;
+  --copilot-kit-secondary-contrast-color: #004ad7; /* Cor do hover oficial */
+  --copilot-kit-separator-color: #d1d9ff;
+  --copilot-kit-muted-color: #80acff; /* Tom m├⌐dio entre normal e hover */
+  --copilot-kit-scrollbar-color: rgba(11, 95, 255, 0.2);
+
+  /* BV Font - Use Inter as the primary font */
+  font-family:
+    var(--font-inter),
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+}
+
+/* CopilotKit Custom CSS Classes - Avanade Design System */
+
+/* Sidebar window - Match shadcn/ui card styling */
+.copilotKitSidebar .copilotKitWindow {
+  font-family: var(--font-segoe-ui), ui-sans-serif, system-ui, sans-serif;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius);
+  /* Increase sidebar width for better readability */
+  width: 550px !important;
+  max-width: 95vw !important;
+}
+
+/* Messages container - Proper spacing and typography */
+.copilotKitMessages {
+  padding: 1.5rem;
+  font-family: var(--font-segoe-ui), ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* Input field - Match shadcn/ui input styling */
+.copilotKitInput {
+  font-family: var(--font-segoe-ui), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.875rem;
+  border-radius: calc(var(--radius) - 2px);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.copilotKitInput:focus {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* User message bubbles - Avanade orange accent */
+.copilotKitUserMessage {
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Assistant message bubbles - Subtle background */
+.copilotKitAssistantMessage {
+  border-radius: var(--radius);
+}
+
+/* Button hover effects - Smooth transitions */
+.copilotKitButton {
+  border-radius: var(--radius);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.copilotKitButton:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark mode specific adjustments */
+.dark .copilotKitSidebar .copilotKitWindow {
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.3),
+    0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* Code blocks within messages - Match our code styling */
+.copilotKitMessages pre {
+  border-radius: calc(var(--radius) - 2px);
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.875rem;
+}
+
+.copilotKitMessages code {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.875em;
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.25rem;
+  background-color: hsl(var(--muted));
+}
+
+/* Scrollbar styling */
+.copilotKitMessages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.copilotKitMessages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.copilotKitMessages::-webkit-scrollbar-thumb {
+  background: var(--copilot-kit-scrollbar-color);
+  border-radius: 4px;
+}
+
+.copilotKitMessages::-webkit-scrollbar-thumb:hover {
+  background: var(--copilot-kit-muted-color);
+}
+
+/* Hide "Powered by CopilotKit" branding text only */
+p.poweredBy {
+  display: none !important;
+}
+
+/* Add bottom padding to CopilotKit sidebar/chat containers */
+.copilotKitSidebar .copilotKitWindow,
+.copilotKitPopup .copilotKitWindow {
+  padding-bottom: 1rem;
+}
+
+/* Ensure input area has breathing room */
+.copilotKitInputArea,
+.copilotKitInput {
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   SDA Design System - Custom Utilities
+   Migrado de SDA REMASTERIZADO
+   ============================================ */
+
+@layer base {
+  :root {
+    /* Custom tokens for SDA */
+    --success: 142 71% 40%;
+    --success-foreground: 142 71% 15%;
+    --warning: 38 92% 45%;
+    --warning-foreground: 38 92% 15%;
+    --info: 24 80% 50%;
+    --info-foreground: 24 80% 15%;
+
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(24 100% 50%),
+      hsl(16 85% 45%)
+    );
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(0 0% 97%));
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(24 100% 50% / 0.08),
+      hsl(16 85% 45% / 0.05)
+    );
+
+    --shadow-glow: 0 0 20px hsl(24 100% 50% / 0.1);
+    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.08);
+    --shadow-elevated: 0 8px 32px hsl(0 0% 0% / 0.12);
+  }
+
+  .dark {
+    --success: 142 71% 45%;
+    --success-foreground: 142 71% 90%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 38 92% 90%;
+    --info: 24 80% 55%;
+    --info-foreground: 24 80% 90%;
+
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 25%), hsl(0 0% 22%));
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(24 100% 50% / 0.15),
+      hsl(16 85% 45% / 0.1)
+    );
+
+    --shadow-glow: 0 0 20px hsl(24 100% 50% / 0.15);
+    --shadow-card: 0 4px 24px hsl(0 0% 10% / 0.5);
+    --shadow-elevated: 0 8px 32px hsl(0 0% 10% / 0.7);
+  }
+}
+
+@layer utilities {
+  /* Text gradient effect */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  /* Background gradients */
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-gradient-card {
+    background-image: var(--gradient-card);
+  }
+
+  .bg-gradient-hero {
+    background-image: var(--gradient-hero);
+  }
+
+  /* Shadows */
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    @apply border border-border/50 bg-card/80 backdrop-blur-xl;
+  }
+
+  /* Semantic color utilities */
+  .text-success {
+    color: hsl(var(--success));
+  }
+
+  .text-warning {
+    color: hsl(var(--warning));
+  }
+
+  .text-info {
+    color: hsl(var(--info));
+  }
+
+  .bg-success {
+    background-color: hsl(var(--success));
+  }
+
+  .bg-warning {
+    background-color: hsl(var(--warning));
+  }
+
+  .bg-info {
+    background-color: hsl(var(--info));
+  }
+
+  /* Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 5px hsl(24 100% 50% / 0.2);
+    }
+    50% {
+      box-shadow: 0 0 20px hsl(24 100% 50% / 0.4);
+    }
+  }
+}

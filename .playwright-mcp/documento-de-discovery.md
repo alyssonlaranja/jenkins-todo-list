@@ -1,0 +1,195 @@
+# Briefing do Projeto
+
+## Site Web para Venda de Carros de Luxo
+
+---
+
+## 1. Visão Geral
+
+Criação de um site web premium para divulgação e venda de carros de luxo, com foco em experiência exclusiva, credibilidade e geração de leads qualificados para o time de vendas.
+
+O site deve refletir sofisticação, confiança e alto padrão, alinhado à expectativa de clientes de alta renda e ao posicionamento da marca.
+
+---
+
+## 2. Objetivos do Projeto
+
+- Apresentar o portfólio de carros de luxo de forma atrativa, detalhada e organizada.
+- Facilitar o contato entre potenciais compradores e a equipe de vendas (lead generation).
+- Reforçar o posicionamento da empresa como referência em veículos de alto padrão.
+- Oferecer uma experiência digital condizente com o mercado de luxo (visual, conteúdo, navegação).
+
+---
+
+## 3. Público-Alvo
+
+**Perfil Demográfico**
+
+- Homens e mulheres, 30–65 anos
+- Alta renda (classe A e A+)
+- Empresários, executivos, profissionais liberais, investidores
+- Residentes em grandes centros urbanos e regiões de alto poder aquisitivo
+
+**Perfil Comportamental**
+
+- Buscam exclusividade, status e produtos premium
+- Valorizam atendimento personalizado e confiança na negociação
+- Costumam pesquisar na internet antes de visitar showroom
+- Sensíveis à marca, histórico do veículo, procedência e serviços agregados (garantia, blindagem, etc.)
+
+---
+
+## 4. Posicionamento e Proposta de Valor
+
+**Posicionamento**  
+Ser um portal digital de referência em carros de luxo, oferecendo curadoria de veículos de alto padrão com atendimento consultivo e experiência premium.
+
+**Proposta de Valor**
+
+- Seleção criteriosa de carros de luxo (novos e/ou seminovos)
+- Transparência total em informações e histórico do veículo
+- Atendimento ágil e personalizado (WhatsApp, telefone, e-mail)
+- Experiência online elegante, intuitiva e confiável
+
+---
+
+## 5. Escopo do Site
+
+### 5.1 Páginas Principais
+
+1. **Home**
+   - Banner principal com destaques (ofertas, lançamentos, veículos raros)
+   - Sessão “Destaques do Showroom”
+   - Chamada para busca avançada
+   - Depoimentos, selos de confiança, parcerias (bancos, seguradoras, blindadoras)
+
+2. **Catálogo de Veículos**
+   - Lista de veículos com foto principal, preço, ano e quilometragem
+   - Filtros: marca, modelo, ano, preço, km, câmbio, combustível, blindagem, categoria (SUV, esportivo, sedã etc.)
+   - Ordenação por preço, ano, mais recentes, mais visualizados
+
+3. **Página do Veículo (Detalhe)**
+   - Galeria de fotos em alta resolução (zoom, visão interna, externa)
+   - Vídeo de apresentação (opcional)
+   - Ficha técnica completa
+   - Histórico do veículo (quando seminovo)
+   - Preço e condições especiais
+   - Botões de ação:
+     - “Solicitar Proposta”
+     - “Agendar Test-Drive”
+     - “Falar via WhatsApp”
+     - “Tenho interesse” (formulário rápido)
+
+4. **Sobre a Empresa**
+   - História, missão, visão, valores
+   - Diferenciais no atendimento e na seleção de veículos
+   - Fotos do showroom e estrutura física
+
+5. **Serviços** (se aplicável)
+   - Financiamento e consórcio
+   - Seguro e blindagem
+   - Compra de veículos (avaliação do usado)
+   - Serviço de entrega personalizada
+
+6. **Blog / Conteúdos**
+   - Notícias do mercado de luxo automotivo
+   - Lançamentos de modelos
+   - Dicas de compra e manutenção de carros premium
+   - Conteúdo de lifestyle automotivo
+
+7. **Contato**
+   - Formulário de contato
+   - Telefones, WhatsApp, e-mail
+   - Endereço com mapa (Google Maps)
+   - Horário de atendimento
+
+8. **Área do Cliente (Opcional / Fase 2)**
+   - Histórico de negociações
+   - Documentos, contratos, laudos
+   - Acompanhamento de propostas
+
+---
+
+## 6. Funcionalidades Principais
+
+- Busca e filtros avançados de veículos
+- Integração com WhatsApp (botão direto de contato)
+- Formulários de captura de leads (interesse, proposta, test-drive)
+- Painel administrativo (CMS) para cadastro/edição de veículos (fotos, fichas técnicas, preços)
+- Integração com CRM (se houver) para registro dos leads
+- Design responsivo (desktop, tablet, mobile)
+- Otimização básica de SEO (URLs amigáveis, meta tags, títulos, descrição)
+- Integração com Google Analytics e Tag Manager
+
+---
+
+## 7. Diretrizes de Design e UX
+
+**Estética e Marca**
+
+- Visual clean, minimalista e sofisticado
+- Paleta de cores: tons escuros (preto, grafite), combinados com dourado/prata/branco para destacar o luxo
+- Tipografia moderna, elegante, de fácil leitura
+
+**Experiência do Usuário**
+
+- Navegação simples e intuitiva, com poucos cliques até o detalhe do veículo
+- Destaque visual para fotos e chamadas de ação (CTA)
+- Tempo de carregamento otimizado, mesmo com imagens em alta resolução
+- Conteúdo organizado e escaneável (títulos, listas, blocos)
+
+**Tom de Comunicação**
+
+- Linguagem formal e objetiva
+- Ênfase em confiança, exclusividade e segurança
+- Evitar excesso de jargões técnicos sem explicação
+
+---
+
+## 8. Requisitos Técnicos
+
+- **Front-end:** HTML5, CSS3, JavaScript (framework a definir: React, Next.js, Vue ou similar)
+- **Back-end:** a definir conforme contexto (ex.: Node.js, PHP/Laravel, ou outra tecnologia)
+- **Banco de Dados:** MySQL/PostgreSQL (ou outro equivalente)
+- **CMS:** Pode ser customizado ou baseado em alguma plataforma (WordPress + tema customizado, por exemplo)
+- **Infraestrutura:**
+  - Hospedagem com SSL (HTTPS)
+  - Backups automáticos
+  - Alta disponibilidade e bom desempenho
+
+- **Conformidade Legal:**
+  - Adequação à LGPD (política de privacidade, termos de uso, consentimento de cookies)
+
+---
+
+## 9. Entregáveis
+
+- Arquitetura de Informação do site
+- Wireframes das principais páginas
+- Design visual (UI) completo
+- Desenvolvimento front-end e back-end
+- Painel administrativo para gestão de veículos e conteúdos
+- Integração com ferramentas de analytics e CRM (se necessário)
+- Testes (funcionais, responsividade, performance básica)
+- Documentação de uso do CMS e treinamento para equipe
+
+---
+
+## 10. Indicadores de Sucesso (KPIs)
+
+- Número de leads gerados pelo site (formulários + WhatsApp)
+- Taxa de conversão de visitantes em leads
+- Número de solicitações de test-drive pelo site
+- Tráfego orgânico (visitas advindas de Google e outros buscadores)
+- Tempo médio de permanência no site
+- Páginas por sessão e taxa de rejeição (bounce rate)
+
+---
+
+## 11. Cronograma Macro (Exemplo)
+
+- Semana 1–2: Alinhamento, discovery detalhado e arquitetura de informação
+- Semana 3–4: Wireframes e design visual (UI)
+- Semana 5–8: Desenvolvimento, configurações de infraestrutura, integrações
+- Semana 9: Testes, ajustes e inserção de conteúdo inicial (carros, textos, imagens)
+- Semana 10: Lançamento oficial do site e monitoramento inicial

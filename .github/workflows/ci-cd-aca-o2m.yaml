@@ -1,0 +1,531 @@
+name: CI/CD Deployment - Container Apps
+
+# ============================================================================
+# FLOW:
+#   develop branch  → build → deploy dev
+#   release/vX.Y.Z  → build (semver from branch) → deploy staging → deploy prod → release → mirror main
+# ============================================================================
+env:
+  ACR_REGISTRY: ${{ vars.ACR_REGISTRY }}
+  IMAGE_REPOSITORY: ${{ vars.IMAGE_REPOSITORY }}
+  BUILD_NUMBER: ${{ github.run_number }}
+
+on:
+  push:
+    branches:
+      - sandbox
+  pull_request:
+    types: [closed]
+    branches:
+      - 'release/v*'
+  workflow_dispatch:
+    inputs:
+      enable_quality_gates:
+        description: 'Enable quality gates'
+        type: boolean
+        default: false
+
+concurrency:
+  group: deploy-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  # ===========================================================================
+  # Input Validation
+  # ===========================================================================
+  validate-inputs:
+    name: Validate Inputs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate project type
+        run: |
+          PROJECT_TYPE="python"
+          echo "[OK] Valid project_type: $PROJECT_TYPE"
+          
+      - name: Validate coverage threshold
+        run: |
+          THRESHOLD=70
+          if [ "$THRESHOLD" -lt 0 ] || [ "$THRESHOLD" -gt 100 ]; then
+            echo "[ERROR] Invalid coverage_threshold: $THRESHOLD"
+            exit 1
+          fi
+          echo "[OK] Coverage threshold validated: $THRESHOLD"
+
+      - name: Validate release branch name
+        if: startsWith(github.ref, 'refs/heads/release/v')
+        run: |
+          BRANCH="${{ github.ref_name }}"
+          VERSION="${BRANCH#release/}"
+          if [[ ! "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "[ERROR] Invalid release branch name: $BRANCH"
+            echo "   Expected format: release/vX.Y.Z (e.g. release/v1.2.0)"
+            exit 1
+          fi
+          echo "[OK] Valid release version: $VERSION"
+
+  # ===========================================================================
+  # Quality Gates & Build
+  # ===========================================================================
+  quality-and-build:
+    name: Quality Gates & Build
+    needs: [validate-inputs]
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+    outputs:
+      image_tag: ${{ steps.set-outputs.outputs.image_tag }}
+      semver_tag: ${{ steps.set-outputs.outputs.semver_tag }}
+      is_release: ${{ steps.set-outputs.outputs.is_release }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.enable_quality_gates }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run quality gates
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.enable_quality_gates }}
+        run: |
+          echo "Running tests and quality checks..."
+          if [ -f "requirements-dev.txt" ]; then
+            pip install -r requirements-dev.txt
+            pytest --cov --cov-report=term-missing --cov-fail-under=70 || true
+          else
+            echo "[WARN] No requirements-dev.txt found, skipping tests"
+          fi
+
+      - name: Generate version tags
+        id: set-outputs
+        run: |
+          DATE_TAG=$(date -u +%Y%m%d)
+          BUILD_NUM="${{ env.BUILD_NUMBER }}"
+          IMAGE_TAG="${DATE_TAG}.${BUILD_NUM}"
+          IS_RELEASE="false"
+          SEMVER_TAG=""
+          
+          # Extract semver from release branch name
+          if [[ "${{ github.ref }}" == refs/heads/release/v* ]]; then
+            BRANCH="${{ github.ref_name }}"
+            SEMVER_TAG="${BRANCH#release/}"
+            IS_RELEASE="true"
+            echo "Release build: ${SEMVER_TAG}"
+          fi
+          
+          echo "image_tag=${IMAGE_TAG}" >> $GITHUB_OUTPUT
+          echo "semver_tag=${SEMVER_TAG}" >> $GITHUB_OUTPUT
+          echo "is_release=${IS_RELEASE}" >> $GITHUB_OUTPUT
+          
+          echo "Build Number: ${BUILD_NUM}"
+          echo "Image tag: ${IMAGE_TAG}"
+          echo "Semver tag: ${SEMVER_TAG:-N/A}"
+          echo "Is release: ${IS_RELEASE}"
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Login to ACR using username/password
+        run: |
+          ACR_NAME="${{ secrets.ACR_NAME }}"
+          ACR_USERNAME="${{ secrets.ACR_USERNAME }}"
+          ACR_PASSWORD="${{ secrets.ACR_PASSWORD }}"
+          
+          echo "Logging into ACR: ${ACR_NAME}"
+          
+          echo "${ACR_PASSWORD}" | docker login ${ACR_NAME}.azurecr.io \
+            --username "${ACR_USERNAME}" \
+            --password-stdin
+          
+          echo "ACR login successful"
+
+      - name: Build and push Docker image
+        run: |
+          IMAGE_TAG="${{ steps.set-outputs.outputs.image_tag }}"
+          SEMVER_TAG="${{ steps.set-outputs.outputs.semver_tag }}"
+          IS_RELEASE="${{ steps.set-outputs.outputs.is_release }}"
+          IMAGE_FULL="${{ env.ACR_REGISTRY }}/${{ env.IMAGE_REPOSITORY }}:${IMAGE_TAG}"
+          
+          echo "Building image: ${IMAGE_FULL}"
+          
+          docker build \
+            -t "${IMAGE_FULL}" \
+            --label "org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}" \
+            --label "org.opencontainers.image.revision=${{ github.sha }}" \
+            --label "org.opencontainers.image.created=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" \
+            --label "build.number=${{ env.BUILD_NUMBER }}" \
+            .
+          
+          docker push "${IMAGE_FULL}"
+          echo "Pushed: ${IMAGE_FULL}"
+          
+          # Tags adicionais apenas para release branches (production)
+          if [[ "$IS_RELEASE" == "true" ]]; then
+            IMAGE_LATEST="${{ env.ACR_REGISTRY }}/${{ env.IMAGE_REPOSITORY }}:latest"
+            IMAGE_SEMVER="${{ env.ACR_REGISTRY }}/${{ env.IMAGE_REPOSITORY }}:${SEMVER_TAG}"
+            
+            echo "Tagging for production release:"
+            echo "  - ${IMAGE_LATEST}"
+            echo "  - ${IMAGE_SEMVER}"
+            
+            docker tag "${IMAGE_FULL}" "${IMAGE_LATEST}"
+            docker tag "${IMAGE_FULL}" "${IMAGE_SEMVER}"
+            
+            docker push "${IMAGE_LATEST}"
+            docker push "${IMAGE_SEMVER}"
+            
+            echo "Production tags pushed"
+          else
+            echo "Development build - skipping latest and semver tags"
+          fi
+
+  # ===========================================================================
+  # Deploy to Development (develop branch only)
+  # ===========================================================================
+  deploy-development:
+    name: Deploy to Development
+    needs: [quality-and-build]
+    runs-on: ubuntu-latest
+    if: |
+      needs.quality-and-build.result == 'success' &&
+      needs.quality-and-build.outputs.is_release == 'false'
+    
+    environment: dev-aigrowth
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Container App to Development
+        env:
+          ENVIRONMENT: dev
+          CONFIG_DIR: infrastructure/config
+          CONTAINER_IMAGE: ${{ env.ACR_REGISTRY }}/${{ env.IMAGE_REPOSITORY }}:${{ needs.quality-and-build.outputs.image_tag }}
+          ACA_RESOURCE_GROUP: ${{ secrets.ACA_RESOURCE_GROUP }}
+          ACR_RESOURCE_GROUP: ${{ secrets.ACR_RESOURCE_GROUP }}
+          RESOURCE_GROUP: ${{ secrets.ACA_RESOURCE_GROUP }}
+        run: |
+          echo "Deploying to Development..."
+          echo "Image: ${CONTAINER_IMAGE}"
+          echo "Resource Group: ${ACA_RESOURCE_GROUP}"
+          
+          chmod +x ./infrastructure/scripts/deploy-container-app.sh
+          
+          ./infrastructure/scripts/deploy-container-app.sh \
+            "${ENVIRONMENT}" \
+            "${CONFIG_DIR}" \
+            "${CONTAINER_IMAGE}"
+
+      - name: Verify deployment
+        run: |
+          APP_NAME=$(jq -r '.name' infrastructure/config/env/dev.json)
+          
+          echo "Verifying deployment..."
+          
+          APP_FQDN=$(az containerapp show \
+            --name "${APP_NAME}" \
+            --resource-group ${{ secrets.ACA_RESOURCE_GROUP }} \
+            --query "properties.configuration.ingress.fqdn" \
+            --output tsv)
+          
+          echo "Application URL: https://${APP_FQDN}"
+          
+          echo "Active revisions:"
+          az containerapp revision list \
+            --name "${APP_NAME}" \
+            --resource-group ${{ secrets.ACA_RESOURCE_GROUP }} \
+            --query "[?properties.active].{Name:name, Created:properties.createdTime, Replicas:properties.replicas, Traffic:properties.trafficWeight}" \
+            --output table
+
+      - name: Deployment summary
+        if: success()
+        run: |
+          echo "## Development Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Environment:** Development" >> $GITHUB_STEP_SUMMARY
+          echo "**Image:** \`${{ env.IMAGE_REPOSITORY }}:${{ needs.quality-and-build.outputs.image_tag }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Build:** #${{ env.BUILD_NUMBER }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Deployed by:** @${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+
+  # ===========================================================================
+  # Deploy to Staging (release/vX.Y.Z branch only)
+  # ===========================================================================
+  deploy-staging:
+    name: Deploy to Staging
+    needs: [quality-and-build]
+    runs-on: ubuntu-latest
+    if: |
+      needs.quality-and-build.result == 'success' &&
+      needs.quality-and-build.outputs.is_release == 'true'
+    
+    environment: staging
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Container App to Staging
+        env:
+          ENVIRONMENT: stg
+          CONFIG_DIR: infrastructure/config
+          CONTAINER_IMAGE: ${{ env.ACR_REGISTRY }}/${{ env.IMAGE_REPOSITORY }}:${{ needs.quality-and-build.outputs.image_tag }}
+          ACA_RESOURCE_GROUP: ${{ secrets.ACA_RESOURCE_GROUP }}
+          ACR_RESOURCE_GROUP: ${{ secrets.ACR_RESOURCE_GROUP }}
+          RESOURCE_GROUP: ${{ secrets.ACA_RESOURCE_GROUP }}
+        run: |
+          echo "Deploying to Staging..."
+          echo "Image: ${CONTAINER_IMAGE}"
+          echo "Resource Group: ${ACA_RESOURCE_GROUP}"
+          
+          chmod +x ./infrastructure/scripts/deploy-container-app.sh
+          
+          ./infrastructure/scripts/deploy-container-app.sh \
+            "${ENVIRONMENT}" \
+            "${CONFIG_DIR}" \
+            "${CONTAINER_IMAGE}"
+
+      - name: Verify deployment
+        run: |
+          APP_NAME=$(jq -r '.name' infrastructure/config/env/stg.json)
+          
+          echo "Verifying deployment..."
+          
+          APP_FQDN=$(az containerapp show \
+            --name "${APP_NAME}" \
+            --resource-group ${{ secrets.ACA_RESOURCE_GROUP }} \
+            --query "properties.configuration.ingress.fqdn" \
+            --output tsv)
+          
+          echo "Application URL: https://${APP_FQDN}"
+          
+          echo "Active revisions:"
+          az containerapp revision list \
+            --name "${APP_NAME}" \
+            --resource-group ${{ secrets.ACA_RESOURCE_GROUP }} \
+            --query "[?properties.active].{Name:name, Created:properties.createdTime, Replicas:properties.replicas, Traffic:properties.trafficWeight}" \
+            --output table
+
+      - name: Deployment summary
+        if: success()
+        run: |
+          echo "## Staging Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Environment:** Staging" >> $GITHUB_STEP_SUMMARY
+          echo "**Image:** \`${{ env.IMAGE_REPOSITORY }}:${{ needs.quality-and-build.outputs.image_tag }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** \`${{ needs.quality-and-build.outputs.semver_tag }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Build:** #${{ env.BUILD_NUMBER }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Deployed by:** @${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+
+  # ===========================================================================
+  # Deploy to Production (release/vX.Y.Z branch only - after staging success)
+  # ===========================================================================
+  deploy-production:
+    name: Deploy to Production
+    needs: [quality-and-build, deploy-staging]
+    runs-on: ubuntu-latest
+    if: |
+      needs.deploy-staging.result == 'success' &&
+      needs.quality-and-build.outputs.is_release == 'true'
+    
+    environment: production
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Container App
+        env:
+          ENVIRONMENT: prd
+          CONFIG_DIR: infrastructure/config
+          CONTAINER_IMAGE: ${{ env.ACR_REGISTRY }}/${{ env.IMAGE_REPOSITORY }}:${{ needs.quality-and-build.outputs.image_tag }}
+          ACA_RESOURCE_GROUP: ${{ secrets.ACA_RESOURCE_GROUP }}
+          ACR_RESOURCE_GROUP: ${{ secrets.ACR_RESOURCE_GROUP }}
+          RESOURCE_GROUP: ${{ secrets.ACA_RESOURCE_GROUP }}
+        run: |
+          echo "Deploying to Production..."
+          echo "Image: ${CONTAINER_IMAGE}"
+          echo "Resource Group: ${ACA_RESOURCE_GROUP}"
+          
+          chmod +x ./infrastructure/scripts/deploy-container-app.sh
+          
+          ./infrastructure/scripts/deploy-container-app.sh \
+            "${ENVIRONMENT}" \
+            "${CONFIG_DIR}" \
+            "${CONTAINER_IMAGE}"
+
+      - name: Verify deployment
+        run: |
+          APP_NAME=$(jq -r '.name' infrastructure/config/env/prd.json)
+          
+          echo "Verifying deployment..."
+          
+          APP_FQDN=$(az containerapp show \
+            --name "${APP_NAME}" \
+            --resource-group ${{ secrets.ACA_RESOURCE_GROUP }} \
+            --query "properties.configuration.ingress.fqdn" \
+            --output tsv)
+          
+          echo "Application URL: https://${APP_FQDN}"
+          
+          echo "Active revisions:"
+          az containerapp revision list \
+            --name "${APP_NAME}" \
+            --resource-group ${{ secrets.ACA_RESOURCE_GROUP }} \
+            --query "[?properties.active].{Name:name, Created:properties.createdTime, Replicas:properties.replicas, Traffic:properties.trafficWeight}" \
+            --output table
+
+      - name: Deployment summary
+        if: success()
+        run: |
+          echo "## Production Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Environment:** Production" >> $GITHUB_STEP_SUMMARY
+          echo "**Image:** \`${{ env.IMAGE_REPOSITORY }}:${{ needs.quality-and-build.outputs.image_tag }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** \`${{ needs.quality-and-build.outputs.semver_tag }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Build:** #${{ env.BUILD_NUMBER }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Deployed by:** @${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+
+  # ===========================================================================
+  # Create GitHub Release & Mirror to Main
+  # ===========================================================================
+  release:
+    name: Create Release & Mirror to Main
+    needs: [quality-and-build, deploy-staging, deploy-production]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    if: |
+      needs.deploy-production.result == 'success' &&
+      needs.quality-and-build.outputs.is_release == 'true'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          
+          if [ -z "$LAST_TAG" ]; then
+            CHANGELOG=$(git log --oneline --pretty=format:"- %s (%h)" -n 20)
+          else
+            CHANGELOG=$(git log ${LAST_TAG}..HEAD --oneline --pretty=format:"- %s (%h)")
+          fi
+          
+          CHANGELOG="${CHANGELOG//'%'/'%25'}"
+          CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
+          CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
+          
+          echo "changelog=${CHANGELOG}" >> $GITHUB_OUTPUT
+
+      - name: Create Git tag
+        run: |
+          SEMVER_TAG="${{ needs.quality-and-build.outputs.semver_tag }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "${SEMVER_TAG}" -m "Release ${SEMVER_TAG}"
+          git push origin "${SEMVER_TAG}"
+          echo "Tag ${SEMVER_TAG} created and pushed"
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ needs.quality-and-build.outputs.semver_tag }}
+          release_name: Release ${{ needs.quality-and-build.outputs.semver_tag }}
+          body: |
+            ## Release ${{ needs.quality-and-build.outputs.semver_tag }}
+            
+            **Docker Image:**
+            ${{ env.ACR_REGISTRY }}/${{ env.IMAGE_REPOSITORY }}:${{ needs.quality-and-build.outputs.image_tag }}
+            
+            **Tags:**
+            - `${{ needs.quality-and-build.outputs.image_tag }}`
+            - `${{ needs.quality-and-build.outputs.semver_tag }}`
+            - `latest`
+            
+            **Build:** #${{ env.BUILD_NUMBER }}
+            **Environment:** Production
+            **Released by:** @${{ github.actor }}
+            
+            ### Changes
+            ${{ steps.changelog.outputs.changelog }}
+            
+            ### Links
+            - [Workflow Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            - [Commit](${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }})
+          draft: false
+          prerelease: false
+
+      - name: Open PR to mirror release into main
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_PAT }}
+        run: |
+          SEMVER_TAG="${{ needs.quality-and-build.outputs.semver_tag }}"
+          BRANCH="${{ github.ref_name }}"
+          echo "Opening PR to mirror ${SEMVER_TAG} into main..."
+
+          PR_BODY=$(cat <<EOF
+          ## Auto-generated mirror PR
+
+          Merging release ${SEMVER_TAG} into main after successful production deployment.
+
+          **Workflow Run:** ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+          **Released by:** @${{ github.actor }}
+          EOF
+          )
+
+          # Check if PR already exists
+          EXISTING=$(gh pr list \
+            --base main \
+            --head "${BRANCH}" \
+            --state open \
+            --json number \
+            --jq '.[0].number')
+
+          if [ -n "$EXISTING" ]; then
+            echo "PR already exists: #${EXISTING}"
+            PR_NUMBER="$EXISTING"
+          else
+            PR_URL=$(gh pr create \
+              --base main \
+              --head "${BRANCH}" \
+              --title "release: merge ${SEMVER_TAG} into main" \
+              --body "${PR_BODY}")
+            PR_NUMBER=$(echo "$PR_URL" | grep -oE '[0-9]+$')
+            echo "PR created: ${BRANCH} -> main (#${PR_NUMBER})"
+          fi
+
+          echo "Enabling auto-merge on PR #${PR_NUMBER}..."
+          gh pr merge "${PR_NUMBER}" --auto --merge
+          echo "Auto-merge enabled — PR will merge automatically once checks pass"

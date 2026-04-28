@@ -1,0 +1,459 @@
+@startuml sequencia-system-prompt-agentes
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam sequenceArrowThickness 1.5
+skinparam roundcorner 8
+skinparam maxMessageSize 260
+skinparam sequenceGroupBorderThickness 1
+skinparam sequenceLifeLineBorderColor #666
+skinparam participantPadding 12
+skinparam boxPadding 10
+skinparam noteBackgroundColor #FFFFF0
+skinparam noteBorderColor #999
+
+title **SDA2 — Como o System Prompt Transforma um LLM em Agente**\n(Fluxo completo: UI → MCP → Prompt Building → LangGraph)\n27/02/2026
+
+' ═══════════════════════════════════════════════
+' PARTICIPANTES
+' ═══════════════════════════════════════════════
+
+actor "Usuário" as User #LightBlue
+participant "WorkspacePage\n(React)" as UI #LightCyan
+participant "useSupervisorChat\n(Hook)" as Hook #PaleGreen
+participant "Next.js BFF\n/api/sda2-bff\n(route.ts)" as BFF #Gold
+participant "callMCPTool\n(mcp-client.ts)" as MCPClient #Wheat
+participant "Cockpit MCP Server\nmcp-dev.br.avanade.ai" as MCP #LightGreen
+participant "create-sda2-supervisor.ts\n(Factory)" as Factory #Orchid
+participant "LangGraph\n(Supervisor + Agents)" as LangGraph #Plum
+participant "Azure OpenAI\n(GPT-4o)" as LLM #Salmon
+
+' ═══════════════════════════════════════════════
+' FASE 1: ENVIO DA MENSAGEM PELO USUÁRIO
+' ═══════════════════════════════════════════════
+
+== 1. USUÁRIO ENVIA MENSAGEM ==
+
+User -> UI : Digita mensagem\ne clica Enviar
+activate UI
+
+note right of UI
+  **handleSend()** processa:
+  1. Extrai arquivos (OCR/PDF/CSV)
+  2. Extrai documentos compartilhados
+  3. Monta fullMessage
+  4. Cria ChatMessage (otimista)
+  5. Monta Conversation com histórico
+end note
+
+UI -> Hook : **sendToSupervisor**(fullMessage,\nconversationForSupervisor)
+activate Hook
+
+note right of Hook
+  **useSupervisorChat** constrói
+  **SupervisorRequest**:
+  ```
+  {
+    runId: "run-<timestamp>",
+    threadId: conversation.id,
+    messages: [...history, currentMsg],
+    context: [
+      {key: "projeto_id", value},
+      {key: "projeto_nome", value}
+    ],
+    forwardedProps: {
+      utilityAgentId: "<GUID>",
+      supervisorName: "Supervisor",
+      mcpServerUrl: "https://mcp-dev...",
+      mcpHeaders: {
+        "x-api-key": "<fixa>",
+        "x-cockpit-license-id": "<fixa>",
+        "x-cockpit-namespace-id": "<fixa>",
+        "x-cockpit-utility-agent-id": "<dinâmico>",
+        "x-cockpit-api-key": "<PAT do usuario>"
+      }
+    }
+  }
+  ```
+end note
+
+Hook -> BFF : **fetch POST /api/sda2-bff**\n(SupervisorRequest como body)
+activate BFF
+
+' ═══════════════════════════════════════════════
+' FASE 2: BFF BUSCA AGENT CARD DO COCKPIT MCP
+' ═══════════════════════════════════════════════
+
+== 2. AQUISIÇÃO DAS INSTRUÇÕES — get_agent_card via MCP ==
+
+BFF -> BFF : Extrai forwardedProps:\n- mcpServerUrl\n- mcpHeaders\n- utilityAgentId
+BFF -> BFF : Instancia **AzureChatOpenAI**\n(streaming: true)
+
+BFF -> MCPClient : **fetchAgentInstructions**(\nmcpHeaders, mcpServerUrl,\nutilityAgentId)
+activate MCPClient
+
+note right of MCPClient
+  Monta headers MCP:
+  ──────────────────────────
+  **FIXOS** (env vars do servidor):
+  • x-api-key
+  • x-cockpit-license-id
+  • x-cockpit-namespace-id
+  ──────────────────────────
+  **DINÂMICOS** (do request):
+  • x-cockpit-utility-agent-id
+    → ID do supervisor selecionado
+  • x-cockpit-api-key
+    → PAT pessoal do usuário
+end note
+
+MCPClient -> MCP : **JSON-RPC 2.0** POST\n{\n  "method": "tools/call",\n  "params": {\n    "name": "get_agent_card",\n    "arguments": {}\n  }\n}
+activate MCP
+
+note right of MCP #PaleGreen
+  O Cockpit MCP Server resolve:
+  1. Usa x-cockpit-utility-agent-id
+     para identificar o **supervisor**
+  2. Retorna dados do supervisor
+     e de todos os **team_members**
+  3. Dados cadastrados na UI do Cockpit
+     por humanos (sem hardcode)
+end note
+
+MCP --> MCPClient : **MCPAgentCardRaw**
+deactivate MCP
+
+note left of MCPClient #FFFFF0
+  Resposta do MCP:
+  ```json
+  {
+    "data": {
+      "utility_agent": {
+        "name": "Avanade Code Supervisor",
+        "description": "Orquestrador...",
+        "objective": "<SYSTEM PROMPT\n  DO SUPERVISOR\n  escrito no Cockpit>"
+      },
+      "team_member": [
+        {
+          "name": "Discovery Analyst Agent",
+          "description": "Analista de...",
+          "objective": "<SYSTEM PROMPT\n  DO AGENTE\n  escrito no Cockpit>\n\nartifact_type: Documento de Discovery",
+          "artifact_type": "Documento de Discovery"
+        },
+        { ... mais agentes ... }
+      ]
+    }
+  }
+  ```
+end note
+
+MCPClient -> BFF : **AgentCardResponse** normalizado
+deactivate MCPClient
+
+note right of BFF #LightYellow
+  **Normalização MCP → internal:**
+  ┌───────────────────────┬──────────────────┐
+  │ MCP Field             │ Internal Field   │
+  ├───────────────────────┼──────────────────┤
+  │ utility_agent.name    │ name             │
+  │ utility_agent.        │ description      │
+  │   description         │                  │
+  │ utility_agent.        │ **instructions** │
+  │   objective           │ (supervisor      │
+  │                       │  system prompt)  │
+  ├───────────────────────┼──────────────────┤
+  │ team_member[].name    │ member.name      │
+  │ team_member[].        │ member.role      │
+  │   description         │                  │
+  │ team_member[].        │ member.**specialty**│
+  │   objective           │ (agent system    │
+  │                       │  prompt completo)│
+  │ team_member[].        │ member.          │
+  │   artifact_type       │   artifactType   │
+  └───────────────────────┴──────────────────┘
+end note
+
+' ═══════════════════════════════════════════════
+' FASE 3: FACTORY CONSTRÓI AGENTES COM OS PROMPTS
+' ═══════════════════════════════════════════════
+
+== 3. CONSTRUÇÃO DOS AGENTES — System Prompt Building ==
+
+BFF -> Factory : **createSDA2Supervisor**({\n  agentCard: MCPAgentCard,\n  model: AzureChatOpenAI,\n  projectContext\n})
+activate Factory
+
+note right of Factory #Orchid
+  **Ponto Crítico: Transformação**
+  **LLM Genérico → Agente Especialista**
+  
+  A personalidade, expertise e
+  capacidades vêm 100% do Cockpit MCP.
+  O código apenas estrutura e formata.
+end note
+
+|||
+== 3a. Para CADA team_member: buildAgentConfigFromMCP() ==
+
+loop Para cada membro do teamMembers[]
+  Factory -> Factory : **normalizeAgentName**(member.name)\n"Discovery Analyst Agent"\n→ "discovery_analyst_agent"
+  
+  Factory -> Factory : **extractArtifactType**(member)\n1° Tenta: member.artifactType (campo direto)\n2° Tenta: regex /artifact_type:\s+(.+)/ no specialty\n→ "Documento de Discovery"
+  
+  Factory -> Factory : **buildAgentSystemPrompt**(member, artifactType)
+
+  note right of Factory #FFE4E1
+    **System Prompt do Agente montado:**
+    ═══════════════════════════════════
+    
+    **SEÇÃO 1 — Instrução de Artefato**
+    (só se artifactType existir)
+    ```
+    # 📄 Instrução de Geração de Documento
+    ## Seu Tipo de Documento
+    Você gera documentos do tipo: **{artifactType}**
+    
+    ## Formato de Resposta
+    <!-- ARTIFACT_METADATA
+    { "type": "{artifactType}",
+      "title": "[Título]",
+      "agent": "{normalizedName}" }
+    -->
+    # [Título]
+    [Conteúdo]
+    <!-- [FIM] -->
+    
+    ## Diretrizes de Qualidade
+    - H1, H2, H3... listas, tabelas, emojis
+    ```
+    ═══════════════════════════════════
+    
+    **SEÇÃO 2 — Identidade do Agente**
+    (dados do MCP objective)
+    ```
+    # {member.name}
+    Você é especialista em {member.role}
+    
+    ## Suas Instruções e Especialidade
+    {member.specialty}
+    ← AQUI estão as instruções COMPLETAS
+      escritas no Cockpit por humanos!
+    ```
+    ═══════════════════════════════════
+    
+    **SEÇÃO 3 — Diretrizes de Resposta**
+    (fixas — formatação Markdown, emojis,
+     terminação com <!-- [FIM] -->)
+  end note
+  
+  Factory -> Factory : Cria **DynamicAgentConfig**:\n{name, displayName, description,\nsystemPrompt, specialties, artifactType}
+end loop
+
+|||
+== 3b. Construção do Prompt do SUPERVISOR ==
+
+Factory -> Factory : **buildSupervisorPrompt**(agentCard, agentConfigs, projectContext)
+
+note right of Factory #FFD700
+  **System Prompt do Supervisor:**
+  ═══════════════════════════════
+  
+  **SEÇÃO 1 — Identidade**
+  {agentCard.instructions}
+  ← Prompt do supervisor vindo
+    do MCP objective!
+  ═══════════════════════════════
+  
+  **SEÇÃO 2 — Time Disponível**
+  ```
+  ## Time de Agentes Disponíveis
+  1. **Discovery Analyst Agent**
+     - Descrição: Analista de ...
+     - Artefato que produz: Documento de Discovery
+     - Especialidades: análise, requisitos...
+     - Use para: descoberta, briefing...
+  2. **Product Advisory Agent**
+     ...
+  ```
+  ═══════════════════════════════
+  
+  **SEÇÃO 3 — Delegação**
+  ```
+  ## Ferramentas de Transferência
+  - transfer_to_discovery_analyst_agent
+  - transfer_to_product_advisory_agent
+  - transfer_to_backlog_engineer_agent
+  ...
+  ## Regras de Delegação
+  Palavras-chave → Agente correto
+  ## Regra de Ouro
+  "PRD" → Product, não Discovery
+  ```
+  ═══════════════════════════════
+  
+  **SEÇÃO 4 — Contexto do Projeto**
+  ```
+  Projeto: {nome} ({id})
+  Conversa: {threadId}
+  ```
+end note
+
+' ═══════════════════════════════════════════════
+' FASE 4: CRIAÇÃO DO GRAFO LANGGRAPH
+' ═══════════════════════════════════════════════
+
+== 4. MONTAGEM DO GRAFO LangGraph ==
+
+loop Para cada agentConfig
+  Factory -> LangGraph : **createReactAgent**({\n  llm: AzureChatOpenAI,\n  tools: [ragTool?],\n  prompt: **agentConfig.systemPrompt**,\n  name: "discovery_analyst_agent"\n})
+  
+  note right of LangGraph #DDA0DD
+    O **prompt** passado ao createReactAgent
+    é injetado como **SystemMessage** em
+    toda invocação do agente pelo LangGraph.
+    
+    É aqui que o LLM genérico "vira" o agente.
+  end note
+end loop
+
+Factory -> LangGraph : **createSupervisor**({\n  agents: [compiledAgents],\n  llm: model,\n  prompt: **supervisorPrompt**,\n  outputMode: "last_message",\n  addHandoffBackMessages: false\n})
+
+note right of LangGraph #DDA0DD
+  O LangGraph **cria automaticamente**
+  as ferramentas de delegação:
+  • transfer_to_discovery_analyst_agent
+  • transfer_to_product_advisory_agent
+  • transfer_to_backlog_engineer_agent
+  • transfer_to_ux_advisor_agent
+  • transfer_to_tech_advisory_agent
+  
+  Essas tools são injetadas no prompt
+  do supervisor como tools disponíveis.
+end note
+
+Factory -> LangGraph : **workflow.compile**({\n  checkpointer: MemorySaver,\n  store: InMemoryStore\n})
+
+Factory --> BFF : **SDA2SupervisorResult**\n{supervisor, agentCount, agentNames}
+deactivate Factory
+
+' ═══════════════════════════════════════════════
+' FASE 5: EXECUÇÃO — SUPERVISOR + DELEGAÇÃO
+' ═══════════════════════════════════════════════
+
+== 5. EXECUÇÃO — Supervisor Raciocina e Delega ==
+
+BFF -> LangGraph : **supervisor.stream**(\n  { messages: [userMsg] },\n  { streamMode: "messages",\n    configurable: {thread_id} }\n)
+activate LangGraph
+
+LangGraph -> LLM : **Supervisor invoca LLM com:**\n1. SystemMessage = supervisorPrompt\n2. messages[] = histórico + mensagem atual\n3. tools[] = [transfer_to_*, ...]
+activate LLM
+
+note right of LLM #FFA07A
+  O LLM recebe o system prompt
+  do supervisor e "se torna" o
+  orquestrador com conhecimento
+  do time e regras de delegação.
+  
+  Analisa a mensagem do usuário
+  e decide: delegar ou responder.
+end note
+
+LLM --> LangGraph : **AIMessage** com tool_call:\n{name: "transfer_to_discovery_analyst_agent",\nargs: {}}
+deactivate LLM
+
+note over LangGraph #DDA0DD
+  LangGraph roteia automaticamente
+  para o sub-agente "discovery_analyst_agent"
+  via **Command** interno
+end note
+
+LangGraph -> LLM : **Sub-Agente invoca LLM com:**\n1. SystemMessage = **agentSystemPrompt**\n   (construído na Fase 3a)\n2. messages[] = contexto delegado\n3. tools[] = [ragTool? (se Knowledge)]
+activate LLM
+
+note right of LLM #FFA07A
+  Agora o **MESMO LLM** (GPT-4o) recebe
+  um system prompt DIFERENTE e "se torna"
+  o agente especialista.
+  
+  ┌─────────────────────────────────┐
+  │ **A "mágica" acontece aqui:**   │
+  │                                 │
+  │ O LLM é genérico, mas o        │
+  │ system prompt define:           │
+  │ • Quem ele é (identidade)      │
+  │ • O que sabe (expertise)       │
+  │ • O que produz (artifactType)  │
+  │ • Como formata (markdown)      │
+  │ • Quando para (<!-- [FIM] -->)  │
+  │                                 │
+  │ Tudo vindo do **Cockpit MCP**!  │
+  └─────────────────────────────────┘
+end note
+
+LLM --> LangGraph : **AIMessageChunk** (streaming)\n<!-- ARTIFACT_METADATA {...} -->\n# Documento de Discovery\n...\n<!-- [FIM] -->
+deactivate LLM
+
+LangGraph --> BFF : Stream de AIMessageChunks\n(token a token)
+deactivate LangGraph
+
+' ═══════════════════════════════════════════════
+' FASE 6: STREAMING SSE DE VOLTA AO FRONTEND
+' ═══════════════════════════════════════════════
+
+== 6. STREAMING — BFF → Frontend ==
+
+BFF --> Hook : **SSE Events**:\n• RUN_START\n• TEXT_MESSAGE_CONTENT (tokens)\n• ...(detecta <!-- [FIM] -->)...\n• RUN_END\n• [DONE]
+deactivate BFF
+
+Hook --> UI : **onProgress(delta)** → tokens\nem tempo real para o state
+deactivate Hook
+
+UI --> User : Renderiza resposta\nprogressivamente no chat
+deactivate UI
+
+' ═══════════════════════════════════════════════
+' RESUMO VISUAL: DE ONDE VEM CADA PARTE DO PROMPT
+' ═══════════════════════════════════════════════
+
+note over User, LLM #FFFACD
+  **📌 RESUMO: Origem de cada parte do System Prompt**
+  
+  ┌─────────────────────────────────────────────────────────────────────┐
+  │  **COCKPIT MCP (100% dinâmico - cadastrado por humanos)**          │
+  │                                                                     │
+  │  utility_agent.objective  →  Instruções do Supervisor              │
+  │  team_member[].objective  →  Instruções de cada Agente (specialty) │
+  │  team_member[].artifact_type → Tipo de documento que produz        │
+  │  team_member[].name       →  Identidade do agente                  │
+  │  team_member[].description → Papel/role do agente                  │
+  └─────────────────────────────────────────────────────────────────────┘
+                                    ↓
+  ┌─────────────────────────────────────────────────────────────────────┐
+  │  **create-sda2-supervisor.ts (código — estrutura e formata)**      │
+  │                                                                     │
+  │  buildAgentSystemPrompt():                                         │
+  │    + Instrução de ARTIFACT_METADATA (formato JSON)                 │
+  │    + Wrap: "{member.name} — especialista em {member.role}"         │
+  │    + Inject: {member.specialty} ← conteúdo integral do MCP         │
+  │    + Diretrizes de formatação (Markdown, emojis, <!-- [FIM] -->)   │
+  │                                                                     │
+  │  buildSupervisorPrompt():                                          │
+  │    + Inject: {agentCard.instructions} ← prompt do supervisor MCP   │
+  │    + Lista dinâmica do time com routing keywords                   │
+  │    + Regras de delegação + transfer_to_* tools                    │
+  │    + Contexto do projeto (nome, id, conversa)                     │
+  └─────────────────────────────────────────────────────────────────────┘
+                                    ↓
+  ┌─────────────────────────────────────────────────────────────────────┐
+  │  **LangGraph (execução)**                                          │
+  │                                                                     │
+  │  createReactAgent(prompt: systemPrompt)                            │
+  │    → Injeta como SystemMessage em cada invoke()                    │
+  │    → O mesmo GPT-4o "se torna" agentes diferentes                 │
+  │       com base APENAS no system prompt que recebe                  │
+  │                                                                     │
+  │  createSupervisor(prompt: supervisorPrompt)                        │
+  │    → Cria transfer_to_* tools automaticamente                     │
+  │    → O LLM decide para qual agente delegar                        │
+  └─────────────────────────────────────────────────────────────────────┘
+end note
+
+@enduml

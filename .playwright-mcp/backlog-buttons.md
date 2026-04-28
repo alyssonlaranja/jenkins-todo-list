@@ -1,0 +1,213 @@
+### Page state
+
+- Page URL: http://localhost:4200/sda/workspace?id=250b5de1-a097-45bd-bbb4-94eb052c1be7
+- Page Title: Cockpit MCP Portal
+- Page Snapshot:
+
+```yaml
+- generic [active] [ref=e1]:
+    - alert [ref=e2]
+    - generic [ref=e7] [cursor=pointer]:
+        - button "Open Next.js Dev Tools" [ref=e8]:
+            - img [ref=e9]
+        - generic [ref=e1531]:
+            - button "Open issues overlay" [ref=e1532]:
+                - generic [ref=e1533]:
+                    - generic [ref=e1534]: '1'
+                    - generic [ref=e1535]: '2'
+                - generic [ref=e1536]:
+                    - text: Issue
+                    - generic [ref=e1537]: s
+            - button "Collapse issues badge" [ref=e1538]:
+                - img [ref=e1539]
+    - generic [ref=e2205]:
+        - complementary [ref=e2206]:
+            - navigation [ref=e2207]:
+                - link "Home" [ref=e2209] [cursor=pointer]:
+                    - /url: /sda
+                    - img [ref=e2210]
+                    - generic [ref=e2213]: Home
+                - generic "Workspace - Crie uma iniciativa primeiro" [ref=e2215]:
+                    - img [ref=e2216]
+                - generic "Validação - Crie uma iniciativa primeiro" [ref=e2219]:
+                    - img [ref=e2220]
+                - generic "Sincronização - Crie uma iniciativa primeiro" [ref=e2224]:
+                    - img [ref=e2225]
+                - link "Artefatos" [ref=e2232] [cursor=pointer]:
+                    - /url: /sda/artifacts
+                    - img [ref=e2233]
+                    - generic [ref=e2236]: Artefatos
+                - link "Dashboard" [ref=e2238] [cursor=pointer]:
+                    - /url: /sda/dashboard
+                    - img [ref=e2239]
+                    - generic [ref=e2241]: Dashboard
+                - link "Integrações" [ref=e2243] [cursor=pointer]:
+                    - /url: /sda/integracoes
+                    - img [ref=e2244]
+                    - generic [ref=e2247]: Integrações
+        - banner [ref=e2248]:
+            - generic [ref=e2249]:
+                - img [ref=e2251]
+                - generic [ref=e2255]:
+                    - generic [ref=e2256]:
+                        - heading "Avanade SDA" [level=1] [ref=e2257]
+                        - paragraph [ref=e2258]: Solution Design Agents
+                    - generic [ref=e2260]:
+                        - paragraph [ref=e2261]: Iniciativa
+                        - heading "Sistema de Gestão de Pedidos e Entregas" [level=2] [ref=e2262]
+            - generic [ref=e2263]:
+                - generic [ref=e2264]: Co-Criação
+                - button [ref=e2266] [cursor=pointer]:
+                    - img [ref=e2267]
+                - generic [ref=e2270]:
+                    - generic [ref=e2272]: MS
+                    - generic [ref=e2273]:
+                        - generic [ref=e2275]: Matheus Daniel de Toledo
+                        - paragraph [ref=e2276]: m.daniel.de.toledo@avanade.com
+        - main [ref=e2277]:
+            - generic [ref=e2280]:
+                - generic "Criação e Contexto - Etapa concluída ✓" [ref=e2283]:
+                    - img [ref=e2285]
+                    - generic [ref=e2287]: Criação e Contexto
+                - generic "Co-Criação - Etapa atual do fluxo" [ref=e2288]:
+                    - generic [ref=e2289] [cursor=pointer]: '2'
+                    - generic [ref=e2290]: Co-Criação
+                - generic "Validação - Etapa ainda não acessível. Complete a etapa atual primeiro." [ref=e2291]:
+                    - generic [ref=e2292]: '3'
+                    - generic [ref=e2293]: Validação
+                - generic "Sincronização - Etapa ainda não acessível. Complete a etapa atual primeiro." [ref=e2294]:
+                    - generic [ref=e2295]: '4'
+                    - generic [ref=e2296]: Sincronização
+            - generic [ref=e2297]:
+                - generic [ref=e2299]:
+                    - generic [ref=e2301]:
+                        - generic [ref=e2303]: S
+                        - generic [ref=e2304]:
+                            - heading "Solution Design Agents" [level=3] [ref=e2305]
+                            - paragraph [ref=e2306]: Sistema de Gestão de Pedidos e Entregas
+                            - generic [ref=e2311]: Nova iniciativa
+                    - generic [ref=e2312]:
+                        - generic [ref=e2313]:
+                            - button "Agentes (5)" [ref=e2314] [cursor=pointer]:
+                                - heading "Agentes (5)" [level=4] [ref=e2315]
+                                - img [ref=e2316]
+                            - generic [ref=e2318]:
+                                - button "J João - Gerente de Projetos Refinamento de funcionalidades e elaboração de PRD" [ref=e2319] [cursor=pointer]:
+                                    - generic [ref=e2321]: J
+                                    - generic [ref=e2322]:
+                                        - paragraph [ref=e2323]: João - Gerente de Projetos
+                                        - paragraph [ref=e2324]: Refinamento de funcionalidades e elaboração de PRD
+                                - button "M Maria - Analista de Negócios Geração de ideias inovadoras e transformação em OKRs" [ref=e2325] [cursor=pointer]:
+                                    - generic [ref=e2327]: M
+                                    - generic [ref=e2328]:
+                                        - paragraph [ref=e2329]: Maria - Analista de Negócios
+                                        - paragraph [ref=e2330]: Geração de ideias inovadoras e transformação em OKRs
+                                - button "P Paula - Product Owner Criação de Épicos, features e User Stories no azure devops" [ref=e2331] [cursor=pointer]:
+                                    - generic [ref=e2333]: P
+                                    - generic [ref=e2334]:
+                                        - paragraph [ref=e2335]: Paula - Product Owner
+                                        - paragraph [ref=e2336]: Criação de Épicos, features e User Stories no azure devops
+                                - button "S Sofia - UX Designer Criação de protótipos de UI/UX baseados em user stories" [ref=e2337] [cursor=pointer]:
+                                    - generic [ref=e2339]: S
+                                    - generic [ref=e2340]:
+                                        - paragraph [ref=e2341]: Sofia - UX Designer
+                                        - paragraph [ref=e2342]: Criação de protótipos de UI/UX baseados em user stories
+                                - button "W Wilson - Arquiteto Soluções técnicas escaláveis e documentação de arquitetura" [ref=e2343] [cursor=pointer]:
+                                    - generic [ref=e2345]: W
+                                    - generic [ref=e2346]:
+                                        - paragraph [ref=e2347]: Wilson - Arquiteto
+                                        - paragraph [ref=e2348]: Soluções técnicas escaláveis e documentação de arquitetura
+                        - generic [ref=e2349]:
+                            - button "Artefatos Disponíveis (10)" [ref=e2350] [cursor=pointer]:
+                                - heading "Artefatos Disponíveis (10)" [level=4] [ref=e2351]
+                                - img [ref=e2352]
+                            - generic [ref=e2354]:
+                                - button "Pack de Demanda" [ref=e2355] [cursor=pointer]:
+                                    - img [ref=e2356]
+                                    - paragraph [ref=e2359]: Pack de Demanda
+                                - button "AS-IS" [ref=e2360] [cursor=pointer]:
+                                    - img [ref=e2361]
+                                    - paragraph [ref=e2364]: AS-IS
+                                - button "TO-BE" [ref=e2365] [cursor=pointer]:
+                                    - img [ref=e2366]
+                                    - paragraph [ref=e2369]: TO-BE
+                                - button "Épicos" [ref=e2370] [cursor=pointer]:
+                                    - img [ref=e2371]
+                                    - paragraph [ref=e2374]: Épicos
+                                - button "User Stories" [ref=e2375] [cursor=pointer]:
+                                    - img [ref=e2376]
+                                    - paragraph [ref=e2379]: User Stories
+                                - button "Features" [ref=e2380] [cursor=pointer]:
+                                    - img [ref=e2381]
+                                    - paragraph [ref=e2384]: Features
+                                - button "Jornadas" [ref=e2385] [cursor=pointer]:
+                                    - img [ref=e2386]
+                                    - paragraph [ref=e2389]: Jornadas
+                                - button "Fluxos" [ref=e2390] [cursor=pointer]:
+                                    - img [ref=e2391]
+                                    - paragraph [ref=e2394]: Fluxos
+                                - button "Arquitetura L1/L2" [ref=e2395] [cursor=pointer]:
+                                    - img [ref=e2396]
+                                    - paragraph [ref=e2399]: Arquitetura L1/L2
+                                - button "PRD / Solution Brief" [ref=e2400] [cursor=pointer]:
+                                    - img [ref=e2401]
+                                    - paragraph [ref=e2404]: PRD / Solution Brief
+                - generic [ref=e2406]:
+                    - generic [ref=e2408]:
+                        - generic [ref=e2409]:
+                            - generic [ref=e2410]: 📊
+                            - generic [ref=e2412]:
+                                - heading "Maria" [level=3] [ref=e2420]
+                                - paragraph [ref=e2414]: Business Analyst
+                        - button "Limpar" [ref=e2453] [cursor=pointer]
+                    - generic [ref=e2415]:
+                        - generic [ref=e2469]:
+                            - generic [ref=e2470]:
+                                - generic [ref=e2471]: "Maria, preciso que voc\\u00ea crie um backlog completo com \\u00e9picos, features e PBIs para o sistema de gest\\u00e3o de pedidos e entregas. Organize por m\\u00f3dulos: Pedidos, Entregas e Estoque."
+                                - generic [ref=e2472]: 11:00
+                            - generic [ref=e2473]: U
+                        - generic [ref=e2474]:
+                            - generic [ref=e2475]: 📊
+                            - generic [ref=e2476]:
+                                - generic [ref=e2477]: Maria
+                                - generic [ref=e2478]: 'Claro! Vamos estruturar o backlog para o sistema de gestão de pedidos e entregas. Vou dividir em módulos: Pedidos, Entregas e Estoque, e dentro de cada módulo, organizarei em épicos, features e PBIs. --- ## Módulo: Pedidos ### Épico: Gestão de Pedidos #### Feature: Criação de Pedidos - **PBI 1.1:** Permitir que o usuário crie novos pedidos. - **PBI 1.2:** Implementar validação de dados ao criar pedidos. - **PBI 1.3:** Integrar com sistema de pagamento. #### Feature: Atualização de Pedidos - **PBI 2.1:** Permitir edição de pedidos existentes. - **PBI 2.2:** Notificar clientes sobre alterações no pedido. #### Feature: Cancelamento de Pedidos - **PBI 3.1:** Implementar funcionalidade de cancelamento de pedidos. - **PBI 3.2:** Registrar motivo do cancelamento. ### Épico: Monitoramento de Pedidos #### Feature: Rastreamento de Status - **PBI 4.1:** Exibir status atual do pedido. - **PBI 4.2:** Atualizar status automaticamente com base nas ações do sistema. #### Feature: Histórico de Pedidos - **PBI 5.1:** Permitir visualização do histórico de pedidos. - **PBI 5.2:** Filtrar histórico por data e status. --- ## Módulo: Entregas ### Épico: Gestão de Entregas #### Feature: Planejamento de Entregas - **PBI 6.1:** Agendar entregas com base na disponibilidade. - **PBI 6.2:** Otimizar rotas de entrega. #### Feature: Execução de Entregas - **PBI 7.1:** Confirmar entrega ao cliente. - **PBI 7.2:** Registrar problemas durante a entrega. ### Épico: Monitoramento de Entregas #### Feature: Rastreamento de Entregas - **PBI 8.1:** Fornecer rastreamento em tempo real. - **PBI 8.2:** Notificar cliente sobre status da entrega. #### Feature: Feedback de Entregas - **PBI 9.1:** Coletar feedback do cliente após entrega. - **PBI 9.2:** Analisar feedback para melhorias. --- ## Módulo: Estoque ### Épico: Gestão de Estoque #### Feature: Controle de Inventário - **PBI 10.1:** Registrar entrada e saída de produtos. - **PBI 10.2:** Alertar sobre níveis baixos de estoque. #### Feature: Relatórios de Estoque - **PBI 11.1:** Gerar relatórios de inventário. - **PBI 11.2:** Exportar relatórios para diferentes formatos. ### Épico: Monitoramento de Estoque #### Feature: Auditoria de Estoque - **PBI 12.1:** Realizar auditorias periódicas de estoque. - **PBI 12.2:** Registrar discrepâncias encontradas. #### Feature: Previsão de Demanda - **PBI 13.1:** Analisar histórico de vendas para prever demanda. - **PBI 13.2:** Ajustar automaticamente níveis de estoque com base na previsão. --- ### Recomendações 1. **Priorizar PBIs:** Avaliar a prioridade com base nas necessidades do negócio e feedback dos stakeholders. 2. **Iteração e Feedback:** Implementar de forma iterativa, buscando feedback contínuo para ajustes. 3. **Integração:** Garantir que os módulos estejam integrados para uma visão holística do sistema. Se precisar de mais detalhes ou ajustes, estou à disposição!'
+                                - generic [ref=e2479]: 11:00
+                                - generic [ref=e2481]:
+                                    - button [ref=e2482] [cursor=pointer]:
+                                        - img [ref=e2483]
+                                    - generic [ref=e2486]:
+                                        - img [ref=e2488]
+                                        - generic [ref=e2491]:
+                                            - generic [ref=e2492]:
+                                                - generic [ref=e2493]: Product Backlog
+                                                - generic [ref=e2494]: Rascunho
+                                            - generic [ref=e2495]: Versão rascunho • Gerado agora
+                                            - generic [ref=e2496]:
+                                                - generic [ref=e2497]: 'Resumo do artefato:'
+                                                - generic [ref=e2498]: — 6 épico(s) identificado(s)
+                                                - generic [ref=e2499]: — 13 feature(s) mapeada(s)
+                                            - generic [ref=e2500]:
+                                                - button "Aceitar" [ref=e2501] [cursor=pointer]:
+                                                    - img [ref=e2502]
+                                                    - text: Aceitar
+                                                - button "Editar" [ref=e2504] [cursor=pointer]:
+                                                    - img [ref=e2505]
+                                                    - text: Editar
+                                                - button "Rejeitar" [ref=e2507] [cursor=pointer]:
+                                                    - img [ref=e2508]
+                                                    - text: Rejeitar
+                    - generic [ref=e2431]:
+                        - generic [ref=e2432]:
+                            - generic [ref=e2433]:
+                                - textbox "Converse com Maria..." [ref=e2434]
+                                - generic [ref=e2435]:
+                                    - button [ref=e2436] [cursor=pointer]:
+                                        - img [ref=e2437]
+                                    - button [disabled] [ref=e2440]:
+                                        - img [ref=e2441]
+                            - button "Avançar para Validação" [ref=e2444] [cursor=pointer]:
+                                - text: Avançar para Validação
+                                - img [ref=e2445]
+                        - generic [ref=e2447]: 'Debug: hasApprovedArtifacts=true | iniciativa=250b5de1-a097-45bd-bbb4-94eb052c1be7'
+    - region "Notifications alt+T"
+```

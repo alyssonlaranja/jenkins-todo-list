@@ -1,0 +1,42 @@
+{
+  "groups": {
+    "aiHub": "AI HUB",
+    "commandCenter": "COMMAND CENTER",
+    "agentConsole": "AGENT CONSOLE",
+    "administration": "ADMINISTRATION"
+  },
+  "aiHub": {
+    "aiLibrary": "AI Library",
+    "agentPlayground": "Agent Playground",
+    "utilityAgents": "Utility Agents",
+    "videoGeneration": "Video Generation",
+    "configuration": "Configuration"
+  },
+  "commandCenter": {
+    "agentControlPanel": "Agent Control Panel",
+    "managementAgents": "Management Agents",
+    "schedule": "Schedule",
+    "reports": "Reports",
+    "telemetry": "Telemetry"
+  },
+  "agentConsole": {
+    "aiRegistry": "AI Registry",
+    "sandbox": "Sandbox",
+    "agentCreator": "Agent Creator",
+    "importAgents": "Import Agents",
+    "utilityAgents": "Utility Agents",
+    "aiMarketplace": "AI Marketplace"
+  },
+  "administration": {
+    "systemAdministrator": "System Administrator",
+    "users": "Users",
+    "namespaces": "Namespaces",
+    "licenses": "Licenses",
+    "artifacts": "Artifacts",
+    "artifactLibrary": "Artifact Library",
+    "utilityAgentsLibrary": "Utility Agents Library"
+  },
+  "search": {
+    "noResults": "No items found for \"{{term}}\""
+  }
+}

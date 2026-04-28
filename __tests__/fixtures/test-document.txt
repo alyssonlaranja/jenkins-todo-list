@@ -1,0 +1,17 @@
+Documento de Teste TXT
+
+Este é um arquivo de teste em formato .txt (texto puro).
+
+=== Seção 1: Propósito ===
+
+O objetivo deste arquivo é validar que o sistema aceita corretamente arquivos de texto.
+
+=== Seção 2: Conteúdo ===
+
+1. Teste de texto plano
+2. Validação de MIME type text/plain
+3. Verificação por extensão .txt
+
+=== Conclusão ===
+
+Se este arquivo foi processado corretamente, a correção funcionou!

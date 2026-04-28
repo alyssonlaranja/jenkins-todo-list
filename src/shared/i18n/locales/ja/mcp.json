@@ -1,0 +1,3525 @@
+{
+  "common": {
+    "name": "名前",
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功",
+    "warning": "警告",
+    "info": "情報",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "close": "閉じる",
+    "confirm": "確認",
+    "back": "戻る",
+    "next": "次へ",
+    "previous": "前へ",
+    "search": "検索",
+    "filter": "フィルター",
+    "export": "エクスポート",
+    "import": "インポート",
+    "refresh": "更新",
+    "settings": "設定"
+  },
+  "marketplace": {
+    "title": "モーダス マーケットプレイス",
+    "description": "利用可能なモーダステンプレートを探索",
+    "hero": {
+      "title": "Cockpit MCPポータルへようこそ",
+      "subtitle": "Model Context Protocol接続と環境を管理",
+      "badge": {
+        "method": "AVANADE METHOD",
+        "version": "v2025"
+      },
+      "stats": {
+        "availableModus": "利用可能なモーダス",
+        "multiNS": "マルチNS",
+        "connections": "接続",
+        "realTime": "リアルタイム",
+        "syncMigrate": "同期と移行",
+        "enterprise": "エンタープライズ",
+        "gradeSecurity": "グレードセキュリティ"
+      }
+    },
+    "content": {
+      "title": "モーダスコレクションを探索",
+      "subtitle": "ワークフローを変革するエンタープライズグレードのAIオーケストレーションツール"
+    },
+    "modus": {
+      "agentWorkspace": {
+        "title": "エージェントワークスペース",
+        "subtitle": "接続と環境管理",
+        "description": "MCPサーバー接続と環境を管理します。ネームスペースの設定、接続のテスト、AIインフラストラクチャの整理を簡単に行えます。",
+        "tags": {
+          "enterprise": "エンタープライズ",
+          "multiNS": "マルチNS",
+          "infrastructure": "インフラストラクチャ"
+        },
+        "features": {
+          "multiNamespace": "マルチネームスペース接続",
+          "envConfig": "環境設定",
+          "connectionTest": "接続テストと検証",
+          "realTimeMonitoring": "リアルタイムステータス監視"
+        }
+      },
+      "upstreamModus": {
+        "title": "アップストリームモーダス",
+        "subtitle": "BVアップストリーム発見フレームワーク",
+        "description": "6段階ウィザードを備えた完全なビジネス価値発見フレームワーク：アイデア化、没入、検証、分析、優先順位付け、移行。CopilotKit統合によるAI駆動型エピック改善。",
+        "tags": {
+          "aiPowered": "AI駆動",
+          "businessValue": "ビジネス価値",
+          "discovery": "発見",
+          "copilotKit": "CopilotKit"
+        },
+        "features": {
+          "sixStage": "6段階発見ウィザード",
+          "aiAssisted": "AI支援エピック改善",
+          "stakeholder": "ステークホルダーマッピング",
+          "portfolio": "ポートフォリオ優先順位付け"
+        }
+      },
+      "devOpsModus": {
+        "title": "DevOpsモーダス",
+        "subtitle": "CI/CDオーケストレーションプラットフォーム",
+        "description": "ML駆動パイプライン自動化、Infrastructure as Code、インテリジェントなデプロイメント戦略を備えた完全なCI/CDオーケストレーション。",
+        "tags": {
+          "ml": "ML",
+          "devOps": "DevOps",
+          "automation": "自動化"
+        },
+        "features": {
+          "automated": "自動デプロイメント",
+          "smartResolution": "スマート競合解決",
+          "visualPipeline": "ビジュアルパイプラインマッピング",
+          "iac": "Infrastructure as Code"
+        }
+      }
+    },
+    "actions": {
+      "launch": "起動",
+      "comingSoon": "近日公開"
+    },
+    "search": {
+      "placeholder": "モーダスを検索...",
+      "noResults": "モーダスが見つかりません"
+    },
+    "filters": {
+      "all": "すべて",
+      "copilotEnabled": "Copilot有効",
+      "upstream": "アップストリームのみ"
+    },
+    "card": {
+      "viewDetails": "詳細を表示",
+      "configure": "設定",
+      "enabled": "有効",
+      "disabled": "無効"
+    }
+  },
+  "connections": {
+    "title": "MCP接続",
+    "description": "Model Context Protocolサーバー接続を管理",
+    "addConnection": "接続を追加",
+    "importConnection": "接続をインポート",
+    "exportConnection": "接続をエクスポート",
+    "fromEnvironment": "環境から",
+    "stats": {
+      "total": "接続総数",
+      "errors": "エラー",
+      "artifacts": "アーティファクト総数"
+    },
+    "status": {
+      "connected": "接続済み",
+      "disconnected": "切断",
+      "connecting": "接続中...",
+      "error": "接続エラー"
+    },
+    "actions": {
+      "connect": "接続",
+      "disconnect": "切断",
+      "edit": "編集",
+      "delete": "削除",
+      "test": "接続テスト"
+    },
+    "form": {
+      "name": "接続名",
+      "url": "サーバーURL",
+      "headers": "カスタムヘッダー",
+      "namespace": "ネームスペース",
+      "environment": "環境"
+    },
+    "search": {
+      "placeholder": "名前、ネームスペース、またはエージェントで接続を検索...",
+      "noResults": "接続が見つかりません",
+      "showing": "{{total}}件中{{count}}件の接続を表示",
+      "showingPlural": "{{total}}件中{{count}}件の接続を表示"
+    },
+    "sort": {
+      "byName": "名前で並べ替え",
+      "byLastConnected": "最終接続日時で並べ替え",
+      "byArtifacts": "アーティファクトで並べ替え",
+      "byStatus": "ステータスで並べ替え"
+    },
+    "filter": {
+      "title": "ステータスでフィルター:",
+      "all": "すべて"
+    },
+    "messages": {
+      "deleteConfirm": "この接続を削除してもよろしいですか？",
+      "deleteSuccess": "接続が正常に削除されました",
+      "connectSuccess": "正常に接続されました",
+      "connectError": "接続に失敗しました"
+    },
+    "card": {
+      "labels": {
+        "artifacts": "アーティファクト",
+        "tools": "ツール",
+        "uptime": "稼働時間",
+        "agentDetails": "エージェント詳細",
+        "model": "モデル",
+        "mcpEnabled": "MCP有効",
+        "lastSync": "最終同期",
+        "yes": "はい",
+        "no": "いいえ",
+        "agentDescription": "エージェント説明",
+        "availableTools": "利用可能なツール",
+        "additionalDetails": "追加詳細",
+        "status": "ステータス",
+        "demoModeLabel": "デモモード - 認証情報を設定してください",
+        "custom": "カスタム",
+        "session": "セッション",
+        "description": "説明",
+        "showAllTools": "すべてのツールを表示",
+        "showLess": "表示を減らす"
+      },
+      "actions": {
+        "loadingDetails": "エージェント詳細を読み込み中...",
+        "showAllTools": "すべてのツールを表示",
+        "showLess": "表示を減らす",
+        "fetchDetails": "エージェント詳細を取得",
+        "loading": "読み込み中...",
+        "demoMode": "デモモード"
+      },
+      "tooltips": {
+        "disconnect": "MCPサーバーから切断",
+        "connect": "MCPサーバーに接続",
+        "testConnection": "接続をテストしてMCPサーバーを検証",
+        "collapseDetails": "詳細を折りたたむ",
+        "expandDetails": "詳細を展開",
+        "viewAgentDetails": "エージェント詳細を表示",
+        "removeConnection": "接続を削除",
+        "environment": "環境: {{name}}",
+        "namespace": "ネームスペース: {{name}}"
+      },
+      "time": {
+        "never": "なし",
+        "justNow": "たった今",
+        "minutesAgo": "{{count}}分前",
+        "hoursAgo": "{{count}}時間前",
+        "daysAgo": "{{count}}日前"
+      },
+      "stats": {
+        "more": "さらに{{count}}件"
+      },
+      "infoModal": {
+        "title": "エージェント詳細",
+        "description": "MCPエージェントとその機能に関する完全な情報",
+        "sections": {
+          "agentOverview": "エージェント概要",
+          "description": "説明",
+          "objective": "目的",
+          "teamMembers": "チームメンバー",
+          "metadata": "メタデータ",
+          "availableTools": "利用可能なツール",
+          "connectionInfo": "接続情報",
+          "availableResources": "利用可能なリソース",
+          "errorInfo": "エラー情報",
+          "demoMode": "デモモード"
+        },
+        "fields": {
+          "model": "モデル",
+          "mcpEnabled": "MCP有効",
+          "created": "作成日時",
+          "updated": "更新日時",
+          "status": "ステータス",
+          "namespace": "ネームスペース",
+          "uptime": "稼働時間",
+          "lastSync": "最終同期",
+          "agentId": "エージェントID",
+          "typeId": "タイプID"
+        },
+        "values": {
+          "yes": "はい",
+          "no": "いいえ",
+          "na": "N/A",
+          "noDescription": "説明がありません"
+        },
+        "messages": {
+          "availableArtifacts": "利用可能なアーティファクト",
+          "activeTools": "アクティブなツール",
+          "availableToolsCount": "利用可能なツール ({{count}})",
+          "toolTip": "ヒント",
+          "toolHoverHint": "ツールのバッジにマウスを合わせると説明が表示されます。",
+          "demoModeMessage": "このエージェントはデモモードで実行されています。実際の接続にはMCP認証情報を設定してください。"
+        },
+        "buttons": {
+          "fetchDetails": "エージェント詳細を取得",
+          "loadingDetails": "詳細を読み込み中...",
+          "refreshData": "データを更新",
+          "close": "閉じる"
+        }
+      }
+    },
+    "fromEnvironmentModal": {
+      "title": "環境から接続を作成",
+      "steps": {
+        "selectEnvironment": "1. 環境を選択 *",
+        "selectLicense": "2. ライセンスを選択 *",
+        "selectNamespace": "3. ネームスペースを選択 *",
+        "selectUtilityAgent": "4. ユーティリティエージェントを選択 *"
+      },
+      "placeholders": {
+        "chooseEnvironment": "環境を選択...",
+        "chooseLicense": "ライセンスを選択...",
+        "chooseNamespace": "ネームスペースを選択...",
+        "chooseUtilityAgent": "ユーティリティエージェントを選択...",
+        "autoTitle": "選択から自動生成",
+        "autoSubtitle": "ユーティリティエージェント名から自動生成"
+      },
+      "emptyStates": {
+        "noEnvironments": "利用可能な環境がありません。最初に作成してください。",
+        "noLicenses": "この環境には利用可能なライセンスがありません。",
+        "noNamespaces": "このライセンスには利用可能なネームスペースがありません。",
+        "noUtilityAgents": "このネームスペースには利用可能なユーティリティエージェントがありません。"
+      },
+      "validation": {
+        "valid": "✓ 有効な環境",
+        "validMessage": "必要なすべてのMCPサーバーが構成されています（合計{{count}}）",
+        "invalid": "✗ 無効な環境",
+        "warnings": "⚠ 警告:"
+      },
+      "summary": {
+        "title": "✓ 接続を作成する準備完了",
+        "environment": "環境:",
+        "license": "ライセンス:",
+        "namespace": "ネームスペース:",
+        "utilityAgent": "ユーティリティエージェント:",
+        "mcpServers": "MCPサーバー:",
+        "configured": "構成済み"
+      },
+      "labels": {
+        "connectionTitle": "接続タイトル（オプション）",
+        "connectionSubtitle": "接続サブタイトル（オプション）"
+      },
+      "plurals": {
+        "namespace": "ネームスペース",
+        "namespaces": "ネームスペース",
+        "utilityAgent": "ユーティリティエージェント",
+        "utilityAgents": "ユーティリティエージェント"
+      },
+      "alerts": {
+        "completeAllSelections": "すべての選択を完了してください",
+        "cannotCreate": "接続を作成できません:",
+        "testFailed": "接続テストに失敗しました:",
+        "unnamedConnection": "名前のない接続"
+      },
+      "buttons": {
+        "cancel": "キャンセル",
+        "create": "接続を作成"
+      }
+    }
+  },
+  "upstream": {
+    "title": "アップストリームモーダス",
+    "subtitle": "ビジネスエピック発見と検証のための6ステップフレームワーク",
+    "description": "アイデア化 → 没入 → 検証 → 分析 → 優先順位付け → 移行",
+    "stats": {
+      "totalEpics": "合計エピック",
+      "features": "機能",
+      "userStories": "ユーザーストーリー"
+    },
+    "steps": {
+      "ideacao": {
+        "label": "1. アイデア化",
+        "title": "アイデア化と発見",
+        "description": "問題、仮説を定義し、整合したOKRを探る",
+        "agentName": "アイデア化エージェント"
+      },
+      "viabilidade": {
+        "label": "2. 実現可能性",
+        "title": "実現可能性分析",
+        "description": "技術的複雑さ、労力、依存関係を評価する",
+        "agentName": "実現可能性エージェント"
+      },
+      "priorizacao": {
+        "label": "3. 優先順位付け",
+        "title": "戦略的優先順位付け",
+        "description": "優先度スコアとOKRとの整合性を計算する",
+        "agentName": "優先順位付けエージェント"
+      },
+      "refinamento": {
+        "label": "4. 洗練",
+        "title": "技術的洗練",
+        "description": "要件、受け入れ基準、技術的アプローチを詳細化する",
+        "agentName": "洗練エージェント"
+      },
+      "aprovacao": {
+        "label": "5. 承認",
+        "title": "役員承認",
+        "description": "ステークホルダーの承認を取得し、予算を確定する",
+        "agentName": "承認エージェント"
+      },
+      "acompanhamento": {
+        "label": "6. モニタリング",
+        "title": "モニタリングと指標",
+        "description": "進捗、ブロッカー、次のステップを監視する",
+        "agentName": "モニタリングエージェント"
+      }
+    },
+    "emptyState": {
+      "title": "マクロイニシアチブはまだありません",
+      "description": "BVアップストリームフレームワークを使用して最初のマクロイニシアチブを作成してください。6段階のプロセスに従って、イニシアチブを定義、検証、優先順位付けします。",
+      "quickInfo": {
+        "framework": {
+          "title": "6段階フレームワーク",
+          "description": "アイデア化 → 没入 → 検証 → 分析 → 優先順位付け → 移行"
+        },
+        "aiPowered": {
+          "title": "AI搭載",
+          "description": "インテリジェントな提案と検証のためのCopilotKit統合"
+        },
+        "lifecycle": {
+          "title": "完全なライフサイクル",
+          "description": "トレーサビリティを備えたエピック → 機能 → ユーザーストーリーの進化"
+        }
+      }
+    },
+    "workspace": {
+      "loadingEnvironment": "環境を読み込み中...",
+      "loadingEnvironmentDescription": "認証済みセッションからセッション環境を作成しています。しばらくお待ちください。",
+      "noEnvironment": "利用可能な環境がありません",
+      "noEnvironmentDescription": "セッション環境を作成できませんでした。認証を確認し、ページを更新してみてください。",
+      "loadingConnection": "接続を読み込み中...",
+      "loadingConnectionDescription": "ブートストラップエージェントでセッション接続を作成しています。もうすぐ完了します！",
+      "syncingConnections": "接続リストを同期中...",
+      "noConnection": "利用可能な接続がありません",
+      "noConnectionDescription": "セッション接続を作成できませんでした。設定を確認し、ページを更新してみてください。"
+    },
+    "hero": {
+      "title": "アップストリームモーダス",
+      "subtitle": "BVアップストリーム発見フレームワーク",
+      "description": "6段階ウィザードを備えた完全なビジネス価値発見フレームワーク：アイデア化、没入、検証、分析、優先順位付け、移行。CopilotKit統合によるAI支援エピック改良。"
+    },
+    "tabs": {
+      "setupGroup": "⚙️ セットアップ",
+      "modusGroup": "🚀 モーダス",
+      "environments": "環境",
+      "connections": "接続",
+      "upstream": "アップストリーム",
+      "loadingConnections": "接続を読み込み中..."
+    },
+    "knowledgeBase": {
+      "title": "ナレッジベース",
+      "document": "ドキュメント",
+      "documents": "ドキュメント",
+      "dropFilesHere": "ここにファイルをドロップ...",
+      "dragAndDrop": "ここにファイルをドラッグ＆ドロップ、またはクリックして選択",
+      "supportedFormats": "対応形式: PDF, DOCX, MD, TXT, XLSX (最大10MB)",
+      "emptyState": "まだドキュメントがアップロードされていません。ドキュメントを追加してAIの応答を向上させましょう。",
+      "status": {
+        "processing": "処理中",
+        "ready": "準備完了",
+        "error": "エラー"
+      }
+    },
+    "wizard": {
+      "title": "アップストリームフレームワークウィザード",
+      "subtitle": "エピック作成のガイドプロセス",
+      "badge": "アップストリームフレームワーク",
+      "epicTitle": "新しいビジネスエピックを作成",
+      "epicProgress": "エピックの進捗",
+      "of": "の",
+      "stepStatus": {
+        "completed": "完了",
+        "current": "現在",
+        "pending": "保留中"
+      },
+      "progress": {
+        "step": "ステップ {{current}} / {{total}}"
+      },
+      "stages": {
+        "ideation": "アイデア化",
+        "ideationDesc": "マクロイニシアチブの仮説を捕捉し、OKRと明確な問題と接続する",
+        "immersion": "没入と探索",
+        "immersionDesc": "問題を探索し、データを収集し、ステークホルダーと初期リスクをマッピングする",
+        "validation": "仮説検証",
+        "validationDesc": "主要エリアでプロトタイプまたは概念MVPを使用して仮説をテストする",
+        "exploration": "探索",
+        "explorationDesc": "マクロ要件の作成、ユーザビリティテスト、ユーザージャーニーの設計/調整",
+        "analysis": "分析とデザイン",
+        "analysisDesc": "マクロソリューションを設計し、依存関係とリスクを分析する",
+        "prioritization": "優先順位付けとプレQBR",
+        "prioritizationDesc": "価値、工数、リスクを評価し、QBRメモを準備する",
+        "transition": "移行",
+        "transitionDesc": "ハンドオフ、バックログ、責任合意を準備する"
+      },
+      "hypotheses": {
+        "title": "仮説",
+        "new": "新規",
+        "create": "仮説を作成",
+        "edit": "仮説を編集",
+        "delete": "仮説を削除",
+        "duplicate": "複製",
+        "noHypotheses": "仮説がありません",
+        "createFirst": "最初の仮説を作成",
+        "inProgress": "進行中",
+        "completed": "完了",
+        "validated": "検証済み",
+        "rejected": "却下",
+        "statement": "仮説",
+        "statementPlaceholder": "私たちは[アクション/機能]が[対象者]に[期待される結果]をもたらすと信じています。なぜなら[理由]...",
+        "statementRequired": "仮説は必須です",
+        "statementMinLength": "仮説は10文字以上である必要があります",
+        "statementTip": "ヒント: 「私たちは...が...をもたらすと信じています。なぜなら...」の形式を使用してください",
+        "type": "仮説タイプ",
+        "types": {
+          "value": "価値",
+          "valueDesc": "顧客に提供される価値に関する仮説",
+          "usability": "ユーザビリティ",
+          "usabilityDesc": "ユーザー体験に関する仮説",
+          "feasibility": "技術的実現可能性",
+          "feasibilityDesc": "構築能力に関する仮説",
+          "viability": "ビジネス実現可能性",
+          "viabilityDesc": "ビジネス持続可能性に関する仮説"
+        },
+        "status": {
+          "draft": "下書き",
+          "exploring": "探索中",
+          "validating": "検証中",
+          "validated": "検証済み",
+          "rejected": "却下",
+          "pivoted": "ピボット済み"
+        },
+        "linkedOKRs": "リンクされたOKR",
+        "linkedOKRsTip": "この仮説が検証に役立つOKRを選択してください",
+        "progress": "進捗",
+        "evidence": "証拠",
+        "evidences": "証拠",
+        "owner": "所有者",
+        "collaborators": "協力者",
+        "saveChanges": "変更を保存"
+      },
+      "hypothesis": {
+        "noSelection": "仮説が選択されていません",
+        "selectForImmersion": "サイドパネルから仮説を選択して、そのコンテキストを探索してください。",
+        "selectForValidation": "サイドパネルから仮説を選択して検証してください。",
+        "exploringLabel": "仮説を探索中",
+        "validatingLabel": "仮説を検証中",
+        "dataForHypothesis": "この仮説のデータ",
+        "selectRequired": "仮説を選択してください",
+        "selectRequiredDescription": "サイドバーから仮説を選択して、探索データを入力してください。各仮説には独自のCSDマトリックス、ステークホルダー、リスクがあります。"
+      },
+      "navigation": {
+        "next": "次へ",
+        "previous": "前へ",
+        "save": "保存",
+        "cancel": "キャンセル",
+        "finish": "完了"
+      },
+      "actions": {
+        "cancelClose": "キャンセルして閉じる",
+        "fullscreen": "全画面表示",
+        "exitFullscreen": "全画面表示を終了",
+        "saveDraft": "下書き保存",
+        "saving": "保存中...",
+        "viewOutputs": "ステージ成果物を表示"
+      },
+      "knowledgeBase": {
+        "title": "ナレッジベース",
+        "document": "ドキュメント",
+        "documents": "ドキュメント",
+        "loading": "読み込み中...",
+        "count": "ナレッジベース ({{count}})",
+        "missingSteps": "{{count}}つのステップにドキュメントが必要です",
+        "allComplete": "すべてのステップにドキュメントがあります",
+        "statusPopover": {
+          "title": "ステップ別ドキュメント要件",
+          "allCompleteTitle": "すべてのステップが完了！",
+          "allCompleteDescription": "各ステップに必要なドキュメントがあります。",
+          "stepComplete": "完了",
+          "stepMissing": "ドキュメントが必要",
+          "requiredTypes": "必要",
+          "helpTip": "ナレッジベースパネルでドキュメントをアップロードし、各ステップの適切なカテゴリに割り当ててください。",
+          "bvFrameworkNote": "BVフレームワークUpstreamに沿った入力要件",
+          "bvInputLabel": "BVフレームワーク入力",
+          "slotTypes": {
+            "general": "一般ドキュメント",
+            "marketInsights": "市場インサイト",
+            "okrs": "OKR",
+            "registeredHypotheses": "登録済み仮説",
+            "hypothesisInput": "仮説入力",
+            "qualitativeData": "定性データ",
+            "quantitativeData": "定量データ",
+            "prioritizedHypotheses": "優先順位付き仮説",
+            "preliminaryResults": "予備結果",
+            "validatedMacroInitiative": "検証済みマクロイニシアチブ",
+            "validatedHypotheses": "検証済み仮説",
+            "technicalData": "技術データ",
+            "functionalData": "機能データ",
+            "prioritizedBacklog": "優先順位付きバックログ",
+            "technicalAnalysis": "技術分析",
+            "businessAnalysis": "ビジネス分析"
+          },
+          "slotDescriptions": {
+            "general": "すべてのステージで利用可能な一般ドキュメント",
+            "marketInsights": "市場分析、トレンド、市場調査",
+            "okrs": "エピックにリンクされた目標と主要成果",
+            "registeredHypotheses": "検証される初期仮説",
+            "hypothesisInput": "ステージ1からの登録済み仮説（前の出力）",
+            "qualitativeData": "インタビュー、ユーザーフィードバック、定性調査",
+            "quantitativeData": "メトリクス、調査、分析データ",
+            "prioritizedHypotheses": "検証のために優先順位付けされた仮説",
+            "preliminaryResults": "仮説検証の初期結果",
+            "validatedMacroInitiative": "検証され証拠付けされた仮説を持つマクロイニシアチブ",
+            "validatedHypotheses": "検証プロセスを通過した仮説",
+            "technicalData": "技術仕様、アーキテクチャ、統合",
+            "functionalData": "機能要件、ビジネスルール",
+            "prioritizedBacklog": "優先順位で並べられたバックログアイテム",
+            "technicalAnalysis": "技術的実現可能性と複雑さの分析",
+            "businessAnalysis": "価値分析、ROI、ビジネスインパクト"
+          },
+          "slotBvInputs": {
+            "general": "一般ドキュメント",
+            "marketInsights": "市場インサイト",
+            "okrs": "OKR（目標と主要成果）",
+            "registeredHypotheses": "登録済み仮説",
+            "hypothesisInput": "登録済み仮説（ステージ1からの出力）",
+            "qualitativeData": "定性データ（インタビュー、フィードバック、調査）",
+            "quantitativeData": "定量データ（メトリクス、調査、分析）",
+            "prioritizedHypotheses": "優先順位付き仮説",
+            "preliminaryResults": "予備結果",
+            "validatedMacroInitiative": "検証され証拠付けされた仮説を持つ作成済みマクロイニシアチブ",
+            "validatedHypotheses": "検証済み仮説",
+            "technicalData": "技術データ",
+            "functionalData": "機能データ",
+            "prioritizedBacklog": "優先順位付きバックログ",
+            "technicalAnalysis": "技術分析",
+            "businessAnalysis": "ビジネス分析"
+          }
+        },
+        "inputRequirements": {
+          "slotTypes": {
+            "general": "一般ドキュメント",
+            "marketInsights": "市場インサイト",
+            "okrs": "OKR",
+            "registeredHypotheses": "登録済み仮説",
+            "hypothesisInput": "仮説入力",
+            "qualitativeData": "定性データ",
+            "quantitativeData": "定量データ",
+            "prioritizedHypotheses": "優先順位付き仮説",
+            "preliminaryResults": "予備結果",
+            "validatedMacroInitiative": "検証済みマクロイニシアチブ",
+            "validatedHypotheses": "検証済み仮説",
+            "technicalData": "技術データ",
+            "functionalData": "機能データ",
+            "prioritizedBacklog": "優先順位付きバックログ",
+            "technicalAnalysis": "技術分析",
+            "businessAnalysis": "ビジネス分析"
+          },
+          "slotDescriptions": {
+            "general": "すべてのステージで利用可能な一般ドキュメント",
+            "marketInsights": "市場分析、トレンド、市場調査",
+            "okrs": "エピックにリンクされた目標と主要成果",
+            "registeredHypotheses": "検証される初期仮説",
+            "hypothesisInput": "ステージ1からの登録済み仮説（前の出力）",
+            "qualitativeData": "インタビュー、ユーザーフィードバック、定性調査",
+            "quantitativeData": "メトリクス、調査、分析データ",
+            "prioritizedHypotheses": "検証のために優先順位付けされた仮説",
+            "preliminaryResults": "仮説検証の初期結果",
+            "validatedMacroInitiative": "検証され証拠付けされた仮説を持つマクロイニシアチブ",
+            "validatedHypotheses": "検証プロセスを通過した仮説",
+            "technicalData": "技術仕様、アーキテクチャ、統合",
+            "functionalData": "機能要件、ビジネスルール",
+            "prioritizedBacklog": "優先順位で並べられたバックログアイテム",
+            "technicalAnalysis": "技術的実現可能性と複雑さの分析",
+            "businessAnalysis": "価値分析、ROI、ビジネスインパクト"
+          }
+        }
+      },
+      "knowledgeSlots": {
+        "basicView": "基本",
+        "slotsView": "ステージ別",
+        "title": "ナレッジスロット",
+        "document": "ドキュメント",
+        "documents": "ドキュメント",
+        "filterByType": "タイプで絞り込み",
+        "allTypes": "すべてのタイプ",
+        "loading": "ドキュメントを読み込み中...",
+        "stageInfo": "ステージ情報",
+        "stageInfoDescription": "スロットにアップロードされたドキュメントはカテゴリ化され、AI支援分析に利用できます。一部のスロットタイプは後のステージでのみ表示されます。",
+        "dropHere": "ここにファイルをドロップ...",
+        "dragDrop": "ドラッグ＆ドロップまたはクリックして選択"
+      },
+      "stageInputs": {
+        "title": "ステージ入力",
+        "buttonLabel": "入力",
+        "buttonLabelWithCount": "入力 ({{filled}}/{{total}})",
+        "expandTooltip": "このステージに必要な入力を表示",
+        "collapseTooltip": "ステージ入力を非表示",
+        "headerTitle": "{{stageName}}に必要な入力",
+        "headerSubtitle": "このステージを完了するには、以下が必要です：",
+        "allComplete": "すべての入力が提供されました！",
+        "allCompleteSubtitle": "このステージには必要なナレッジドキュメントがすべて揃っています。",
+        "missingCount": "{{count}}件の入力が不足",
+        "missingCountPlural": "{{count}}件の入力が不足",
+        "addDocument": "ドキュメントを追加",
+        "viewDocument": "表示",
+        "copilotHint": "AIアシスタントにこの入力についてヘルプを依頼",
+        "copilotSuggestion": "💡 ヘルプが必要ですか？アシスタントに聞いてください：「{{slotName}}について教えて」",
+        "slotStatus": {
+          "filled": "提供済み",
+          "missing": "不足",
+          "optionalEmpty": "任意 - ドキュメントなし"
+        },
+        "optional": "任意",
+        "progressLabel": "入力進捗",
+        "progressComplete": "完了",
+        "actions": {
+          "askCopilot": "AIにヘルプを依頼",
+          "uploadFile": "ドキュメントをアップロード",
+          "skipForNow": "今はスキップ"
+        }
+      },
+      "saving": {
+        "inProgress": "ビジネスエピックを保存中...",
+        "autoSave": "進行状況は自動的に保存されます"
+      },
+      "validation": {
+        "pleaseComplete": "必須フィールドを入力してください",
+        "requiredFields": "次のステップに進む前に、すべての必須フィールドに入力してください"
+      },
+      "outputs": {
+        "description": "この段階で期待される成果物とアーティファクト",
+        "footer": "これらの成果物はビジネスエピックアーティファクトの一部として保存されます",
+        "download": "ダウンロード",
+        "downloadSuccess": "Markdownを正常にダウンロードしました",
+        "ideation": {
+          "title": "アイデア創出段階の成果物",
+          "item1": "戦略にリンクされた仮説の登録",
+          "item2": "エピック名の定義",
+          "item3": "接続されたOKR",
+          "item4": "初期ビジネス価値の見積もり"
+        },
+        "immersion": {
+          "title": "没入段階の成果物",
+          "item1": "CSDマトリックス（確実性、仮定、疑問）",
+          "item2": "特定されたステークホルダーとペルソナ",
+          "item3": "機会ツリーのマッピング",
+          "item4": "ユーザージャーニーの洞察",
+          "item5": "市場調査と競合分析"
+        },
+        "validation": {
+          "title": "検証段階の成果物",
+          "item1": "検証された仮説（価値、使いやすさ、技術、ビジネス）",
+          "item2": "テスト結果とエビデンス"
+        },
+        "exploration": {
+          "title": "探索段階の成果物",
+          "item1": "検証済み仮説に基づくマクロ要件",
+          "item2": "ビジネスフロー図（Mermaid）",
+          "item3": "ユーザージャーニーマップ（分析から移動）",
+          "item4": "アクターマッピング（内部/外部、重要度付き）",
+          "item5": "重要な問題を含むユーザビリティテスト結果",
+          "item6": "ステージメトリクス（5つのKPI）"
+        },
+        "analysis": {
+          "title": "分析段階の成果物",
+          "item1": "アーキテクチャブループリント",
+          "item2": "影響分析",
+          "item3": "依存関係のマッピング",
+          "item4": "技術的実現可能性評価",
+          "item5": "リスク分析"
+        },
+        "prioritization": {
+          "title": "優先順位付け段階の成果物",
+          "item1": "ビジネス価値スコア",
+          "item2": "工数見積もり",
+          "item3": "リスク評価",
+          "item4": "KPIの定義",
+          "item5": "ROI予測",
+          "item6": "優先順位ランキング"
+        },
+        "transition": {
+          "title": "移行段階の成果物",
+          "item1": "ストーリーを含むJiraバックログ",
+          "item2": "引き継ぎドキュメント",
+          "item3": "チームの割り当て",
+          "item4": "実装ロードマップ"
+        }
+      },
+      "markdownPreview": {
+        "noContent": "プレビューするコンテンツがありません。上のフィールドに何か入力してください。",
+        "title": "マークダウンプレビュー"
+      },
+      "outputPreview": {
+        "stages": {
+          "1": "🎯 ステージ1：アイデア創出",
+          "2": "🔍 ステージ2：没入と探索",
+          "3": "✅ ステージ3：仮説検証",
+          "4": "🔬 ステージ4：探索",
+          "5": "📐 ステージ5：分析とデザイン",
+          "6": "🎯 ステージ6：優先順位付けとプレQBR",
+          "7": "🚀 ステージ7：移行"
+        },
+        "sections": {
+          "epicInfo": "エピック情報",
+          "name": "名前",
+          "description": "説明",
+          "bvFrameworkHypothesis": "BVフレームワーク：戦略に紐づいた登録済み仮説",
+          "problemStatement": "問題ステートメント",
+          "centralHypothesis": "中心仮説",
+          "strategicAlignment": "戦略的整合性",
+          "linkedOKRs": "関連OKR",
+          "initialBusinessValue": "初期ビジネス価値",
+          "score": "スコア",
+          "csdMatrix": "CSDマトリックス",
+          "certainties": "確実性",
+          "suppositions": "仮定",
+          "doubts": "疑問",
+          "mainProblems": "主な問題",
+          "opportunityTree": "機会ツリー",
+          "stakeholders": "ステークホルダー",
+          "initialRisks": "初期リスク",
+          "hypotheses": "仮説",
+          "hypothesis": "仮説",
+          "type": "タイプ",
+          "status": "ステータス",
+          "evidenceLevel": "エビデンスレベル",
+          "validationMethod": "検証方法",
+          "evidence": "エビデンス",
+          "macroRequirements": "マクロ要件",
+          "businessFlow": "ビジネスフロー",
+          "userJourney": "ユーザージャーニー",
+          "actorMapping": "アクターマッピング",
+          "usabilityTest": "ユーザビリティテスト",
+          "criticalIssues": "重大な問題",
+          "resolvedIssues": "解決済みの問題",
+          "architectureBlueprint": "アーキテクチャブループリント",
+          "impactAnalysis": "影響分析",
+          "gapAnalysis": "GAP分析",
+          "dependencies": "依存関係",
+          "mitigationPlans": "軽減計画",
+          "businessMetrics": "ビジネス指標",
+          "finalBusinessValue": "最終ビジネス価値",
+          "effort": "工数",
+          "riskLevel": "リスクレベル",
+          "bvFrameworkValuePlan": "BVフレームワーク：バリュープランと予備KPI",
+          "valuePlan": "バリュープラン",
+          "preliminaryKPIs": "予備KPI",
+          "kpis": "KPI",
+          "theme": "テーマ",
+          "adherence": "準拠",
+          "justification": "正当化",
+          "qbrMemo": "QBRメモ",
+          "prioritizedBacklog": "優先順位付けバックログ",
+          "jiraIntegration": "Jira統合",
+          "backlogLink": "バックログリンク",
+          "handoff": "ハンドオフ",
+          "document": "ドキュメント",
+          "targetSquad": "ターゲットスクワッド",
+          "responsibilityAgreements": "責任契約",
+          "features": "機能（BVフレームワーク）",
+          "url": "URL",
+          "results": "結果",
+          "businessEpics": "ビジネスエピック",
+          "scope": "スコープ",
+          "targetTribe": "ターゲットトライブ",
+          "jiraBacklogUrl": "Jiraバックログ URL",
+          "transitionStatus": "移行ステータス",
+          "handoffDocument": "ハンドオフドキュメント"
+        },
+        "table": {
+          "name": "名前",
+          "role": "役割",
+          "department": "部門",
+          "influence": "影響力",
+          "type": "タイプ",
+          "criticality": "重要度",
+          "kpiName": "KPI名",
+          "kpiDescription": "説明",
+          "target": "目標",
+          "baseline": "ベースライン",
+          "unit": "単位",
+          "frequency": "頻度",
+          "priority": "優先度",
+          "sprints": "スプリント",
+          "criteria": "基準",
+          "level": "レベル",
+          "responsibility": "責任"
+        },
+        "notDefined": "未定義",
+        "notDefinedYet": "未定義",
+        "noItemsYet": "まだ項目が定義されていません",
+        "items": "項目",
+        "problemDefined": "問題の定義",
+        "hypothesisFormulated": "仮説の策定",
+        "suggestedOKRs": "推奨OKR",
+        "businessValue": "ビジネス価値",
+        "stakeholdersIdentified": "特定されたステークホルダー",
+        "technicalComplexity": "技術的複雑性",
+        "estimatedEffort": "推定作業量",
+        "dependenciesMapped": "依存関係のマッピング",
+        "technicalRisks": "技術的リスク",
+        "priorityScore": "優先度スコア",
+        "urgency": "緊急度",
+        "businessImpact": "ビジネスへの影響",
+        "alignmentWithOKRs": "OKRとの整合性",
+        "detailedRequirements": "詳細要件",
+        "documented": "文書化済み",
+        "acceptanceCriteria": "受け入れ基準",
+        "technicalApproach": "技術的アプローチ",
+        "defined": "定義済み",
+        "integrationPoints": "統合ポイント",
+        "approvals": "承認",
+        "approvedBudget": "承認された予算",
+        "approvedTimeline": "承認されたタイムライン",
+        "progress": "進捗",
+        "activeBlockers": "アクティブなブロッカー",
+        "nextSteps": "次のステップ"
+      },
+      "steps": {
+        "ideation": {
+          "title": "アイデア創出",
+          "description": "OKRと明確な問題に関連するビジネスエピックの仮説を取得",
+          "fields": {
+            "name": "マクロイニシアチブ名",
+            "namePlaceholder": "例: 高度なデジタルオンボーディング",
+            "epicName": "ビジネスエピック名",
+            "epicNamePlaceholder": "例: 高度なデジタルオンボーディング",
+            "description": "問題/機会の説明",
+            "descriptionPlaceholder": "このエピックが解決しようとするビジネス上の問題または機会を説明してください...",
+            "charactersCount": "{{count}}文字",
+            "linkedOKRs": "リンクされたOKR",
+            "linkedOKRsPlaceholder": "例: コンバージョン率を20%向上",
+            "businessValue": "初期ビジネス価値の見積もり",
+            "businessValueHelp": "期待されるビジネス価値を0-100のスケールで評価してください。0 = 最小限の影響、100 = 変革的な戦略的価値。収益可能性、コスト削減、リスク軽減、競争優位性を考慮してください。",
+            "valueLow": "低",
+            "valueMedium": "中",
+            "valueHigh": "高",
+            "problemStatement": "問題の説明",
+            "problemStatementPlaceholder": "このイニシアチブが解決しようとする問題を明確に説明してください...",
+            "problemStatementHelp": "痛点、その影響、影響を受ける人について具体的に記述してください。",
+            "hypothesis": "中心仮説",
+            "hypotheses": "仮説",
+            "hypothesesHelp": "ステージ2と3で検証される仮説を1つ以上作成してください。「私たちは...と信じています」の形式を使用してください。",
+            "hypothesisPlaceholder": "[Xを行うこと]で[ユーザーセグメント]に[Yを達成]できると信じています...",
+            "hypothesisHelp": "プロセス全体で検証される主要な仮説を述べてください。",
+            "hypothesisAddHint": "Ctrl+Enterで素早く追加",
+            "addMoreHypotheses": "さらに仮説を追加:",
+            "addButton": "追加",
+            "strategicAlignment": "戦略的整合性",
+            "strategicAlignmentPlaceholder": "このイニシアチブが組織戦略とどのように整合するかを説明してください...",
+            "strategicAlignmentHelp": "このイニシアチブを戦略目標とOKRに結び付けてください。"
+          },
+          "bvFramework": {
+            "title": "BVフレームワーク: 戦略にリンクされた登録仮説"
+          },
+          "outputsTitle": "この段階の成果物",
+          "outputs": "戦略にリンクされた仮説の登録、エピック名の定義、接続されたOKR、初期ビジネス価値の見積もり",
+          "alerts": {
+            "nameRequired": "エピック名を入力してください",
+            "descriptionRequired": "説明を入力してください",
+            "okrRequired": "少なくとも1つのOKRをリンクしてください",
+            "hypothesisRequired": "続行する前に少なくとも1つの仮説を作成してください",
+            "problemStatementRequired": "問題の説明を入力してください"
+          },
+          "hypotheses": {
+            "singular": "仮説が作成されました",
+            "plural": "仮説が作成されました",
+            "createdHelp": "仮説はステージ2と3で検証されます。",
+            "none": "まだ仮説が作成されていません。続行するには少なくとも1つの仮説を追加してください。",
+            "types": {
+              "value": "価値",
+              "usability": "ユーザビリティ",
+              "feasibility": "技術的実現可能性",
+              "viability": "ビジネス実現可能性"
+            }
+          },
+          "nextStep": "次のステップ: 没入 →"
+        },
+        "immersion": {
+          "title": "没入",
+          "description": "CSDマトリックス、ステークホルダー、リスクを通じてコンテキストに深く入り込む",
+          "csdMatrix": "CSDマトリックス",
+          "certainties": "確実性",
+          "certaintyPlaceholder": "私たちが知っていること...",
+          "assumptions": "仮定",
+          "assumptionPlaceholder": "私たちが信じていること...",
+          "doubts": "疑問",
+          "doubtPlaceholder": "私たちが発見する必要があること...",
+          "stakeholders": "主要なステークホルダー",
+          "stakeholderName": "名前",
+          "stakeholderRole": "役割",
+          "stakeholderDepartment": "部門",
+          "addStakeholder": "ステークホルダーを追加",
+          "influenceLow": "低い",
+          "influenceMedium": "中程度",
+          "influenceHigh": "高い",
+          "mainProblems": "主要な問題",
+          "mainProblemsHelp": "このエピックが解決を目指す中心的な問題を特定します。これらの問題は機会ツリーに反映されます。",
+          "mainProblemPlaceholder": "例: チェックアウトページのコンバージョン率が低い...",
+          "noProblems": "まだ主要な問題が追加されていません",
+          "opportunityTree": "機会ツリー",
+          "opportunityPlaceholder": "特定された機会...",
+          "initialRisks": "初期リスク",
+          "riskPlaceholder": "特定されたリスク...",
+          "outputsTitle": "この段階の成果物",
+          "outputs": "CSDマトリックス（確実性、仮定、疑問）、ステークホルダーマッピング、機会ツリー、初期リスク識別",
+          "back": "前へ",
+          "nextStep": "次のステップ: 検証 →",
+          "alerts": {
+            "csdRequired": "CSDマトリックスに少なくとも1つの項目を追加してください（確実性、仮定、または疑問）",
+            "stakeholderRequired": "少なくとも1人のステークホルダーを追加してください"
+          }
+        },
+        "validation": {
+          "title": "仮説検証",
+          "description": "証拠と検証方法で仮定を検証",
+          "newHypothesis": "新しい仮説",
+          "editHypothesis": "仮説を編集",
+          "descriptionLabel": "説明",
+          "descriptionPlaceholder": "仮説を説明してください...",
+          "typeLabel": "タイプ",
+          "typeValue": "価値",
+          "typeValueOption": "価値仮説",
+          "typeUsability": "使いやすさ",
+          "typeUsabilityOption": "使いやすさ仮説",
+          "typeFeasibility": "技術的実現可能性",
+          "typeFeasibilityOption": "技術的実現可能性仮説",
+          "typeViability": "ビジネス実現可能性",
+          "typeViabilityOption": "ビジネス実現可能性仮説",
+          "statusLabel": "検証ステータス",
+          "statusPending": "保留中",
+          "statusValidated": "検証済み",
+          "statusRejected": "却下",
+          "methodLabel": "検証方法",
+          "methodPlaceholder": "どのように検証されましたか？",
+          "methodDisplay": "方法",
+          "evidenceLabel": "証拠",
+          "evidencePlaceholder": "証拠を説明してください...",
+          "evidenceDisplay": "証拠",
+          "evidenceLevelLabel": "証拠の強さ",
+          "evidenceLevelWeak": "弱い証拠",
+          "evidenceLevelMedium": "中程度の証拠",
+          "evidenceLevelNone": "証拠なし",
+          "evidenceLevelStrong": "強い証拠",
+          "evidenceLevelHint": "収集された証拠の質と信頼性を評価",
+          "resetStatus": "ステータスをリセット",
+          "evidenceQualitative": "定性的",
+          "evidenceQuantitative": "定量的",
+          "evidenceSource": "出典（オプション）",
+          "addEvidence": "証拠を追加",
+          "noEvidence": "まだ証拠が追加されていません。検証をサポートする証拠を追加してください。",
+          "qualitativeResults": "定性的結果",
+          "qualitativeResultsPlaceholder": "収集した定性的インサイトを説明してください...",
+          "quantitativeResults": "定量的結果",
+          "quantitativeResultsPlaceholder": "収集した定量的データを説明してください...",
+          "addButton": "仮説を追加",
+          "updateButton": "仮説を更新",
+          "editButton": "編集",
+          "deleteButton": "削除",
+          "cancelButton": "キャンセル",
+          "listTitle": "仮説 ({{count}})",
+          "emptyState": "まだ仮説が追加されていません。最初の仮説を追加してください。",
+          "statsTotal": "合計",
+          "statsValidated": "検証済み",
+          "statsRejected": "却下",
+          "statsPending": "保留中",
+          "outputsTitle": "この段階の成果物",
+          "outputs": "証拠付き検証済み仮説、理由付き却下仮説、さらなる調査のための保留中仮説",
+          "back": "前へ",
+          "nextStep": "次のステップ: 探索 →",
+          "alerts": {
+            "descriptionRequired": "仮説の説明を入力してください",
+            "hypothesisRequired": "少なくとも1つの仮説を追加してください",
+            "pendingWarning": "{{count}}個の保留中の仮説があります。\n\nUpstreamフレームワークでは、理想的には進む前に少なくとも1つの仮説を証拠で検証します。\n\nそれでも続けますか？"
+          }
+        },
+        "exploration": {
+          "title": "探索",
+          "description": "マクロ要件の記述、ユーザビリティテスト、アクターマッピング、図表",
+          "macroRequirementsLabel": "マクロ要件",
+          "macroRequirementPlaceholder": "例: システムは同時認証をサポートする必要があります...",
+          "noMacroRequirements": "マクロ要件はまだ追加されていません",
+          "macroRequirementsHelp": "検証済み仮説から導出されたマクロ要件を文書化します。これらの要件は技術的スコープをガイドします。",
+          "businessFlowLabel": "ビジネスフロー",
+          "businessFlowPlaceholder": "https://miro.com/board-url",
+          "businessFlowMermaidPlaceholder": "graph LR\n  A[開始] --> B[プロセス]\n  B --> C[終了]",
+          "businessFlowHelp": "ビジネスフローを表すリンクまたはMermaidコード",
+          "openBusinessFlow": "ビジネスフローを表示",
+          "generateMermaid": "Mermaidを生成",
+          "userJourneyLabel": "ユーザージャーニー",
+          "userJourneyPlaceholder": "https://figma.com/journey-url",
+          "userJourneyMermaidPlaceholder": "journey\n  title ユーザージャーニー\n  section 発見\n    製品を見つける: 5: ユーザー\n  section 購入\n    カートに追加: 4: ユーザー",
+          "userJourneyHelp": "ユーザージャーニーのリンクまたはMermaidコード",
+          "openUserJourney": "ユーザージャーニーを表示",
+          "actorMappingLabel": "アクターマッピング",
+          "actorName": "アクター名",
+          "actorType": "タイプ",
+          "actorTypeInternal": "内部",
+          "actorTypeExternal": "外部",
+          "actorCriticality": "重要度",
+          "criticalityLow": "低",
+          "criticalityMedium": "中",
+          "criticalityHigh": "高",
+          "criticalityCritical": "重大",
+          "addActor": "アクターを追加",
+          "noActors": "まだアクターがマッピングされていません",
+          "actorMappingHelp": "ソリューションに関与する内部および外部アクターをマッピングし、その重要度レベルを示します。",
+          "usabilityTestLabel": "ユーザビリティテスト",
+          "usabilityTestDateLabel": "テスト日",
+          "usabilityTestParticipants": "参加者",
+          "usabilityTestParticipantsPlaceholder": "参加者数",
+          "usabilityTestResultsLabel": "テスト結果",
+          "usabilityTestResultsPlaceholder": "ユーザビリティテスト結果の概要...",
+          "usabilityTestCriticalIssues": "重大な問題",
+          "criticalIssues": "重大な問題",
+          "criticalIssue": "重大な問題",
+          "criticalIssuePlaceholder": "発見された重大な問題を説明してください...",
+          "issueResolution": "解決状況",
+          "resolutionPending": "保留中",
+          "resolutionInProgress": "進行中",
+          "resolutionResolved": "解決済み",
+          "addCriticalIssue": "重大な問題を追加",
+          "noCriticalIssues": "重大な問題は記録されていません",
+          "usabilityTestHelp": "発見された重大な問題とその解決状況を含むユーザビリティテスト結果を文書化します。",
+          "metricsLabel": "ステージメトリクス",
+          "metricsDescription": "ガバナンスに基づくこのステージの主要なメトリクス",
+          "metricRequirementsCount": "記述された要件",
+          "metricActorsIdentified": "特定されたアクター",
+          "metricCriticalIssues": "重大な問題",
+          "metricCriticalResolved": "解決された問題",
+          "metricUsabilityScore": "ユーザビリティスコア",
+          "validatedHypothesesTitle": "検証済み仮説（ステージ3から）",
+          "noValidatedHypotheses": "前のステージからの検証済み仮説はありません",
+          "validatedHypothesesHelp": "これらは検証ステージからの検証済み仮説です。マクロ要件を記述するための基礎として使用してください。",
+          "outputsTitle": "この段階の成果物",
+          "outputs": "マクロ要件、ビジネスフロー（Mermaid）、ユーザージャーニー、アクターマッピング、ユーザビリティテスト結果",
+          "back": "前へ",
+          "nextStep": "次のステップ: 分析とデザイン →",
+          "alerts": {
+            "macroRequirementsRequired": "少なくとも1つのマクロ要件を追加してください",
+            "actorMappingRequired": "少なくとも1つのアクターマッピングを追加してください",
+            "criticalIssuesWarning": "ユーザビリティテストから{{count}}件の未解決の重大な問題があります。\n\n進む前に重大な問題を解決することをお勧めします。\n\nそれでも続けますか？"
+          }
+        },
+        "analysis": {
+          "title": "分析とデザイン",
+          "description": "ブループリント、ジャーニー、影響とギャップ分析を文書化",
+          "blueprintLabel": "ソリューションブループリント",
+          "blueprintPlaceholder": "https://figma.com/blueprint-url または https://miro.com/board-url",
+          "blueprintMermaidPlaceholder": "graph TB\n  subgraph フロントエンド\n    A[Webアプリ] --> B[APIゲートウェイ]\n  end\n  subgraph バックエンド\n    B --> C[認証サービス]\n    B --> D[ビジネスサービス]\n  end\n  subgraph データベース\n    C --> E[(ユーザーDB)]\n    D --> F[(メインDB)]\n  end",
+          "blueprintHelp": "ソリューションアーキテクチャのリンクまたはMermaidコード",
+          "openBlueprint": "ブループリントを表示",
+          "journeyLabel": "ユーザージャーニー (URL)",
+          "journeyPlaceholder": "https://figma.com/journey-url",
+          "journeyHelp": "ユーザージャーニーマップへのリンク（オプション）",
+          "openJourney": "ジャーニーを表示",
+          "impactLabel": "影響分析",
+          "impactPlaceholder": "期待される影響を説明してください: ユーザー、既存システム、ビジネスプロセス、チーム、インフラストラクチャ...",
+          "impactHelp": "このイニシアチブが組織の異なる領域にどのように影響するかを分析",
+          "gapLabel": "ギャップ分析",
+          "gapPlaceholder": "現在の状態（AS-IS）と望ましい将来の状態（TO-BE）を比較。以下のギャップを特定: 技術、プロセス、人、データ...",
+          "gapHelp": "現在の状態と望ましい将来の状態の違いを特定",
+          "dependenciesLabel": "依存関係",
+          "dependencyPlaceholder": "例: 決済API統合、プロビジョニングのためのインフラチーム...",
+          "noDependencies": "まだ依存関係が特定されていません",
+          "mitigationLabel": "緩和計画",
+          "mitigationPlaceholder": "例: 完全な開発の前に統合POCを作成...",
+          "noMitigation": "まだ緩和計画が追加されていません",
+          "architectureNoticeTitle": "アーキテクチャ図",
+          "architectureNotice": "ソリューションブループリントにアーキテクチャ図を含めることを忘れないでください。これは技術的な整合性とダウンストリーム実装に役立ちます。",
+          "outputsTitle": "この段階の成果物",
+          "outputs": "ソリューションブループリント、ユーザージャーニーマップ、影響分析、ギャップ分析、依存関係、緩和計画",
+          "back": "前へ",
+          "nextStep": "次のステップ: 優先順位付けとプレQBR →",
+          "alerts": {
+            "blueprintRequired": "ソリューションブループリントのURLを入力してください",
+            "impactRequired": "影響分析を入力してください",
+            "gapRequired": "ギャップ分析を入力してください"
+          }
+        },
+        "prioritization": {
+          "title": "優先順位付けとプレQBR",
+          "description": "ビジネス価値、労力、リスク、KPIを定義",
+          "businessValue": "ビジネス価値",
+          "effort": "労力",
+          "riskLevel": "リスクレベル",
+          "riskLow": "低い",
+          "riskMedium": "中程度",
+          "riskHigh": "高い",
+          "riskCritical": "重大",
+          "low": "低",
+          "high": "高",
+          "analysisTitle": "優先順位付け分析",
+          "roiScore": "ROIスコア",
+          "roiHelp": "労力ポイントあたりの価値",
+          "moscowLabel": "MoSCoW優先度",
+          "mustHave": "必須",
+          "mustHaveDesc": "成功に不可欠 - 交渉不可",
+          "shouldHave": "推奨",
+          "shouldHaveDesc": "重要だが必須ではない - プランBが存在",
+          "couldHave": "可能",
+          "couldHaveDesc": "あると良い - 可能であれば価値を追加",
+          "wontHave": "不要",
+          "wontHaveDesc": "このフェーズの範囲外",
+          "matrixTitle": "優先順位付けマトリックス",
+          "highValue": "高価値",
+          "lowValue": "低価値",
+          "lowEffort": "低労力",
+          "highEffort": "高労力",
+          "kpisLabel": "KPI（主要業績評価指標）",
+          "kpiPlaceholder": "例: 3ヶ月でコンバージョン率を20%向上",
+          "noKpis": "まだKPIが追加されていません",
+          "qbrLabel": "QBRメモ",
+          "qbrGuidelines": "ビジネス価値、期待ROI、戦略的整合性、成功指標を含む経営サマリー",
+          "qbrPlaceholder": "四半期ビジネスレビューのための経営サマリーを準備...",
+          "qbrCharCount": "{{count}} 文字",
+          "outputsTitle": "この段階の成果物",
+          "outputs": "最終ビジネス価値、ROI分析、MoSCoW優先順位付け、定義されたKPI、プレゼンテーション準備済みQBRメモ",
+          "moscowTitle": "MoSCoW優先度",
+          "moscowDescription": "ビジネス価値、労力、リスクレベルに基づいて決定されます。この優先度はバックログ管理に使用されます。",
+          "strategicAdherenceTitle": "戦略的整合性",
+          "strategicAdherenceHelp": "このエピックを戦略的テーマに接続し、組織目標との整合性を評価します（BVフレームワーク要件）",
+          "strategicThemeLabel": "戦略的テーマ",
+          "strategicThemePlaceholder": "例: デジタルトランスフォーメーション、顧客体験、業務効率化",
+          "strategicThemeHint": "このエピックが貢献する主要な戦略的テーマ",
+          "strategicAdherenceLabel": "戦略的整合性レベル",
+          "strategicAdherenceHint": "このエピックは戦略的目標とどの程度整合していますか？（0 = 整合性なし、100 = 完全な整合性）",
+          "strategicJustificationLabel": "戦略的正当性",
+          "strategicJustificationPlaceholder": "このエピックが戦略的テーマと組織目標にどのように貢献するかを説明してください...",
+          "strategicJustificationHint": "このエピックと戦略的目標との関連性を説明",
+          "valuePlanTitle": "価値計画と予備KPI",
+          "valuePlanHelp": "BVフレームワーク: このイニシアチブの成功を測定するために使用される価値計画と予備KPIを定義します",
+          "valuePlanLabel": "価値計画の説明",
+          "valuePlanPlaceholder": "価値計画、期待される利益、成功の測定方法を説明してください...",
+          "preliminaryKPIsLabel": "予備KPI",
+          "addKPI": "KPIを追加",
+          "noKPIsYet": "まだ予備KPIが追加されていません。「KPIを追加」をクリックして成功指標を定義してください。",
+          "kpiName": "KPI名",
+          "kpiNamePlaceholder": "例: 顧客満足度スコア",
+          "kpiDescription": "説明",
+          "kpiDescriptionPlaceholder": "このKPIは何を測定しますか？",
+          "kpiUnit": "単位",
+          "kpiUnitPlaceholder": "例: %、ポイント、円、数量",
+          "kpiBaseline": "ベースライン（現在）",
+          "kpiBaselinePlaceholder": "現在の値",
+          "kpiTarget": "目標",
+          "kpiTargetPlaceholder": "期待値",
+          "kpiFrequency": "測定頻度",
+          "frequencyDaily": "日次",
+          "frequencyWeekly": "週次",
+          "frequencyMonthly": "月次",
+          "frequencyQuarterly": "四半期",
+          "back": "前へ",
+          "nextStep": "最終ステップ: ダウンストリームへの移行 →",
+          "alerts": {
+            "kpiRequired": "少なくとも1つのKPIを追加してください",
+            "qbrRequired": "QBRメモを入力してください"
+          }
+        },
+        "transition": {
+          "title": "ダウンストリームへの移行",
+          "description": "引き継ぎ、バックログ、責任合意を準備",
+          "summaryTitle": "エピック概要: {{name}}",
+          "linkedOKRs": "リンクされたOKR",
+          "stakeholders": "ステークホルダー",
+          "hypothesesValidated": "検証済み仮説",
+          "dependencies": "依存関係",
+          "businessValue": "ビジネス価値",
+          "effort": "労力",
+          "riskLevel": "リスクレベル",
+          "okrsLabel": "OKR",
+          "stakeholdersLabel": "ステークホルダー",
+          "hypothesesLabel": "仮説",
+          "dependenciesLabel": "依存関係",
+          "businessValueLabel": "ビジネス価値",
+          "effortLabel": "労力",
+          "riskLevelLabel": "リスクレベル",
+          "riskLow": "低い",
+          "riskMedium": "中程度",
+          "riskHigh": "高い",
+          "riskCritical": "重大",
+          "kpisLabel": "KPI",
+          "kpisCount": "{{count}}個のKPI",
+          "noKpis": "KPIが定義されていません",
+          "squadLabel": "ターゲットスクワッド",
+          "squadPlaceholder": "このエピックを受け取るスクワッド名",
+          "squadHelp": "ダウンストリームでこのエピックを実行するスクワッド",
+          "targetSquadLabel": "ターゲットスクワッド",
+          "targetSquadPlaceholder": "このエピックを受け取るスクワッド名",
+          "targetSquadHelp": "ダウンストリームでこのエピックを実行するスクワッド",
+          "jiraLabel": "Jiraバックログリンク",
+          "jiraBacklogLabel": "Jiraバックログリンク",
+          "jiraPlaceholder": "https://jira.company.com/project/EPIC-123",
+          "jiraHelp": "Jiraで作成されたエピックへのリンク",
+          "openJira": "Jiraで開く",
+          "viewJira": "Jiraで表示",
+          "handoffLabel": "引き継ぎドキュメント",
+          "handoffGuidelines": "すべてのアーティファクト、検証された仮説、依存関係、緩和計画を含める",
+          "handoffPlaceholder": "• 完全なエピックドキュメント\n• 作成されたすべてのアーティファクト（ブループリント、ジャーニー、分析）\n• 検証された仮説\n• 特定された依存関係と緩和計画",
+          "handoffCharCount": "{{count}}文字",
+          "featuresLabel": "詳細機能",
+          "featuresGuidelineTitle": "BVフレームワーク機能構造",
+          "featuresGuidelines": "BVフレームワーク構造に従って機能を文書化します：1）機能コンテキスト（名前、説明、元のエピック）、2）価値と利益（スコア、仮説）、3）要件と範囲（含まれる/除外される、マクロフロー）、4）依存関係とリスク、5）スクワッド計画（労力、優先度、ストーリー）",
+          "featuresPlaceholder": "# 機能 1: [名前]\n\n## 1. 機能コンテキスト\n- 名前: \n- 説明: \n- 元のエピック: {{epicName}}\n\n## 2. 価値と利益\n- ビジネス価値スコア: \n- 検証された仮説: \n\n## 3. 要件と範囲\n- 含まれる: \n- 除外される: \n- マクロフロー: \n\n## 4. 依存関係とリスク\n- 依存関係: \n- リスク: \n- 受け入れ基準: \n\n## 5. スクワッド計画\n- 労力見積もり: \n- 優先度: \n- ユーザーストーリー: ",
+          "featuresCharCount": "{{count}}文字",
+          "agreementsLabel": "責任合意（N1/N2）",
+          "agreementsHelp": "N1（ビジネス）とN2（テクノロジー）レベル間の責任合意を定義します。LNT=ビジネス＆テクノロジーリーダー、LPT=プロダクト＆テクノロジーリーダー、LTT=テクニカルチームリーダー",
+          "noAgreements": "まだ合意が追加されていません。下をクリックして最初の合意を追加してください。",
+          "levelLabel": "レベル",
+          "roleLabel": "役割",
+          "roleLNT": "LNT - ビジネス＆テクノロジーリーダー",
+          "roleLPT": "LPT - プロダクト＆テクノロジーリーダー",
+          "roleLTT": "LTT - テクニカルチームリーダー",
+          "addAgreement": "追加",
+          "responsibilitiesLabel": "責任合意",
+          "responsibilityPlaceholder": "例: プロダクトトライブがダウンストリームバックログの優先順位付けを担当",
+          "responsibilityHelp": "移行後の責任範囲に関する明確な合意",
+          "bigRoomTitle": "ビッグルームプランニング",
+          "bigRoomDescription": "PIプランニングの推奨ステップ",
+          "bigRoomLabel": "ビッグルームプランニング",
+          "bigRoomSteps": "<strong>PIプランニングの推奨ステップ:</strong><ul><li>エピック概要とビジネス価値を発表</li><li>検証された仮説とリスクを共有</li><li>すべてのスクワッドと依存関係を確認</li><li>KPIと成功指標を調整</li><li>チームと最初の反復を計画</li></ul>",
+          "outputsTitle": "この段階の成果物",
+          "outputs": "引き継ぎドキュメント、Jiraエピックリンク、責任合意、ビッグルームプランニング推奨事項",
+          "completionTitle": "おめでとうございます！",
+          "completionMessage": "エピック<strong>{{name}}</strong>のBV Upstreamフレームワークを正常に完了しました！",
+          "stepIdeation": "1. アイデア創出",
+          "stepImmersion": "2. 没入",
+          "stepValidation": "3. 検証",
+          "stepAnalysis": "4. 分析",
+          "stepPrioritization": "5. 優先順位付け",
+          "stepTransition": "6. 移行",
+          "back": "前へ",
+          "complete": "完了してエピックを保存",
+          "completeButton": "完了してエピックを保存",
+          "noBeDescription": "検証済みマクロイニシアチブからビジネスエピックを作成します。各BEはダウンストリームスクワッドに引き渡されます。",
+          "aiSuggestionTitle": "AIアシスタントにビジネスエピックの作成を手伝ってもらいましょう",
+          "aiSuggestionDescription": "マクロイニシアチブデータに基づいて、AIが機能付きのビジネスエピックを提案できます。{{hypotheses}}件の検証済み仮説、{{requirements}}件のマクロ要件、{{stakeholders}}名のステークホルダーがマッピングされています。",
+          "aiSuggestionHint": "AIアシスタント（右下）を開いて、「マクロイニシアチブデータに基づいてビジネスエピックを提案して」と質問してください",
+          "validatedHypothesesBadge": "検証済み仮説",
+          "requirementsBadge": "要件",
+          "stakeholdersBadge": "ステークホルダー",
+          "beCreated": "ビジネスエピックが正常に作成されました",
+          "beUpdated": "ビジネスエピックが正常に更新されました",
+          "beDeleted": "ビジネスエピックが削除されました",
+          "alerts": {
+            "squadRequired": "ターゲットスクワッドを入力してください",
+            "jiraRequired": "Jiraバックログリンクを入力してください",
+            "handoffRequired": "引き継ぎドキュメントを入力してください",
+            "featuresRequired": "\"{{name}}\"には少なくとも1つの機能が必要です",
+            "beRequired": "少なくとも1つのビジネスエピックを作成してください",
+            "agreementRequired": "少なくとも1つの責任合意を追加してください",
+            "responsibilityRequired": "責任合意を入力してください"
+          }
+        }
+      },
+      "stepLabel": "ステップ",
+      "involvedRoles": "関係者の役割（BVフレームワーク）",
+      "roleDescriptions": {
+        "lptLnt": "プロダクト/ビジネステクニカルリード - 戦略的ビジョンとOKRアラインメントの責任者",
+        "ltt": "テクニカルチームリード - 技術的実現可能性とアーキテクチャを確保",
+        "lcio": "CIO/ITリーダー - IT承認とガバナンス",
+        "bo": "ビジネスオーナー - 事業責任者とエグゼクティブスポンサー",
+        "pm": "プロダクトマネージャー - 製品管理とロードマップ",
+        "pd": "プロダクトデザイナー - エクスペリエンスデザインとユーザビリティ",
+        "ans": "システムアナリスト - 技術分析と要件定義",
+        "itl": "ITリード - インフラストラクチャの技術的リーダーシップ",
+        "it": "情報技術 - ITチーム",
+        "qaCross": "クロスファンクショナルQA - 横断的品質保証"
+      },
+      "stepSummary": "ステップの概要",
+      "markdown": {
+        "defined": "定義済み",
+        "completed": "完了",
+        "linked": "リンク済み",
+        "documented": "文書化済み",
+        "validated": "検証済み",
+        "identified": "特定済み",
+        "mapped": "マッピング済み",
+        "actors": "アクター",
+        "critical": "重大な問題",
+        "epicName": "エピック名",
+        "hypothesis": "中心的仮説",
+        "strategicAlignment": "戦略的整合性",
+        "linkedOKRs": "リンクされたOKR",
+        "businessValue": "ビジネス価値",
+        "csdMatrix": "CSDマトリックス",
+        "certainties": "確実性",
+        "suppositions": "仮定",
+        "doubts": "疑問",
+        "stakeholders": "ステークホルダー",
+        "hypotheses": "仮説",
+        "macroRequirements": "マクロ要件",
+        "actorMapping": "アクターマッピング",
+        "usabilityIssues": "ユーザビリティの問題",
+        "businessFlow": "ビジネスフロー",
+        "architectureBlueprint": "アーキテクチャブループリント",
+        "dependencies": "依存関係",
+        "impactAnalysis": "影響分析",
+        "finalBusinessValue": "最終ビジネス価値",
+        "riskLevel": "リスクレベル",
+        "valuePlan": "価値計画",
+        "preliminaryKPIs": "予備KPI",
+        "kpis": "KPI",
+        "jiraBacklog": "Jiraバックログ",
+        "targetSquad": "ターゲットスクワッド",
+        "features": "機能",
+        "businessEpics": "ビジネスエピック",
+        "totalFeatures": "機能の合計",
+        "handoffDocument": "ハンドオフドキュメント",
+        "responsibilityAgreements": "責任契約",
+        "accepted": "受諾済み",
+        "withExplorationData": "探索データあり",
+        "initialRisks": "初期リスク",
+        "effort": "工数",
+        "sprints": "スプリント",
+        "qbrMemo": "QBRメモ",
+        "riskLevels": {
+          "low": "低",
+          "medium": "中",
+          "high": "高",
+          "critical": "致命的"
+        }
+      },
+      "completeStep": "ステップを完了"
+    },
+    "epic": {
+      "create": "新しいビジネスエピックを作成",
+      "save": "エピックを保存",
+      "cancel": "キャンセル",
+      "delete": "エピックを削除",
+      "duplicate": "エピックを複製",
+      "deleteConfirm": "このエピックを削除してもよろしいですか？",
+      "deleteWarning": "このエピックに関連するすべての機能とユーザーストーリーも削除されます。この操作は元に戻せません。",
+      "deleteError": "エピックの削除に失敗しました。もう一度お試しください。",
+      "table": {
+        "stage": "ステージ",
+        "businessValue": "ビジネス価値",
+        "businessEpics": "ビジネスエピック",
+        "features": "機能",
+        "created": "作成日"
+      }
+    },
+    "views": {
+      "executive": {
+        "title": "戦略的ポートフォリオダッシュボード",
+        "subtitle": "アップストリーム投資とパフォーマンスメトリクス",
+        "kpis": {
+          "portfolioValue": "ポートフォリオ価値",
+          "activeEpics": "アクティブエピック",
+          "qbrSuccessRate": "QBR成功率",
+          "avgLeadTime": "平均リードタイム"
+        }
+      },
+      "gamified": {
+        "title": "エピッククエスト",
+        "subtitle": "イノベーションRPG",
+        "description": "XP、レベル、実績を持つクエストとしてのビジネスエピック",
+        "backButton": "アップストリームフレームワークに戻る",
+        "hero": {
+          "title": "イノベーションヒーロー",
+          "level": "レベル{{level}} エピックマスター",
+          "totalPower": "総合パワー",
+          "xp": "XP"
+        },
+        "stats": {
+          "activeQuests": "アクティブクエスト",
+          "completed": "完了",
+          "winRate": "勝率",
+          "teamMorale": "チーム士気"
+        },
+        "questBoard": {
+          "title": "アクティブエピッククエスト",
+          "level": "レベル",
+          "risk": "リスク",
+          "blockers": "ブロッカー",
+          "questProgress": "クエスト進捗",
+          "tasks": "タスク",
+          "reward": "報酬",
+          "daysInStage": "ステージ滞在日数",
+          "checkpoints": "チェックポイント",
+          "loot": "ルート",
+          "viewAll": "すべてのクエストを表示 ({{count}})",
+          "showLess": "表示を減らす"
+        },
+        "inventory": {
+          "title": "エピックインベントリ",
+          "stage": "ステージ",
+          "lvl": "Lv"
+        },
+        "achievements": {
+          "title": "実績",
+          "epicMaster": "エピックマスター",
+          "qbrChampion": "QBRチャンピオン",
+          "innovationHero": "イノベーションヒーロー"
+        },
+        "tabs": {
+          "checkpoints": "チェックポイント",
+          "loot": "収集したルート",
+          "party": "パーティーメンバー"
+        }
+      },
+      "hr": {
+        "title": "チームジャーニー",
+        "subtitle": "コラボレーションハブ",
+        "description": "チームの健康、学習進捗、人材育成"
+      },
+      "meta": {
+        "title": "プロセスインテリジェンス",
+        "subtitle": "システム監視",
+        "description": "プロセスの健康状態、スループット、ボトルネック検出"
+      }
+    },
+    "actions": {
+      "backToModus": "Upstream Frameworkに戻る",
+      "backToMarketplace": "マーケットプレイス",
+      "selectView": "ビューを選択"
+    },
+    "badge": "BV Upstream",
+    "modes": {
+      "gamified": {
+        "name": "Epic Quest",
+        "subtitle": "Innovation RPG",
+        "description": "XP、レベル、実績を持つクエストとしてのマクロイニシアチブ"
+      },
+      "executive": {
+        "name": "Strategic Portfolio",
+        "subtitle": "Investment Dashboard",
+        "description": "ROI分析、ポートフォリオメトリクス、QBRパフォーマンス"
+      },
+      "hr": {
+        "name": "Team Journey",
+        "subtitle": "Collaboration Hub",
+        "description": "チームの健全性、学習進捗、人材育成"
+      },
+      "meta": {
+        "name": "Process Intelligence",
+        "subtitle": "System Monitoring",
+        "description": "プロセスの健全性、スループット、ボトルネック検出"
+      }
+    },
+    "aiChat": {
+      "placeholder": "メッセージを入力...",
+      "emptyState": {
+        "title": "AIエージェントとの会話を開始",
+        "subtitle": "質問をするか、エピックの提案をリクエストしてください"
+      },
+      "generating": "AI応答を生成中...",
+      "error": "AIとの通信エラー",
+      "stop": "停止",
+      "send": "送信",
+      "untitledHypothesis": "無題の仮説"
+    },
+    "connection": {
+      "status": {
+        "connected": "接続済み",
+        "disconnected": "未接続"
+      },
+      "actions": {
+        "change": "接続を変更",
+        "viewDetails": "詳細を表示",
+        "minimize": "最小化"
+      },
+      "empty": {
+        "title": "利用可能な接続がありません",
+        "description": "Upstream Frameworkを使用する前に、接続タブで接続を設定してください。"
+      },
+      "selector": {
+        "title": "接続を選択",
+        "subtitle": "Upstreamウィザードで使用するネームスペースとユーティリティエージェントを選択"
+      },
+      "details": {
+        "environment": "環境:",
+        "license": "ライセンス:",
+        "namespace": "ネームスペース:",
+        "utilityAgent": "ユーティリティエージェント:",
+        "tools": "利用可能なMCPツール"
+      }
+    },
+    "copilot": {
+      "riskLevels": {
+        "low": "低",
+        "medium": "中",
+        "high": "高",
+        "critical": "重大"
+      },
+      "suggestionCard": {
+        "generating": "生成中...",
+        "applied": "適用済み",
+        "reasoning": "理由:",
+        "accept": "承認",
+        "reject": "拒否",
+        "changesApplied": "✓ ウィザードに変更を適用しました",
+        "processing": "処理中...",
+        "executing": "変更を実行中...",
+        "rejected": "提案が拒否されました",
+        "executingAgent": "ユーティリティエージェントを実行中...",
+        "agentCompleted": "✓ エージェントの実行が完了しました",
+        "agentExecuted": "実行済み"
+      },
+      "chatSuggestions": {
+        "languageRule": "**重要: すべての提案を日本語で生成する必要があります。英語やポルトガル語は使用しないでください。**",
+        "notDefinedYet": "未定義",
+        "stageLabel": "ステージのお手伝い中",
+        "contextLabel": "現在のコンテキスト",
+        "epicNameLabel": "エピック名",
+        "organizationLabel": "組織",
+        "projectLabel": "プロジェクト",
+        "examplesLabel": "このステージに基づいて、ユーザーが実行できる有用なアクションを提案してください。例",
+        "generateLabel": "このステージを進めるための具体的で実行可能な提案を2-3個生成してください。各提案は、ユーザーがクリックして質問できる短いフレーズ（3-8語）にしてください。",
+        "step1": {
+          "epicName": "エピック名と説明の定義を手伝ってください",
+          "problemStatement": "問題文を明確に表現するお手伝い",
+          "hypothesis": "中心的な仮説の策定を手伝ってください",
+          "strategicAlignment": "組織戦略との整合性を提案",
+          "okrs": "このエピックに沿ったOKRを提案",
+          "businessValue": "初期ビジネス価値の見積もり"
+        },
+        "step2": {
+          "csdMatrix": "CSDマトリックス（確実性、仮定、疑問）の構築を手伝ってください",
+          "mainProblems": "このエピックが解決する主な問題を特定",
+          "opportunityTree": "機会ツリーをマッピング",
+          "stakeholders": "主要なステークホルダーを提案"
+        },
+        "step3": {
+          "hypotheses": "検証する仮説の策定を手伝ってください",
+          "experiments": "仮説検証のための実験を提案"
+        },
+        "step4": {
+          "macroRequirements": "マクロ要件の定義を手伝ってください",
+          "userJourney": "ユーザージャーニーマッピングのアプローチを提案",
+          "actors": "このエピックに関与するアクターをマッピング"
+        },
+        "step5": {
+          "dependencies": "依存関係とリスクを分析",
+          "mitigationPlans": "緩和計画の作成を手伝ってください",
+          "kpis": "このエピックのKPIを定義"
+        },
+        "step6": {
+          "effort": "工数と複雑さを見積もり",
+          "strategicTheme": "戦略的テーマとの整合性を提案",
+          "valuePlan": "価値計画の定義を手伝う",
+          "preliminaryKPIs": "目標とベースラインを持つ予備KPIの作成を手伝う",
+          "prioritizationScore": "優先順位スコアの計算を手伝う",
+          "qbrMemo": "QBRメモを作成"
+        },
+        "step7": {
+          "suggestBusinessEpics": "マクロイニシアチブデータに基づいて、作成するビジネスエピックを提案",
+          "suggestFeatures": "ビジネスエピックにMoSCoW優先度を持つ機能を提案",
+          "handoffDocument": "包括的なハンドオフドキュメントを生成",
+          "responsibilityAgreements": "責任合意を定義（N1/N2、LNT/LPT/LTT）",
+          "targetSquad": "実行のためのターゲットスクワッドとトライブを提案",
+          "transition": "マクロイニシアチブのダウンストリームへの移行準備"
+        },
+        "knowledgeBase": {
+          "analyzeMissing": "不足している入力を分析し、ドキュメントを提案",
+          "helpWithInput": "{{slotName}}について教えて",
+          "suggestSources": "{{stageName}}のデータソースを提案",
+          "reviewDocuments": "このステージのアップロードしたドキュメントを確認",
+          "extractInsights": "ナレッジベースのドキュメントからインサイトを抽出"
+        },
+        "initial": {
+          "startWithDocuments": "{{stageName}}用に{{count}}件のドキュメントをアップロードしました。分析してステージを開始しますか？",
+          "analyzeInputs": "添付ファイルに基づいて、このステージを開始していただけますか？"
+        },
+        "inputDocumentsLabel": "利用可能な入力ドキュメント",
+        "noDocumentsLabel": "入力ドキュメントはまだアップロードされていません",
+        "priorityHint": "重要：ユーザーがドキュメントをアップロードした場合は、それらのドキュメントを分析してステージを開始するアクションを優先的に提案してください。"
+      },
+      "suggestions": {
+        "titles": {
+          "epicName": "エピック名の提案",
+          "macroInitiativeName": "マクロイニシアチブ名の提案",
+          "businessValue": "ビジネス価値の提案",
+          "initialBusinessValue": "初期ビジネス価値の提案",
+          "description": "説明の提案",
+          "linkedOKRs": "リンクされたOKRの提案",
+          "problemStatement": "問題ステートメントの提案",
+          "centralHypothesis": "中心仮説の提案",
+          "hypothesis": "仮説の提案",
+          "strategicAlignment": "戦略的整合性の提案",
+          "stakeholders": "ステークホルダーの提案",
+          "csdMatrix": "CSDマトリックスの提案",
+          "mainProblems": "主要な問題の提案",
+          "opportunityTree": "機会ツリーの提案",
+          "initialRisks": "初期リスクの提案",
+          "hypotheses": "仮説の提案",
+          "dataSources": "検証のためのデータソースの提案",
+          "validationMethod": "検証方法の提案",
+          "validationResults": "検証結果の提案",
+          "validationConclusion": "検証結論の提案",
+          "kpis": "KPIの提案",
+          "macroRequirements": "マクロ要件の提案",
+          "businessFlowUrl": "ビジネスフローURLの提案",
+          "businessFlowMermaid": "ビジネスフロー図の提案",
+          "actorMapping": "アクターマッピングの提案",
+          "blueprintUrl": "ブループリントURLの提案",
+          "blueprintMermaid": "アーキテクチャ図の提案",
+          "impactAnalysis": "影響分析の提案",
+          "gapAnalysis": "GAP分析の提案",
+          "userJourneyUrl": "ユーザージャーニーURLの提案",
+          "userJourneyMermaid": "ユーザージャーニー図の提案",
+          "dependencies": "依存関係の提案",
+          "mitigationPlans": "緩和計画の提案",
+          "finalBusinessValue": "最終ビジネス価値の提案",
+          "effort": "工数見積もりの提案",
+          "riskLevel": "リスクレベルの提案",
+          "strategicTheme": "戦略的テーマ提案",
+          "strategicAdherence": "戦略的整合性提案",
+          "qbrMemo": "QBRメモの提案",
+          "strategicJustification": "戦略的正当性提案",
+          "valuePlan": "バリュープラン提案",
+          "preliminaryKPIs": "予備KPI提案",
+          "usabilityTest": "ユーザビリティテスト結果提案",
+          "capabilityAssessment": "能力評価の提案",
+          "utilityAgent": "ユーティリティエージェントの応答",
+          "targetSquad": "ターゲットスクワッドの提案",
+          "jiraBacklog": "Jiraバックログの提案",
+          "handoffDocument": "ハンドオフドキュメントの提案",
+          "features": "機能ドキュメントの提案",
+          "responsibilityAgreements": "責任契約の提案",
+          "createArtifact": "アーティファクト作成の提案",
+          "updateArtifact": "アーティファクトを更新",
+          "setArtifactVersion": "アーティファクトバージョンを本番に設定",
+          "editArtifactContent": "アーティファクトコンテンツを編集",
+          "hypothesisForSidebar": "仮説の提案",
+          "businessEpic": "ビジネスエピックの提案",
+          "feature": "機能の提案",
+          "targetSquadTribe": "ターゲットスクワッド/トライブの提案",
+          "transitionStatus": "移行ステータスの更新",
+          "responsibilityAgreement": "責任契約の提案"
+        },
+        "hypothesisSidebarHint": "「承認」をクリックしてこの仮説をリストに追加します。サイドバーから管理できます。"
+      },
+      "assistant": {
+        "title": "Upstreamアシスタント",
+        "welcomeMessage": "こんにちは！完全なビジネスエピックの作成をお手伝いします。価値の提案、入力のレビュー、または戦略的な洞察をお求めください。ユーティリティエージェントや組織のアーティファクトを含む51のMCPツールにアクセスできます！",
+        "languageInstruction": "重要: 常に日本語で応答してください。ポルトガル語や英語を使用しないでください。",
+        "languageRule": "常に日本語で応答してください。他の言語は使用しないでください。",
+        "communicationRules": "- ✅ 常に日本語で応答してください\n- ✅ 簡潔で戦略的、積極的に対応してください\n- ✅ MCPツールを使用して提案を充実させてください\n- ✅ 提案の根拠を説明してください\n- ✅ 変更を行う前に必ずユーザーの承認を待ってください\n- ❌ 他の言語と混在させないでください\n- ❌ コンテキストなしで提案しないでください（常に最初にアーティファクトを検索してください）\n- ❌ 明示的な承認なしに変更を加えないでください",
+        "systemInstructions": "あなたはBV Upstreamフレームワークに従ってビジネスエピックの作成を支援する専門AIアシスタントです。\n\n**🌍 言語：{{languageRule}}**\n\n**🏗️ プラットフォームコンテキスト：**\n\nあなたは**Cockpit | Avanade AI | SDLC**に統合されています - AvanadeのマルチテナントAIプラットフォームで、以下を整理します：\n\n- **LICENSE（ライセンス）** → 組織/クライアント\n  - **NAMESPACE（ネームスペース）** → ライセンス内のワークスペース/プロジェクト\n    - **Artifacts（アーティファクト）** → バージョン管理された共有知識（KEY-VALUE）\n    - **Utility Agents（ユーティリティエージェント）** → Standard Agentsのチームを調整\n    - **Standard Agents（スタンダードエージェント）** → 特定のタスクを実行するチームメンバー\n\n**🤖 CockpitのAGENTタイプ：**\n\n1. **UTILITY AGENT（スーパーバイザー）**：\n   - langgraph-supervisorパターンを使用してStandard Agentsのチームを調整\n   - transfer_to_<agent>を介してチームメンバーにタスクを委任\n   - 外部アクセス用の独自MCPサーバーを公開\n   - executeUtilityAgent()ツールでアクセス\n\n2. **STANDARD AGENT（チームメンバー）**：\n   - スーパーバイザーによって委任された特定のタスクを実行\n   - 独自のMCPサーバーを持たない\n   - Utility Agent Supervisorによって排他的に制御\n\n**🛠️ 利用可能なMCPツール（合計51）：**\n\n**🤖 UTILITY AGENTツール（優先 - 積極的に使用！）：**\n\n⚡ **executeUtilityAgent(user_input)** - 最も強力なツール！\n   - このネームスペースに設定されたUtility Agent Supervisorを実行\n   - スーパーバイザーには専門のStandard Agentsチームがあります\n   - 自然言語で必要なことを説明するだけ\n   \n   🎯 **トリガーワード - ユーザーが以下を言ったらexecuteUtilityAgentを使用：**\n   - 「調査して」「調べて」「深く分析して」「研究して」\n   - 「市場分析」「競合分析」「ベンチマーク」\n   - 「レポートを生成」「ドキュメントを作成」「分析を書いて」\n   - 「エージェントに相談」「エージェントに聞いて」「エージェントを使って」\n   - 「専門的な助けが必要」「複雑な分析」\n   - 「データで検証」「証拠を見つけて」「仮説を証明」\n   - 外部調査や専門処理が必要なタスク\n   \n   📋 **使用例：**\n   - ユーザー：「フィンテック市場の競合を調査して」→ executeUtilityAgent\n   - ユーザー：「この仮説の市場トレンドを分析して」→ executeUtilityAgent\n   - ユーザー：「リスク評価レポートを生成して」→ executeUtilityAgent\n   - ユーザー：「この仮定を検証する証拠を見つけて」→ executeUtilityAgent\n   - ユーザー：「ユーザー行動の深い分析が必要」→ executeUtilityAgent\n   \n   ⚠️ **重要：** ユーザーがあなたの知識を超える調査、分析、専門処理を必要とする場合、常にexecuteUtilityAgentの使用を提案してください！\n\n📋 **getAgentCard()** - Utility Agent情報を取得\n   - 戻り値：名前、説明、機能、チームメンバー（Standard Agents）、利用可能なツール\n   - 実行前にエージェントが何ができるかを確認するために使用\n\n**📦 Artifactツール（10）- 組織知識のCRUD：**\n- **listArtifactTypes()** - アーティファクトタイプをリスト（JSON、FILE、CONFIG、YAMLなど）\n- **listAvailableArtifacts(cursor?)** - ページネーションでネームスペースのすべてのアーティファクトをナビゲート\n- **createArtifactForEpic(key, value, description, type?)** - アーティファクトを作成（再利用可能なKEY-VALUEバージョン管理された知識）\n- **getArtifactDetails(key)** - 正確なキーでアーティファクトの完全なコンテンツを取得\n- **getArtifactByPattern(key_pattern)** - 正規表現を使用してアーティファクトを検索（例：'.*TEMPLATE.*'）\n- **searchArtifactsInNamespace(searchTerm)** - すべてのアーティファクトでキーワード検索\n- **searchArtifactsByTags(tags[])** - タグでアーティファクトを検索（例：[\"web\", \"template\"]）\n- **validateArtifactType(type, content)** - タイプを検証し、改善を提案\n- **updateArtifact(id, value, promote?)** - アーティファクトを更新（新しい不変バージョンを作成）\n- **setArtifactVersionProduction(id, version?)** - どのバージョンが本番環境かを定義\n- **editArtifactContent(pattern, old, new, replace_all?)** - 正確な文字列を置換して編集\n- **readArtifactContent(pattern, start?, lines?)** - 行番号付きでアーティファクトを読む（cat -nスタイル）\n\n**📚 MCPプロンプト（7）- インタラクティブガイド：**\n- オンボーディング、バージョン管理、ワークスペース、検索、トラブルシューティングのガイド\n- 既存のアーティファクトパターンを分析するネームスペース対応プロンプト\n\n**📊 MCPリソース（4）- コンテキストデータ：**\n- サーバーステータス、構成、APIドキュメント\n- ネームスペース検出分析（分類法、タグ、推奨事項を含むJSON）\n\n**🎯 あなたの役割とワークフロー：**\n\n1. **🔍 常に現在のステップを最初に特定**：\n   - currentState.currentStep（1-6）とcurrentState.currentStageNameにアクセスできます\n   - ユーザーに応答するとき、関連する場合は常に現在のステップを言及してください\n   - 例：「現在**ステップ2（イマージョン）**にいることがわかります。お手伝いできます...」\n   - ユーザーが「これを手伝って」「この画面を検証して」「ここに何が足りないか」と言う場合、現在のステップを指しています\n\n2. **既存の知識を検索**：提案する前に常にsearchArtifactsInNamespace()を使用\n   - 例：ユーザーが「認証」について言及 → 認証、セキュリティポリシーに関するアーティファクトを検索\n\n3. **知識を活用**：getArtifactDetails()を使用してコンテンツを読み、提案の基礎とする\n   - 例：「STAKEHOLDER_TEMPLATE」を見つけた → ステークホルダー構造の提案に使用\n\n4. **組織の記憶を構築**：承認後、アーティファクトとして保存することを提案\n   - 例：ユーザーが優れたCSD Matrixを承認 → 「EPIC_CSD_TEMPLATE」として保存することを提案\n\n5. **複雑なタスク**：市場調査、競合分析、リスク評価にexecuteUtilityAgent()を使用\n\n6. **常に承認を求める**：ユーザーの明示的な承認なしに変更を加えないでください\n\n**📋 BV UPSTREAMフレームワークのコンテキスト：**\n\n- **ステップ1（アイデア）**：エピック名、説明、リンクされたOKR、初期ビジネス価値\n- **ステップ2（イマージョン）**：CSDマトリックス（確実性/仮定/疑問）、機会ツリー、ステークホルダー、初期リスク\n- **ステップ3（検証）**：検証仮説（価値、使いやすさ、技術的実現可能性、ビジネス実現可能性）\n- **ステップ4（分析）**：アーキテクチャブループリント、影響分析、GAP分析、依存関係\n- **ステップ5（優先順位付け）**：最終ビジネス価値、推定工数、リスクレベル、KPI、QBRメモ\n- **ステップ6（移行）**：Jiraバックログ、ハンドオフドキュメント、責任契約\n\n**💡 コミュニケーションガイドライン：**\n\n{{communicationRules}}",
+        "personalizedWelcome": "👋 こんにちは！ビジネスエピック作成のためのAIアシスタントです。\n\n🏢 **組織コンテキスト：**\n- **組織：** {{licenseName}}\n- **プロジェクト/チーム：** {{namespaceName}}\n- **環境：** {{environmentName}}\n\n💡 **お手伝いできること：**\n✨ 組織構造に基づいたステークホルダーの提案\n✨ このネームスペースの過去のエピックからパターンとテンプレートを検索\n✨ プロジェクトのドメインと語彙に適応した提案\n✨ 履歴データに基づいた現実的なベンチマークの提供\n\n📋 **準備完了：**\n- エピックフィールドのコンテンツ提案\n- ネームスペース内の再利用可能なアーティファクトの検索\n- 類似エピックの分析とコンテキスト化\n- BVフレームワークの6ステップのガイド\n\n**どのように始めますか？** できること：\n1. コンテキストを分析してエピック名を提案\n2. このネームスペースのテンプレートとパターンを検索\n3. 特定のフィールドのサポート\n\n必要なことを教えてください！🚀",
+        "organizationalContext": "🏢 組織コンテキスト - 必須パーソナライゼーション\n\n🚨🚨🚨 絶対ルール：組織、プロジェクト、ユーザー名を常に言及する必要があります！🚨🚨🚨\n\nあなたが働いている組織：\n- **組織**: {{licenseName}}\n- **プロジェクト/チーム**: {{namespaceName}}\n- **環境**: {{environmentName}}\n- **エージェントスーパーバイザー**: {{utilityAgentName}}\n\n⚠️ 必須ルール#1：すべての応答でコンテキストとユーザー名を常に言及\nユーザーが何か（「hi」、「こんにちは」、簡単な質問を含む）を書くたびに、次のことを行う必要があります：\n1. ✅ 最初：コンテキストで利用可能なユーザー名を使用して挨拶（ログインユーザー情報）\n2. ✅ 2番目：{{licenseName}}のために働いていることを認識\n3. ✅ 3番目：{{namespaceName}}プロジェクトに言及\n4. ✅ 4番目：このネームスペースからアーティファクト/パターンを検索することを提案\n\nこれは任意ではありません。一般的な応答を返すことは禁止されています。\n\n必須例：\n\nユーザー：「hi」または「こんにちは」\n❌ 絶対に間違い：\"Hello! How can I assist you today?\"\n❌ 絶対に間違い：「こんにちは！どのようにお手伝いしましょうか？」\n❌ 絶対に間違い：「いいえ、お名前はわかりません」\n✅ 唯一の正しい形式：「こんにちは、[ユーザー名]さん！👋\n**{{licenseName}}**のビジネスエピック作成をお手伝いするために、特に**{{namespaceName}}**プロジェクトのためにここにいます。\n\nできること：\n🔍 このネームスペースの過去のエピックからパターンとテンプレートを検索\n✨ 組織構造に基づいたステークホルダーの提案\n📊 ドメインに関連するメトリクスとKPIの推奨\n\nどのように始めますか？\"\n\nユーザー：「私の名前を知っていますか？」\n❌ 絶対に間違い：「いいえ、お名前はわかりません」\n✅ 唯一の正しい形式：「はい！あなたは[ユーザー名]さんです。{{licenseName}}の{{namespaceName}}プロジェクトでエピックを作成するお手伝いをするためにここにいます。\"\n\nユーザー：「エピック作成を手伝って」\n❌ 間違い：「もちろん！お手伝いします...」\n✅ 正しい：「もちろん、[ユーザー名]さん！**{{licenseName}}**の**{{namespaceName}}**プロジェクトのコンテキストでエピックを作成するお手伝いをします。\n\nまず、このネームスペースの過去のエピックからパターンを検索して提案をパーソナライズします。🔍\"\n\nユーザー：「名前を提案して」\n❌ 間違い：「『決済システム』はどうですか？」\n✅ 正しい：「もちろん、[ユーザー名]さん！**{{licenseName}}**のコンテキストと**{{namespaceName}}**の語彙に適応した名前を提案します。\n\nまず、このネームスペースの過去のエピックから命名パターンを検索します...\"\n\n🔴 一般的な応答は禁止。常に言及する必要があります：\n- ユーザー名（「ログインユーザー情報」コンテキストで利用可能）\n- 組織名（{{licenseName}}）\n- プロジェクト名（{{namespaceName}}）\n- ネームスペースでの検索の提案\n\n📋 この組織のためのパーソナライズされた指示：\n\n1. **ステークホルダー**：\n   - ステークホルダーを提案する際、{{licenseName}}の組織構造を考慮\n   - この組織のコンテキストに役割と部門を適応\n   - 会社のドメインに適した肩書きと命名法を使用\n\n2. **命名法と用語**：\n   - {{namespaceName}}固有の用語を使用\n   - プロジェクトのドメインと語彙との一貫性を維持\n   - 組織のコンテキストに例と提案を適応\n\n3. **再利用可能なアーティファクト（重要）**：\n   - 新しいコンテンツを提案する前に、ネームスペース内の既存のアーティファクトを常に検索\n   - searchArtifactsInNamespaceを使用してテンプレート、パターン、事前知識を見つける\n   - 関連する場合、過去のエピックからステークホルダー、リスク、KPI、テンプレートを再利用\n   - 一般的なアーティファクトの例：STAKEHOLDERS_TEMPLATE、RISK_PATTERNS、KPI_STANDARDS、DOMAIN_GLOSSARY\n\n4. **履歴との一貫性**：\n   - このネームスペースの過去のエピックからの決定とパターンとの整合性を維持\n   - プロジェクトの成熟度レベルとコンテキストに提案を適応\n   - 組織の履歴ベンチマークとメトリクスを考慮\n\n💡 インテリジェントで積極的な行動：\n\n**ステークホルダーを提案する前に**：\n  → ネームスペースで「STAKEHOLDERS_TEMPLATE」または過去のエピックを検索\n  → 既知の組織構造に適応\n\n**リスクを提案する前に**：\n  → 類似エピックで「RISK_PATTERNS」またはリスク分析を検索\n  → 以前に機能した緩和策を含める\n\n**KPIを提案する前に**：\n  → 成功したエピックから「KPI_STANDARDS」またはメトリクスを検索\n  → 履歴に基づいた現実的なベンチマークを提供\n\n**OKRと目標について**：\n  → 組織のOKRフレームワークに適応\n  → 既知の戦略との整合性を維持\n\n**推奨フロー：**\n1. ユーザーが提案を要求 → まずネームスペースのコンテキストを検索\n2. パターン/テンプレートを見つけた → 現在のコンテキストに適応\n3. 提案を提示 → 組織のパターンに基づいていることを説明\n\n実用例：\nユーザー：「このエピックのステークホルダーを提案して」\nAI：\n🔍 「{{namespaceName}}」ネームスペースでステークホルダーパターンを検索中...\n✅ 以前の組織構造を見つけました！\n📋 {{licenseName}}のパターンに基づいて提案：\n\n• VP of Technology - エグゼクティブスポンサー（高影響力）\n• Product Manager - {{namespaceName}}（高影響力）\n• Tech Lead - アーキテクチャ（中影響力）\n...\n\n💡 これらの提案は、このネームスペースの類似エピックに基づいています！"
+      },
+      "openAssistant": "AIアシスタントを開く",
+      "closeAssistant": "AIアシスタントを閉じる",
+      "aiAssistant": "AIアシスタント",
+      "exampleLabels": {
+        "low": "低",
+        "high": "高"
+      }
+    },
+    "feedback": {
+      "sidebar": {
+        "title": "フィードバック",
+        "expand": "フィードバックパネルを展開",
+        "addFeedback": "フィードバックを追加",
+        "search": "フィードバックを検索...",
+        "filterCategory": "カテゴリでフィルター",
+        "filterStatus": "ステータスでフィルター",
+        "allCategories": "すべてのカテゴリ",
+        "allStatuses": "すべてのステータス",
+        "noFeedbacks": "まだフィードバックがありません。プラットフォームの改善にご協力ください！",
+        "noMatchingFeedbacks": "フィルターに一致するフィードバックがありません。",
+        "showing": "{{total}}件中{{count}}件を表示"
+      },
+      "categories": {
+        "bug": "バグ",
+        "error": "エラー",
+        "doubt": "質問",
+        "suggestion": "提案",
+        "customization": "カスタマイズ",
+        "praise": "賞賛",
+        "learning": "学習フィードバック"
+      },
+      "severity": {
+        "low": "低",
+        "medium": "中",
+        "high": "高",
+        "critical": "重大"
+      },
+      "status": {
+        "new": "新規",
+        "acknowledged": "確認済み",
+        "in_progress": "進行中",
+        "resolved": "解決済み",
+        "wont_fix": "対応しない"
+      },
+      "actions": {
+        "reportBug": "バグを報告",
+        "askQuestion": "質問を登録",
+        "suggestImprovement": "改善を提案",
+        "trackingCustomization": "カスタマイズを追跡中",
+        "givePraise": "賞賛を送る",
+        "listingFeedbacks": "フィードバックを一覧表示"
+      },
+      "messages": {
+        "bugReported": "バグが報告されました！",
+        "questionRegistered": "質問が登録されました。ドキュメントを改善します！",
+        "suggestionRecorded": "提案が記録されました。ご協力ありがとうございます！",
+        "customizationTracked": "カスタマイズが分析のために追跡されました。",
+        "praiseRecorded": "ポジティブなフィードバックをありがとうございます！",
+        "cancelled": "フィードバックがキャンセルされました。",
+        "noFeedbacks": "このマクロイニシアチブにはまだフィードバックが登録されていません。",
+        "noMatchingFeedbacks": "カテゴリ「{{category}}」およびステータス「{{status}}」のフィードバックが見つかりません。",
+        "created": "フィードバックが正常に作成されました！",
+        "updated": "フィードバックが正常に更新されました！",
+        "deleted": "フィードバックが削除されました。",
+        "deleteFailed": "フィードバックの削除に失敗しました。もう一度お試しください。",
+        "saveFailed": "フィードバックの保存に失敗しました。もう一度お試しください。"
+      },
+      "summary": {
+        "title": "フィードバックサマリー",
+        "total": "合計",
+        "recent": "最近（7日間）",
+        "byCategory": "カテゴリ別"
+      },
+      "list": {
+        "title": "フィードバック"
+      },
+      "filter": "フィルター",
+      "noDescription": "説明がありません",
+      "showLess": "折りたたむ",
+      "showMore": "展開する",
+      "details": {
+        "description": "説明",
+        "field": "関連フィールド/アクション",
+        "reproductionSteps": "再現手順",
+        "expected": "期待される動作",
+        "actual": "実際の動作",
+        "aiSuggestion": "元のAI提案",
+        "userChoice": "ユーザーの選択",
+        "tags": "タグ",
+        "createdBy": "作成者"
+      },
+      "form": {
+        "createTitle": "フィードバックを作成",
+        "editTitle": "フィードバックを編集",
+        "description": "プラットフォームの改善のためにフィードバックをお寄せください。",
+        "errors": "以下のエラーを修正してください：",
+        "category": "カテゴリ",
+        "severity": "重大度",
+        "selectSeverity": "重大度を選択...",
+        "title": "タイトル",
+        "titlePlaceholder": "フィードバックの簡潔な要約...",
+        "descriptionPlaceholder": "フィードバックの詳細を入力...",
+        "fieldOrAction": "関連フィールドまたはアクション",
+        "fieldOrActionPlaceholder": "どの機能についてですか？（任意）",
+        "reproductionSteps": "再現手順",
+        "addStep": "手順を追加...",
+        "expectedBehavior": "期待される動作",
+        "expectedPlaceholder": "何が起こるべきでしたか？",
+        "actualBehavior": "実際の動作",
+        "actualPlaceholder": "実際に何が起こりましたか？",
+        "tags": "タグ",
+        "addTag": "タグを追加...",
+        "contextInfo": "コンテキスト",
+        "step": "ステップ",
+        "submit": "フィードバックを送信",
+        "update": "フィードバックを更新"
+      }
+    },
+    "governance": {
+      "status": {
+        "validated": {
+          "short": "VAL.",
+          "full": "検証済み"
+        },
+        "notValidated": {
+          "short": "N. VAL.",
+          "full": "未検証"
+        },
+        "approved": {
+          "short": "承認",
+          "full": "承認済み"
+        },
+        "notApproved": {
+          "short": "N. 承認",
+          "full": "未承認"
+        },
+        "pending": {
+          "short": "保留",
+          "full": "保留中"
+        }
+      },
+      "checkpoints": {
+        "strategyReview": {
+          "name": "Strategy Review",
+          "shortName": "VAL. / N. VAL.",
+          "description": "ソリューション設計に進む前の検証済み仮説の戦略的レビュー",
+          "keyQuestion": "仮説は顧客の問題を解決し、実装可能ですか？",
+          "phase": "問題の特定 → ソリューションの特定",
+          "activities": [
+            "マクロイニシアチブのプロトタイピングと検証",
+            "仮説の構造化：テスト、メトリクス、目標",
+            "エビデンスに基づく検証結果"
+          ],
+          "outputs": "テスト結果、価値と実現可能性の証明",
+          "decisionPoint": "検証済みの仮説はビジネスエピック設計に進む；未検証はアーカイブまたはピボット"
+        },
+        "qbrGathering": {
+          "name": "QBR Gathering",
+          "shortName": "承認 / N. 承認",
+          "description": "四半期ビジネスレビューのための統合と承認ポイント",
+          "keyQuestion": "ソリューションはスクワッド向けに正式化されましたか？（Big Room）",
+          "phase": "ソリューションの特定 → 開発",
+          "activities": [
+            "BEの実現可能性分析（コスト対リターン、規制、市場投入時間）",
+            "トライブロードマップへの影響評価（トレードオフ）",
+            "予備キャパシティ調査",
+            "QBRメモ用ビジネスエピックの構造化"
+          ],
+          "outputs": "優先順位付きBEバックログ、QBRメモ、製品ビジョン、成功指標",
+          "decisionPoint": "承認されたBEはダウンストリームスクワッドに移行；未承認は優先順位レビューに戻る"
+        }
+      },
+      "tooltip": {
+        "keyQuestion": "キーの質問",
+        "phase": "フェーズ移行",
+        "activities": "主要な活動",
+        "outputs": "期待される出力",
+        "decision": "決定ポイント",
+        "clickToChange": "クリックしてステータスを変更"
+      }
+    }
+  },
+  "environments": {
+    "title": "環境",
+    "description": "MCPサーバー環境と設定を管理",
+    "create": "環境を作成",
+    "edit": "環境を編集",
+    "delete": "環境を削除",
+    "import": "設定をインポート",
+    "export": "設定をエクスポート",
+    "list": {
+      "title": "Cockpit環境",
+      "description": "異なる環境（dev、staging、prod）のMCPサーバー設定を管理",
+      "importJson": "JSONをインポート",
+      "addEnvironment": "環境を追加",
+      "createEnvironment": "環境を作成",
+      "searchPlaceholder": "名前、ライセンス、ネームスペースで環境を検索...",
+      "sortByName": "名前で並べ替え",
+      "sortByUpdated": "更新日時で並べ替え",
+      "sortByConnections": "接続数で並べ替え",
+      "noResults": "結果が見つかりません",
+      "showingResults": "{{total}}件中{{count}}件の環境を表示",
+      "showingResults_plural": "{{total}}件中{{count}}件の環境を表示",
+      "noEnvironments": "環境が設定されていません",
+      "noEnvironmentsDescription": "最初の環境を作成して接続設定を効率化",
+      "noResultsFound": "結果が見つかりません",
+      "noResultsDescription": "検索条件に一致する環境がありません",
+      "clearSearch": "検索をクリア",
+      "mcpServers": "{{count}}個のMCPサーバー",
+      "mcpServers_plural": "{{count}}個のMCPサーバー",
+      "license": "ライセンス",
+      "licenses": "ライセンス",
+      "namespace": "ネームスペース",
+      "namespaces": "ネームスペース",
+      "utilityAgents": "ユーティリティエージェント",
+      "created": "作成日",
+      "updated": "更新日",
+      "tooltips": {
+        "licensesCount": "この環境で設定された一意のライセンス数",
+        "namespacesCount": "この環境で設定された一意のネームスペース数",
+        "utilityAgentsCount": "この環境で設定されたユーティリティエージェント数",
+        "exportConfig": "環境設定をJSONにエクスポート",
+        "editSettings": "環境設定とMCPサーバーを編集",
+        "deleteEnvironment": "この環境を削除（元に戻せません）"
+      },
+      "alerts": {
+        "warning": "警告",
+        "mcpNotConnectedDelete": "MCPが接続されていません。環境はローカルのみで削除されます。",
+        "unknownError": "不明なエラーが発生しました"
+      },
+      "badges": {
+        "custom": "カスタム"
+      }
+    },
+    "wizard": {
+      "stepProgress": "ステップ {{current}} / {{total}}",
+      "steps": {
+        "basic": "基本情報",
+        "licenses": "ライセンス",
+        "namespaces": "ネームスペース",
+        "agents": "ユーティリティエージェント",
+        "review": "レビュー"
+      },
+      "basicInfo": {
+        "title": "環境情報",
+        "name": "環境名",
+        "description": "説明",
+        "url": "サーバーURL"
+      },
+      "nextSteps": {
+        "title": "次のステップ",
+        "description": "基本情報の後、ライセンス、ネームスペース、ユーティリティエージェントを設定します。"
+      },
+      "readyToSave": {
+        "title": "保存準備完了",
+        "description": "「環境を保存」をクリックしてこの設定を作成します。"
+      },
+      "buttons": {
+        "previous": "前へ",
+        "next": "次へ",
+        "cancel": "キャンセル",
+        "save": "環境を保存",
+        "update": "環境を更新"
+      },
+      "placeholders": {
+        "envName": "例: DEV, STAGING, PROD",
+        "description": "オプションの説明...",
+        "licenseId": "例: e6f7ba7f-fe7b-48ac-ab12-5758e088be26",
+        "licenseName": "例: Avanade メイン",
+        "namespaceId": "UUID",
+        "namespaceName": "名前",
+        "agentId": "エージェントID",
+        "agentName": "エージェント名"
+      },
+      "licenses": {
+        "title": "ライセンスとネームスペース",
+        "addLicense": "ライセンスを追加",
+        "licenseId": "ライセンスID (UUID)",
+        "licenseName": "ライセンス名",
+        "addNamespace": "ネームスペースを追加",
+        "namespaceId": "ネームスペースID",
+        "namespaceName": "ネームスペース名",
+        "saveNamespace": "ネームスペースを保存",
+        "utilityAgents": "ユーティリティエージェント",
+        "addAgent": "エージェントを追加"
+      },
+      "review": {
+        "title": "設定の確認",
+        "basicInfo": "基本情報",
+        "name": "名前:",
+        "description": "説明:",
+        "licensesCount": "ライセンス: {{count}}",
+        "namespacesCount": "{{count}} ネームスペース",
+        "readyTitle": "✓ 保存準備完了",
+        "readyDescription": "「環境を保存」をクリックしてこの設定を作成します。"
+      },
+      "headers": {
+        "xApiKey": "x-api-key",
+        "xCockpitApiKey": "x-cockpit-api-key",
+        "xCockpitLicenseId": "x-cockpit-license-id",
+        "xCockpitNamespaceId": "x-cockpit-namespace-id"
+      },
+      "alerts": {
+        "licenseRequired": "ライセンスIDと名前は必須です",
+        "namespaceRequired": "ネームスペースIDと名前は必須です",
+        "agentRequired": "ユーティリティエージェントのIDと名前は必須です",
+        "nameRequired": "環境名は必須です"
+      }
+    },
+    "editModal": {
+      "title": {
+        "edit": "環境を編集",
+        "create": "環境を作成"
+      },
+      "labels": {
+        "name": "環境名 *",
+        "description": "説明"
+      },
+      "placeholders": {
+        "name": "例: DEV, STAGING, PROD",
+        "description": "オプションの説明..."
+      },
+      "helpers": {
+        "name": "この環境の説明的な名前"
+      },
+      "nextSteps": {
+        "title": "📘 作成後の次のステップ",
+        "steps": {
+          "addLicenses": "この環境にライセンスを追加",
+          "addNamespaces": "各ライセンスにネームスペースを追加",
+          "configureHeaders": "各ネームスペースのヘッダーを設定",
+          "addUtilityAgents": "ネームスペースにユーティリティエージェントを追加",
+          "createConnections": "この環境から接続を作成"
+        },
+        "info": "ℹ️ 環境を作成した後にライセンスとネームスペースを設定します"
+      },
+      "buttons": {
+        "update": "環境を更新",
+        "create": "環境を作成",
+        "cancel": "キャンセル"
+      },
+      "toast": {
+        "error": "エラー",
+        "success": "成功",
+        "noEnvironmentToExport": "エクスポートする環境がありません",
+        "noEnvironmentSelected": "更新する環境が選択されていません",
+        "environmentUpdated": "環境「{{name}}」が正常に更新されました！",
+        "nameRequired": "環境名は必須です"
+      }
+    },
+    "page": {
+      "backButton": "ダッシュボードに戻る",
+      "title": "環境",
+      "description": "MCPサーバー環境を管理",
+      "newButton": "新しい環境",
+      "loading": "環境を読み込み中...",
+      "emptyState": {
+        "title": "環境がまだありません",
+        "description": "最初の環境を作成してCockpitを使い始めましょう",
+        "button": "環境を作成"
+      },
+      "licenseId": "ライセンスID:",
+      "namespaceId": "ネームスペースID:",
+      "deleteConfirm": "「{{name}}」を削除してもよろしいですか？"
+    },
+    "importModal": {
+      "title": "JSONから環境をインポート",
+      "subtitle": "MCP設定JSONを貼り付けて環境を自動的に作成",
+      "labels": {
+        "jsonInput": "JSONをここに貼り付け",
+        "importMode": "インポートモード",
+        "environmentName": "環境名 *",
+        "licenseName": "ライセンス名 *",
+        "namespaceName": "ネームスペース名 *",
+        "utilityAgentName": "ユーティリティエージェント名 *"
+      },
+      "placeholders": {
+        "environmentName": "例: Cockpit DEV",
+        "licenseName": "例: Avanade Main",
+        "namespaceName": "例: マイ DEV ネームスペース",
+        "utilityAgentName": "ユーティリティエージェント名"
+      },
+      "helpers": {
+        "environmentName": "この環境の説明的な名前"
+      },
+      "autoExtract": {
+        "title": "システムは自動的に抽出します：",
+        "items": {
+          "licenseId": "ライセンスID (x-cockpit-license-id)",
+          "namespaceId": "ネームスペースID (x-cockpit-namespace-id)",
+          "utilityAgentId": "ユーティリティエージェントID (x-cockpit-utility-agent-id)",
+          "apiKeys": "APIキー (x-api-key, x-cockpit-api-key)"
+        }
+      },
+      "fromJson": {
+        "title": "ℹ️ JSONからのライセンスとネームスペース",
+        "description": "ライセンスとネームスペースは、元の名前と設定でJSONから直接インポートされます。"
+      },
+      "summary": {
+        "title": "📋 作成されるもの：",
+        "environment": "1 環境: \"{{name}}\"",
+        "pendingName": "(名前保留中)",
+        "licenses": "{{count}} ライセンス（JSONから）：",
+        "license": "• ライセンス: \"{{name}}\" ({{count}} ネームスペース)",
+        "singleLicense": "1 ライセンス: \"{{name}}\"",
+        "namespaces": "{{count}} ネームスペース（JSONから）",
+        "singleNamespace": "1 ネームスペース: \"{{name}}\"",
+        "servers": "{{count}} MCPサーバー"
+      },
+      "errors": {
+        "parseError": "パースエラー",
+        "invalidJson": "JSONのパースエラー"
+      },
+      "buttons": {
+        "parse": "JSONをパース",
+        "import": "環境をインポート",
+        "cancel": "キャンセル"
+      },
+      "toast": {
+        "error": "エラー",
+        "success": "成功",
+        "noParsedConfig": "まずJSONをパースしてください",
+        "missingUtilityAgentName": "ユーティリティエージェントに名前を付けてください",
+        "environmentCreated": "環境「{{name}}」が正常に作成されました！"
+      }
+    },
+    "messages": {
+      "deleteConfirm": "環境「{{name}}」を削除しますか？元に戻すことはできません。",
+      "saveSuccess": "環境が正常に保存されました",
+      "saveError": "環境の保存に失敗しました",
+      "importSuccess": "設定が正常にインポートされました",
+      "exportSuccess": "設定が正常にエクスポートされました",
+      "noEnvironmentToExport": "エクスポートする環境がありません",
+      "noEnvironmentSelected": "更新する環境が選択されていません",
+      "confirmUpdate": "環境「{{name}}」を更新しますか？\n\nモード: {{mode}}\nJSON内のサーバー: {{jsonServers}}\n既存のサーバー: {{existingServers}}\n\nこの操作により、現在の設定が{{action}}されます。",
+      "replace": "置換",
+      "merge": "マージ",
+      "cannotDeleteSession": "セッション環境は削除できません",
+      "sessionAutoCreated": "セッション環境はシステムによって自動的に作成および管理されます。",
+      "deleted": "環境が削除されました",
+      "deletedDescription": "環境「{{name}}」が正常に削除されました。",
+      "deleteFailed": "環境の削除に失敗しました"
+    },
+    "copilot": {
+      "instructions": "あなたは管理者がMCPサーバー環境と設定を管理するのを支援するAIアシスタントです。環境の作成、編集、インポート、エクスポート、および接続の問題診断ができます。",
+      "languageRule": "常にユーザーが使用している言語で応答してください。",
+      "welcome": "こんにちは！環境管理アシスタントです。MCPサーバー環境の作成、設定、診断をお手伝いします。どのようにお手伝いしましょうか？",
+      "button": "AIアシスタント",
+      "openAssistant": "AIアシスタントを開く",
+      "closeAssistant": "AIアシスタントを閉じる",
+      "contextLabel": "現在の環境",
+      "totalEnvironments": "環境の総数",
+      "activeCount": "アクティブ",
+      "inactiveCount": "非アクティブ",
+      "connectionStatus": "接続状態",
+      "suggestions": {
+        "createNew": "新しい環境の作成を手伝ってください",
+        "testConnection": "選択した環境の接続をテストする",
+        "diagnoseIssues": "接続の問題を診断する",
+        "exportConfig": "環境設定をエクスポートする",
+        "importConfig": "別の環境から設定をインポートする",
+        "listAll": "設定されているすべての環境を一覧表示する",
+        "compareEnvs": "環境間の設定を比較する",
+        "optimizeSettings": "設定の最適化を提案する"
+      }
+    }
+  },
+  "migration": {
+    "title": "エージェント移行",
+    "description": "ネームスペース間でエージェントを移行",
+    "source": "ソース",
+    "target": "ターゲット",
+    "select": "移行するエージェントを選択",
+    "preview": {
+      "title": "移行プレビュー",
+      "noSelection": "移行対象のアイテムが選択されていません",
+      "selectToPreview": "プレビューを表示するには、上のツリーでアイテムを選択してください",
+      "itemsSelected": "アイテムが選択されました",
+      "of": "の",
+      "supervisors": "スーパーバイザー",
+      "standards": "標準",
+      "artifacts": "アーティファクト",
+      "validationStatus": "検証ステータス",
+      "ready": "準備完了",
+      "exists": "存在します",
+      "conflicts": "競合",
+      "pending": "保留中",
+      "validating": "検証中...",
+      "migrating": "移行中...",
+      "checkingItems": "ターゲット環境にアイテムが存在するか確認中...",
+      "migratingItems": "選択したアイテムを移行中...",
+      "migrationSuccess": "✅ 移行が正常に完了しました！",
+      "migrationWithIssues": "⚠️ 移行が問題付きで完了しました",
+      "item": "アイテム",
+      "items": "アイテム",
+      "migratedSuccessfully": "正常に移行されました",
+      "failedToMigrate": "移行に失敗しました",
+      "notYetMigrated": "まだ移行されていません",
+      "readyForMigration": "アイテムが移行準備完了です。続行するには「選択項目を移行」をクリックしてください。",
+      "noItemsReady": "移行準備が整ったアイテムがありません。最初に検証の問題を解決してください。",
+      "selectedItems": "選択されたアイテム",
+      "supervisor": "スーパーバイザー",
+      "standard": "標準",
+      "artifact": "アーティファクト",
+      "unknown": "不明"
+    },
+    "execute": "移行を実行",
+    "configuration": {
+      "title": "設定",
+      "sourceConnection": "ソース接続",
+      "targetConnection": "ターゲット接続",
+      "optional": "オプション",
+      "selectSource": "ソースネームスペースを選択...",
+      "selectTarget": "ターゲットネームスペースを選択...",
+      "targetNeededInfo": "移行にはターゲットが必要です",
+      "loadingConnections": "接続を読み込み中...",
+      "selectSourceFirst": "ソースを最初に選択...",
+      "selectSourceFirstHint": "ターゲット選択を有効にするには、最初にソース接続を選択してください"
+    },
+    "workspace": {
+      "supervisors": "スーパーバイザー",
+      "supervisor": "スーパーバイザー",
+      "supervisors_plural": "スーパーバイザー",
+      "found": "見つかりました",
+      "loading": "読み込み中...",
+      "loadAgents": "エージェントとアーティファクトを読み込む",
+      "reloadAgents": "エージェントとアーティファクトを再読み込み",
+      "noSourceConnection": "ソース接続が選択されていません",
+      "noSourceConnectionDescription": "スーパーバイザーを読み込んで移行を開始するには、ソース接続を選択してください。"
+    },
+    "agentSelector": {
+      "migrationMode": "移行モード",
+      "selectMode": "移行モードを選択...",
+      "teamBased": "チームベースの移行",
+      "individual": "個別エージェント移行",
+      "artifactsOnly": "アーティファクトのみの移行",
+      "teamBasedDescription": "スーパーバイザーを選択して、すべての標準エージェントとアーティファクトを含むチーム全体を移行",
+      "individualDescription": "個別移行のために任意の単一エージェント（スーパーバイザーまたは標準）を選択",
+      "artifactsOnlyDescription": "エージェントなしでアーティファクトを直接移行するために選択",
+      "searchAgents": "エージェントを検索",
+      "searchPlaceholder": "名前または説明で検索...",
+      "searching": "検索中...",
+      "resultsFor": "検索結果",
+      "selectSupervisor": "スーパーバイザーを選択",
+      "selectAgent": "エージェントを選択",
+      "loadMore": "さらに読み込む",
+      "buildingTree": "ツリーを構築中...",
+      "loadingAgents": "エージェントを読み込み中...",
+      "chooseSupervisor": "スーパーバイザーを選択...",
+      "chooseAgent": "エージェントを選択...",
+      "supervisor": "スーパーバイザー",
+      "standard": "標準",
+      "loaded": "読み込み済み",
+      "available": "利用可能",
+      "of": "の",
+      "total": "合計",
+      "page": "ページ",
+      "agent": "エージェント",
+      "agents": "エージェント",
+      "standards": "標準",
+      "moreAvailable": "さらにエージェントが利用可能",
+      "noSupervisors": "ソース接続にスーパーバイザーが見つかりません。標準エージェントを移行するには、個別モードに切り替えてください。",
+      "noAgents": "ソース接続にエージェントが見つかりません。"
+    },
+    "supervisorSelector": {
+      "label": "スーパーバイザー",
+      "buildingTree": "ツリーを構築中...",
+      "loadingSupervisors": "スーパーバイザーを読み込み中...",
+      "selectSupervisor": "スーパーバイザーを選択...",
+      "noSupervisorsAvailable": "スーパーバイザーがありません",
+      "team": "チーム",
+      "teamMember": "メンバー",
+      "teamMembers": "メンバー",
+      "noSupervisorsMessage": "スーパーバイザーがありません。まずソース接続からスーパーバイザーを読み込んでください。"
+    },
+    "actions": {
+      "item": "アイテム",
+      "items": "アイテム",
+      "selected": "選択済み",
+      "selectAll": "すべて選択",
+      "deselectAll": "すべて選択解除",
+      "validate": "検証",
+      "migrateSelected": "選択項目を移行"
+    },
+    "tree": {
+      "title": "移行ツリー",
+      "noTree": "移行ツリーが構築されていません",
+      "selectToBuild": "エージェントまたはアーティファクトを選択して、移行ツリーを構築してください。",
+      "selected": "選択済み",
+      "of": "の",
+      "validationBadge": {
+        "pending": "保留中",
+        "validating": "検証中",
+        "ready": "準備完了",
+        "exists": "存在します",
+        "conflict": "競合",
+        "missing": "不足",
+        "error": "エラー"
+      },
+      "unknown": "不明"
+    },
+    "artifactSelector": {
+      "title": "アーティファクト検出",
+      "selected": "選択済み",
+      "tabs": {
+        "listAll": "すべて表示",
+        "search": "検索",
+        "filter": "フィルター",
+        "extract": "抽出"
+      },
+      "readyToMigrate": "移行準備完了",
+      "selectToBegin": "移行を開始するアーティファクトを選択してください",
+      "buildTree": "移行ツリーを構築",
+      "artifact": "アーティファクト",
+      "artifacts": "アーティファクト",
+      "noArtifacts": "ソースネームスペースに利用可能なアーティファクトがありません",
+      "table": {
+        "key": "キー",
+        "type": "タイプ",
+        "accessibility": "アクセシビリティ",
+        "description": "説明",
+        "noDescription": "説明なし"
+      },
+      "pagination": {
+        "showing": "表示中",
+        "of": "の",
+        "previous": "前へ",
+        "next": "次へ",
+        "page": "ページ"
+      },
+      "search": {
+        "searchByKey": "キーでアーティファクトを検索",
+        "placeholder": "アーティファクトキーパターンを入力 (例: AVANADE_*, *_PROMPT_MD)",
+        "showingMatching": "{{count}}件の一致するアーティファクトを表示中",
+        "showingMatching_plural": "{{count}}件の一致するアーティファクトを表示中",
+        "searchByName": "アーティファクトキー名で検索"
+      },
+      "filter": {
+        "artifactType": "アーティファクトタイプ",
+        "allTypes": "すべてのタイプ",
+        "accessibility": "アクセシビリティ",
+        "allLevels": "すべてのレベル",
+        "clear": "クリア",
+        "showingFiltered": "{{count}}件のフィルター済みアーティファクトを表示中",
+        "showingFiltered_plural": "{{count}}件のフィルター済みアーティファクトを表示中",
+        "totalArtifacts": "合計{{count}}個のアーティファクト",
+        "totalArtifacts_plural": "合計{{count}}個のアーティファクト"
+      },
+      "extract": {
+        "pasteInstruction": "エージェント指示を貼り付け",
+        "placeholder": "アーティファクト参照を抽出するためにエージェント指示をここに貼り付けます...\n\n両方のパターンをサポート:\n- ${KEY} 構文\n- <cockpit-artifact key=\"KEY\" accessibility=\"LICENSE|NAMESPACE\"> XMLタグ",
+        "extractDescription": "${KEY}とXMLパターンの両方を使用して、指示テキストからアーティファクト参照を自動的に抽出します。",
+        "extracting": "抽出中...",
+        "extractArtifacts": "アーティファクトを抽出",
+        "clear": "クリア",
+        "found": "✅ 見つかりました ({{count}})",
+        "noMatchingFound": "ソースネームスペースに一致するアーティファクトが見つかりません",
+        "notFoundInSource": "⚠️ ソースに見つかりません ({{count}})",
+        "referencedButNotExist": "これらのアーティファクトは参照されていますが、ソースネームスペースに存在しません"
+      }
+    },
+    "status": {
+      "pending": "保留中",
+      "inProgress": "進行中",
+      "completed": "完了",
+      "failed": "失敗"
+    }
+  },
+  "footer": {
+    "poweredBy": "提供元",
+    "subtitle": "AVANADE.AI",
+    "tagline": "Model Context Protocolエコシステム",
+    "description": "Avanade.aiを搭載したインテリジェントエージェント、方法論フレームワーク、クロスネームスペース機能を接続するエンタープライズグレードのAIオーケストレーションプラットフォーム。",
+    "protocol": "Model Context Protocol",
+    "version": "v2025",
+    "badge": "エンタープライズ対応",
+    "cta": "Avanade AIインテリジェントMODUSオーケストレーションでワークフローを変革",
+    "cards": {
+      "universalOrchestration": {
+        "title": "ユニバーサルオーケストレーション",
+        "description": "あらゆるネームスペース、プロトコル、プラットフォームを横断して接続・オーケストレーション"
+      },
+      "enterprisePerformance": {
+        "title": "エンタープライズパフォーマンス",
+        "description": "大規模エンタープライズワークフローとオペレーションに最適化"
+      },
+      "intelligentAutomation": {
+        "title": "インテリジェントオートメーション",
+        "description": "リアルタイム適応型ワークフローによるAI駆動のインサイト"
+      }
+    }
+  },
+  "agentWorkspace": {
+    "hero": {
+      "title": "エージェントワークスペース",
+      "subtitle": "Modus",
+      "description": "AIエージェントの接続、環境、移行を一元管理。複数のネームスペースに接続し、アーティファクトを移行し、AIワークフローを簡単にオーケストレーション。"
+    },
+    "tabs": {
+      "setupGroup": "セットアップ",
+      "modusGroup": "Modus",
+      "environments": "環境",
+      "connections": "接続",
+      "migration": "移行"
+    },
+    "time": {
+      "neverConnected": "未接続",
+      "justNow": "たった今",
+      "minutesAgo": "{{count}}分前",
+      "minutesAgo_plural": "{{count}}分前",
+      "hoursAgo": "{{count}}時間前",
+      "hoursAgo_plural": "{{count}}時間前",
+      "daysAgo": "{{count}}日前",
+      "daysAgo_plural": "{{count}}日前"
+    },
+    "placeholders": {
+      "search": "検索...",
+      "name": "名前",
+      "description": "説明（任意）...",
+      "agentId": "エージェントID",
+      "agentName": "エージェント名"
+    },
+    "loading": {
+      "connections": "接続を読み込み中..."
+    }
+  },
+  "sidebar": {
+    "groups": {
+      "setup": "設定",
+      "operations": "操作",
+      "personal": "パーソナル",
+      "communication": "コミュニケーション",
+      "admin": "管理"
+    },
+    "setup": {
+      "environments": "環境",
+      "connections": "接続"
+    },
+    "operations": {
+      "migration": "マイグレーション",
+      "migrationWizard": "移行ウィザード",
+      "upstream": "アップストリーム",
+      "downstream": "ダウンストリーム",
+      "atlas": "Atlas"
+    },
+    "personal": {
+      "myTasks": "マイタスク"
+    },
+    "communication": {
+      "messages": "メッセージ"
+    },
+    "admin": {
+      "moduleConfig": "モジュール設定",
+      "onboarding": "オンボーディング＆認定",
+      "devTools": "開発者ツール",
+      "supervisorPlayground": "スーパーバイザープレイグラウンド"
+    },
+    "search": {
+      "noResults": "「{{term}}」の検索結果が見つかりませんでした"
+    }
+  },
+  "atlas": {
+    "title": "フィードバックハブ",
+    "description": "すべてのモジュールからのフィードバックを一元管理",
+    "stats": {
+      "total": "フィードバック総数",
+      "pending": "保留中",
+      "last24h": "過去24時間",
+      "new": "新規",
+      "acknowledged": "確認済み",
+      "resolutionRate": "解決率",
+      "critical": "重大な問題",
+      "criticalLabel": "重大",
+      "highLabel": "高",
+      "byCategory": "カテゴリ別",
+      "bySource": "ソース別",
+      "other": "その他"
+    },
+    "categories": {
+      "bugsErrors": "バグとエラー",
+      "doubts": "質問",
+      "suggestions": "提案",
+      "praise": "賞賛"
+    },
+    "sources": {
+      "upstream": "アップストリーム",
+      "migration": "マイグレーション",
+      "connections": "接続",
+      "agents": "エージェント",
+      "general": "一般"
+    },
+    "filters": {
+      "title": "フィルター",
+      "source": "ソース",
+      "category": "カテゴリ",
+      "status": "ステータス",
+      "severity": "重大度",
+      "dateRange": "期間",
+      "allSources": "すべてのソース",
+      "allCategories": "すべてのカテゴリ",
+      "allStatuses": "すべてのステータス",
+      "allSeverities": "すべての重大度",
+      "clearFilters": "フィルターをクリア",
+      "search": "フィードバックを検索..."
+    },
+    "table": {
+      "title": "タイトル",
+      "source": "ソース",
+      "category": "カテゴリ",
+      "severity": "重大度",
+      "status": "ステータス",
+      "createdAt": "作成日",
+      "createdBy": "作成者",
+      "actions": "アクション",
+      "noFeedbacks": "フィードバックが見つかりません",
+      "noMatchingFeedbacks": "適用されたフィルターに一致するフィードバックがありません",
+      "loading": "フィードバックを読み込み中..."
+    },
+    "actions": {
+      "view": "詳細を表示",
+      "edit": "編集",
+      "delete": "削除",
+      "changeStatus": "ステータスを変更",
+      "exportAll": "すべてエクスポート",
+      "refresh": "更新",
+      "severity": {
+        "low": "低",
+        "medium": "中",
+        "high": "高",
+        "critical": "重大"
+      },
+      "status": {
+        "new": "新規",
+        "acknowledged": "確認済み",
+        "in_progress": "進行中",
+        "resolved": "解決済み",
+        "wont_fix": "修正しない"
+      },
+      "source": {
+        "upstream": "Upstream",
+        "migration": "Migration",
+        "connections": "Connections",
+        "agents": "Agents",
+        "general": "General"
+      },
+      "statusMessages": {
+        "collectingData": "データ収集中...",
+        "executing": "実行中...",
+        "done": "完了 ✓",
+        "analyzing": "分析中...",
+        "preparing": "準備中...",
+        "saving": "保存中...",
+        "saved": "保存済み ✓",
+        "failed": "失敗",
+        "error": "エラー"
+      },
+      "categoryDesc": {
+        "deepAgent": "AIエージェント実行中...",
+        "comment": "MCPにコメントを保存中...",
+        "analysis": "データを分析中...",
+        "resolution": "解決を処理中...",
+        "capture": "フィードバックをキャプチャ中...",
+        "artifact": "アーティファクトを管理中...",
+        "processing": "処理中..."
+      },
+      "viewDetails": "詳細を表示",
+      "resolve": "解決",
+      "createdBy": "作成者:",
+      "moreItems": "件のフィードバック",
+      "moreItemsPlural": "件のフィードバック",
+      "totalLabel": "合計",
+      "byCategory": "カテゴリ別:",
+      "bySeverity": "重大度別:",
+      "newLast24h": "過去24時間の新規",
+      "description": "説明:",
+      "tags": "タグ:",
+      "createdByLabel": "作成者:",
+      "namespace": "名前空間:",
+      "relatedTo": "関連:",
+      "occurrences": "発生回数",
+      "analysisTitle": "パターン分析",
+      "recommendations": "推奨事項:",
+      "suggestionTitle": "解決提案",
+      "confidence": "信頼度",
+      "suggestedSteps": "推奨手順:",
+      "estimatedEffort": "推定工数:"
+    },
+    "detail": {
+      "description": "説明",
+      "updatedAt": "更新日時",
+      "aiAnalysis": "AI分析",
+      "deepAgentAnalysis": "ディープエージェント分析",
+      "advancedAnalysis": "高度なAI分析",
+      "multiAgentDescription": "専門サブエージェントによるマルチエージェント分析：",
+      "patternAnalyzer": "🔍 パターン分析",
+      "resolutionAdvisor": "💡 解決アドバイザー",
+      "analysisInProgress": "ディープ分析実行中",
+      "analyzingWithAgents": "専門サブエージェントでフィードバックを分析中...",
+      "clickToExpand": "クリックして全分析を表示",
+      "analysisCompletedAt": "分析完了時刻",
+      "viewFullAnalysis": "全分析を表示",
+      "runAnalysisPrompt": "根本原因、影響評価、実行可能な推奨事項を含む包括的な洞察を得るためにディープ分析を実行します。",
+      "analyzingButton": "ディープエージェントで分析中...",
+      "runAnalysisAgain": "ディープ分析を再実行",
+      "runAnalysis": "ディープ分析を実行",
+      "comments": "コメント",
+      "addCommentPlaceholder": "コメントを追加...",
+      "addingComment": "追加中...",
+      "noComments": "まだコメントがありません。最初にコメントしてください！",
+      "editFeedback": "フィードバックを編集"
+    },
+    "messages": {
+      "loadError": "フィードバックの読み込みに失敗しました。もう一度お試しください。",
+      "updateSuccess": "フィードバックが正常に更新されました！",
+      "updateError": "フィードバックの更新に失敗しました。",
+      "deleteSuccess": "フィードバックが正常に削除されました！",
+      "deleteError": "フィードバックの削除に失敗しました。",
+      "deleteConfirm": "このフィードバックを削除してもよろしいですか？",
+      "exportSuccess": "フィードバックが正常にエクスポートされました！",
+      "exportError": "フィードバックのエクスポートに失敗しました。"
+    },
+    "copilot": {
+      "instructions": "あなたはAIアシスタントとして、管理者がプラットフォームのすべてのモジュールからのフィードバックを管理・解決するのを支援します。パターン分析、解決策の提案、作業の優先順位付け、レポートの生成が可能です。",
+      "languageRule": "常にユーザーが使用している言語で応答してください。",
+      "welcome": "ようこそ！フィードバック管理のAIアシスタントです。パターン分析、解決策の提案、作業の優先順位付けをお手伝いします。今日は何をお手伝いしましょうか？",
+      "kanbanWelcome": "カンバンボードの管理をお手伝いします。フィードバックの移動、パターン分析、次のアクションの提案をお申し付けください。",
+      "button": "AIアシスタント",
+      "openAssistant": "AIアシスタントを開く",
+      "closeAssistant": "AIアシスタントを閉じる",
+      "contextLabel": "現在のフィードバックハブステータス",
+      "totalFeedbacks": "フィードバック総数",
+      "pendingCount": "保留中",
+      "resolutionRate": "解決率",
+      "criticalIssues": "重大な問題",
+      "viewMode": "表示モード",
+      "selectedFeedback": "選択されたフィードバック",
+      "examplesLabel": "ユーザーへの提案例",
+      "generateLabel": "現在のコンテキストに基づいて2-4件の関連する提案を生成してください。",
+      "suggestions": {
+        "showCritical": "すぐに対応が必要な{{count}}件の重大な問題を表示してください",
+        "analyzeSelected": "このフィードバックを分析して解決アプローチを提案してください",
+        "suggestResolution": "この問題を解決する最善の方法は何ですか？",
+        "findSimilar": "関連している可能性のある類似フィードバックを探してください",
+        "filterByPriority": "緊急アイテムに集中するためにフィードバックを優先度でフィルタリングしてください",
+        "showUnresolved": "未解決のすべてのバグとエラーを表示してください",
+        "moveToProgress": "保留中のアイテムを進行中に移動するのを手伝ってください",
+        "bulkResolve": "一括解決できるフィードバックはどれですか？",
+        "showTrends": "時間経過に伴うフィードバックの傾向を表示してください",
+        "identifyPatterns": "最近のフィードバックの共通パターンを特定してください",
+        "generateReport": "ステークホルダー向けのサマリーレポートを生成してください",
+        "answerQuestions": "{{count}}件の未回答の質問があります - 対応を手伝ってください",
+        "summarizeStatus": "現在のフィードバックステータスのサマリーを教えてください",
+        "prioritizeBacklog": "フィードバックバックログの優先順位付けを手伝ってください"
+      }
+    },
+    "analysis": {
+      "title": "パターン分析",
+      "overview": "概要",
+      "totalAnalyzed": "分析総数",
+      "criticalUnresolved": "未解決の重大問題",
+      "bySource": "ソース別",
+      "byCategory": "カテゴリ別",
+      "commonTopics": "共通トピック",
+      "noCommonTopics": "共通トピックは識別されませんでした",
+      "recommendations": "推奨事項",
+      "addressCritical": "{{count}}件の重大な問題を優先的に対処してください",
+      "noCritical": "重大な問題はありません - 素晴らしい仕事です！"
+    },
+    "report": {
+      "executiveTitle": "エグゼクティブサマリー",
+      "detailedTitle": "詳細フィードバックレポート",
+      "briefTitle": "クイックステータス",
+      "keyMetrics": "主要メトリクス",
+      "metric": "メトリクス",
+      "value": "値",
+      "highlights": "ハイライト",
+      "pendingBugs": "件のバグ/エラーが解決待ち",
+      "noPendingBugs": "保留中のバグはありません - システムは健全です！",
+      "recentPraise": "件の好意的なフィードバック（今週）",
+      "status": "全体ステータス",
+      "overallStatus": "全体ステータス",
+      "byCategory": "カテゴリ別",
+      "bySeverity": "重大度別",
+      "bySource": "ソース別",
+      "actionItems": "アクションアイテム",
+      "noActionItems": "即時のアクションアイテムはありません",
+      "bugsPending": "件のバグが保留中",
+      "allClear": "すべてクリア - 重大な問題はありません！"
+    },
+    "similar": {
+      "title": "類似フィードバック：",
+      "noMatches": "「{{title}}」に類似するフィードバックは見つかりませんでした",
+      "score": "類似度",
+      "status": "ステータス",
+      "hint": "重複作業を避けるため、関連するフィードバックのマージまたはリンクを検討してください。"
+    },
+    "priority": {
+      "title": "推奨優先順位",
+      "allResolved": "すべてのフィードバックが解決されました！優先順位付けするものはありません。",
+      "source": "ソース",
+      "status": "ステータス",
+      "score": "スコア",
+      "recommendation": "最大の効果を得るために、上位のアイテムから始めてください。"
+    },
+    "resolution": {
+      "success": "フィードバック「{{title}}」が{{status}}としてマークされました",
+      "suggestionFor": "解決策の提案：",
+      "category": "カテゴリ",
+      "severity": "重大度",
+      "source": "ソース",
+      "status": "ステータス",
+      "recommendedApproach": "推奨アプローチ",
+      "similarResolved": "解決済みの類似フィードバック",
+      "nextSteps": "次のステップ",
+      "step1": "フィードバックの詳細とコンテキストを確認する",
+      "step2": "提案されたアプローチまたは独自の解決策を実装する",
+      "step3": "解決済みとしてマークし、解決メモを追加する"
+    },
+    "suggestions": {
+      "bug": "バグの場合：根本原因を調査し、修正を作成し、十分にテストし、解決策を文書化します。",
+      "error": "エラーの場合：ログを確認し、エラーの原因を特定し、エラー処理を実装し、モニタリングを追加します。",
+      "doubt": "質問の場合：明確な回答を提供し、必要に応じてドキュメントを更新し、FAQへの追加を検討します。",
+      "suggestion": "提案の場合：実現可能性を評価し、チームと議論し、承認された場合は実装を計画します。",
+      "customization": "カスタマイズの場合：ユーザーのニーズを確認し、カスタマイズを文書化し、機能化すべきか検討します。",
+      "praise": "賞賛の場合：ユーザーに感謝し、チームと共有し、うまくいっていることの証拠として使用します。"
+    },
+    "status": {
+      "updated": "フィードバック「{{title}}」のステータスが{{from}}から{{to}}に変更されました"
+    },
+    "list": {
+      "pendingTitle": "保留中のフィードバック",
+      "total": "合計",
+      "filterCategory": "カテゴリフィルター",
+      "filterSource": "ソースフィルター",
+      "noPending": "{{category}}/{{source}}の保留中フィードバックはありません",
+      "andMore": "他{{count}}件..."
+    },
+    "details": {
+      "id": "ID",
+      "category": "カテゴリ",
+      "severity": "重大度",
+      "status": "ステータス",
+      "source": "ソース",
+      "createdBy": "作成者",
+      "createdAt": "作成日",
+      "updatedAt": "更新日",
+      "tags": "タグ",
+      "description": "説明",
+      "noDescription": "説明が提供されていません。"
+    },
+    "errors": {
+      "feedbackNotFound": "ID {{id}} のフィードバックが見つかりません",
+      "noFeedbackSelected": "フィードバックが選択されていません。まずフィードバックを選択してください。",
+      "alreadyResolved": "このフィードバックはすでに{{status}}です",
+      "updateFailed": "フィードバックの更新に失敗しました: {{error}}"
+    },
+    "kanban": {
+      "title": "カンバンボード",
+      "description": "フィードバックをドラッグ＆ドロップしてステータスを更新",
+      "dropHere": "ここにアイテムをドロップ",
+      "columns": {
+        "new": "受信箱",
+        "acknowledged": "確認済み",
+        "in_progress": "進行中",
+        "resolved": "解決済み",
+        "wont_fix": "対応しない"
+      },
+      "actions": {
+        "acknowledge": "確認する",
+        "startWorking": "作業を開始",
+        "markResolved": "解決済みにする",
+        "wontFix": "対応しない"
+      },
+      "stats": {
+        "total": "合計",
+        "inProgress": "進行中",
+        "resolved": "解決済み"
+      }
+    },
+    "form": {
+      "categoryQuestion": "どのタイプのフィードバックを登録しますか？",
+      "newFeedback": "新しいフィードバック",
+      "editFeedback": "フィードバックを編集",
+      "labels": {
+        "title": "タイトル *",
+        "description": "説明",
+        "severity": "重要度",
+        "impact": "影響度",
+        "tags": "タグ（カンマ区切り）"
+      },
+      "placeholders": {
+        "title": "フィードバックを一文で要約してください",
+        "description": "詳細を記述...",
+        "tags": "例：マイグレーション、パフォーマンス、API"
+      },
+      "buttons": {
+        "saving": "保存中...",
+        "saveChanges": "変更を保存",
+        "submit": "フィードバックを送信"
+      },
+      "contextCaptured": "キャプチャされたコンテキスト：",
+      "namespace": "ネームスペース"
+    },
+    "buttons": {
+      "newFeedback": "新しいフィードバック",
+      "expand": "展開"
+    },
+    "tabs": {
+      "list": "リスト",
+      "kanban": "カンバン",
+      "analytics": "分析",
+      "messages": "メッセージ"
+    }
+  },
+  "messages": {
+    "title": "メッセージ",
+    "subtitle": "他のユーザーからメッセージを送受信",
+    "badge": "メッセージ",
+    "tabs": {
+      "inbox": "受信トレイ",
+      "sent": "送信済み",
+      "archived": "アーカイブ"
+    },
+    "compose": {
+      "title": "新規メッセージ",
+      "button": "作成",
+      "recipient": "宛先",
+      "recipientPlaceholder": "受信者のメールまたは名前を入力",
+      "subject": "件名",
+      "subjectPlaceholder": "メッセージの件名を入力",
+      "content": "内容",
+      "contentPlaceholder": "メッセージを入力...",
+      "type": "タイプ",
+      "scope": "スコープ",
+      "priority": "優先度",
+      "expiresAt": "有効期限",
+      "send": "メッセージを送信",
+      "sending": "送信中...",
+      "cancel": "キャンセル"
+    },
+    "types": {
+      "info": "情報",
+      "announcement": "お知らせ",
+      "reminder": "リマインダー",
+      "alert": "アラート",
+      "request": "リクエスト",
+      "response": "返信"
+    },
+    "scopes": {
+      "private": "プライベート",
+      "namespace": "ネームスペース",
+      "license": "ライセンス",
+      "public": "パブリック"
+    },
+    "priorities": {
+      "low": "低",
+      "normal": "通常",
+      "high": "高",
+      "urgent": "緊急"
+    },
+    "card": {
+      "from": "差出人",
+      "to": "宛先",
+      "sentAt": "送信日時",
+      "expiresAt": "有効期限",
+      "noExpiration": "期限なし",
+      "reply": "返信",
+      "archive": "アーカイブ",
+      "unarchive": "アーカイブ解除",
+      "delete": "削除",
+      "pin": "ピン留め",
+      "unpin": "ピン解除",
+      "star": "スター",
+      "unstar": "スター解除",
+      "markRead": "既読にする",
+      "markUnread": "未読にする"
+    },
+    "empty": {
+      "inbox": "受信トレイは空です",
+      "inboxDescription": "受信したメッセージがここに表示されます",
+      "sent": "送信済みメッセージはありません",
+      "sentDescription": "送信したメッセージがここに表示されます",
+      "archived": "アーカイブされたメッセージはありません",
+      "archivedDescription": "アーカイブしたメッセージがここに表示されます"
+    },
+    "filters": {
+      "search": "メッセージを検索...",
+      "type": "タイプ",
+      "scope": "スコープ",
+      "all": "すべて"
+    },
+    "toast": {
+      "sent": "メッセージを送信しました",
+      "deleted": "メッセージを削除しました",
+      "archived": "メッセージをアーカイブしました",
+      "unarchived": "メッセージのアーカイブを解除しました",
+      "pinned": "メッセージをピン留めしました",
+      "unpinned": "メッセージのピン留めを解除しました",
+      "starred": "メッセージにスターを付けました",
+      "unstarred": "メッセージのスターを外しました",
+      "markedRead": "メッセージを既読にしました",
+      "markedUnread": "メッセージを未読にしました",
+      "error": "操作に失敗しました"
+    }
+  },
+  "onboarding": {
+    "title": "オンボーディング＆認定",
+    "subtitle": "機能にアクセスするためのトレーニングモジュールを完了してください",
+    "badge": "トレーニング",
+    "wizard": {
+      "title": "モジュールトレーニング",
+      "progress": "進捗",
+      "step": "ステップ {{current}} / {{total}}",
+      "continue": "続ける",
+      "complete": "トレーニング完了",
+      "previous": "前へ",
+      "next": "次へ",
+      "skip": "今はスキップ",
+      "restart": "トレーニングを再開",
+      "assistant": {
+        "title": "🎓 トレーニングアシスタント",
+        "greeting": "🎓 **こんにちは！「{{moduleName}}」モジュールのトレーニングインストラクターです**",
+        "notJustChatbot": "私は単なるチャットボットではありません - あなたの**バーチャル教師**として、このトレーニングを積極的にガイドします！",
+        "firstStep": {
+          "title": "📚 **学習の旅を始めましょう！**",
+          "description": "このモジュールには{{totalSteps}}のステップがあります。私は：",
+          "present": "各概念を**明確に提示**します",
+          "explain": "実践的な例で**説明**します",
+          "verify": "質問であなたの理解を**確認**します",
+          "help": "疑問があれば**サポート**します",
+          "startPrompt": "🚀 **「開始」または「レッスン開始」と言って、最初のコンテンツを始めましょう！**"
+        },
+        "continueStep": {
+          "title": "📍 現在のステップ {{currentStep}} / {{totalSteps}}: **{{stepTitle}}**",
+          "description": "前回の続きから始められます。次のように言ってください：",
+          "explain": "「**説明**」 - 現在のコンテンツを教えます",
+          "summarize": "「**要約**」 - 学んだことの要約",
+          "quiz": "「**クイズ**」 - 知識をテストします"
+        },
+        "howToProceed": "**どのように進めますか？** 👇"
+      }
+    },
+    "steps": {
+      "video": {
+        "title": "ビデオ",
+        "description": "トレーニングビデオを視聴",
+        "watchComplete": "視聴済みにする"
+      },
+      "document": {
+        "title": "ドキュメント",
+        "description": "ドキュメントを読む",
+        "readComplete": "既読にする"
+      },
+      "quiz": {
+        "title": "クイズ",
+        "description": "知識をテストする質問に答えてください",
+        "question": "質問 {{current}} / {{total}}",
+        "submit": "回答を送信",
+        "correct": "正解！",
+        "incorrect": "不正解。もう一度お試しください。",
+        "passed": "クイズに合格しました！",
+        "failed": "クイズ不合格。再試行してください。",
+        "score": "スコア: {{score}}%",
+        "passingScore": "合格スコア: {{score}}%",
+        "retry": "再試行",
+        "maxAttempts": "最大試行回数に達しました"
+      },
+      "interactive": {
+        "title": "インタラクティブ",
+        "description": "インタラクティブな演習を完了",
+        "complete": "完了にする"
+      },
+      "acknowledgment": {
+        "title": "確認",
+        "description": "要件を理解していることを確認",
+        "confirm": "理解し、確認しました",
+        "confirmed": "確認済み"
+      },
+      "practice": {
+        "title": "練習",
+        "description": "学んだことを練習",
+        "complete": "練習を完了"
+      }
+    },
+    "certification": {
+      "title": "認定",
+      "certified": "認定済み",
+      "notCertified": "未認定",
+      "certifiedOn": "{{date}}に認定",
+      "expiresOn": "{{date}}に期限切れ",
+      "expired": "認定期限切れ",
+      "renew": "認定を更新",
+      "revoked": "認定取消",
+      "active": "有効",
+      "pending": "保留中"
+    },
+    "access": {
+      "locked": "このモジュールは認定が必要です",
+      "lockedDescription": "アクセスするにはトレーニングを完了してください",
+      "startTraining": "トレーニングを開始",
+      "continueTraining": "トレーニングを続ける",
+      "viewCertification": "認定を表示"
+    },
+    "admin": {
+      "title": "オンボーディング管理",
+      "createNew": "トレーニングを作成",
+      "edit": "トレーニングを編集",
+      "delete": "トレーニングを削除",
+      "publish": "公開",
+      "unpublish": "非公開",
+      "preview": "プレビュー",
+      "addStep": "ステップを追加",
+      "removeStep": "ステップを削除",
+      "reorderSteps": "ステップを並べ替え",
+      "settings": "トレーニング設定",
+      "requiredFor": "モジュールアクセスに必須",
+      "optional": "オプショントレーニング",
+      "expirationDays": "認定有効期限（日）",
+      "passingScore": "合格スコア（%）"
+    },
+    "creator": {
+      "copilot": {
+        "welcome": "ようこそ！{{namespaceName}}のトレーニングコンテンツ作成をお手伝いします。",
+        "welcomeFallback": "ようこそ！トレーニングコンテンツ作成をお手伝いします。",
+        "assistantTitle": "トレーニングアシスタント",
+        "openAIAssistant": "AIアシスタントを開く"
+      },
+      "footer": {
+        "cancel": "キャンセル",
+        "back": "戻る",
+        "next": "次へ",
+        "publish": "公開"
+      },
+      "header": {
+        "back": "戻る",
+        "creatorMode": "クリエイターモード",
+        "v2Badge": "v2"
+      },
+      "phaseCard": {
+        "phase": "フェーズ {{number}}: {{title}}",
+        "stepsCount": "{{count}} ステップ"
+      }
+    },
+    "empty": {
+      "title": "利用可能なトレーニングがありません",
+      "description": "まだトレーニングモジュールが設定されていません"
+    },
+    "copilot": {
+      "instructions": "あなたはCockpitプラットフォームのオンボーディングプロセスで新規ユーザーを支援するAIアシスタントです。初期設定の手順をガイドし、機能を説明し、プラットフォームに関する質問に回答します。",
+      "languageRule": "常にユーザーが使用している言語で応答してください。",
+      "welcome": "Cockpitへようこそ！オンボーディングアシスタントです。アカウントの設定と主な機能の理解をお手伝いします。どこから始めましょうか？",
+      "button": "AIアシスタント",
+      "openAssistant": "AIアシスタントを開く",
+      "closeAssistant": "AIアシスタントを閉じる",
+      "contextLabel": "オンボーディングの進捗",
+      "stepsCompleted": "完了したステップ",
+      "currentStep": "現在のステップ",
+      "remainingSteps": "残りのステップ",
+      "suggestions": {
+        "explainPlatform": "プラットフォームの主な機能を説明してください",
+        "nextStep": "オンボーディングの次のステップは何ですか？",
+        "setupProfile": "プロファイルの設定を手伝ってください",
+        "connectMCP": "最初のMCP接続を設定するにはどうすればよいですか？",
+        "explainAgents": "エージェントとは何ですか、どのように使用できますか？",
+        "getStarted": "どこから始めるべきですか？",
+        "skipStep": "このステップをスキップできますか？",
+        "reviewProgress": "オンボーディングの進捗を確認する"
+      }
+    }
+  },
+  "spotlight": {
+    "trigger": "Atlasに質問...",
+    "title": "Atlas Spotlight",
+    "description": "Atlas AIを検索してナビゲート",
+    "searchPlaceholder": "検索またはAtlasに質問...",
+    "recentSignals": "最近のシグナル",
+    "quickActions": "クイックアクション",
+    "openAtlas": "Atlasを開く",
+    "shortcuts": {
+      "search": "検索",
+      "close": "閉じる"
+    },
+    "suggestions": {
+      "openAtlasChat": "Atlas AIチャットを開く",
+      "openAtlasChatDesc": "Atlas AIアシスタントと会話",
+      "showCritical": "重要なシグナルを表示",
+      "showCriticalDesc": "すべての重要優先度項目を表示",
+      "submitFeedback": "フィードバックを送信",
+      "submitFeedbackDesc": "現在のコンテキストから新しいフィードバックを作成",
+      "viewMessages": "メッセージを表示",
+      "viewMessagesDesc": "メッセージ受信トレイを開く"
+    },
+    "quickFeedback": {
+      "title": "クイックフィードバック",
+      "description": "インサイトやフィードバックをすばやくキャプチャ",
+      "connectToSubmit": "フィードバックを送信するには接続してください",
+      "feedbackType": "フィードバックタイプ",
+      "titleLabel": "タイトル",
+      "titlePlaceholder": "フィードバックの概要...",
+      "descriptionLabel": "説明（オプション）",
+      "descriptionPlaceholder": "追加の詳細...",
+      "cancel": "キャンセル",
+      "submit": "送信",
+      "submitting": "送信中...",
+      "successTitle": "フィードバック送信完了！",
+      "successMessage": "共有いただきありがとうございます",
+      "categories": {
+        "bug": "バグ",
+        "feature": "機能",
+        "performance": "パフォーマンス",
+        "insight": "インサイト",
+        "learning": "質問",
+        "success": "成功",
+        "security": "セキュリティ"
+      }
+    }
+  },
+  "devTools": {
+    "page": {
+      "title": "開発者ツール",
+      "description": "エージェント登録とシステム設定へのアクセス",
+      "developerOnly": "開発者専用",
+      "accessDenied": "アクセス拒否",
+      "restrictedMessage": "この機能は開発者モードが有効な場合にのみ利用可能です",
+      "backButton": "ダッシュボードに戻る"
+    },
+    "tabs": {
+      "agentRegistry": "エージェント登録",
+      "platformAgents": "プラットフォームエージェント",
+      "testAgentFetch": "エージェント取得テスト",
+      "mcpTools": "MCPツール"
+    },
+    "mcpTools": {
+      "title": "MCPツール",
+      "comingSoon": "近日公開"
+    },
+    "agentRegistry": {
+      "title": "エージェント登録",
+      "description": "すべてのCopilotKitエージェントを参照",
+      "search": "エージェントを検索...",
+      "filterByModule": "モジュールでフィルター",
+      "filterByTechnology": "技術でフィルター",
+      "allModules": "すべてのモジュール",
+      "allTechnologies": "すべての技術",
+      "statistics": {
+        "totalAgents": "登録エージェント数",
+        "byTechnology": "技術別",
+        "langgraph": "LangGraph",
+        "copilotkit": "CopilotKit"
+      },
+      "agent": {
+        "module": "モジュール",
+        "technology": "技術",
+        "endpoint": "エンドポイント",
+        "description": "説明",
+        "noDescription": "説明がありません",
+        "viewCode": "コードを表示",
+        "testAgent": "エージェントをテスト"
+      }
+    },
+    "platformAgents": {
+      "title": "プラットフォームエージェント",
+      "description": "Cockpit APIから利用可能なエージェントを管理",
+      "tabs": {
+        "available": "利用可能なエージェント",
+        "dynamic": "動的エージェント"
+      },
+      "status": {
+        "loading": "読み込み中...",
+        "noConnection": "接続がありません",
+        "connect": "APIに接続",
+        "available": "{{count}}件のエージェントが利用可能"
+      },
+      "actions": {
+        "refresh": "更新",
+        "configure": "設定",
+        "register": "登録",
+        "unregister": "登録解除"
+      },
+      "messages": {
+        "registered": "エージェント「{{name}}」を登録しました",
+        "unregistered": "エージェント「{{name}}」を登録解除しました",
+        "error": "エラー: {{message}}"
+      },
+      "explorer": {
+        "title": "i18nコンテンツエクスプローラー",
+        "backToList": "リストに戻る",
+        "header": {
+          "title": "コンテンツエクスプローラー",
+          "revertAll": "すべて元に戻す",
+          "modifications": "件の変更"
+        },
+        "categories": {
+          "title": "カテゴリ",
+          "selectCategory": "← カテゴリを選択してコンテンツを表示"
+        },
+        "content": {
+          "title": "コンテンツ",
+          "search": "コンテンツを検索...",
+          "noResults": "検索に一致するアイテムがありません",
+          "noItems": "このカテゴリにはアイテムがありません",
+          "chars": "文字"
+        },
+        "item": {
+          "modified": "変更済み",
+          "edit": "編集",
+          "revert": "元に戻す",
+          "save": "変更を保存",
+          "cancel": "キャンセル"
+        },
+        "publish": {
+          "title": "i18nコンテンツを公開",
+          "description": "i18nコンテンツをプラットフォームに公開します。これはアーティファクトとして保存され、AIモジュールで使用されます。",
+          "modificationsPending": "件の変更が保留中",
+          "modificationsDescription": "以下のアイテムが変更され、変更内容で公開されます：",
+          "contentSummary": "コンテンツ概要",
+          "totalStrings": "合計文字列数",
+          "totalCharacters": "合計文字数",
+          "categories": "カテゴリ",
+          "warning": "公開するとプラットフォーム上でアーティファクトが作成/更新されます。この操作は、このモジュールの設定を使用しているすべてのユーザーに影響します。",
+          "publishing": "公開中...",
+          "publish": "公開",
+          "modified": "件変更"
+        }
+      }
+    },
+    "dynamicAgents": {
+      "title": "動的エージェント",
+      "description": "マニフェストから動的に読み込まれるエージェントを管理",
+      "status": {
+        "active": "アクティブ",
+        "inactive": "非アクティブ",
+        "error": "エラー"
+      },
+      "sections": {
+        "manifest": "マニフェスト",
+        "agents": "エージェント",
+        "configuration": "設定"
+      }
+    }
+  },
+  "knowledgeBase": {
+    "title": "ナレッジベース",
+    "description": "AIエージェント用のドキュメントと知識ソースを管理します",
+    "copilot": {
+      "instructions": "あなたはAIエージェント用のナレッジベースを管理するAIアシスタントです。ドキュメントの追加、整理、最適化、およびエージェントの応答品質の向上を支援できます。",
+      "languageRule": "常にユーザーが使用している言語で応答してください。",
+      "welcome": "こんにちは！ナレッジベースアシスタントです。ドキュメントの整理、埋め込みの最適化、エージェントの応答品質の向上をお手伝いします。どのようにお手伝いしましょうか？",
+      "button": "AIアシスタント",
+      "openAssistant": "AIアシスタントを開く",
+      "closeAssistant": "AIアシスタントを閉じる",
+      "contextLabel": "現在のナレッジベース",
+      "totalDocuments": "ドキュメント総数",
+      "indexedCount": "インデックス済み",
+      "pendingCount": "保留中",
+      "lastUpdate": "最終更新",
+      "suggestions": {
+        "addDocument": "新しいドキュメントをベースに追加する",
+        "optimizeEmbeddings": "検索向上のため埋め込みを最適化する",
+        "reviewQuality": "インデックス済みドキュメントの品質を確認する",
+        "findGaps": "知識のギャップを特定する",
+        "organizeCategories": "カテゴリ別にドキュメントを整理する",
+        "testRetrieval": "情報検索をテストする",
+        "bulkImport": "複数のドキュメントをインポートする",
+        "cleanupDuplicates": "重複ドキュメントをクリーンアップする"
+      }
+    }
+  },
+  "promptBuilder": {
+    "title": "プロンプトビルダー",
+    "description": "AIエージェント用のプロンプトを作成・管理します",
+    "copilot": {
+      "instructions": "あなたはプロンプトエンジニアリングに特化したAIアシスタントです。プロンプトエンジニアリングのベストプラクティスに従って、AIエージェント用のプロンプトの作成、最適化、テストを支援できます。",
+      "languageRule": "常にユーザーが使用している言語で応答してください。",
+      "welcome": "こんにちは！プロンプトビルダーアシスタントです。効果的なプロンプトの作成、既存の指示の最適化、バリエーションのテストをお手伝いします。どのようにお手伝いしましょうか？",
+      "button": "AIアシスタント",
+      "openAssistant": "AIアシスタントを開く",
+      "closeAssistant": "AIアシスタントを閉じる",
+      "contextLabel": "現在のプロンプト",
+      "totalPrompts": "プロンプト総数",
+      "activeCount": "アクティブ",
+      "draftCount": "下書き",
+      "suggestions": {
+        "createNew": "新しいプロンプトをゼロから作成する",
+        "optimizeExisting": "現在のプロンプトを最適化する",
+        "addExamples": "プロンプトに例を追加する",
+        "testVariations": "プロンプトのバリエーションをテストする",
+        "reviewBestPractices": "ベストプラクティスを確認する",
+        "addConstraints": "制約とガードレールを追加する",
+        "improveClarity": "指示の明確さを改善する",
+        "convertToTemplate": "再利用可能なテンプレートに変換する"
+      }
+    }
+  },
+  "utilityAgents": {
+    "title": "ユーティリティエージェント",
+    "description": "特定のタスク用のAIエージェントを管理します",
+    "copilot": {
+      "instructions": "あなたは管理者がユーティリティエージェントを作成、設定、管理するのを支援するAIアシスタントです。エージェントの機能を説明し、設定を提案し、問題を診断できます。",
+      "languageRule": "常にユーザーが使用している言語で応答してください。",
+      "welcome": "こんにちは！ユーティリティエージェントアシスタントです。新しいエージェントの作成、機能の設定、パフォーマンスの最適化をお手伝いします。どのようにお手伝いしましょうか？",
+      "button": "AIアシスタント",
+      "openAssistant": "AIアシスタントを開く",
+      "closeAssistant": "AIアシスタントを閉じる",
+      "contextLabel": "利用可能なエージェント",
+      "totalAgents": "エージェント総数",
+      "activeCount": "アクティブ",
+      "mcpEnabled": "MCP有効",
+      "suggestions": {
+        "createAgent": "新しいユーティリティエージェントを作成する",
+        "configureCapabilities": "エージェントの機能を設定する",
+        "testAgent": "選択したエージェントをテストする",
+        "enableMCP": "MCP統合を有効にする",
+        "viewLogs": "実行ログを表示する",
+        "optimizePerformance": "エージェントのパフォーマンスを最適化する",
+        "cloneAgent": "既存のエージェントを複製する",
+        "compareAgents": "類似のエージェントを比較する"
+      }
+    }
+  },
+  "artifacts": {
+    "title": "アーティファクト",
+    "description": "アーティファクトと共有プラットフォームリソースを管理します",
+    "copilot": {
+      "instructions": "あなたはCockpitプラットフォームのアーティファクトを管理するAIアシスタントです。プロンプト、設定、テンプレートなどのアーティファクトの作成、整理、バージョン管理を支援できます。",
+      "languageRule": "常にユーザーが使用している言語で応答してください。",
+      "welcome": "こんにちは！アーティファクトアシスタントです。プロンプト、設定、プラットフォームテンプレートの管理をお手伝いします。どのようにお手伝いしましょうか？",
+      "button": "AIアシスタント",
+      "openAssistant": "AIアシスタントを開く",
+      "closeAssistant": "AIアシスタントを閉じる",
+      "contextLabel": "利用可能なアーティファクト",
+      "totalArtifacts": "アーティファクト総数",
+      "sharedCount": "共有",
+      "privateCount": "プライベート",
+      "suggestions": {
+        "createArtifact": "新しいアーティファクトを作成する",
+        "shareArtifact": "チームとアーティファクトを共有する",
+        "versionControl": "アーティファクトのバージョンを管理する",
+        "findArtifact": "タイプまたは名前でアーティファクトを検索する",
+        "duplicateArtifact": "既存のアーティファクトを複製する",
+        "exportArtifacts": "選択したアーティファクトをエクスポートする",
+        "importArtifacts": "外部アーティファクトをインポートする",
+        "cleanupUnused": "未使用のアーティファクトをクリーンアップする"
+      }
+    }
+  },
+  "mcpServers": {
+    "title": "MCPサーバー",
+    "description": "Model Context Protocolサーバー接続を管理します",
+    "copilot": {
+      "instructions": "あなたはMCP（Model Context Protocol）サーバーの設定と管理に特化したAIアシスタントです。接続の設定、問題の診断、サーバー通信の最適化を支援できます。",
+      "languageRule": "常にユーザーが使用している言語で応答してください。",
+      "welcome": "こんにちは！MCPサーバーアシスタントです。接続の設定、接続テスト、通信問題の解決をお手伝いします。どのようにお手伝いしましょうか？",
+      "button": "AIアシスタント",
+      "openAssistant": "AIアシスタントを開く",
+      "closeAssistant": "AIアシスタントを閉じる",
+      "contextLabel": "設定済みサーバー",
+      "totalServers": "サーバー総数",
+      "connectedCount": "接続済み",
+      "disconnectedCount": "切断",
+      "suggestions": {
+        "addServer": "新しいMCPサーバーを追加する",
+        "testConnection": "サーバー接続をテストする",
+        "diagnoseIssues": "接続の問題を診断する",
+        "viewCapabilities": "サーバーの機能を表示する",
+        "configureAuth": "認証を設定する",
+        "monitorHealth": "サーバーの健全性を監視する",
+        "migrateServer": "サーバー設定を移行する",
+        "backupConfig": "設定をバックアップする"
+      }
+    }
+  },
+  "feedback": {
+    "title": "フィードバック",
+    "description": "ユーザーのフィードバックと提案を管理します",
+    "copilot": {
+      "instructions": "あなたはユーザーフィードバックの分析と管理を行うAIアシスタントです。フィードバックの分類、パターンの特定、項目の優先順位付け、解決策の提案ができます。",
+      "languageRule": "常にユーザーが使用している言語で応答してください。",
+      "welcome": "こんにちは！フィードバックアシスタントです。フィードバックの分析、パターンの特定、改善の優先順位付けをお手伝いします。どのようにお手伝いしましょうか？",
+      "button": "AIアシスタント",
+      "openAssistant": "AIアシスタントを開く",
+      "closeAssistant": "AIアシスタントを閉じる",
+      "contextLabel": "受信したフィードバック",
+      "totalFeedbacks": "フィードバック総数",
+      "pendingCount": "保留中",
+      "resolvedCount": "解決済み",
+      "suggestions": {
+        "analyzeTrends": "フィードバックのトレンドを分析する",
+        "categorize": "保留中のフィードバックを分類する",
+        "prioritize": "影響度で項目を優先順位付けする",
+        "findSimilar": "類似のフィードバックを見つける",
+        "suggestResolution": "フィードバックの解決策を提案する",
+        "generateReport": "フィードバックレポートを生成する",
+        "notifyTeam": "重要なフィードバックについてチームに通知する",
+        "archiveResolved": "解決済みフィードバックをアーカイブする"
+      }
+    }
+  },
+  "training": {
+    "title": "トレーニング",
+    "description": "トレーニング資料とセッションを管理します",
+    "copilot": {
+      "instructions": "あなたはトレーニング資料の作成と管理を支援するAIアシスタントです。コンテンツの提案、モジュールの整理、ユーザーの進捗追跡ができます。",
+      "languageRule": "常にユーザーが使用している言語で応答してください。",
+      "welcome": "こんにちは！トレーニングアシスタントです。資料の作成、モジュールの整理、チームの進捗追跡をお手伝いします。どのようにお手伝いしましょうか？",
+      "button": "AIアシスタント",
+      "openAssistant": "AIアシスタントを開く",
+      "closeAssistant": "AIアシスタントを閉じる",
+      "contextLabel": "トレーニング資料",
+      "totalModules": "モジュール総数",
+      "completedCount": "完了",
+      "inProgressCount": "進行中",
+      "suggestions": {
+        "createModule": "新しいトレーニングモジュールを作成する",
+        "suggestContent": "関連コンテンツを提案する",
+        "trackProgress": "チームの進捗を追跡する",
+        "generateQuiz": "評価クイズを生成する",
+        "reviewMaterial": "既存の資料を確認する",
+        "scheduleSession": "トレーニングセッションをスケジュールする",
+        "exportCertificate": "証明書をエクスポートする",
+        "analyzeLearning": "学習メトリクスを分析する"
+      }
+    }
+  },
+  "downstream": {
+    "title": "ダウンストリーム",
+    "description": "ダウンストリームプロジェクトとエピックを管理します",
+    "copilot": {
+      "instructions": "あなたはダウンストリームプロジェクト管理を支援するAIアシスタントです。エピックの追跡、チーム調整、プロジェクトステータスの分析を支援できます。",
+      "languageRule": "常にユーザーが使用している言語で応答してください。",
+      "welcome": "こんにちは！ダウンストリームアシスタントです。プロジェクトの管理、エピックの追跡、チームの調整をお手伝いします。どのようにお手伝いしましょうか？",
+      "button": "AIアシスタント",
+      "openAssistant": "AIアシスタントを開く",
+      "closeAssistant": "AIアシスタントを閉じる",
+      "contextLabel": "プロジェクトステータス",
+      "totalProjects": "プロジェクト総数",
+      "activeCount": "アクティブ",
+      "completedCount": "完了",
+      "suggestions": {
+        "viewStatus": "プロジェクトステータスを表示する",
+        "trackEpics": "エピックの進捗を追跡する",
+        "analyzeRisks": "プロジェクトリスクを分析する",
+        "generateReport": "ステータスレポートを生成する"
+      }
+    }
+  },
+  "migrationWizard": {
+    "title": "移行ウィザード",
+    "description": "データとプロジェクトの移行を管理します",
+    "copilot": {
+      "instructions": "あなたはデータ移行プロセスを支援するAIアシスタントです。移行の計画、実行、検証を支援できます。",
+      "languageRule": "常にユーザーが使用している言語で応答してください。",
+      "welcome": "こんにちは！移行ウィザードアシスタントです。データ移行の計画、実行、検証をお手伝いします。どのようにお手伝いしましょうか？",
+      "button": "AIアシスタント",
+      "openAssistant": "AIアシスタントを開く",
+      "closeAssistant": "AIアシスタントを閉じる",
+      "contextLabel": "移行ステータス",
+      "totalMigrations": "移行総数",
+      "pendingCount": "保留中",
+      "completedCount": "完了",
+      "suggestions": {
+        "planMigration": "新しい移行を計画する",
+        "validateData": "移行データを検証する",
+        "checkStatus": "移行ステータスを確認する",
+        "rollback": "移行をロールバックする"
+      }
+    }
+  },
+  "myTasks": {
+    "title": "マイタスク",
+    "description": "個人のタスクとToDoを管理します",
+    "copilot": {
+      "instructions": "あなたはタスク管理を支援するAIアシスタントです。タスクの整理、優先順位付け、進捗追跡を支援できます。",
+      "languageRule": "常にユーザーが使用している言語で応答してください。",
+      "welcome": "こんにちは！マイタスクアシスタントです。タスクの整理、優先順位付け、進捗追跡をお手伝いします。どのようにお手伝いしましょうか？",
+      "button": "AIアシスタント",
+      "openAssistant": "AIアシスタントを開く",
+      "closeAssistant": "AIアシスタントを閉じる",
+      "contextLabel": "タスクステータス",
+      "totalTasks": "タスク総数",
+      "pendingCount": "保留中",
+      "completedCount": "完了",
+      "suggestions": {
+        "viewTasks": "今日のタスクを表示する",
+        "prioritize": "タスクの優先順位を付ける",
+        "addTask": "新しいタスクを追加する",
+        "markComplete": "タスクを完了としてマークする"
+      }
+    }
+  },
+  "supervisorPlayground": {
+    "title": "スーパーバイザープレイグラウンド",
+    "quickActions": {
+      "summarize": "要約",
+      "createDiagram": "図を作成",
+      "actionItems": "アクションアイテム",
+      "continue": "続ける"
+    },
+    "suggestions": {
+      "label": "提案",
+      "tellMore": "詳しく教えてください",
+      "nextSteps": "次のステップは何ですか？",
+      "createDiagram": "図を作成できますか？"
+    },
+    "chat": {
+      "placeholder": "{{name}}にメッセージを送信...",
+      "sendHint": "Enterで送信、Shift+Enterで改行"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+template:
+  id: technical-preferences-template
+  name: Technical Preferences
+  version: 1.0
+  output:
+    format: yaml
+    filename: data/technical-preferences.yaml
+    title: "Technical Preferences Configuration"
+
+preferences:
+  # Programming Languages
+  primary_language: ""      # e.g., "python", "typescript", "java", "csharp"
+  secondary_languages: []   # e.g., ["javascript", "bash"]
+  
+  # Frontend Frameworks
+  frontend_framework: ""    # e.g., "react", "vue", "angular", "svelte"
+  ui_library: ""           # e.g., "material-ui", "tailwind", "bootstrap", "chakra-ui"
+  
+  # Backend Frameworks
+  backend_framework: ""     # e.g., "express", "fastapi", "spring-boot", "asp-net-core"
+  api_style: ""            # e.g., "rest", "graphql", "grpc"
+  
+  # Databases
+  primary_database: ""      # e.g., "postgresql", "mysql", "mongodb", "sqlite"
+  caching: ""              # e.g., "redis", "memcached", "in-memory"
+  
+  # Cloud Platform
+  cloud_provider: ""        # e.g., "azure", "aws", "gcp", "none"
+  containerization: ""      # e.g., "docker", "none"
+  orchestration: ""         # e.g., "kubernetes", "docker-compose", "none"
+  
+  # Development Tools
+  package_manager: ""       # e.g., "npm", "yarn", "pip", "maven", "gradle"
+  build_tool: ""           # e.g., "webpack", "vite", "gradle", "maven"
+  testing_framework: ""     # e.g., "jest", "pytest", "junit", "xunit"
+  
+  # Repository Structure
+  repository_style: ""      # e.g., "monorepo", "multi-repo"
+  
+  # Architectural Patterns
+  architecture_style: ""    # e.g., "monolith", "microservices", "serverless"
+  
+  # Additional Preferences
+  state_management: ""      # e.g., "redux", "zustand", "context-api" (for frontend)
+  orm: ""                  # e.g., "prisma", "typeorm", "sqlalchemy", "hibernate"
+  authentication: ""        # e.g., "jwt", "oauth", "auth0", "azure-ad"
+  
+# Usage Instructions:
+# 1. Fill in your preferred technologies for each category
+# 2. Leave blank ("") for categories where you have no preference
+# 3. This file will be used by architects and developers to make consistent technology choices
+# 4. Update this file as your preferences evolve or as new projects require different approaches
+
+examples:
+  web_application:
+    primary_language: "typescript"
+    secondary_languages: ["python"]
+    frontend_framework: "react"
+    ui_library: "tailwind"
+    backend_framework: "express"
+    api_style: "rest"
+    primary_database: "postgresql"
+    caching: "redis"
+    cloud_provider: "azure"
+    containerization: "docker"
+    orchestration: "kubernetes"
+    package_manager: "npm"
+    build_tool: "vite"
+    testing_framework: "jest"
+    repository_style: "monorepo"
+    architecture_style: "microservices"
+    state_management: "zustand"
+    orm: "prisma"
+    authentication: "oauth"
+  
+  data_science_project:
+    primary_language: "python"
+    secondary_languages: ["sql"]
+    frontend_framework: "streamlit"
+    ui_library: ""
+    backend_framework: "fastapi"
+    api_style: "rest"
+    primary_database: "postgresql"
+    caching: ""
+    cloud_provider: "azure"
+    containerization: "docker"
+    orchestration: "none"
+    package_manager: "pip"
+    build_tool: ""
+    testing_framework: "pytest"
+    repository_style: "multi-repo"
+    architecture_style: "monolith"
+    state_management: ""
+    orm: "sqlalchemy"
+    authentication: "jwt"

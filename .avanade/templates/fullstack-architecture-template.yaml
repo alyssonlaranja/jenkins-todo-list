@@ -1,0 +1,51 @@
+```yaml
+template:
+  id: fullstack-architecture-template-v2
+  name: Full-Stack Architecture Document
+  version: 2.0
+  output:
+    format: markdown
+    filename: docs/architecture.md
+    title: "{{project_name}} Full-Stack Architecture"
+
+sections:
+  - id: system-overview
+    title: "System Overview"
+    content:
+      - architecture_vision
+      - system_context
+      - technology_stack
+      - quality_attributes
+
+  - id: frontend-architecture
+    title: "Frontend Architecture"
+    content:
+      - ui_framework
+      - component_design
+      - state_management
+      - client_routing
+
+  - id: backend-architecture
+    title: "Backend Architecture"
+    content:
+      - service_architecture
+      - api_design
+      - business_logic
+      - integration_layer
+
+  - id: data-architecture
+    title: "Data Architecture"
+    content:
+      - data_models
+      - database_design
+      - data_flow
+      - storage_strategy
+
+fields:
+  project_name:
+    type: text
+    required: true
+  architecture_type:
+    type: select
+    options: ["Monolithic", "Microservices", "Serverless"]
+```

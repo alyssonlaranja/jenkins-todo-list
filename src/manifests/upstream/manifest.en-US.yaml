@@ -1,0 +1,285 @@
+# Module Manifest: Upstream
+# Locale: en-US
+
+locale: en-US
+
+name: "Upstream"
+description: "Business initiative discovery and validation platform using the BV Framework (7 stages)"
+
+features:
+  # === Main Dashboard ===
+  - id: mode-selector
+    name: "Mode Selector"
+    description: "Choose between modes: Gamified, Executive, HR, Meta"
+
+  - id: connection-selector
+    name: "Connection Selector"
+    description: "Select active MCP connection for wizard"
+
+  - id: stats-cards
+    name: "Statistics Cards"
+    description: "Total Epics, Features and User Stories"
+
+  - id: epic-list
+    name: "Epic List"
+    description: "Table with all created macro-initiatives"
+
+  - id: epic-create-button
+    name: "Create Epic Button"
+    description: "Start wizard for new macro-initiative"
+
+  # === BV Framework Wizard ===
+  - id: wizard-dialog
+    name: "Wizard Modal"
+    description: "Fullscreen modal with 7-stage wizard"
+
+  - id: wizard-step-navigation
+    name: "Step Navigation"
+    description: "Sidebar with stages and visual progress"
+
+  - id: wizard-header
+    name: "Wizard Header"
+    description: "Title, progress and close button"
+
+  - id: wizard-copilot
+    name: "Copilot Sidebar"
+    description: "AI assistant integrated via CopilotKit"
+
+  # === Stage 1: Ideation ===
+  - id: stage-1-ideation
+    name: "Stage 1: Ideation"
+    description: "Initial definition of macro-initiative"
+
+  - id: ideation-name
+    name: "Macro-Initiative Name"
+    description: "Text field for epic name"
+
+  - id: ideation-okrs
+    name: "Linked OKRs"
+    description: "Selection of related strategic OKRs"
+
+  - id: ideation-problem-statement
+    name: "Problem Statement"
+    description: "Description of problem to solve"
+
+  - id: ideation-strategic-alignment
+    name: "Strategic Alignment"
+    description: "Justification of strategy alignment"
+
+  - id: ideation-business-value
+    name: "Initial Business Value"
+    description: "Slider 0-100 for value estimate"
+
+  # === Stage 2: Immersion (per Hypothesis) ===
+  - id: stage-2-immersion
+    name: "Stage 2: Immersion"
+    description: "Deep exploration per hypothesis"
+
+  - id: immersion-hypothesis-list
+    name: "Hypothesis List"
+    description: "Management of multiple hypotheses"
+
+  - id: immersion-csd-matrix
+    name: "CSD Matrix"
+    description: "Certainties, Suppositions and Doubts"
+
+  - id: immersion-stakeholders
+    name: "Stakeholders"
+    description: "Mapping of interested parties"
+
+  - id: immersion-opportunity-tree
+    name: "Opportunity Tree"
+    description: "Mapping of related opportunities"
+
+  - id: immersion-data-sources
+    name: "Data Sources"
+    description: "Source suggestions for validation"
+
+  # === Stage 3: Validation (per Hypothesis) ===
+  - id: stage-3-validation
+    name: "Stage 3: Validation"
+    description: "Hypothesis validation with evidence"
+
+  - id: validation-method
+    name: "Validation Method"
+    description: "Interviews, A/B Test, Prototype, etc."
+
+  - id: validation-evidence
+    name: "Collected Evidence"
+    description: "List of qualitative/quantitative evidence"
+
+  - id: validation-evidence-level
+    name: "Evidence Level"
+    description: "Indicator: none, weak, medium, strong"
+
+  - id: validation-conclusion
+    name: "Validation Conclusion"
+    description: "Validated, Rejected, Needs more data, Pivot"
+
+  # === Stage 4: Exploration (Epic-level) ===
+  - id: stage-4-exploration
+    name: "Stage 4: Exploration"
+    description: "Consolidated solution design"
+
+  - id: exploration-macro-requirements
+    name: "Macro Requirements"
+    description: "List of high-level requirements"
+
+  - id: exploration-actors
+    name: "System Actors"
+    description: "Mapping of internal/external/system actors"
+
+  - id: exploration-business-flow
+    name: "Business Flow"
+    description: "Mermaid diagram or flow URL"
+
+  - id: exploration-user-journey
+    name: "User Journey"
+    description: "User journey map"
+
+  - id: exploration-usability-test
+    name: "Usability Test"
+    description: "Results and critical issues"
+
+  # === Stage 5: Analysis (Epic-level) ===
+  - id: stage-5-analysis
+    name: "Stage 5: Analysis"
+    description: "Technical and impact analysis"
+
+  - id: analysis-blueprint
+    name: "Architecture Blueprint"
+    description: "Solution architecture diagram"
+
+  - id: analysis-impact
+    name: "Impact Analysis"
+    description: "Impact on systems and processes"
+
+  - id: analysis-gap
+    name: "Gap Analysis"
+    description: "Gaps between current and desired state"
+
+  - id: analysis-dependencies
+    name: "Dependencies"
+    description: "List of technical/business dependencies"
+
+  - id: analysis-mitigation
+    name: "Mitigation Plans"
+    description: "Strategies to mitigate risks"
+
+  # === Stage 6: Prioritization (Epic-level) ===
+  - id: stage-6-prioritization
+    name: "Stage 6: Prioritization"
+    description: "Prioritization and QBR preparation"
+
+  - id: prioritization-business-value
+    name: "Final Business Value"
+    description: "Refined slider 0-100"
+
+  - id: prioritization-effort
+    name: "Estimated Effort"
+    description: "Slider 0-100 for effort"
+
+  - id: prioritization-risk
+    name: "Risk Level"
+    description: "Low, Medium, High, Critical"
+
+  - id: prioritization-kpis
+    name: "Preliminary KPIs"
+    description: "Success indicators"
+
+  - id: prioritization-qbr-memo
+    name: "QBR Memo"
+    description: "Summary for QBR presentation"
+
+  - id: prioritization-strategic-adherence
+    name: "Strategic Adherence"
+    description: "Strategic alignment score"
+
+  # === Stage 7: Transition (Epic-level) ===
+  - id: stage-7-transition
+    name: "Stage 7: Transition"
+    description: "Transition to Downstream"
+
+  - id: transition-business-epics
+    name: "Business Epics"
+    description: "List of generated BEs (1:N)"
+
+  - id: transition-features
+    name: "Features per BE"
+    description: "Features with MoSCoW prioritization"
+
+  - id: transition-handoff-document
+    name: "Handoff Document"
+    description: "Transition markdown"
+
+  - id: transition-jira-link
+    name: "Jira Link"
+    description: "Jira backlog URL"
+
+  - id: transition-responsibility-agreements
+    name: "Responsibility Agreements"
+    description: "N1/N2 with roles and tribes"
+
+  # === Knowledge Base ===
+  - id: knowledge-base-panel
+    name: "Knowledge Base Panel"
+    description: "Document upload and management"
+
+  - id: knowledge-slots
+    name: "Knowledge Slots"
+    description: "Typed slots: market, financial, technical"
+
+  - id: knowledge-document-upload
+    name: "Document Upload"
+    description: "Upload with embedding extraction"
+
+  # === Copilot Actions ===
+  - id: copilot-suggest-hypotheses
+    name: "Suggest Hypotheses"
+    description: "AI suggests hypotheses based on context"
+
+  - id: copilot-validate-evidence
+    name: "Validate Evidence"
+    description: "AI analyzes evidence strength"
+
+  - id: copilot-generate-features
+    name: "Generate Features"
+    description: "AI suggests features for Business Epic"
+
+  - id: copilot-draft-handoff
+    name: "Draft Handoff"
+    description: "AI generates handoff document"
+
+  # === Alternative Views ===
+  - id: view-gamified
+    name: "Gamified Mode"
+    description: "Interface with gamification"
+
+  - id: view-executive
+    name: "Executive Mode"
+    description: "Dashboard for executives"
+
+  - id: view-hr
+    name: "HR Mode"
+    description: "People-focused view"
+
+  - id: view-meta
+    name: "Meta Mode"
+    description: "Technical and debug view"
+
+  # === Artifacts ===
+  - id: artifact-epic-storage
+    name: "Epic Storage"
+    description: "UPSTREAM_EPIC_{id} with soft delete"
+
+  - id: artifact-feature-storage
+    name: "Feature Storage"
+    description: "UPSTREAM_FEATURE_{epicId}_{featureId}"
+
+  - id: artifact-story-storage
+    name: "Story Storage"
+    description: "UPSTREAM_STORY_{featureId}_{storyId}"
+
+  - id: artifact-versioning
+    name: "Artifact Versioning"
+    description: "Auto-save with incremental versions"
